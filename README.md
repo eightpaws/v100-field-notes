@@ -37,6 +37,8 @@ Read this before quoting a number.
   card states the flags that affect its own result.
 - **`Does not show` is part of the card.** Every card names what its numbers cannot support — the clean
   comparison it did not run, the quality check it did not do, the failure it could not explain.
+- **Every caveat is queued, not parked.** Each `Follow-up` line names the re-run that closes the gap, so the
+  disclaimers are work in progress rather than a permanent excuse.
 
 | Idea | What | Result |
 |---|---|---|
