@@ -22,7 +22,7 @@
  {
   "id": "V100-11",
   "title": "System prompt KV cache",
-  "result": ""
+  "result": "The prefix cache works in both llama.cpp and Ollama, but llama.cpp wins on tail editing. 2k prefix: cold 1047 ms, repeat 663 ms, tail edit 95 ms (recomputed 34 tokens). 6k: cold 1106 ms, repeat 186 ms against 1541 ms without cache - an 8x speedup. Ollama on the same prompts: first 967 ms, repeat 199 ms, but tail edit recomputes the entire prefix. Conclusion: enable cache in llama-server, fix the order of fields in the system prompt (date at the beginning breaks everything)."
  },
  {
   "id": "V100-24",
@@ -32,7 +32,7 @@
  {
   "id": "V100-36",
   "title": "Video without RAM ceiling: clip length and 720p",
-  "result": ""
+  "result": "RAM was not the limit: process RSS of 41.6 GB at all lengths, VRAM 12.7-13.0 GB. 480p (20 steps): 97/145/193 frames ok - 176/283/416 sec; 241 and 321 - OOM. 720p without tiling crashes during decoding after 394 sec (requires 1.72 GB, free 1.61); with VAE tiling, 97 frames take 594 sec at peak 13.55 GB, and 145 frames again OOM. Conclusion: the limit is a 16 GB card, not RAM; without tricks, 12 sec at 480p and 6 sec at 720p."
  },
  {
   "id": "V100-37",
