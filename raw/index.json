@@ -1,296 +1,47 @@
 [
  {
-  "id": "V100-02",
-  "title": "KV-кэш q8_0 → контекст 32–64k",
-  "tier": "П1",
-  "status": "сделано",
-  "result": "q8_0 KV поиск не портит (иголка 3/3 на 6496 токенах, как и fp16) и на 16k даёт вдвое быстрее генерацию - 44 против 21 tok/s, плюс 2 ГБ свободной VRAM (11,6 против 13,6). Но потолок 14B на 16 ГБ - 32k контекста (16k промпта): 64k не грузится даже с q8. Часть гипотезы про 64k отклонена. Журнал: 22.11.2026."
- },
- {
   "id": "V100-10",
-  "title": "Prefill и батчинг: где V100 теряет на самом деле",
-  "tier": "П1",
-  "status": "сделано",
-  "result": "prefill 1776 tok/s при `num_batch=2048` против 587 при 128 и 1351 при дефолтных 512 - ×3 к 128 и +31 % к 512, на 1k, 8k и 16k лучший именно 2048. На 16 440 токенах 1441 tok/s (−19 % к короткому). Вывод: на V100 держать `num_batch=2048`. Журнал: 22.11.2026."
- },
- {
-  "id": "V100-12",
-  "title": "1Cat-LLM и FA-V100: готовая поддержка sm_70 вместо своей",
-  "tier": "П3",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-13",
-  "title": "AWQ/int4 против GGUF Q4 на Volta",
-  "tier": "П3",
-  "status": "сырая",
-  "result": "-"
+  "title": "Prefill and batching: where a V100 actually loses throughput",
+  "result": "prefill 1776 tok/s at `num_batch=2048` against 587 at 128 and 1351 at default 512 - ×3 to 128 and +31 % to 512, on 1k, 8k and 16k the best is exactly 2048. On 16 440 tokens 1441 tok/s (-19 % to short). Conclusion: on V100 keep `num_batch=2048`. Journal: 22.11.2026."
  },
  {
   "id": "V100-16",
-  "title": "Патчи volta-fa к llama.cpp",
-  "tier": "П1",
-  "status": "сделано",
-  "result": "собрали llama.cpp с 4 из 8 патчей (остальные не легли - base-commit в патчах не указан). Против Ollama: decode 70,65 против 65,8 tok/s (+7,4 %), prefill 512 - 1822 против 1776 (+2,6 %), prefill 4096 - 1663. Заявленных +34–45 % нет; почти весь прирост даёт сам FlashAttention (+8,7 % к decode), а не патчи. Вывод: ради 7 % уходить с Ollama не стоит. Журнал: 22.11.2026."
+  "title": "volta-fa patches for llama.cpp: measured, not promised",
+  "result": "Collected llama.cpp with 4 out of 8 patches (the rest did not apply - base-commit in the patches was not specified). Compared to Ollama: decode 70.65 against 65.8 tok/s (+7.4%), prefill 512 - 1822 against 1776 (+2.6%), prefill 4096 - 1663. The advertised +34–45% is not there; almost all the gain comes from FlashAttention itself (+8.7% to decode), not the patches. Conclusion: it's not worth leaving Ollama for a 7% improvement. Log: 22.11.2026."
  },
  {
   "id": "V100-19",
-  "title": "GQA→MHA: тихий фолбэк внимания в ComfyUI",
-  "tier": "П1",
-  "status": "сделано",
-  "result": "подтверждено - GQA на sm_70 тихо уходит в math-путь: 4,63 TF/s против 33,15 у MHA (×7,2), на 8192 токенах math съедает 8 ГБ и падает в OOM. Расширение KV до MHA возвращает 31,9 TF/s. Наши LTX/Wan/CogVideoX/SDXL - MHA, их не касается; правило нужно для GQA-моделей (Qwen-VL, новые видео-DiT). Проверка: сравнить auto с принудительным MATH - если совпало, включился math. Журнал: 22.11.2026."
+  "title": "GQA to MHA: the silent attention fallback in ComfyUI",
+  "result": "confirmed - GQA quietly switches to math-path on sm_70: 4.63 TF/s compared to 33.15 for MHA (×7.2), on 8192 math tokens it consumes 8 GB and crashes due to OOM. Expanding KV to MHA returns 31.9 TF/s. Our LTX/Wan/CogVideoX/SDXL are MHA, they are not affected; the rule is needed for GQA models (Qwen-VL, new video-DiT). Check: compare auto with forced MATH - if it matches, math has been enabled. Journal: 22.11.2026."
  },
  {
-  "id": "V100-36",
-  "title": "Видео без RAM-потолка: длина клипа и 720p",
-  "tier": "П1",
-  "status": "сделано",
-  "result": "RAM не был потолком: RSS процесса 41,6 ГБ на всех длинах, VRAM 12,7-13,0 ГБ. 480p (20 шагов): 97/145/193 кадра ок - 176/283/416 с; 241 и 321 - OOM. 720p без тайлинга падает на декодировании после 394 с (нужно 1,72 ГБ, свободно 1,61); с тайлингом VAE 97 кадров считаются за 594 с при пике 13,55 ГБ, а 145 кадров снова OOM. Итог: потолок в 16 ГБ карты, а не в RAM; без ухищрений 12 с при 480p и 6 с при 720p."
- },
- {
-  "id": "V100-40",
-  "title": "ik_llama.cpp вместо upstream: чужие 2,2x на V100",
-  "tier": "П1",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-41",
-  "title": "GPT-OSS-20B MXFP4: 21B MoE в 16 ГБ",
-  "tier": "П1",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-42",
-  "title": "MoE-эксперты в 96 ГБ RAM: -ncmoe на нашей карте",
-  "tier": "П1",
-  "status": "сырая",
-  "result": "-"
+  "id": "V100-02",
+  "title": "q8_0 KV cache: context 32k vs 64k on 14B",
+  "result": "q8_0 KV search does not damage (needle 3/3 on 6496 tokens, as with fp16) and at 16k provides twice the generation speed - 44 against 21 tok/s, plus 2 GB of free VRAM (11.6 against 13.6). But the ceiling for 14B on 16 GB is 32k context (16k prompt): 64k does not load even with q8. Part of the hypothesis about 64k is rejected. Journal: 22.11.2026."
  },
  {
   "id": "V100-11",
-  "title": "Кэш KV системного промпта",
-  "tier": "П2",
-  "status": "сделано",
-  "result": "Кэш префикса работает и в llama.cpp, и в Ollama, но llama.cpp выигрывает на правке хвоста. 2k префикс: холодно 1047 мс, повтор 663 мс, правка хвоста 95 мс (пересчитано 34 токена). 6k: холодно 1106 мс, повтор 186 мс против 1541 мс без кэша - ускорение в 8 раз. Ollama на тех же промптах: первый 967 мс, повтор 199 мс, но правка хвоста пересчитывает весь префикс. Вывод: включать кэш в llama-server обязательно, порядок полей системного промпта фиксировать (дата в начале всё ломает)."
- },
- {
-  "id": "V100-15",
-  "title": "Снапшот стека: горизонт поддержки sm_70",
-  "tier": "П2",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-17",
-  "title": "LMDeploy TurboMind: AWQ без форков",
-  "tier": "П2",
-  "status": "сырая",
-  "result": "-"
+  "title": "System-prompt KV cache: prefix reuse gain",
+  "result": "The prefix cache works in both llama.cpp and Ollama, but llama.cpp wins on tail editing. 2k prefix: cold 1047 ms, repeat 663 ms, tail editing 95 ms (recomputed 34 tokens). 6k: cold 1106 ms, repeat 186 ms against 1541 ms without cache - an 8x speedup. Ollama on the same prompts: first 967 ms, repeat 199 ms, but tail editing recomputes the entire prefix. Conclusion: enable the cache in llama-server, fix the order of fields in the system prompt (date at the beginning breaks everything)."
  },
  {
   "id": "V100-24",
-  "title": "DRY-сэмплер и бюджет рассуждений",
-  "tier": "П2",
-  "status": "сделано",
-  "result": "DRY-штраф не подтвердился на нашей модели: на пяти обычных задачах и на двух специально зацикливающих (120 сортов роз по номерам, 80 строк лога) доля повторяющихся 12-грамм равна 0,0 во всех режимах - и без DRY, и с `--dry-penalty-last-n 1024 --dry-multiplier 0.8 --dry-base 1.75`. Зацикливания у qwen2.5-coder-14b при temp=0 на русских задачах не возникает вовсе, лечить нечего. Стоимость режима - около 3 % скорости (67,1 против 65,2 tok/s). Вывод: DRY держать выключенным, включать точечно, если конкретная модель начнёт циклить; `--reasoning-budget` сборка принимает."
+  "title": "DRY sampler and reasoning budget",
+  "result": "DRY-penalty did not confirm on our model: on five regular tasks and two specifically cycling (120 varieties of roses by numbers, 80 lines of log) the fraction of repeating 12-grams is equal to 0.0 in all modes - both without DRY and with `--dry-penalty-last-n 1024 --dry-multiplier 0.8 --dry-base 1.75`. Cycling does not occur at all in qwen2.5-coder-14b with temp=0 on Russian tasks, there is nothing to treat. The cost of the mode is about 3% speed (67.1 against 65.2 tok/s). Conclusion: keep DRY turned off, turn it on selectively if a specific model starts cycling; the `--reasoning-budget` build accepts."
  },
  {
-  "id": "V100-26",
-  "title": "Матрица флагов сборки llama.cpp под Volta",
-  "tier": "П2",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-27",
-  "title": "volta-forever: CUDA 13 на V100",
-  "tier": "П2",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-28",
-  "title": "V100-LLM: готовые пресеты под 16 ГБ",
-  "tier": "П2",
-  "status": "сырая",
-  "result": "-"
+  "id": "V100-36",
+  "title": "Video without the RAM ceiling: clip length and 720p",
+  "result": "RAM was not the limit: process RSS of 41.6 GB at all lengths, VRAM 12.7-13.0 GB. 480p (20 steps): 97/145/193 frames ok - 176/283/416 sec; 241 and 321 - OOM. 720p without tiling fails during decoding after 394 sec (requires 1.72 GB, free 1.61); with VAE tiling, 97 frames take 594 sec at peak 13.55 GB, while 145 frames again OOM. Conclusion: the limit is a 16 GB card, not RAM; without tricks, 12 sec at 480p and 6 sec at 720p."
  },
  {
   "id": "V100-37",
-  "title": "32B dense и 30B MoE: пере-замер декода при 96 ГБ",
-  "tier": "П2",
-  "status": "сделано",
-  "result": "Потолок и при 96 ГБ RAM остаётся в 16 ГБ карты. Плотная 32B Q4 (18,5 ГБ) при 20 слоях на GPU: prefill 253, decode 3,0 tok/s; при 40 и 99 слоях llama-bench вообще не грузит модель. MoE qwen3-30b-a3b (17,3 ГБ) при тех же 20 слоях: prefill 440, decode 24,5 tok/s - в 8 раз быстрее. Вывод: на 16 ГБ из крупных моделей жизнеспособны только MoE, плотные 30B+ не стоят загрузки."
- },
- {
-  "id": "V100-38",
-  "title": "ACE-Step 4B и работа рядом с SDXL",
-  "tier": "П2",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-43",
-  "title": "llama-server как рабочий серв: кэш префикса и батч",
-  "tier": "П2",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-01",
-  "title": "Спекулятивное декодирование в llama.cpp",
-  "tier": "П3",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-03",
-  "title": "imatrix Q4_K под русский корпус",
-  "tier": "П3",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-14",
-  "title": "24B в 16 ГБ: Mistral-Small-3.1-24B AWQ",
-  "tier": "П3",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-18",
-  "title": "xllama.cpp: сжатие KV вместо q8",
-  "tier": "П3",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-20",
-  "title": "fni8: int8 dp4a для DiT",
-  "tier": "П3",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-22",
-  "title": "fni8 для LLM: int8 dp4a вместо тензорных ядер",
-  "tier": "П3",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-25",
-  "title": "CUDA graphs для музыкального пайплайна",
-  "tier": "П2",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-29",
-  "title": "PXA 4.0: движок «из коробки» для Volta",
-  "tier": "П3",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-30",
-  "title": "sm70-attn: FA2-D256 в llama.cpp",
-  "tier": "П3",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-31",
-  "title": "Гетерогенный серв: V100 + 4060 Ti одним пулом",
-  "tier": "П3",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-32",
-  "title": "Готовые sm_70-веса с Hugging Face",
-  "tier": "П3",
-  "status": "сырая",
-  "result": "-"
+  "title": "32B dense vs 30B MoE: decode re-measured with 96 GB RAM",
+  "result": "The ceiling is at 16 GB card even with 96 GB RAM. Dense 32B Q4 (18.5 GB) model with 20 layers on GPU: prefill 253, decode 3.0 tok/s; with 40 and 99 layers llama-bench does not load the model at all. MoE qwen3-30b-a3b (17.3 GB) with the same 20 layers: prefill 440, decode 24.5 tok/s - 8 times faster. Conclusion: among large models, only MoE are viable on 16 GB; dense 30B+ models are not worth loading."
  },
  {
   "id": "V100-39",
-  "title": "TTFT и загрузка моделей при тёплом кэше",
-  "tier": "П3",
-  "status": "сделано",
-  "result": "Тёплый кэш страниц меняет картину в разы. llama.cpp: холодный запуск 22,4 с, тёплый повтор 3,2 с - в 7 раз быстрее. Ollama 14B: после выгрузки модели 18,2 с и prefill 1155 мс на 1634 токена, сразу следом 0,2 с и prefill 69,5 мс (весь префикс из кэша). Прежние цифры «14B грузится 16 с» верны только для первого запуска после ребута; в рабочем режиме загрузка 3 с, а повторный TTFT практически нулевой. Оба значения внесены как эталон."
- },
- {
-  "id": "V100-04",
-  "title": "VLM как контролёр брака карточек",
-  "tier": "П4",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-05",
-  "title": "IC-Light - пересвет товара под сцену",
-  "tier": "П4",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-06",
-  "title": "SUPIR против Real-ESRGAN на печати",
-  "tier": "П4",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-07",
-  "title": "TTS с эмоцией и длинными формами",
-  "tier": "П4",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-08",
-  "title": "Stable Audio Open - SFX и эмбиенс к роликам",
-  "tier": "П4",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-09",
-  "title": "360° товара: фотограмметрия или сплайны",
-  "tier": "П4",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-21",
-  "title": "Движки с нуля: tachyon, ninfer, lapilli",
-  "tier": "П4",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-33",
-  "title": "Одна V100 32 ГБ: 27B с длинным контекстом",
-  "tier": "П5",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-34",
-  "title": "2×32 ГБ: TP2, 27B Int8 и 262k контекста",
-  "tier": "П5",
-  "status": "сырая",
-  "result": "-"
- },
- {
-  "id": "V100-35",
-  "title": "Видео и картинки на 32 ГБ: что влезает целиком",
-  "tier": "П5",
-  "status": "сырая",
-  "result": "-"
+  "title": "TTFT and model loading with a warm page cache",
+  "result": "Warm page cache changes the picture significantly. llama.cpp: cold start 22.4 s, warm repeat 3.2 s - 7 times faster. Ollama 14B: after offloading the model, 18.2 s and prefill 1155 ms on 1634 tokens, immediately next 0.2 s and prefill 69.5 ms (entire prefix from cache). Previous figures \"14B loads in 16 s\" are only valid for the first start after reboot; in working mode, loading is 3 s, and subsequent TTFT is practically zero. Both values are entered as benchmarks."
  }
 ]
