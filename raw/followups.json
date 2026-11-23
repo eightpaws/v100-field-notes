@@ -1,0 +1,80 @@
+[
+ {
+  "id": "V100-53",
+  "parent": "V100-11",
+  "what": "repeat the prefix-cache comparison at equal prompt length",
+  "estimate": "1.5 h"
+ },
+ {
+  "id": "V100-54",
+  "parent": "V100-27",
+  "what": "native baseline with cuDNN enabled",
+  "estimate": "1.5 h"
+ },
+ {
+  "id": "V100-55",
+  "parent": "V100-37",
+  "what": "capture stderr to explain the ngl above 20 refusal",
+  "estimate": "1 h"
+ },
+ {
+  "id": "V100-56",
+  "parent": "V100-02",
+  "what": "measure the 32k point and try q4_0 KV at 64k",
+  "estimate": "2 h"
+ },
+ {
+  "id": "V100-57",
+  "parent": "V100-02",
+  "what": "repeat the q8_0 decode comparison with restarts between modes",
+  "estimate": "1.5 h"
+ },
+ {
+  "id": "V100-58",
+  "parent": "V100-12",
+  "what": "batching at 1/4/8 clients, aggregate throughput, answer quality",
+  "estimate": "4 h"
+ },
+ {
+  "id": "V100-59",
+  "parent": "V100-24",
+  "what": "repeat DRY on a model that actually loops",
+  "estimate": "2 h"
+ },
+ {
+  "id": "V100-60",
+  "parent": "V100-16",
+  "what": "build all eight volta-fa patches on their base commit",
+  "estimate": "5 h"
+ },
+ {
+  "id": "V100-61",
+  "parent": "V100-19",
+  "what": "end-to-end pipeline timing, script preserved",
+  "estimate": "2 h"
+ },
+ {
+  "id": "V100-62",
+  "parent": "V100-36",
+  "what": "inspect the tiled 720p frames instead of trusting the exit code",
+  "estimate": "2 h"
+ },
+ {
+  "id": "V100-63",
+  "parent": "V100-39",
+  "what": "separate model load time from harness start",
+  "estimate": "1 h"
+ },
+ {
+  "id": "V100-64",
+  "parent": "V100-15",
+  "what": "offline restore of the snapshot on a clean VM",
+  "estimate": "3 h"
+ },
+ {
+  "id": "V100-65",
+  "parent": "V100-10",
+  "what": "prefill at 8k and 16k, and record num_batch=4096",
+  "estimate": "1 h"
+ }
+]

@@ -5,7 +5,7 @@ Every number below was measured on the card, not copied from a project README. N
 published on purpose: they are the expensive part of anyone's time.
 
 Closed experiments: **12** — 5 positive, 4 mixed,
-3 negative.
+3 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -54,6 +54,33 @@ Read this before quoting a number.
 | [V100-37](results/V100-37.md) | 32B dense vs 30B MoE: decode re-measured with 96 GB RAM | **Negative.** The ceiling is the 16 GB card, not system RAM: 96 GB does not let a dense 32B model run at a usable speed (3.0 tok/s at 20 layers, refuses to load above that). Among large models only… |
 | [V100-39](results/V100-39.md) | TTFT and model loading with a warm page cache | **Positive.** A warm page cache changes the picture by an order of magnitude: 22.4 s cold against 3.2 s warm for llama.cpp, and 0.197 s for the repeated Ollama call with the whole prefix coming from… |
 | [V100-15](results/V100-15.md) | Stack snapshot: how long sm_70 stays supportable | **Positive.** Freeze the stack and keep the wheels on disk — the failure mode here is silent, and after CUDA 13 / PyTorch 2.15 the only way back is a source build. Rule for this card: update nothing… |
+
+## Follow-ups in progress
+
+The cards above each name what their numbers cannot support. Those gaps are already scheduled — one
+re-run per gap, on the same card, with the same engine. Nothing here is a new idea: every line either
+confirms a published number or corrects it.
+
+**Results will be published as they land** — the affected card is rewritten and this table loses the row.
+Until then the caveat stands, and a table row is not a substitute for a measurement.
+
+| Follow-up | Card it closes | What is being re-measured | Est. |
+|---|---|---|---|
+| V100-53 | V100-11 | repeat the prefix-cache comparison at equal prompt length | 1.5 h |
+| V100-54 | V100-27 | native baseline with cuDNN enabled | 1.5 h |
+| V100-55 | V100-37 | capture stderr to explain the ngl above 20 refusal | 1 h |
+| V100-56 | V100-02 | measure the 32k point and try q4_0 KV at 64k | 2 h |
+| V100-57 | V100-02 | repeat the q8_0 decode comparison with restarts between modes | 1.5 h |
+| V100-58 | V100-12 | batching at 1/4/8 clients, aggregate throughput, answer quality | 4 h |
+| V100-59 | V100-24 | repeat DRY on a model that actually loops | 2 h |
+| V100-60 | V100-16 | build all eight volta-fa patches on their base commit | 5 h |
+| V100-61 | V100-19 | end-to-end pipeline timing, script preserved | 2 h |
+| V100-62 | V100-36 | inspect the tiled 720p frames instead of trusting the exit code | 2 h |
+| V100-63 | V100-39 | separate model load time from harness start | 1 h |
+| V100-64 | V100-15 | offline restore of the snapshot on a clean VM | 3 h |
+| V100-65 | V100-10 | prefill at 8k and 16k, and record num_batch=4096 | 1 h |
+
+Total queued: **13** re-runs, roughly 27.5 h of GPU time.
 
 ## How to read this
 
