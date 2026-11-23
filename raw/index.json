@@ -1,47 +1,47 @@
 [
  {
   "id": "V100-10",
-  "title": "Prefill and batching: where a V100 actually loses throughput",
-  "result": "prefill 1776 tok/s at `num_batch=2048` against 587 at 128 and 1351 at default 512 - ×3 to 128 and +31 % to 512, on 1k, 8k and 16k the best is exactly 2048. On 16 440 tokens 1441 tok/s (-19 % to short). Conclusion: on V100 keep `num_batch=2048`. Journal: 22.11.2026."
+  "title": "Prefill and batching: where V100 actually loses out",
+  "result": "prefill 1776 tok/s at `num_batch=2048` against 587 at 128 and 1351 at default 512 - ×3 to 128 and +31 % to 512, on 1k, 8k and 16k the best is exactly 2048. On 16 440 tokens 1441 tok/s (-19 % to short). Conclusion: on V100 keep `num_batch=2048`."
  },
  {
   "id": "V100-16",
-  "title": "volta-fa patches for llama.cpp: measured, not promised",
-  "result": "Collected llama.cpp with 4 out of 8 patches (the rest did not apply - base-commit in the patches was not specified). Compared to Ollama: decode 70.65 against 65.8 tok/s (+7.4%), prefill 512 - 1822 against 1776 (+2.6%), prefill 4096 - 1663. The advertised +34–45% is not there; almost all the gain comes from FlashAttention itself (+8.7% to decode), not the patches. Conclusion: it's not worth leaving Ollama for a 7% improvement. Log: 22.11.2026."
+  "title": "Volta-fa patches for llama.cpp",
+  "result": "Built llama.cpp with 4 of 8 patches (the rest did not apply - base-commit in the patches was not specified). Compared to Ollama: decode 70.65 against 65.8 tok/s (+7.4%), prefill 512 - 1822 against 1776 (+2.6%), prefill 4096 - 1663. The advertised +34–45% is not there; almost all the gain comes from FlashAttention itself (+8.7% to decode), not the patches. Conclusion: it's not worth leaving Ollama for a 7% improvement. Log: 22.11.2026."
  },
  {
   "id": "V100-19",
-  "title": "GQA to MHA: the silent attention fallback in ComfyUI",
-  "result": "confirmed - GQA quietly switches to math-path on sm_70: 4.63 TF/s compared to 33.15 for MHA (×7.2), on 8192 math tokens it consumes 8 GB and crashes due to OOM. Expanding KV to MHA returns 31.9 TF/s. Our LTX/Wan/CogVideoX/SDXL are MHA, they are not affected; the rule is needed for GQA models (Qwen-VL, new video-DiT). Check: compare auto with forced MATH - if it matches, math has been enabled. Journal: 22.11.2026."
+  "title": "GQA→MHA: quiet fallback attention in ComfyUI",
+  "result": "Confirmed: GQA silently falls back to the math path on sm_70: 4.63 TF/s compared to 33.15 for MHA (×7.2), on 8192 math tokens it consumes 8 GB and crashes due to OOM. Expanding KV to MHA returns 31.9 TF/s. Our LTX/Wan/CogVideoX/SDXL are MHA, they are not affected; the rule is needed for GQA models (Qwen-VL, new video-DiT). Check: compare auto with forced MATH - if it matches, math has been enabled."
  },
  {
   "id": "V100-02",
-  "title": "q8_0 KV cache: context 32k vs 64k on 14B",
-  "result": "q8_0 KV search does not damage (needle 3/3 on 6496 tokens, as with fp16) and at 16k provides twice the generation speed - 44 against 21 tok/s, plus 2 GB of free VRAM (11.6 against 13.6). But the ceiling for 14B on 16 GB is 32k context (16k prompt): 64k does not load even with q8. Part of the hypothesis about 64k is rejected. Journal: 22.11.2026."
+  "title": "KV cache q8_0 → context 32–64k",
+  "result": "q8_0 KV does not hurt retrieval quality (needle 3/3 on 6496 tokens, as with fp16) and at 16k provides twice the generation speed - 44 against 21 tok/s, plus 2 GB of free VRAM (11.6 against 13.6). But the ceiling for 14B on 16 GB is 32k context (16k prompt): 64k does not load even with q8. Part of the hypothesis about 64k is rejected."
  },
  {
   "id": "V100-11",
-  "title": "System-prompt KV cache: prefix reuse gain",
+  "title": "System prompt KV cache",
   "result": "The prefix cache works in both llama.cpp and Ollama, but llama.cpp wins on tail editing. 2k prefix: cold 1047 ms, repeat 663 ms, tail editing 95 ms (recomputed 34 tokens). 6k: cold 1106 ms, repeat 186 ms against 1541 ms without cache - an 8x speedup. Ollama on the same prompts: first 967 ms, repeat 199 ms, but tail editing recomputes the entire prefix. Conclusion: enable the cache in llama-server, fix the order of fields in the system prompt (date at the beginning breaks everything)."
  },
  {
   "id": "V100-24",
-  "title": "DRY sampler and reasoning budget",
-  "result": "DRY-penalty did not confirm on our model: on five regular tasks and two specifically cycling (120 varieties of roses by numbers, 80 lines of log) the fraction of repeating 12-grams is equal to 0.0 in all modes - both without DRY and with `--dry-penalty-last-n 1024 --dry-multiplier 0.8 --dry-base 1.75`. Cycling does not occur at all in qwen2.5-coder-14b with temp=0 on Russian tasks, there is nothing to treat. The cost of the mode is about 3% speed (67.1 against 65.2 tok/s). Conclusion: keep DRY turned off, turn it on selectively if a specific model starts cycling; the `--reasoning-budget` build accepts."
+  "title": "DRY-sampler and budget of reasoning",
+  "result": "The DRY penalty did not reproduce on our model: on five regular tasks and two specifically cycling (120 varieties of roses by numbers, 80 lines of log) the share of repeated 12-grams was 0.0 in all modes - both without DRY and with `--dry-penalty-last-n 1024 --dry-multiplier 0.8 --dry-base 1.75`. Cycling does not occur at all in qwen2.5-coder-14b with temp=0 on Russian tasks, there is nothing to treat. The cost of the mode is about 3% speed (67.1 against 65.2 tok/s). Conclusion: keep DRY turned off, turn it on selectively if a specific model starts cycling; the `--reasoning-budget` build accepts."
  },
  {
   "id": "V100-36",
-  "title": "Video without the RAM ceiling: clip length and 720p",
+  "title": "Video without RAM ceiling: clip length and 720p",
   "result": "RAM was not the limit: process RSS of 41.6 GB at all lengths, VRAM 12.7-13.0 GB. 480p (20 steps): 97/145/193 frames ok - 176/283/416 sec; 241 and 321 - OOM. 720p without tiling fails during decoding after 394 sec (requires 1.72 GB, free 1.61); with VAE tiling, 97 frames take 594 sec at peak 13.55 GB, while 145 frames again OOM. Conclusion: the limit is a 16 GB card, not RAM; without tricks, 12 sec at 480p and 6 sec at 720p."
  },
  {
   "id": "V100-37",
-  "title": "32B dense vs 30B MoE: decode re-measured with 96 GB RAM",
-  "result": "The ceiling is at 16 GB card even with 96 GB RAM. Dense 32B Q4 (18.5 GB) model with 20 layers on GPU: prefill 253, decode 3.0 tok/s; with 40 and 99 layers llama-bench does not load the model at all. MoE qwen3-30b-a3b (17.3 GB) with the same 20 layers: prefill 440, decode 24.5 tok/s - 8 times faster. Conclusion: among large models, only MoE are viable on 16 GB; dense 30B+ models are not worth loading."
+  "title": "32B dense and 30B MoE: re-measuring decode at 96 GB",
+  "result": "The ceiling is the 16 GB card, even with 96 GB of RAM. Dense 32B Q4 (18.5 GB) model with 20 layers on GPU: prefill 253, decode 3.0 tok/s; at 40 and 99 layers llama-bench fails to load the model at all. MoE qwen3-30b-a3b (17.3 GB) with the same 20 layers: prefill 440, decode 24.5 tok/s - 8 times faster. Conclusion: among large models, only MoE are viable on 16 GB; dense 30B+ models are not worth loading."
  },
  {
   "id": "V100-39",
-  "title": "TTFT and model loading with a warm page cache",
-  "result": "Warm page cache changes the picture significantly. llama.cpp: cold start 22.4 s, warm repeat 3.2 s - 7 times faster. Ollama 14B: after offloading the model, 18.2 s and prefill 1155 ms on 1634 tokens, immediately next 0.2 s and prefill 69.5 ms (entire prefix from cache). Previous figures \"14B loads in 16 s\" are only valid for the first start after reboot; in working mode, loading is 3 s, and subsequent TTFT is practically zero. Both values are entered as benchmarks."
+  "title": "TTFT and model loading with warm cache",
+  "result": "A warm page cache changes the picture dramatically. llama.cpp: cold start 22.4 s, warm repeat 3.2 s - 7 times faster. Ollama 14B: after offloading the model, 18.2 s and prefill 1155 ms on 1634 tokens, immediately next 0.2 s and prefill 69.5 ms (entire prefix from cache). Previous figures \"14B loads in 16 s\" are only valid for the first start after reboot; in working mode, loading is 3 s, and subsequent TTFT is practically zero. Both values are entered as benchmarks."
  }
 ]
