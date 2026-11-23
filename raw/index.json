@@ -2,61 +2,73 @@
  {
   "id": "V100-10",
   "title": "Prefill and batching: where a V100 actually loses throughput",
+  "result_type": "positive",
   "verdict": "Set `num_batch=2048` explicitly on a V100 — it is ×3 over 128 and +31 % over the Ollama default, and the default is the main reason the card looks slow in off-the-shelf setups. The penalty for long prompts is real but small: −19 % at 16 440 tokens."
  },
  {
   "id": "V100-16",
   "title": "volta-fa patches for llama.cpp: measured, not promised",
+  "result_type": "negative",
   "verdict": "The promised +34–45 % is not there: +7.4 % on decode and +2.6 % on prefill, and most of that is FlashAttention itself (+8.7 % on decode), not the Volta patches. Moving off Ollama for 7 % is not worth the maintenance burden of a pinned fork — but 4 of 8 patches not applying is the more useful finding: the patch set has no recorded base commit, so it cannot be rebased forward without manual work."
  },
  {
   "id": "V100-19",
   "title": "GQA to MHA: the silent attention fallback that costs 7x",
+  "result_type": "positive",
   "verdict": "Check the attention path before blaming the pipeline: on sm_70 a GQA model can run 7x slower with no error message, and the same shape then OOMs at 8192 tokens. Expanding K/V to MHA recovers almost all of it at the cost of copied weights. LTX-Video, Wan, CogVideoX and SDXL on this rig are already MHA and unaffected — the rule matters for GQA models (Qwen-VL class, newer video DiTs). Quick check: compare auto against forced MATH; if the timings match, the fallback is active."
  },
  {
   "id": "V100-27",
-  "title": "volta-forever: CUDA 13 on a V100",
+  "title": "volta-forever: running CUDA 13 binaries on a V100",
+  "result_type": "mixed",
   "verdict": "The layer does what it says at the compatibility level: it runs code compiled without Volta, and it is worth keeping for exactly one situation — software released only for CUDA 13 with no sources. It is not a speed path: emulated sm_75 instructions run on ordinary CUDA cores, so a frame that takes 3.6 s natively takes 41.5 s. Keep torch on the native path (2.10.0+cu128 with cuDNN disabled for these pipelines) and llama.cpp on the volta-fa patches. Side finding worth its own line: `nvidia-cublas-cu12` from PyPI is a working way to get cuBLAS when the vendor download stalls."
  },
  {
   "id": "V100-12",
-  "title": "1Cat-LLM and FA-V100: ready-made sm_70 support instead of our own",
+  "title": "1Cat-vLLM: a modern serving stack that still builds for sm_70",
+  "result_type": "mixed",
   "verdict": "The fork runs: a real modern serving stack on Volta, roughly a quarter behind llama.cpp on 7B GGUF, with an OpenAI API and batching model that llama.cpp does not give you. Two pitfalls cost the most time — `--disable-log-requests` is gone in this fork (use `--enforce-eager`), and the card must be empty first: Ollama holding 10.5 GB through llama-server makes the engine refuse to start. Note that the fork's headline numbers (892 tok/s) come from 4×V100-32GB with NVLink; nothing about multi-GPU recipes transfers to one 16 GB card."
  },
  {
   "id": "V100-02",
   "title": "q8_0 KV cache: how much context a 14B model gets in 16 GB",
+  "result_type": "mixed",
   "verdict": "Keep `q8_0` KV with FlashAttention on, and treat 32k as the practical ceiling for a 14B model on a 16 GB card. 64k does not fit at any KV precision, so the \"64k on a V100\" advice is worth ignoring rather than retrying."
  },
  {
   "id": "V100-11",
   "title": "System-prompt KV cache: prefix reuse in llama-server vs Ollama",
+  "result_type": "positive",
   "verdict": "Enable the prefix cache in `llama-server` — it is the cheap win, and it is the only one of the two that survives a tail edit (95 ms instead of re-prefilling 1697 tokens). Ollama reuses the prefix on a byte-identical repeat but recomputes the whole prefix on any tail change. Either way, freeze the order of the system-prompt fields: a date or a request counter at the top of the prompt invalidates the cache on every request."
  },
  {
   "id": "V100-24",
   "title": "DRY sampler and reasoning budget: a negative result",
+  "result_type": "negative",
   "verdict": "The DRY penalty did not reproduce here: qwen2.5-coder-14b does not loop on Russian tasks at `temperature=0`, so there is nothing for it to fix, and it costs about 3 % of decode speed. Keep DRY off by default and enable it only for a specific model that actually loops. The build does accept `--reasoning-budget`, which is the useful half of this experiment."
  },
  {
   "id": "V100-36",
   "title": "Video without the RAM ceiling: clip length and 720p",
+  "result_type": "mixed",
   "verdict": "RAM was never the ceiling: process RSS sat at 41.6 GB across every clip length while VRAM moved 12.7→13.0 GB. The wall is the 16 GB card. Without tricks: 12 s at 480p, or 6 s at 720p with VAE tiling — and tiling costs ~50 % more time (594 s vs 394 s) plus a decode warning that the returned frames may be malformed, so check the output rather than trusting the exit code."
  },
  {
   "id": "V100-37",
   "title": "32B dense vs 30B MoE: decode re-measured with 96 GB RAM",
+  "result_type": "negative",
   "verdict": "The ceiling is the 16 GB card, not system RAM: 96 GB does not let a dense 32B model run at a usable speed (3.0 tok/s at 20 layers, refuses to load above that). Among large models only MoE is viable here — the same 20 layers give 24.5 tok/s, eight times the dense model. Practical rule: on 16 GB, load a 30B MoE or stay at 14B dense; skip dense 30B+ entirely."
  },
  {
   "id": "V100-39",
   "title": "TTFT and model loading with a warm page cache",
+  "result_type": "positive",
   "verdict": "A warm page cache changes the picture by an order of magnitude: 22.4 s cold against 3.2 s warm for llama.cpp, and 0.197 s for the repeated Ollama call with the whole prefix coming from cache. The old \"14B loads in 16 s\" figure is only true for the first run after a reboot — in a working loop the load is ~3 s and the repeat TTFT is effectively zero. Both numbers belong in a benchmark table; replacing one with the other is what makes comparisons wrong."
  },
  {
   "id": "V100-15",
   "title": "Stack snapshot: how long sm_70 stays supportable",
+  "result_type": "positive",
   "verdict": "Freeze the stack and keep the wheels on disk — the failure mode here is silent, and after CUDA 13 / PyTorch 2.15 the only way back is a source build. Rule for this card: update nothing on a V100 without a reason you can write down. One item is still open and is stated here rather than hidden: the offline restore test on a clean VM (music, video and TTS pipelines on the pinned versions) has not been run, so the snapshot is complete but unproven end to end."
  }
 ]
