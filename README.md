@@ -15,6 +15,7 @@ Closed experiments: **12** — 5 positive, 4 mixed,
 | Driver | 580.178.04 |
 | Host | Proxmox VE VM — 24 vCPU (EPYC 7282), 94 GiB RAM, Ubuntu 24.04.5, kernel 6.8.0-151 |
 | Engines | Ollama 0.40.16 · llama.cpp built from source with `-DCMAKE_CUDA_ARCHITECTURES=70` |
+| CUDA toolkit | driver 580.178.04 (supports up to CUDA 13.0) · builds on **12.9**, the last branch that still compiles sm_70 — CUDA 13 drops Volta entirely |
 | Python / torch | 3.12.3 · 2.5.1+cu121 (video) · 2.10.0+cu128 (music) |
 
 Every card states its rig, the commands that were run, whether the measurement was repeated, and ships the raw
