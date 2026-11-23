@@ -1,0 +1,32 @@
+[
+ {
+  "prefix": "~2000",
+  "first_request": {
+   "wall_s": 12.377,
+   "prompt_tokens": 1697,
+   "prefill_ms": 532.8,
+   "decode_tok_s": 81.3
+  },
+  "repeat": {
+   "wall_s": 0.318,
+   "prompt_tokens": 1696,
+   "prefill_ms": 134.5,
+   "decode_tok_s": 102.0
+  }
+ },
+ {
+  "prefix": "~6000",
+  "first_request": {
+   "wall_s": 1.183,
+   "prompt_tokens": 5045,
+   "prefill_ms": 967.4,
+   "decode_tok_s": 93.7
+  },
+  "repeat": {
+   "wall_s": 0.428,
+   "prompt_tokens": 5044,
+   "prefill_ms": 198.7,
+   "decode_tok_s": 91.2
+  }
+ }
+]

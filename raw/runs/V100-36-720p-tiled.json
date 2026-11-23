@@ -1,0 +1,9 @@
+{
+ "case": "1280x704_97_tiled",
+ "tiling": true,
+ "wall_s": 594.3,
+ "frames_received": 97,
+ "vram_peak_gb": 13.55,
+ "rss_gb": 44.03,
+ "note": "Cannot handle this data type: (1, 1, 3), <f4"
+}

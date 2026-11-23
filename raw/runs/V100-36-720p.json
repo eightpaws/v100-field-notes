@@ -1,0 +1,7 @@
+{
+ "case": "1280x704_97",
+ "wall_s": 394.4,
+ "rss_gb": 41.58,
+ "status": "OOM",
+ "note": "CUDA out of memory. Tried to allocate 1.72 GiB. GPU 0 has a total capacity of 15.77 GiB of which 1.61 GiB is free. Process 1835 has 310.00 MiB memory in use. Including non-PyTorch memory, this process"
+}

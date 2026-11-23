@@ -1,0 +1,18 @@
+{
+ "llama_cpp_cold": {
+  "wall_s": 22.4
+ },
+ "llama_cpp_warm": {
+  "wall_s": 3.2
+ },
+ "ollama_after_unload": {
+  "wall_s": 18.225,
+  "prompt_tokens": 1634,
+  "prefill_ms": 1155.2
+ },
+ "ollama_warm": {
+  "wall_s": 0.197,
+  "prompt_tokens": 1634,
+  "prefill_ms": 69.5
+ }
+}

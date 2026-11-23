@@ -1,0 +1,18 @@
+[
+ {
+  "mean_repeated_fraction": 0.0,
+  "worst_repeat": 1,
+  "tok_s": 67.14125493568154
+ },
+ {
+  "mode": "DRY",
+  "mean_repeated_fraction": 0.0,
+  "worst_repeat": 1,
+  "tok_s": 65.20027596547882
+ },
+ {
+  "mean_repeated_fraction": 0.0,
+  "worst_repeat": 1,
+  "tok_s": 65.30472757126317
+ }
+]

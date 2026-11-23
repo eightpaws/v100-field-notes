@@ -1,0 +1,42 @@
+[
+ {
+  "model": "qwen2.5-32b Q4",
+  "file_gb": 18.49,
+  "ngl": 99,
+  "seconds": 44.1
+ },
+ {
+  "model": "qwen2.5-32b Q4",
+  "file_gb": 18.49,
+  "ngl": 40,
+  "seconds": 2.2
+ },
+ {
+  "model": "qwen2.5-32b Q4",
+  "file_gb": 18.49,
+  "ngl": 20,
+  "prefill_tok_s": 253.2,
+  "decode_tok_s": 3.0,
+  "seconds": 94.2
+ },
+ {
+  "model": "qwen3-30b-a3b Q4 (MoE)",
+  "file_gb": 17.28,
+  "ngl": 99,
+  "seconds": 39.8
+ },
+ {
+  "model": "qwen3-30b-a3b Q4 (MoE)",
+  "file_gb": 17.28,
+  "ngl": 40,
+  "seconds": 2.2
+ },
+ {
+  "model": "qwen3-30b-a3b Q4 (MoE)",
+  "file_gb": 17.28,
+  "ngl": 20,
+  "prefill_tok_s": 439.7,
+  "decode_tok_s": 24.5,
+  "seconds": 18.0
+ }
+]

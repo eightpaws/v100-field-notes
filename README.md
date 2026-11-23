@@ -6,6 +6,20 @@ published on purpose: they are the expensive part of anyone's time.
 
 Closed experiments: **9**.
 
+## Test rig
+
+| Component | Value |
+|---|---|
+| GPU | Tesla V100-SXM2 16 GB, compute capability 7.0 (sm_70) |
+| Driver | 580.178.04 |
+| Host | Proxmox VE VM — 24 vCPU (EPYC 7282), 94 GiB RAM, Ubuntu 24.04.5, kernel 6.8.0-151 |
+| Python / torch | 3.12.3 · 2.5.1+cu121 (video venv) · 2.10.0+cu128 (music venv) |
+| Ollama | KV cache q8_0, `NUM_PARALLEL=4`, `KEEP_ALIVE=30m`, `MAX_LOADED_MODELS=1` |
+
+Every card states its rig, the commands that were run, whether the measurement was repeated, and ships the
+raw numeric output in `raw/runs/`. Where a card says `single run`, it was measured once — no error bars are
+implied and none are invented.
+
 | Idea | What | Result |
 |---|---|---|
 | [V100-10](results/V100-10.md) | Prefill and batching: where V100 actually loses | prefill 1776 tok/s at `num_batch=2048` against 587 at 128 and 1351 at default 512 - ×3 to 128 and +31 % to 512, on 1k, 8k and 16k the best is exactly 2048. On 16 440 toke |

@@ -1,0 +1,51 @@
+[
+ {
+  "case": "480p_97",
+  "frames": 97,
+  "wall_s": 175.8,
+  "vram_peak_gb": 12.68,
+  "rss_gb": 41.58
+ },
+ {
+  "case": "480p_145",
+  "frames": 145,
+  "wall_s": 283.3,
+  "vram_peak_gb": 12.71,
+  "rss_gb": 41.58
+ },
+ {
+  "case": "480p_193",
+  "frames": 193,
+  "wall_s": 415.6,
+  "vram_peak_gb": 13.0,
+  "rss_gb": 41.58
+ },
+ {
+  "case": "480p_241",
+  "frames": 241,
+  "wall_s": 12.0,
+  "rss_gb": 41.58,
+  "status": "OOM"
+ },
+ {
+  "case": "480p_321",
+  "frames": 321,
+  "wall_s": 1.1,
+  "rss_gb": 41.58,
+  "status": "OOM"
+ },
+ {
+  "case": "720p_97",
+  "frames": 97,
+  "wall_s": 0.0,
+  "rss_gb": 41.58,
+  "status": "OOM"
+ },
+ {
+  "case": "720p_145",
+  "frames": 145,
+  "wall_s": 0.0,
+  "rss_gb": 41.58,
+  "status": "OOM"
+ }
+]
