@@ -276,6 +276,12 @@
   "verdict": "Under load, 1Cat-vLLM outperforms llama.cpp by six times.** 7B GGUF, `--max-model-len 4096`, `--gpu-memory-utilization 0.6`, different prompts for all requests (otherwise prefix cache boosts the number): | Mode | Tokens | Time | Total tok/s | |---|---|---|---| | Single request | 128 | — | **109-116** | | 4 parallel | 512 | 1.3 s | **403** | | 8 parallel | 1024 | 1.5 s | **702** | Server start - **105-120 s** (ten times slower than llama.cpp, which takes 3-4 s to load the same model). Single thread in vLLM is slower than llama.cpp (115 vs 132 tok/s), but at eight concurrent requests it produces 702 tok/s - almost six times more. First attempt with identical prompts showed 715 tok/s at 8 and 169 at 4 - this was prefix cache, not batching; after switching to unique prompts, results were honest. Conclusion: for interactive single-user work - llama.cpp; for task queue, overnight factory, or multiple clients - vLLM, but with allowance for startup time."
  },
  {
+  "id": "V100-60",
+  "title": "Gather all eight patches on their base commit.",
+  "result_type": "unstated",
+  "verdict": "Patches do not exist: `Frostbite1536/volta-fa` is not a fork of llama.cpp with a series of patches, but a pre-hardware project (README: \"No custom kernels yet, and nothing has been benchmarked on a V100\", no `.patch` files in `src/ bench/ profiles/ tickets/`). Commit `79e2e74` does not exist in the local clone of llama.cpp, and the guest also has no networks, so the verification of \"eight patches on base-commit\" is invalid. The parent card V100-16 refers to a source that does not exist in this form - its claim \"laid 4 out of 8\" should be rewritten as \"no patches in the repository\"."
+ },
+ {
   "id": "V100-63",
   "title": "Loading model: detach from start harness",
   "result_type": "unstated",
