@@ -4,8 +4,8 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **33** — 14 positive, 7 mixed,
-3 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **41** — 14 positive, 7 mixed,
+4 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -57,17 +57,23 @@ Read this before quoting a number.
 | [V100-15](results/V100-15.md) | Stack snapshot: how long sm_70 stays supportable | **Positive.** Freeze the stack and keep the wheels on disk — the failure mode here is silent, and after CUDA 13 / PyTorch 2.15 the only way back is a source build. Rule for this card: update nothing… |
 | [V100-01](results/V100-01.md) | Speculative decoding in llama.cpp | Speculative decoding was tested on two targets, and the result depends on the model pair: it accelerates on 7B, but slows down almost twofold on 14B. llama.cpp master 51831d4, CUDA 12.9,… |
 | [V100-03](results/V100-03.md) | imatrix Q4_K under Russian chassis | - **Environment Status (configuration, 23.11.2026 21:13).** The llama.cpp build in `~/llama-new` was killed by a VM reboot at 20:48, and was rebuilt on **CUDA 12.9**: `BUILD_OK` in **7… |
+| [V100-13](results/V100-13.md) | AWQ/int4 vs GGUF Q4 on Volta | AWQ/int4 via vLLM 1.5.4: model loaded (14287 MiB VRAM), decode **117 tok/s** (114.2 / 116.9 after warm-up, first request 66.5), code is correct. Against GGUF Q4_K_M in llama.cpp: 132… |
 | [V100-14](results/V100-14.md) | 24B in 16 GB: Mistral-Small-3.1-24B AWQ | Mistral Small 24B AWQ does not fit in 16 GB via vLLM. The model is fully downloaded (3 shards, 13.4 GB, all tensors are read), 1Cat-vLLM 1.5.4 compiled for sm_70 and has separate… |
 | [V100-18](results/V100-18.md) | xllama.cpp: compress KV instead of q8 | Compressed KV in xllama.cpp works, but on long context it becomes too slow. Built with xllama.cpp f9287a9 (fork of llama.cpp from April 2026 with… |
 | [V100-20](results/V100-20.md) | fni8: int8 dp4a for DiT | Rejected along with V100-22: this is the same fni8 package family (int8 dp4a for DiT in ComfyUI). The author himself writes that acceleration was measured on a CMP 100-210 park with… |
+| [V100-21](results/V100-21.md) | Tachyon, Ninfer, Lapilli | Tachyon-v100 is being built and run on our card, but our models do not support it. Verified step by step. Build (Rust + nvcc), three pitfalls: 1. build.rs looks for the compiler strictly… |
 | [V100-22](results/V100-22.md) | fni8 for LLM: int8 dp4a instead of tensor cores | Rejected based on the author's documentation facts. fni8 (jajmangold/fni8, ComfyUI-fni8 package) is an int8 dp4a path through CUDA kernels, and it is designed for cards with… |
+| [V100-25](results/V100-25.md) | CUDA graphs for musical pipeline | Capture of CUDA graphs for ACE-Step 1.5 won't yield significant gain. Measurements via music studio API on xl-sft with LM 1.7B: | Duration | Steps | Seconds | |---|---|---| | 30s | 8 |… |
 | [V100-26](results/V100-26.md) | llama.cpp build flags matrix for Volta | The build flag matrix was previously verified (CUDA 12.0, llama.cpp build b7743fbfd8, model 14B Q4_K, llama-bench pp512/tg128, median of three runs). Result: none of the flags… |
 | [V100-28](results/V100-28.md) | V100-LLM: ready presets for 16 GB | Rejected: the release does not include the engine. Checked GitHub API for the Abdelhayali/V100-LLM repository, tag v1.3.0 - two assets: `LocalAI-Bridge-Desktop.exe` (8 MB) and… |
 | [V100-29](results/V100-29.md) | V100-29 | **Positive.** The first configuration that puts a 27B dense model fully on the card and still decodes faster than the 30B MoE with CPU offload. Stock llama.cpp cannot read the PXQN4 file — the PXA… |
 | [V100-30](results/V100-30.md) | sm70-attn: FA2-D256 in llama.cpp | Rejected based on the card criterion: "do we have a model with head_dim 256 and do we need context over 64k". The answer is no and no. What was actually checked: - We don't have models… |
+| [V100-32](results/V100-32.md) | Prepared sm_70-weights with Hugging Face | NInfer-V100 1.7.2 unpacks and runs: three binaries of 421-424 MB (ninfer, ninfer-serve, ninfer-perplexity), no missing libraries, help opens. But it has nothing to work with. The engine… |
+| [V100-40](results/V100-40.md) | V100-40 | **Negative.** The advertised 2.2x does not reproduce: prefill on the fork is about half of upstream (843–890 vs 1638–1779 tok/s) and decode is only 4% better with flash attention (73.53 vs 70.92). On… |
 | [V100-41](results/V100-41.md) | V100-41 | **Mixed.** Usable only with flash attention on and 4 expert layers pushed to CPU: 24 tok/s decode. Both faster coding candidates (DeepSeek-Coder-V2-Lite at 183 tok/s, Qwen3-Coder-30B at 75 tok/s)… |
 | [V100-42](results/V100-42.md) | V100-42 | **Positive.** Yes: 8 expert layers on CPU is the entry threshold, and every extra layer costs both prefill and decode roughly linearly. At 8 layers a 17.3 GB model — 1.3 GB larger than the card —… |
 | [V100-43](results/V100-43.md) | V100-43 | **Positive.** Prefix caching works and is the main reason to run llama-server for agent workloads: prompt processing drops from 845 ms to 89 ms (9.5x), round trip from 1.18 s to 0.39 s. |
+| [V100-44](results/V100-44.md) | NVFP4 on sm_70: 4-bit float in 16 GB | Works on sm_70. vLLM 1.5.4 (`--quantization modelopt_fp4`) boosted Ornith-1.5-9B-NVFP4 on V100: 14 133 MiB VRAM, decode **86.7-86.8 tok/s** (first request 83.0), code is correct.… |
 | [V100-45](results/V100-45.md) | V100-45 | **Positive.** Working configuration is `-ngl 99 -ncmoe 8 -c 4096`. An 8192-token context needs more VRAM (compute buffer allocation fails), so long files require either 12 CPU layers or a smaller context. |
 | [V100-46](results/V100-46.md) | V100-46 | **Positive.** Tool calling works correctly with the Qwen3-Coder chat template: valid JSON arguments, no extra calls, correct final answer. At 75 tok/s decode a conversational turn costs 2–3 s. |
 | [V100-47](results/V100-47.md) | V100-47 | **Positive.** Best decode measured on this card by a wide margin: 183.6 tok/s with 2250 tok/s prefill, working configuration `-ngl 99 -fa 0`. Flash attention must be off — it is 160x slower on this… |
@@ -76,6 +82,8 @@ Read this before quoting a number.
 | [V100-50](results/V100-50.md) | V100-50 | **Positive.** +21% on a 7B target. The same draft on a 14B target slows decoding by 43% — the technique has to be measured per pair, not assumed. |
 | [V100-51](results/V100-51.md) | V100-51 | **Mixed.** 32k is reachable only with compressed KV plus offloaded experts: `-c 32768 -ctk q8_0 -ctv q8_0 -ncmoe 16` gives 25 tok/s. Without compression the same window needs 24+ CPU layers and… |
 | [V100-52](results/V100-52.md) | V100-52 | **Positive.** The loop closes locally in 15 seconds per iteration, which makes unattended refactoring and test-fixing practical. A dense 32B on the same card would run at 3 tok/s and be unusable for this. |
+| [V100-66](results/V100-66.md) | Quality over speed: MBPP on three models | Harness run of `model_eval.py`, one server ascent, 40 MBPP tasks + 8 blocks. DeepSeek-Coder-V2-Lite 16B (Q4_K_M, -fa 0, ctx 16k):** pass@1 **0.55** (22 out of 40), format 4/5, RAG 2/2,… |
+| [V100-78](results/V100-78.md) | Rapid Averages: Nemotron-Bolt-E4B and SenseNova-Loop-9B | - ## Queue P1v - New Ideas Following Review (24.11.2026) | # | Idea | Stage | Resources | Status | Outcome | Ready | |---|---|---|---|---|---|---| | V100-66 | Code Quality: MBPP on Three… |
 
 ## Follow-ups in progress
 

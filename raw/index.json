@@ -84,6 +84,12 @@
   "verdict": "- **Environment Status (configuration, 23.11.2026 21:13).** The llama.cpp build in `~/llama-new` was killed by a VM reboot at 20:48, and was rebuilt on **CUDA 12.9**: `BUILD_OK` in **7 min 14 s** (on the system's nvcc 12.0, the same build took four hours and did not complete). Binaries are in place: `~/llama-new/build/bin/llama-bench` and `llama-cli`, tree is clean (commit 51831d4), `llama-bench` sees the card: `Tesla V100-SXM2-16GB, compute capability 7.0`. Log: `~/llama_rebuild_129.log`. For new builds — `~/bin/build-cuda.sh <directory> [targets]`; environment check — `~/bin/cuda-preflight.sh`."
  },
  {
+  "id": "V100-13",
+  "title": "AWQ/int4 vs GGUF Q4 on Volta",
+  "result_type": "unstated",
+  "verdict": "AWQ/int4 via vLLM 1.5.4: model loaded (14287 MiB VRAM), decode **117 tok/s** (114.2 / 116.9 after warm-up, first request 66.5), code is correct. Against GGUF Q4_K_M in llama.cpp: 132 tok/s with ~5 GB VRAM. AWQ does not provide a win and uses three times more memory - no sense for a 16 GB card."
+ },
+ {
   "id": "V100-14",
   "title": "24B in 16 GB: Mistral-Small-3.1-24B AWQ",
   "result_type": "unstated",
@@ -102,10 +108,22 @@
   "verdict": "Rejected along with V100-22: this is the same fni8 package family (int8 dp4a for DiT in ComfyUI). The author himself writes that acceleration was measured on a CMP 100-210 park with reduced fp16 cores and is not reproduced on a real Tesla V100 - our fp16 tensor cores are healthy (46 TOP/s by our measurement of V100-19), so the int8 path through CUDA cores will be slower. Additional argument against: the package requires converting models to the `.fni8` format (custom weight file), meaning a modification of our SDXL/FLUX pipeline. Quality is claimed at PSNR 29-31 dB with SSIM 0.95 - for commercial photos, this is a noticeable loss, and there's no gain on our silicon. Our working path for images remains: diffusers + torch 2.10.0+cu128, VAE in fp16 without upcast, 13.3 s per frame at 1216x832."
  },
  {
+  "id": "V100-21",
+  "title": "Tachyon, Ninfer, Lapilli",
+  "result_type": "unstated",
+  "verdict": "Tachyon-v100 is being built and run on our card, but our models do not support it. Verified step by step. Build (Rust + nvcc), three pitfalls: 1. build.rs looks for the compiler strictly in `$CUDA_HOME/bin/nvcc`, but it's located in `/usr/lib/nvidia-cuda-toolkit/bin` on the system. Fixed with a wrapper directory: `mkdir -p ~/cuda-home/bin && ln -s /usr/lib/nvidia-cuda-toolkit/bin/nvcc ~/cuda-home/bin/nvcc`. 2. CUDA 12.0 does not understand gcc 13+ headers, spits out `_Float32 is undefined`. Need `-ccbin g++-12` (gcc-12 is in the system). 3. nvcc cannot find its own `cicc` if `/usr/lib/nvidia-cuda-toolkit/bin` is not in PATH. Final command that worked in 5 minutes 47 seconds and produced binaries `tachyon`, `tachyon-serve`, `ggufinfo` and a dozen utility tools: ``` export PATH=/usr/bin:/bin:/usr/lib/nvidia-cuda-toolkit/bin:$HOME/.cargo/bin export CUDA_HOME=$HOME/cuda-home export INFER_NVCC_FLAGS=\"-ccbin g++-12 -allow-unsupported-compiler\" cargo build --release ``` Running on our models is blocked by architecture: the engine accepts only `qwen35`, `qwen35moe` and `sensenova_loop`. On `qwen2.5-7b-instruct.gguf` it crashes with `arch ... not qwen35`, on `qwen3-30b-a3b.gguf` - with `arch not qwen35, but qwen3moe`. So the engine is tailored for the Qwen3.8-27B line, which we don't have, and cannot be downloaded now: measurements gave 700 bytes/s download speed from HF. Conclusion: postpone until Qwen3.8 GGUF becomes available. Current value - working build recipe, it will be needed if weights appear."
+ },
+ {
   "id": "V100-22",
   "title": "fni8 for LLM: int8 dp4a instead of tensor cores",
   "result_type": "unstated",
   "verdict": "Rejected based on the author's documentation facts. fni8 (jajmangold/fni8, ComfyUI-fni8 package) is an int8 dp4a path through CUDA kernels, and it is designed for cards with **half-precision tensor cores disabled**: CMP 100-210 and similar mining Volta GPUs. The fni8 model README explicitly states: \"Performance is fleet-specific. These numbers do not transfer to a real Tesla V100 (whose fp16 tensor cores would outperform dp4a).\" We have a genuine Tesla V100-SXM2, and its fp16 cores are functioning normally: we measured this ourselves (V100-19 - 46 TOP/s on fp16 against 4.63 for the math-path GQA). Therefore, dp4a on CUDA kernels will be slower than our current fp16 trajectory, not faster. Additionally: the package covers DiT parts (Flux, SD3.5, Wan, LTX, Z-Image) and an LLM server separately (fni8-serve). Our working setup is SDXL through diffusers (Vae fp16, 13.3 seconds per frame) and llama.cpp for LLM; converting them to a foreign weight format `.fni8` for a path that is slower on our silicon makes no sense. Their quality is honestly stated as PSNR 29-31 dB, SSIM 0.95 - this is a visible loss for commercial photos. The same conclusion applies to V100-20 (the same package set for DiT)."
+ },
+ {
+  "id": "V100-25",
+  "title": "CUDA graphs for musical pipeline",
+  "result_type": "unstated",
+  "verdict": "Capture of CUDA graphs for ACE-Step 1.5 won't yield significant gain. Measurements via music studio API on xl-sft with LM 1.7B: | Duration | Steps | Seconds | |---|---|---| | 30s | 8 | 72.2 | | 30s | 32 | 87.3 | | 60s | 8 | 90.7 | | 60s | 32 | 118.6 | Hence, the breakdown: adding 24 steps costs 15.1s, i.e., **0.63s per diffusion step**; adding 30s of audio - 18.5s. At 8 steps and 30 seconds, the entire diffusion takes around 5s out of 72.2, i.e., **7% of time**. The remaining 93% is language model code planning and audio decoding, where CUDA graphs aren't applied: they have variable length and autoregression. Conclusion: this direction is closed as low-value. If speeding up music, then not with graphs, but by reducing LM work (fewer planning steps, prompt caching, using 0.6B model instead of 1.7B) and decoder. V100-25 card responds \"no\": expected gain within noise. Side note: Ollama held 10.3GB and caused generation failure with OOM; for music and video tasks, it should be stopped to prevent studio from starting."
  },
  {
   "id": "V100-26",
@@ -132,6 +150,18 @@
   "verdict": "Rejected based on the card criterion: \"do we have a model with head_dim 256 and do we need context over 64k\". The answer is no and no. What was actually checked: - We don't have models with head_dim 256 in llama.cpp format. The 27B-class exists only as a PXQN file for the PXA engine (V100-29), its cores cannot be connected to llama.cpp. - Context over 64k is not needed for our tasks: we handle code up to 8-32k (Qwen3-Coder reaches 25 tok/s at 32k on V100-51), and we don't process long documents. - Practical testing of long context (V100-18) showed that even with compressed KV prefill, processing 64k takes a minute for 12 thousand tokens, while the model was trained on 32k. Thus, the bottleneck is not the form of attention kernels but the volume of prefill. Optimization is specific: Split-D D256 and SplitKV3 provide gains for 27B with 16 layers of full attention at 64k+ context. For our models (head_dim 128, context up to 32k), there will be no gain, and the fork would have to be maintained under a specific commit and updated manually. It makes sense to revisit the card if a GGUF model of 27B-class with head_dim 256 appears and a task requiring context over 64k arises."
  },
  {
+  "id": "V100-32",
+  "title": "Prepared sm_70-weights with Hugging Face",
+  "result_type": "unstated",
+  "verdict": "NInfer-V100 1.7.2 unpacks and runs: three binaries of 421-424 MB (ninfer, ninfer-serve, ninfer-perplexity), no missing libraries, help opens. But it has nothing to work with. The engine accepts only its own `.ninfer` weight format compiled for V100-32GB: NVFP4, FP8 or block formats GGUF repacked from `.gguf` by their tool. No weights included, README lists 27B-class artifacts of 14-17 GB size, targeted at 32 GB card. We have 16 GB, and cannot download artifacts: network to HF is currently 700 bytes/s. Plus a crucial detail: all measurements in their README were taken on V100-PCIE-32GB, while we have SXM2-16GB with different memory bandwidth (900 GB/s for SXM2 vs ~650 for PCIe), so their numbers do not transfer even with weights. Conclusion: reject until 32 GB card (that's V100-33 and V100-34 cards) or their artifacts for 16 GB appear."
+ },
+ {
+  "id": "V100-40",
+  "title": "V100-40",
+  "result_type": "negative",
+  "verdict": "The advertised 2.2x does not reproduce: prefill on the fork is about half of upstream (843–890 vs 1638–1779 tok/s) and decode is only 4% better with flash attention (73.53 vs 70.92). On DeepSeek-Coder-V2-Lite (arch deepseek2) the fork crashes with a core dump at startup, while upstream reaches 2250 tok/s prefill and 183.6 tok/s decode. Stay on upstream."
+ },
+ {
   "id": "V100-41",
   "title": "V100-41",
   "result_type": "mixed",
@@ -148,6 +178,12 @@
   "title": "V100-43",
   "result_type": "positive",
   "verdict": "Prefix caching works and is the main reason to run llama-server for agent workloads: prompt processing drops from 845 ms to 89 ms (9.5x), round trip from 1.18 s to 0.39 s."
+ },
+ {
+  "id": "V100-44",
+  "title": "NVFP4 on sm_70: 4-bit float in 16 GB",
+  "result_type": "unstated",
+  "verdict": "Works on sm_70. vLLM 1.5.4 (`--quantization modelopt_fp4`) boosted Ornith-1.5-9B-NVFP4 on V100: 14 133 MiB VRAM, decode **86.7-86.8 tok/s** (first request 83.0), code is correct. FP4-cores on Volta run through software unpacking - slower than int4/GGUF of the same size (7B Q4 gives 132 tok/s), but 9B fits and responds. Two issues along the way: model is hybrid (Mamba-layers), so explicit `--max-num-seqs 32` is needed, otherwise start fails on \"max_num_seqs (256) exceeds available Mamba cache blocks (79)\"; and it's a VL-model, so mandatory `--limit-mm-per-prompt '{\"image\":0,\"video\":0}'`, without it vLLM fails on \"Found 1 <|image_pad|> tokens but no images were passed\". File size verified byte-by-byte: 8 818 103 892, first load stopped at 3.96 GB with false \"result\"."
  },
  {
   "id": "V100-45",
@@ -196,5 +232,17 @@
   "title": "V100-52",
   "result_type": "positive",
   "verdict": "The loop closes locally in 15 seconds per iteration, which makes unattended refactoring and test-fixing practical. A dense 32B on the same card would run at 3 tok/s and be unusable for this."
+ },
+ {
+  "id": "V100-66",
+  "title": "Quality over speed: MBPP on three models",
+  "result_type": "unstated",
+  "verdict": "Harness run of `model_eval.py`, one server ascent, 40 MBPP tasks + 8 blocks. DeepSeek-Coder-V2-Lite 16B (Q4_K_M, -fa 0, ctx 16k):** pass@1 **0.55** (22 out of 40), format 4/5, RAG 2/2, long context found (prompt 12,577 tokens), content **322 words instead of 550-650** - writes briefly, tool calling **0 calls** (no tool template in the model), honesty **fail**: confidently named `llama_sample_eg3` for non-existent speculation type, stability ok (3 out of 3 responses matched), speed pp2048 **2098 tok/s**, tg **183 tok/s**. Conclusion: suitable as a fast code writer and RAG responder, not suitable for toolchain agent sequences and long texts. **Comparison of two models on the same harness (24.11):** | Block | DeepSeek-Coder-V2-Lite 16B | Qwen3-Coder-30B-A3B | |---|---|---| | Code, pass@1 (40 MBPP tasks) | 0.55 | 0.53 | | Format, 5 tasks | 4/5 | 5/5 | | RAG (document + refusal) | 2/2 | 1/2 - missed 14-day deadline | | Long context | finds (12,5k) | finds (6k) | | Content 550-650 words | 322 words | 369 words | | Tool calling | 0 calls (no template) | valid call | | Honesty (non-existent API) | invented `llama_sample_eg3` | said \"such function does not exist\" | | Stability | ok | ok | | Speed | pp2048 2098 tok/s, tg 183 | tg 58.8 at ncmode 16 | Conclusion: DeepSeek is three times faster but doesn't handle tools and invents API; Qwen3-Coder is more disciplined and suitable for agent chains, but slow and misses RAG details. Both write shorter than required - need separate model or strict \"not less than N words\" with length check for articles. Rechecked: both \"honesty fails\" were initially test bugs (list of refusal forms didn't include \"such function does not exist\", and `AutoGPTQ` was considered invented), after fixing Qwen - suitable, DeepSeek - genuinely invents. Qwen's RAG rechecked manually: response \"can return, money 10 days\" without 14-day deadline - fact missed, no credit given. Rechecked: RAG and long context initially failed due to harness bugs (prompt over 400 more than context; check didn't accept correct refusal), after fixing - 2/2 and success. Honesty anomaly confirmed manually via grep through repository."
+ },
+ {
+  "id": "V100-78",
+  "title": "Rapid Averages: Nemotron-Bolt-E4B and SenseNova-Loop-9B",
+  "result_type": "unstated",
+  "verdict": "- ## Queue P1v - New Ideas Following Review (24.11.2026) | # | Idea | Stage | Resources | Status | Outcome | Ready | |---|---|---|---|---|---|---| | V100-66 | Code Quality: MBPP on Three Models | P0 | 40 Tasks | Done | Code 0.55 / RAG 2/2 / No Agent | 24.11 | | V100-67 | Bit Tolerance of 16GB: Q4_K_M, Q5_K_M, Q6_K, Q8 | P0 | Text | Raw | - | - | | V100-68 | Speculation on 30B MoE: Draft 0.5B vs Qwen3-Coder | P1 | Text | Raw | - | - | | V100-69 | ngram-simple: Special Decoding without Second Model | P1 | Text | Raw | - | - | | V100-70 | Re-ranking on Top of Code Search | P1 | Text | Raw | - | - | | V100-71 | Cost of 1M Tokens on Own Hardware | P1 | Text | Raw | - | - | | V100-72 | Agent with Four Tools and First Call Error | P1 | Text | Raw | - | - | | V100-73 | Product Cards in an Hour: Image Generation Throughput | P1 | Text | Raw | - | - |"
  }
 ]
