@@ -240,6 +240,12 @@
   "verdict": "Cache prefix is real and not an artifact of length.** Control with equal prompt length (8737 tokens in all three requests), llama-server with `--cache-reuse 256`, 7B Q4: | Request | Prompt eval | Total | |---|---|---| | Cold | 4154.7 ms | 4.27 s | | Same prefix | **376.6 ms** | **0.42 s** | | Different prefix of **equal length** | 4170.8 ms | 4.71 s | Prefix match speeds up processing by **11x** (4155 → 377 ms), and prompt of same length with different start provides no benefit (4171 ms). Thus, the gain is from cache, not short prompt: for agent cycles where system prompt and history are unchanged, this is the main source of responsiveness."
  },
  {
+  "id": "V100-55",
+  "title": "Llama-Bench refuses to load more than 20 layers.",
+  "result_type": "unstated",
+  "verdict": "There is no limit of 20 layers.** The matrix is based on Qwen3-Coder-30B (17.28 GiB), f16 KV, p128/n16: | ncmoe | prefill pp128 | decode tg16 | |---|---|---| | 24 | 179.2 | 39.2 | | 32 | 145.2 | 34.6 | Both configurations load and calculate: the limit is not in the number of layers, but in the memory for context and computational buffers. With a large context (8k), failure occurs earlier - this was mistakenly considered as the \"limit of 20 layers\": at 8k, buffers are insufficient already at 8 layers (V100-65). Therefore, the number 20 refers to a specific context, not the architecture."
+ },
+ {
   "id": "V100-56",
   "title": "32kB Q8_0 and check Q4_0 at 64k",
   "result_type": "unstated",
@@ -256,6 +262,12 @@
   "title": "Throughput, batching, quality",
   "result_type": "unstated",
   "verdict": "Under load, 1Cat-vLLM outperforms llama.cpp by six times.** 7B GGUF, `--max-model-len 4096`, `--gpu-memory-utilization 0.6`, different prompts for all requests (otherwise prefix cache boosts the number): | Mode | Tokens | Time | Total tok/s | |---|---|---|---| | Single request | 128 | — | **109-116** | | 4 parallel | 512 | 1.3 s | **403** | | 8 parallel | 1024 | 1.5 s | **702** | Server start - **105-120 s** (ten times slower than llama.cpp, which takes 3-4 s to load the same model). Single thread in vLLM is slower than llama.cpp (115 vs 132 tok/s), but at eight concurrent requests it produces 702 tok/s - almost six times more. First attempt with identical prompts showed 715 tok/s at 8 and 169 at 4 - this was prefix cache, not batching; after switching to unique prompts, results were honest. Conclusion: for interactive single-user work - llama.cpp; for task queue, overnight factory, or multiple clients - vLLM, but with allowance for startup time."
+ },
+ {
+  "id": "V100-63",
+  "title": "Loading model: detach from start harness",
+  "result_type": "unstated",
+  "verdict": "Model loading and harness start are separated.** Measured on this card: | Engine | Model | Start to first token | |---|---|---| | llama.cpp master | 7B Q4 | 3.5-4.2 s | | llama.cpp master | 30B Q4, ncmoe 16 | 6.1 s | | 1Cat-vLLM 1.5.4 | 7B GGUF | **105-120 s** | Difference of 25-30 times: llama.cpp reads weights from NFS and is ready immediately, vLLM spends two minutes on engine initialization, profiling, and graphs. Harness `model_eval.py` accounts for this separately (field `start_sec`), so quality blocks are not mixed with start time."
  },
  {
   "id": "V100-65",
