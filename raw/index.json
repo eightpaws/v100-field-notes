@@ -282,6 +282,12 @@
   "verdict": "Patches do not exist: `Frostbite1536/volta-fa` is not a fork of llama.cpp with a series of patches, but a pre-hardware project (README: \"No custom kernels yet, and nothing has been benchmarked on a V100\", no `.patch` files in `src/ bench/ profiles/ tickets/`). Commit `79e2e74` does not exist in the local clone of llama.cpp, and the guest also has no networks, so the verification of \"eight patches on base-commit\" is invalid. The parent card V100-16 refers to a source that does not exist in this form - its claim \"laid 4 out of 8\" should be rewritten as \"no patches in the repository\"."
  },
  {
+  "id": "V100-62",
+  "title": "720p with VAE tiling: check the frames, not the exit code",
+  "result_type": "mixed",
+  "verdict": "720p with VAE tiling is viable — no tile seams at 1280×704 / 97 frames on 13.55 GiB. The weak point is not tiling but overall softness and blown highlights at 30 steps with the 5B model; go to 45 steps or downscale-and-upscale instead of blaming the tiler."
+ },
+ {
   "id": "V100-63",
   "title": "Loading model: detach from start harness",
   "result_type": "unstated",
