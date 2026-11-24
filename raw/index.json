@@ -376,5 +376,11 @@
   "title": "Rapid Averages: Nemotron-Bolt-E4B and SenseNova-Loop-9B",
   "result_type": "unstated",
   "verdict": "- ## Queue P1v - New Ideas Following Review (24.11.2026) | # | Idea | Stage | Resources | Status | Outcome | Ready | |---|---|---|---|---|---|---| | V100-66 | Code Quality: MBPP on Three Models | P0 | 40 Tasks | Done | Code 0.55 / RAG 2/2 / No Agent | 24.11 | | V100-67 | Bit Tolerance of 16GB: Q4_K_M, Q5_K_M, Q6_K, Q8 | P0 | Text | Raw | - | - | | V100-68 | Speculation on 30B MoE: Draft 0.5B vs Qwen3-Coder | P1 | Text | Raw | - | - | | V100-69 | ngram-simple: Special Decoding without Second Model | P1 | Text | Raw | - | - | | V100-70 | Re-ranking on Top of Code Search | P1 | Text | Raw | - | - | | V100-71 | Cost of 1M Tokens on Own Hardware | P1 | Text | Raw | - | - | | V100-72 | Agent with Four Tools and First Call Error | P1 | Text | Raw | - | - | | V100-73 | Product Cards in an Hour: Image Generation Throughput | P1 | Text | Raw | - | - |"
+ },
+ {
+  "id": "V100-79",
+  "title": "llama.cpp v1.0.0 vs our build 51831d4",
+  "result_type": "unstated",
+  "verdict": "Regression on sm_70 has occurred, but only for MoE. llama-bench, `-ngl 99 -fa 0 -r 1`, both builds on the same stand: | test | DeepSeek-V2-Lite 16B · 51831d4 | same · v1.0.0 | Qwen2.5-Coder-7B · 51831d4 | 7B · v1.0.0 | |---|---|---|---|---| | pp2048 | 3368.5 | **1968.7 (-41.6 %)** | 2980.8 | 3076.7 (+3.2 %) | | pp8192 | 2698.6 | **1668.4 (-38.2 %)** | 2282.8 | 2278.0 (-0.2 %) | | pp16384 | 1970.4 | **1348.2 (-31.6 %)** | 1631.4 | 1626.9 (-0.3 %) | | tg32 | 178.1 | 176.1 (-1.1 %) | 122.9 | 122.9 (0.0 %) | The dense 7B tag does not change anything (difference within 0.3 %, except pp2048 +3.2 %), for MoE `deepseek2` prefill drops by 32-42 % with the same decode. The card criterion (\"upgrade only if prefill does not drop more than 10%\") is not met: we remain on 51831d4, keep tag v1.0.0 only for future MoE expert cache (V100-81)."
  }
 ]
