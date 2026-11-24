@@ -218,8 +218,8 @@
  {
   "id": "V100-50",
   "title": "V100-50",
-  "result_type": "positive",
-  "verdict": "+21% on a 7B target. The same draft on a 14B target slows decoding by 43% — the technique has to be measured per pair, not assumed."
+  "result_type": "negative",
+  "verdict": "Not reproducible. The first run on build 51831d4 showed +21% on a 7B target, but on master af5c583 with the same pair the gain is gone: base 105.5 / 111.9 / 113.0 tok/s versus 102.6 / 111.2 / 112.5 with the draft. A per-prompt check (one run each, seed 42) shows the draft is neutral on fresh code (-0.3%), harmful on file editing (-15.2%) and heavily harmful on free text (-44.5%). Speculative decoding with a 0.5B draft stays off by default and is enabled only after a measurement on the exact model pair and task."
  },
  {
   "id": "V100-51",
@@ -238,6 +238,54 @@
   "title": "Quality over speed: MBPP on three models",
   "result_type": "unstated",
   "verdict": "Harness run of `model_eval.py`, one server ascent, 40 MBPP tasks + 8 blocks. DeepSeek-Coder-V2-Lite 16B (Q4_K_M, -fa 0, ctx 16k):** pass@1 **0.55** (22 out of 40), format 4/5, RAG 2/2, long context found (prompt 12,577 tokens), content **322 words instead of 550-650** - writes briefly, tool calling **0 calls** (no tool template in the model), honesty **fail**: confidently named `llama_sample_eg3` for non-existent speculation type, stability ok (3 out of 3 responses matched), speed pp2048 **2098 tok/s**, tg **183 tok/s**. Conclusion: suitable as a fast code writer and RAG responder, not suitable for toolchain agent sequences and long texts. **Comparison of two models on the same harness (24.11):** | Block | DeepSeek-Coder-V2-Lite 16B | Qwen3-Coder-30B-A3B | |---|---|---| | Code, pass@1 (40 MBPP tasks) | 0.55 | 0.53 | | Format, 5 tasks | 4/5 | 5/5 | | RAG (document + refusal) | 2/2 | 1/2 - missed 14-day deadline | | Long context | finds (12,5k) | finds (6k) | | Content 550-650 words | 322 words | 369 words | | Tool calling | 0 calls (no template) | valid call | | Honesty (non-existent API) | invented `llama_sample_eg3` | said \"such function does not exist\" | | Stability | ok | ok | | Speed | pp2048 2098 tok/s, tg 183 | tg 58.8 at ncmode 16 | Conclusion: DeepSeek is three times faster but doesn't handle tools and invents API; Qwen3-Coder is more disciplined and suitable for agent chains, but slow and misses RAG details. Both write shorter than required - need separate model or strict \"not less than N words\" with length check for articles. Rechecked: both \"honesty fails\" were initially test bugs (list of refusal forms didn't include \"such function does not exist\", and `AutoGPTQ` was considered invented), after fixing Qwen - suitable, DeepSeek - genuinely invents. Qwen's RAG rechecked manually: response \"can return, money 10 days\" without 14-day deadline - fact missed, no credit given. Rechecked: RAG and long context initially failed due to harness bugs (prompt over 400 more than context; check didn't accept correct refusal), after fixing - 2/2 and success. Honesty anomaly confirmed manually via grep through repository."
+ },
+ {
+  "id": "V100-67",
+  "title": "16 GB: Q4_K_M - 128 bits, Q5_K_M - 160 bits, Q6_K - 256 bits, Q8 - 320 bits",
+  "result_type": "unstated",
+  "verdict": "Q5_K_M outperforms Q4_K_M in quality with a slight speed loss.** | Quant | Size | VRAM | Prefill pp128 | Decode tg32 | MBPP pass@1 | |---|---|---|---|---|---| | Q4_K_M | 4.68 GB | ~5 GB | 3304 (pp512 in V100-66) | 132.2 | **0.60** (24/40) | | Q5_K_M | 5.44 GB | 5.07 GiB | 1342 | **112.5** | **0.675** (27/40) | **Added Q6_K and check:** | Quant | Size | VRAM | Prefill pp128 | Decode tg32 | MBPP pass@1 | |---|---|---|---|---|---| | Q4_K_M | 4.68 GB | ~5 GB | 3304 (pp512) | 132.2 | 0.600 (24/40) | | Q5_K_M | 5.44 GB | 5.07 GiB | 1342 | 112.5 | **0.675** (27/40) | | Q6_K | 6.25 GB | 5.82 GiB | 1169 | 104.2 | 0.600 (24/40) | Q6 doesn't add any quality gain over Q4 but costs 21% in speed - not worth buying. Q5 wins 3 out of 40 tasks (+7.5 pp), which is close to noise (one task = 2.5 pp), so the conclusion is cautious: **Q5_K_M - a reasonable compromise, Q4_K_M - when maximum speed is needed, Q6_K - pointless**. Q8_0 is still training. **Quality profile does not depend on quant.** Full runs on other blocks with Q4, Q5, and Q6 showed the same result: format **0.8** (4/5), RAG **0.5** (misses 14-day window), content failed (324-419 words ordered 550-650), tools 0 calls (no template), honesty, stability, and long context passed. So, quant choice affects code and speed, not discipline and tendency to fabricate. Measurement was done on a free card (gpt-oss was down at the time), single repeats, so prefills between quants are roughly compared: Q4's figure was taken on a different prompt (pp512)."
+ },
+ {
+  "id": "V100-68",
+  "title": "Speculation on 30B MoE: Draft 0.5B vs Qwen3-Coder",
+  "result_type": "unstated",
+  "verdict": "Speculation on 30B is not profitable.** With a draft of 0.5B, the model had to be raised from `-ncmoe 12` instead of 8 (draft subtracts VRAM): base in these conditions **36.0 / 32.6 / 35.3 tok/s**, with speculation **33.7 / 37.4 / 38.3** - difference within noise, around +3-7 %. For comparison: the same model at `-ncmoe 8` without draft gives **75.5 tok/s**, that is, displacement of four extra layers in CPU eats twice as much as speculation brings. On 7B with the same draft, the gain was +21 % (V100-50) - there the draft fit without losses. Rule: enable speculation only if draft does not displace layers; for 30B on 16 GB this is not the case."
+ },
+ {
+  "id": "V100-69",
+  "title": "Special dec without second model",
+  "result_type": "unstated",
+  "verdict": "N-grams in file editing don't provide anything, draft hurts.** Prompt 200 lines of source code, model appends function based on pattern: base **71.5 / 106.3 / 106.4 tok/s**, `ngram-simple` **71.1 / 103.4 / 101.5** (-3%, within noise), `draft-simple` with 0.5B **57.9 / 85.8 / 85.9** (-19%). Draft loses where answer is short and structural: 0.5B doesn't guess long names `handler_N`, and overhead remains. In V100-50, the same draft gave +21% in free generation - means task type matters more than draft size. For auto-completion and edits, don't include speculation."
+ },
+ {
+  "id": "V100-71",
+  "title": "The cost of 1M tokens on your own hardware is",
+  "result_type": "unstated",
+  "verdict": "Cost of 1M output tokens on own hardware.** Power consumption measured via `nvidia-smi power.draw`: idle **20.7-46.6 W**, under load (7B, 65% utilization) **159.0 W**, peak rated 300 W. Node BMC through DCMI provides 0 W (feature not supported), and IPMI v2 with ADMIN/ADMIN responds `invalid role`, so node power had to be estimated: card plus ~150 W for EPYC 7282, disks, and network = **~310 W under load**. | Model | Decode, tok/s | Hours for 1M tokens | kWh | RUB at 5.5 RUB/kWh | |---|---|---|---|---| | DeepSeek-Coder-V2-Lite 16B | 183 | 1.52 | 0.47 | **2.6** | | Qwen2.5-Coder-7B | 132 | 2.10 | 0.65 | 3.6 | | Qwen3-Coder-30B (-ncmoe 8) | 75.5 | 3.68 | 1.14 | 6.3 | For comparison: cloud router charges for tokens regardless of load, local server pays only for electricity - it pays off with continuous work, not with rare requests. Calculation does not include card depreciation and internet."
+ },
+ {
+  "id": "V100-72",
+  "title": "Agent with four tools and an error on the first call",
+  "result_type": "unstated",
+  "verdict": "1 of 3 scenarios.** Three tasks, four tools, the first call `get_time` was intentionally broken (server responded with `unknown argument 'location'; the only valid argument is 'city'`. Error recovery worked: model repeated the call with the correct argument, on the first scenario made both steps (`get_time` + `calc`) - but the final answer did not contain the expected number and credit was not received. The second scenario (`read_file` + sum) was closed correctly. The third took `get_rate`, but did not call `calc` - calculated in mind, answer did not match. Result: agent loop works and fixes argument errors, but model cannot hold a chain of two calculations - it prefers to calculate itself. For agents, either a prompt \"each calculation through calc\" or external answer check is needed."
+ },
+ {
+  "id": "V100-74",
+  "title": "Olala-v1.0-mini-7A1B: MoE with 1B active on 16 GB",
+  "result_type": "unstated",
+  "verdict": "Blocked by engine (24.11).** File downloaded and intact (5,990,551,040 bytes, exact size verified), but llama.cpp master from 24.11 (build 12.9, sm_70) responds with `unknown model architecture: 'olala'`. Support not yet available upstream - model released on 23.11. Model remains in queue: once llama.cpp learns to read it, harness run will take 20 minutes, file already on disk."
+ },
+ {
+  "id": "V100-76",
+  "title": "Ternary-Bonsai-2-27B: 27B in 6 GB on ternary scales",
+  "result_type": "unstated",
+  "verdict": "Blocked by format (24.11).** File is valid (GGUF v3, 851 tensor, 5,946,648,928 bytes), but weights are compressed with type `PTQ1_0`, which llama.cpp does not support: the engine knows `TQ1_0` and `TQ2_0`, not the `P`-variant, and fails with `failed to read tensor info`. Needs fork of prism or conversion to TQ1_0/Q2_K. Still in queue."
+ },
+ {
+  "id": "V100-77",
+  "title": "Raon-1-nano MTP: Multi-token prediction without draft",
+  "result_type": "unstated",
+  "verdict": "Blocked by engine (24.11).** File downloaded (2,145,934,208 bytes), but the architecture `raon1nano` is unknown to current llama.cpp. MTP head not verified - nothing to verify until the engine reads the model."
  },
  {
   "id": "V100-78",
