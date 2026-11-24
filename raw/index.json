@@ -234,6 +234,36 @@
   "verdict": "The loop closes locally in 15 seconds per iteration, which makes unattended refactoring and test-fixing practical. A dense 32B on the same card would run at 3 tok/s and be unusable for this."
  },
  {
+  "id": "V100-53",
+  "title": "Cache prefix: equal comparison with equal prompt length",
+  "result_type": "unstated",
+  "verdict": "Cache prefix is real and not an artifact of length.** Control with equal prompt length (8737 tokens in all three requests), llama-server with `--cache-reuse 256`, 7B Q4: | Request | Prompt eval | Total | |---|---|---| | Cold | 4154.7 ms | 4.27 s | | Same prefix | **376.6 ms** | **0.42 s** | | Different prefix of **equal length** | 4170.8 ms | 4.71 s | Prefix match speeds up processing by **11x** (4155 → 377 ms), and prompt of same length with different start provides no benefit (4171 ms). Thus, the gain is from cache, not short prompt: for agent cycles where system prompt and history are unchanged, this is the main source of responsiveness."
+ },
+ {
+  "id": "V100-56",
+  "title": "32kB Q8_0 and check Q4_0 at 64k",
+  "result_type": "unstated",
+  "verdict": "32k and 64k are achievable, decoding is unaffected.** Qwen2.5-Coder-7B Q4 (4.36 GiB), FA enabled: | Context | KV | Prefill | Decode | |---|---|---|---| | 32,768 | q8_0 | **1860 tok/s** | 121.5 tok/s | | 65,536 | q4_0 | **1247 tok/s** | 121.8 tok/s | Both configurations load and run: 64k on q4_0 avoids layer eviction, decode speed is the same as short context (121-122 tok/s), prefill drops linearly (1860 → 1247). Thus, for files of 50-60 thousand tokens, the 7B model on this card is suitable if KV is kept in q4_0. Compressed KV is mandatory: 64k in f16 on 16 GB does not fit."
+ },
+ {
+  "id": "V100-57",
+  "title": "Q8_0 KV: Confirm double decoding or attribute to noise",
+  "result_type": "unstated",
+  "verdict": "No double acceleration: compressed KV is slightly slower.** Qwen2.5-Coder-7B Q4 (4,36 GiB), p512/n128, r=2: | KV | FA | prefill pp512 | decode tg128 | |---|---|---|---| | f16 | off | 3265.8 ± 75.0 | 123.95 ± 0.17 | | f16 | on | 3324.8 ± 144.6 | **132.07 ± 0.23** | | q8_0 | on | 3429.3 ± 76.1 | 125.52 ± 0.24 | q8_0 against f16 with same FA loses **5%** on decode (125.5 vs 132.1) and provides the same prefill within noise. Thus, the meaning of compressed KV is only in memory: at 32k context, savings were 2.8 GB (V100-02), with no speed increase. The previous figure \"twice as fast\" was an artifact of Ollama and does not reproduce in llama.cpp."
+ },
+ {
+  "id": "V100-58",
+  "title": "Throughput, batching, quality",
+  "result_type": "unstated",
+  "verdict": "Under load, 1Cat-vLLM outperforms llama.cpp by six times.** 7B GGUF, `--max-model-len 4096`, `--gpu-memory-utilization 0.6`, different prompts for all requests (otherwise prefix cache boosts the number): | Mode | Tokens | Time | Total tok/s | |---|---|---|---| | Single request | 128 | — | **109-116** | | 4 parallel | 512 | 1.3 s | **403** | | 8 parallel | 1024 | 1.5 s | **702** | Server start - **105-120 s** (ten times slower than llama.cpp, which takes 3-4 s to load the same model). Single thread in vLLM is slower than llama.cpp (115 vs 132 tok/s), but at eight concurrent requests it produces 702 tok/s - almost six times more. First attempt with identical prompts showed 715 tok/s at 8 and 169 at 4 - this was prefix cache, not batching; after switching to unique prompts, results were honest. Conclusion: for interactive single-user work - llama.cpp; for task queue, overnight factory, or multiple clients - vLLM, but with allowance for startup time."
+ },
+ {
+  "id": "V100-65",
+  "title": "Recheck 8k and 16k and set num\\_batch to 4096",
+  "result_type": "unstated",
+  "verdict": "Prefill decays smoothly, but 30B can't handle 8k at ncmoe 8.** Measurements llama-bench, n=0, r=1: | Model | pp2048 | pp8192 | pp16384 | |---|---|---|---| | DeepSeek-Coder-V2-Lite 16B, fully on GPU | 3462 | 2713 | **1976** | | Qwen3-Coder-30B-A3B, ncmoe 8 | 1061 | OOM (ran out of 610 MB for compute-buffers) | — | At 16B, which fits entirely, long prompts cost roughly linearly: from 2k to 16k speed drops by 1.75 times, i.e., ~2k tokens per second on a 16k context - for a file of 12 thousand tokens that's 6 seconds. At 30B with 8k context on ncmoe 8, it lacks memory for compute buffers: for long prompts, it needs ncmoe 12-16, and then prefill drops to 539-446 tok/s. Practice: run long files on 16B, keep 30B for short tasks."
+ },
+ {
   "id": "V100-66",
   "title": "Quality over speed: MBPP on three models",
   "result_type": "unstated",

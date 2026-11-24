@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **51** — 13 positive, 7 mixed,
+Closed experiments: **56** — 13 positive, 7 mixed,
 5 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -82,6 +82,11 @@ Read this before quoting a number.
 | [V100-50](results/V100-50.md) | V100-50 | **Negative.** Not reproducible. The first run on build 51831d4 showed +21% on a 7B target, but on master af5c583 with the same pair the gain is gone: base 105.5 / 111.9 / 113.0 tok/s versus 102.6 /… |
 | [V100-51](results/V100-51.md) | V100-51 | **Mixed.** 32k is reachable only with compressed KV plus offloaded experts: `-c 32768 -ctk q8_0 -ctv q8_0 -ncmoe 16` gives 25 tok/s. Without compression the same window needs 24+ CPU layers and… |
 | [V100-52](results/V100-52.md) | V100-52 | **Positive.** The loop closes locally in 15 seconds per iteration, which makes unattended refactoring and test-fixing practical. A dense 32B on the same card would run at 3 tok/s and be unusable for this. |
+| [V100-53](results/V100-53.md) | Cache prefix: equal comparison with equal prompt length | Cache prefix is real and not an artifact of length.** Control with equal prompt length (8737 tokens in all three requests), llama-server with `--cache-reuse 256`, 7B Q4: | Request |… |
+| [V100-56](results/V100-56.md) | 32kB Q8_0 and check Q4_0 at 64k | 32k and 64k are achievable, decoding is unaffected.** Qwen2.5-Coder-7B Q4 (4.36 GiB), FA enabled: | Context | KV | Prefill | Decode | |---|---|---|---| | 32,768 | q8_0 | **1860 tok/s** |… |
+| [V100-57](results/V100-57.md) | Q8_0 KV: Confirm double decoding or attribute to noise | No double acceleration: compressed KV is slightly slower.** Qwen2.5-Coder-7B Q4 (4,36 GiB), p512/n128, r=2: | KV | FA | prefill pp512 | decode tg128 | |---|---|---|---| | f16 | off |… |
+| [V100-58](results/V100-58.md) | Throughput, batching, quality | Under load, 1Cat-vLLM outperforms llama.cpp by six times.** 7B GGUF, `--max-model-len 4096`, `--gpu-memory-utilization 0.6`, different prompts for all requests (otherwise prefix cache… |
+| [V100-65](results/V100-65.md) | Recheck 8k and 16k and set num\_batch to 4096 | Prefill decays smoothly, but 30B can't handle 8k at ncmoe 8.** Measurements llama-bench, n=0, r=1: | Model | pp2048 | pp8192 | pp16384 | |---|---|---|---| | DeepSeek-Coder-V2-Lite 16B,… |
 | [V100-66](results/V100-66.md) | Quality over speed: MBPP on three models | Harness run of `model_eval.py`, one server ascent, 40 MBPP tasks + 8 blocks. DeepSeek-Coder-V2-Lite 16B (Q4_K_M, -fa 0, ctx 16k):** pass@1 **0.55** (22 out of 40), format 4/5, RAG 2/2,… |
 | [V100-67](results/V100-67.md) | 16 GB: Q4_K_M - 128 bits, Q5_K_M - 160 bits, Q6_K - 256 bits, Q8 - 320 bits | Q5_K_M outperforms Q4_K_M in quality with a slight speed loss.** | Quant | Size | VRAM | Prefill pp128 | Decode tg32 | MBPP pass@1 | |---|---|---|---|---|---| | Q4_K_M | 4.68 GB | ~5 GB… |
 | [V100-68](results/V100-68.md) | Speculation on 30B MoE: Draft 0.5B vs Qwen3-Coder | Speculation on 30B is not profitable.** With a draft of 0.5B, the model had to be raised from `-ncmoe 12` instead of 8 (draft subtracts VRAM): base in these conditions **36.0 / 32.6 /… |
