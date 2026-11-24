@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **12** — 5 positive, 4 mixed,
+Closed experiments: **33** — 5 positive, 4 mixed,
 3 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -55,6 +55,27 @@ Read this before quoting a number.
 | [V100-37](results/V100-37.md) | 32B dense vs 30B MoE: decode re-measured with 96 GB RAM | **Negative.** The ceiling is the 16 GB card, not system RAM: 96 GB does not let a dense 32B model run at a usable speed (3.0 tok/s at 20 layers, refuses to load above that). Among large models only… |
 | [V100-39](results/V100-39.md) | TTFT and model loading with a warm page cache | **Positive.** A warm page cache changes the picture by an order of magnitude: 22.4 s cold against 3.2 s warm for llama.cpp, and 0.197 s for the repeated Ollama call with the whole prefix coming from… |
 | [V100-15](results/V100-15.md) | Stack snapshot: how long sm_70 stays supportable | **Positive.** Freeze the stack and keep the wheels on disk — the failure mode here is silent, and after CUDA 13 / PyTorch 2.15 the only way back is a source build. Rule for this card: update nothing… |
+| [V100-01](results/V100-01.md) | Speculative decoding in llama.cpp | Speculative decoding was tested on two targets, and the result depends on the model pair: it accelerates on 7B, but slows down almost twofold on 14B. llama.cpp master 51831d4, CUDA 12.9,… |
+| [V100-03](results/V100-03.md) | imatrix Q4_K under Russian chassis | - **Environment Status (configuration, 23.11.2026 21:13).** The llama.cpp build in `~/llama-new` was killed by a VM reboot at 20:48, and was rebuilt on **CUDA 12.9**: `BUILD_OK` in **7… |
+| [V100-14](results/V100-14.md) | 24B in 16 GB: Mistral-Small-3.1-24B AWQ | Mistral Small 24B AWQ does not fit in 16 GB via vLLM. The model is fully downloaded (3 shards, 13.4 GB, all tensors are read), 1Cat-vLLM 1.5.4 compiled for sm_70 and has separate… |
+| [V100-18](results/V100-18.md) | xllama.cpp: compress KV instead of q8 | Compressed KV in xllama.cpp works, but on long context it becomes too slow. Built with xllama.cpp f9287a9 (fork of llama.cpp from April 2026 with… |
+| [V100-20](results/V100-20.md) | fni8: int8 dp4a for DiT | Rejected along with V100-22: this is the same fni8 package family (int8 dp4a for DiT in ComfyUI). The author himself writes that acceleration was measured on a CMP 100-210 park with… |
+| [V100-22](results/V100-22.md) | fni8 for LLM: int8 dp4a instead of tensor cores | Rejected based on the author's documentation facts. fni8 (jajmangold/fni8, ComfyUI-fni8 package) is an int8 dp4a path through CUDA kernels, and it is designed for cards with… |
+| [V100-26](results/V100-26.md) | llama.cpp build flags matrix for Volta | The build flag matrix was previously verified (CUDA 12.0, llama.cpp build b7743fbfd8, model 14B Q4_K, llama-bench pp512/tg128, median of three runs). Result: none of the flags… |
+| [V100-28](results/V100-28.md) | V100-LLM: ready presets for 16 GB | Rejected: the release does not include the engine. Checked GitHub API for the Abdelhayali/V100-LLM repository, tag v1.3.0 - two assets: `LocalAI-Bridge-Desktop.exe` (8 MB) and… |
+| [V100-29](results/V100-29.md) | PXA 4.0: out-of-the-box engine for Volta | PXA indeed provides 27B on a full 16 GB card. I took their v4.0.4 image (OCI tar 1.85 GB), unpacked it without Docker - the `pxa-launch` binary from `opt/pxa/dist` works if given the… |
+| [V100-30](results/V100-30.md) | sm70-attn: FA2-D256 in llama.cpp | Rejected based on the card criterion: "do we have a model with head_dim 256 and do we need context over 64k". The answer is no and no. What was actually checked: - We don't have models… |
+| [V100-41](results/V100-41.md) | GPT-OSS-20B MXFP4: 21B MoE in 16 GB | GPT-OSS-20B MXFP4 (13,8 GB) runs on 16 GB but only with expert offloading and FA enabled. llama.cpp master 51831d4, CUDA 12.9, llama-bench pp128/tg32, single run: | `-ncmoe` | FA |… |
+| [V100-42](results/V100-42.md) | MoE experts in 96 GB RAM: -ncmoe on our map | MoE larger than VRAM actually works if you offload part of the experts to RAM. Measured on Qwen3-Coder-30B-A3B Q4_K_M (17.3 GB against 16 GB VRAM), llama.cpp master 51831d4, CUDA 12.9,… |
+| [V100-43](results/V100-43.md) | llama-server as a working server: prefix cache and batch | llama-server as a working server has been verified: prefix cache actually saves time. llama.cpp master 51831d4, CUDA 12.9, Qwen2.5-Coder-7B Q4_K_M (entirely on GPU), flags `-b 2048 -ub… |
+| [V100-45](results/V100-45.md) | Qwen3-Coder-30B-A3B as a writer | Qwen3-Coder-30B-A3B-Instruct Q4_K_M (17.3 GB) loads only with expert offloading to CPU on V100 16 GB. Measurements for llama.cpp master 51831d4, CUDA 12.9, `-ngl 99 -fa 0`, default… |
+| [V100-46](results/V100-46.md) | Tool call: who actually calls the tools | Qwen3-Coder-30B-A3B on V100 16 GB actually calls tools through llama-server master 51831d4 (CUDA 12.9) with `--jinja`, mode `-ngl 99 -ncmoe 8 -fa 0`. Check on the request "What time is… |
+| [V100-47](results/V100-47.md) | DeepSeek-Coder-V2-Lite 16B MoE | Upstream llama.cpp b7743fbfd8 (build V100-26, CUDA 12.0), DeepSeek-Coder-V2-Lite-Instruct Q4_K_M 9,65 GB, V100 16 GB, -ngl 99: without FA prefill pp256 2250 ± 139 tok/s, decode tg64… |
+| [V100-48](results/V100-48.md) | FIM-autocompletion in the editor | Autocomplete via FIM works: llama-server (build llama-volta b7743fbfd8), Qwen2.5-Coder-7B-Instruct Q4_K_M, V100 16 GB, `-ngl 99 -fa 0 -c 4096`, request to `/infill`. Check on a real… |
+| [V100-49](results/V100-49.md) | Code search embeddings | Embeddings for code search on our map are working. llama-embedding from llama.cpp master 51831d4, CUDA 12.9, model bge-m3 Q8 (606 MB), `-ngl 99 -c 512`, default normalization. Sanity… |
+| [V100-50](results/V100-50.md) | Speculative decoding for code | Speculative decoding on our card works and gives around +20% on the code. Tested on llama-server master 51831d4 (CUDA 12.9): target Qwen2.5-Coder-7B-Instruct Q4_K_M, draft… |
+| [V100-51](results/V100-51.md) | 32k context for 30B MoE on 16 GB | Qwen3-Coder-30B-A3B (17.3 GB, MoE 30B with 3.1 billion active parameters) on 16 GB holds 32k context only with expert offloading to CPU and compressed KV cache. llama.cpp master 51831d4,… |
+| [V100-52](results/V100-52.md) | Local loop "edit → test → repair" | The "fix -> test -> repair" loop on the local model runs completely autonomously. The script `/tmp/v100_52_loop.py`, model Qwen3-Coder-30B-A3B on llama-server (`-ngl 99 -ncmoe 8`), tests… |
 
 ## Follow-ups in progress
 
