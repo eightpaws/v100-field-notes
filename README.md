@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **60** — 13 positive, 7 mixed,
+Closed experiments: **61** — 13 positive, 7 mixed,
 5 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -84,6 +84,7 @@ Read this before quoting a number.
 | [V100-51](results/V100-51.md) | V100-51 | **Mixed.** 32k is reachable only with compressed KV plus offloaded experts: `-c 32768 -ctk q8_0 -ctv q8_0 -ncmoe 16` gives 25 tok/s. Without compression the same window needs 24+ CPU layers and… |
 | [V100-52](results/V100-52.md) | V100-52 | **Positive.** The loop closes locally in 15 seconds per iteration, which makes unattended refactoring and test-fixing practical. A dense 32B on the same card would run at 3 tok/s and be unusable for this. |
 | [V100-53](results/V100-53.md) | Cache prefix: equal comparison with equal prompt length | Cache prefix is real and not an artifact of length.** Control with equal prompt length (8737 tokens in all three requests), llama-server with `--cache-reuse 256`, 7B Q4: | Request |… |
+| [V100-54](results/V100-54.md) | Volt-forever: Honest native base with included cuDNN | Partial: cuDNN-on is not available on our stack. torch 2.10.0+cu128 with cuDNN 9 on convolution reports `GET was unable to find an engine to execute this computation`, cuDNN version is… |
 | [V100-55](results/V100-55.md) | Llama-Bench refuses to load more than 20 layers. | There is no limit of 20 layers.** The matrix is based on Qwen3-Coder-30B (17.28 GiB), f16 KV, p128/n16: | ncmoe | prefill pp128 | decode tg16 | |---|---|---| | 24 | 179.2 | 39.2 | | 32 |… |
 | [V100-56](results/V100-56.md) | 32kB Q8_0 and check Q4_0 at 64k | 32k and 64k are achievable, decoding is unaffected.** Qwen2.5-Coder-7B Q4 (4.36 GiB), FA enabled: | Context | KV | Prefill | Decode | |---|---|---|---| | 32,768 | q8_0 | **1860 tok/s** |… |
 | [V100-57](results/V100-57.md) | Q8_0 KV: Confirm double decoding or attribute to noise | No double acceleration: compressed KV is slightly slower.** Qwen2.5-Coder-7B Q4 (4,36 GiB), p512/n128, r=2: | KV | FA | prefill pp512 | decode tg128 | |---|---|---|---| | f16 | off |… |

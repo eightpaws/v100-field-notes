@@ -246,6 +246,12 @@
   "verdict": "Cache prefix is real and not an artifact of length.** Control with equal prompt length (8737 tokens in all three requests), llama-server with `--cache-reuse 256`, 7B Q4: | Request | Prompt eval | Total | |---|---|---| | Cold | 4154.7 ms | 4.27 s | | Same prefix | **376.6 ms** | **0.42 s** | | Different prefix of **equal length** | 4170.8 ms | 4.71 s | Prefix match speeds up processing by **11x** (4155 → 377 ms), and prompt of same length with different start provides no benefit (4171 ms). Thus, the gain is from cache, not short prompt: for agent cycles where system prompt and history are unchanged, this is the main source of responsiveness."
  },
  {
+  "id": "V100-54",
+  "title": "Volt-forever: Honest native base with included cuDNN",
+  "result_type": "unstated",
+  "verdict": "Partial: cuDNN-on is not available on our stack. torch 2.10.0+cu128 with cuDNN 9 on convolution reports `GET was unable to find an engine to execute this computation`, cuDNN version is not readable through torch (`cudnn.version() == None`), meaning the V100-27 card base was removed specifically for cuDNN-off, and \"11 times slower\" should be interpreted as such. With cuDNN off, a 1024x1024 frame in fp16 does not fit: OOM at 4.5GB with 13.35GB already occupied - tiling or 768px is needed. Artifact /srv/media/night/v100_54.json, log /root/runs/V100-54/run.log."
+ },
+ {
   "id": "V100-55",
   "title": "Llama-Bench refuses to load more than 20 layers.",
   "result_type": "unstated",
