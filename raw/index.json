@@ -121,9 +121,9 @@
  },
  {
   "id": "V100-29",
-  "title": "PXA 4.0: out-of-the-box engine for Volta",
-  "result_type": "unstated",
-  "verdict": "PXA indeed provides 27B on a full 16 GB card. I took their v4.0.4 image (OCI tar 1.85 GB), unpacked it without Docker - the `pxa-launch` binary from `opt/pxa/dist` works if given the image's libraries (`LD_LIBRARY_PATH=<dist>/lib:/usr/lib/x86_64-linux-gnu`). The model `poisonxa/Qwen3.8-27B-PXQN-OneCard` (13.6 GB in one file, PXQN4 codec, 3.97 bits per weight). Launch: `pxa-launch -m qwen38-27b-pxqn-onecard.gguf --engine llama -c 4096 --port 18095`. | Metric | Value | |---|---| | VRAM after loading | **14,893 MiB** out of 16,144 | | prefill | 164-231 tok/s | | decode | **105.7 tok/s** (without thinking), 65-74 with thinking | | response to CSV task | working code with `csv.DictReader`, try/except, empty check, 1.4 s | For comparison: Qwen3-Coder-30B MoE requires offloading 8 expert layers to CPU and gives 75 tok/s (V100-45). Here, the 27B dense model runs entirely on GPU and is faster. Three issues: - **stock llama.cpp does not read this file** - custom PXQN4 codec, needs PXA engine; - `pxa-launch` refuses to start if anything is occupied on the card: a music studio (310 MB) was interfering, had to kill it; - by default, the model spends the entire budget on thinking: with `max_tokens=400`, content is empty, all goes into `reasoning_content`. Fixed with `chat_template_kwargs: {\"enable_thinking\": false}`. Conclusion: this is the first truly working \"big model in 16 GB\" without offloading to RAM. Suitable for code: 105 tok/s with correct response. Artifacts: `/srv/media/night/v100_29_pxa.log`, model at `/srv/media/ai-cache/downloads/qwen38-27b-pxqn-onecard.gguf`."
+  "title": "V100-29",
+  "result_type": "positive",
+  "verdict": "The first configuration that puts a 27B dense model fully on the card and still decodes faster than the 30B MoE with CPU offload. Stock llama.cpp cannot read the PXQN4 file — the PXA engine is mandatory."
  },
  {
   "id": "V100-30",
@@ -133,68 +133,68 @@
  },
  {
   "id": "V100-41",
-  "title": "GPT-OSS-20B MXFP4: 21B MoE in 16 GB",
-  "result_type": "unstated",
-  "verdict": "GPT-OSS-20B MXFP4 (13,8 GB) runs on 16 GB but only with expert offloading and FA enabled. llama.cpp master 51831d4, CUDA 12.9, llama-bench pp128/tg32, single run: | `-ncmoe` | FA | prefill | decode | |---|---|---|---| | 0 | off | OOM | - | | 8 | off | 297.8 | **3.04** | | 16 | off | 205.0 | 1.93 | | **4** | **on** | **500.1** | **24.0** | | 6 | on | 396.7 | 19.8 | | 8 | on | 331.6 | 16.9 | | 4 | on + q8 KV | OOM | - | Key point: **without FA, the model barely works** (3 tok/s with the same 8 experts on CPU), while with FA, the same 8 layers give 16.9, and 4 layers - 24 tok/s. This is exactly the opposite of what we saw with DeepSeek-Coder-V2-Lite, where FA reduced speed by 160 times: FA behavior depends on architecture, there's no universal rule \"enable or disable\", it needs to be measured each time. Live generation with `-ncmoe 4 -fa 1`: 41.8 tok/s, but the model spends tokens on a thinking block (`[Start thinking]`), and the response doesn't reach the code by the time 120 tokens are used. For practice, a budget of 400+ tokens is needed. The numbers are worse than those of the other two candidates for the working loop: Qwen3-Coder-30B provides 75.5 tok/s decode (V100-45), DeepSeek-Coder-V2-Lite - 183.6 (V100-47). Plus, gpt-oss has a 128k context on paper, but with expert offloading, long context will be even slower. Artifact: `/srv/media/ai-cache/downloads/gpt-oss-20b-MXFP4.gguf`, logs in `/srv/media/night/`."
+  "title": "V100-41",
+  "result_type": "mixed",
+  "verdict": "Usable only with flash attention on and 4 expert layers pushed to CPU: 24 tok/s decode. Both faster coding candidates (DeepSeek-Coder-V2-Lite at 183 tok/s, Qwen3-Coder-30B at 75 tok/s) beat it, so it stays out of the working stack."
  },
  {
   "id": "V100-42",
-  "title": "MoE experts in 96 GB RAM: -ncmoe on our map",
-  "result_type": "unstated",
-  "verdict": "MoE larger than VRAM actually works if you offload part of the experts to RAM. Measured on Qwen3-Coder-30B-A3B Q4_K_M (17.3 GB against 16 GB VRAM), llama.cpp master 51831d4, CUDA 12.9, guest with 94 GB RAM: | `-ncmoe` | prefill pp128 | decode tg32 | |---|---|---| | 4-6 | OOM, does not load | - | | 8 | 411.9 tok/s | 75.5 tok/s | | 12 | 298.7 | 63.3 | | 16 | 247.6 | 58.8 | | 24 | 181.2 | 45.7 | | 32 (32k context, q8 KV) | 39.5 | 25.2 | Conclusion: the entry threshold is 8 expert layers on CPU, further each step linearly degrades both metrics. At 8 layers we get 75 tok/s decode speed for a model that physically exceeds the card by 1.3 GB - this is the best trade-off among those tested (dense 32B on the same card gave 3 tok/s, see V100-37). Additionally: with compressed KV (`-ctk q8_0 -ctv q8_0`) at 32k context generation yields 25 tok/s with 16 experts on CPU - slow but works where nothing fits without offloading. Pitfall: `-ctk q8_0` is incompatible with `-fa 0` (context is not created), and `-fa 1` on qwen3moe drops speed. For long context choice: either q8-KV with FA, or fp16-KV without FA."
+  "title": "V100-42",
+  "result_type": "positive",
+  "verdict": "Yes: 8 expert layers on CPU is the entry threshold, and every extra layer costs both prefill and decode roughly linearly. At 8 layers a 17.3 GB model — 1.3 GB larger than the card — decodes at 75 tok/s, against 3 tok/s for a dense 32B on the same card."
  },
  {
   "id": "V100-43",
-  "title": "llama-server as a working server: prefix cache and batch",
-  "result_type": "unstated",
-  "verdict": "llama-server as a working server has been verified: prefix cache actually saves time. llama.cpp master 51831d4, CUDA 12.9, Qwen2.5-Coder-7B Q4_K_M (entirely on GPU), flags `-b 2048 -ub 512 -fa 0 -ctk f16 -ctv f16 --cache-reuse 256 -np 2 --jinja`, context 8192. The same system prompt of 2067 tokens, three consecutive questions: | Request | Total | Tokens in prompt | Prefill | Decode | |---|---|---|---|---| | 1 (cold) | 1.18 s | 2067 | 845 ms | 105 tok/s | | 2 | 0.39 s | **9** | 89 ms | 107 tok/s | | 3 | 0.39 s | **11** | 90 ms | 107 tok/s | Cache cuts prompt parsing from 845 to 89 ms (9.5 times), the round takes 0.39 s instead of 1.18. For an agent sending the same system prompt in each request, this is the main win - as promised by V100-11. The rake I hit after three attempts: **quantized KV (`-ctk q8_0 -ctv q8_0`) does not load with `-fa 0`** - context is not created at all, there's a general and vague error. Compressed KV works only with FA enabled; for Qwen3-Coder FA drops speed, so the choice is either fp16-KV without FA or q8_0-KV with FA. For Qwen2.5-Coder-7B, FA does not interfere. Second: the server on Qwen3-Coder with `-c 8192` and `-ncmoe 8` does not start - there's not enough VRAM for 4 slots plus compute buffer; it needs ncmoe of at least 16 or context 4096."
+  "title": "V100-43",
+  "result_type": "positive",
+  "verdict": "Prefix caching works and is the main reason to run llama-server for agent workloads: prompt processing drops from 845 ms to 89 ms (9.5x), round trip from 1.18 s to 0.39 s."
  },
  {
   "id": "V100-45",
-  "title": "Qwen3-Coder-30B-A3B as a writer",
-  "result_type": "unstated",
-  "verdict": "Qwen3-Coder-30B-A3B-Instruct Q4_K_M (17.3 GB) loads only with expert offloading to CPU on V100 16 GB. Measurements for llama.cpp master 51831d4, CUDA 12.9, `-ngl 99 -fa 0`, default context: | experts on CPU | prefill pp128 | decode tg32 | |---|---|---| | 4 and 6 | does not load, OOM | - | | **8** | **411.9 tok/s** | **75.5 tok/s** | | 12 | 298.7 | 63.3 | | 16 | 247.6 | 58.8 | | 24 | 181.2 | 45.7 | | 8 + FA | does not load, OOM | - | Working configuration: `-ngl 99 -ncmoe 8 -c 4096`. For 8192 context, VRAM is insufficient (could not allocate 236 MB for compute buffer), so for long files either 12 experts on CPU or less context are needed. Quality verified by live generation: upon request to write a revenue calculation function from CSV, it provided working code with `csv`, docstring, and error handling; generation speed was 76.7 tok/s at 4k context. Suitable as a code writer; for 8k+ files, reduce context or increase ncmoe. Environment: llama.cpp b1-51831d4, CUDA 12.9.41, driver 580.178.04. Artifact: `/srv/media/night/v100_45_bench.log`."
+  "title": "V100-45",
+  "result_type": "positive",
+  "verdict": "Working configuration is `-ngl 99 -ncmoe 8 -c 4096`. An 8192-token context needs more VRAM (compute buffer allocation fails), so long files require either 12 CPU layers or a smaller context."
  },
  {
   "id": "V100-46",
-  "title": "Tool call: who actually calls the tools",
-  "result_type": "unstated",
-  "verdict": "Qwen3-Coder-30B-A3B on V100 16 GB actually calls tools through llama-server master 51831d4 (CUDA 12.9) with `--jinja`, mode `-ngl 99 -ncmoe 8 -fa 0`. Check on the request \"What time is it now in Moscow? Use the tool\" with function get_time(city) description: | Step | Result | |---|---| | first response | `tool_calls: [{name: get_time, arguments: {\"city\":\"Moscow\"}}]`, no text in content - as expected | | after substituting result `{\"time\":\"23:41\"}` | no further call, response \"It is 23:41 now in Moscow.\" | | full cycle delay | 4.99 s for two requests | Format of arguments is correct (JSON, Russian city value), hallucinations and extra calls are absent. Suitable as a local agent: at 75 tok/s decode, conversational round comes out around 2-3 s per reply. Artifact: `/srv/media/night/v100_46_server.log`, requests `/tmp/tools.json` and `/tmp/tools2.json`."
+  "title": "V100-46",
+  "result_type": "positive",
+  "verdict": "Tool calling works correctly with the Qwen3-Coder chat template: valid JSON arguments, no extra calls, correct final answer. At 75 tok/s decode a conversational turn costs 2–3 s."
  },
  {
   "id": "V100-47",
-  "title": "DeepSeek-Coder-V2-Lite 16B MoE",
-  "result_type": "unstated",
-  "verdict": "Upstream llama.cpp b7743fbfd8 (build V100-26, CUDA 12.0), DeepSeek-Coder-V2-Lite-Instruct Q4_K_M 9,65 GB, V100 16 GB, -ngl 99: without FA prefill pp256 2250 ± 139 tok/s, decode tg64 **183.6 ± 0.5 tok/s**; with `-fa 1` prefill 228.8, decode 1.14 tok/s, that is, FA drops the speed by 160 times on this model. The best decode from all measured on the card: MoE 15.7 billion with 2.4 billion active. Operating mode: `-ngl 99 -fa 0`. Generation quality and tool calling have not yet been verified (a fresh build of llama.cpp is needed, the old one does not know about arch deepseek2 in FA mode and does not load Qwen3-Coder)."
+  "title": "V100-47",
+  "result_type": "positive",
+  "verdict": "Best decode measured on this card by a wide margin: 183.6 tok/s with 2250 tok/s prefill, working configuration `-ngl 99 -fa 0`. Flash attention must be off — it is 160x slower on this architecture."
  },
  {
   "id": "V100-48",
-  "title": "FIM-autocompletion in the editor",
-  "result_type": "unstated",
-  "verdict": "Autocomplete via FIM works: llama-server (build llama-volta b7743fbfd8), Qwen2.5-Coder-7B-Instruct Q4_K_M, V100 16 GB, `-ngl 99 -fa 0 -c 4096`, request to `/infill`. Check on a real snippet: prefix `def total_price(items): ... for item in items:` and suffix `return total`. The model completed with `total += item['price'] * item['quantity']` - correct, it took the field name from the context. | Metric | Value | |---|---| | generation | 99.5 tok/s | | prefill | 40.7 tok/s | | request delay | 126-1530 ms, median around 450 | Delay spread is large: the second run gave 1.5 s with the same prompt, the third 126 ms. Looks like the behavior of slot and prefix cache in the old build; for the editor, a run with `--cache-reuse` and one slot is needed. For working in the editor, 100 tok/s is sufficient to complete the line faster than a person types. Delay tuning required. Artifact: `/srv/media/night/v100_48_server.log`."
+  "title": "V100-48",
+  "result_type": "mixed",
+  "verdict": "FIM works and is fast enough to type ahead of a human. Latency is unstable (126 ms to 1.5 s on the same prompt) — the old build's slot handling is the suspect; a single slot with `--cache-reuse` is the next thing to try."
  },
  {
   "id": "V100-49",
-  "title": "Code search embeddings",
-  "result_type": "unstated",
-  "verdict": "Embeddings for code search on our map are working. llama-embedding from llama.cpp master 51831d4, CUDA 12.9, model bge-m3 Q8 (606 MB), `-ngl 99 -c 512`, default normalization. Sanity check: four texts (three functions and the question \"how to calculate the order total by price and quantity\"), cosine similarity of the question to each function: | Function | Cosine Similarity | |---|---| | total_price (sum by price and quantity) | **0.643** | | fetch_orders (order retrieval from DB) | 0.501 | | send_email (email sending) | 0.374 | Ranking is correct: the relevant function is first with a noticeable margin, unrelated email sending is last. The 606 MB model handles a Russian query against English code without needing separate translation. Indexing our code will be fast: bge-m3 on 512 tokens calculates in fractions of a second, the entire store and skills repository - minutes. Further, only a vector storage layer is needed (can use sqlite + numpy, no external database). Artifact: /tmp/emb.json on ai-gpu (vectors from run)."
+  "title": "V100-49",
+  "result_type": "positive",
+  "verdict": "Ranking is correct with a clear margin, and the 606 MB model handles a Russian query against English code without translation. Indexing a repository is a matter of minutes on this card."
  },
  {
   "id": "V100-50",
-  "title": "Speculative decoding for code",
-  "result_type": "unstated",
-  "verdict": "Speculative decoding on our card works and gives around +20% on the code. Tested on llama-server master 51831d4 (CUDA 12.9): target Qwen2.5-Coder-7B-Instruct Q4_K_M, draft Qwen2.5-0.5B-Instruct Q8 (645 MB), flags `--spec-type draft-simple -md <draft> --spec-draft-ngl 99 --spec-draft-n-max 8`, context 4096, one slot. | Mode | Decode, tok/s (three runs) | --- | --- | Without draft | 111.5 / 114.2 | | **With draft** | **134.6 / 140.3 / 136.4** | Average gain 21%. Prompt is the same: \"write a function that reads CSV and sums up column amount\", 96 tokens of response. Time-consuming pitfalls: - in this build speculative type is called `draft-simple`, not `draft`; old `--draft-max` renamed to `--spec-draft-n-max`; - **`llama-cli` does not include speculation at all** - flag `-md` is accepted silently, but token count does not change (112.8 vs 112.9). Works only through `llama-server` with explicit `--spec-type`; - without `--spec-draft-ngl 99` draft stays on CPU and there is no gain; - quantized KV (`-ctk q8_0`) with `-fa 0` does not load: compressed KV requires enabled FA. Artifact: `/srv/media/night/v100_50_server.log`."
+  "title": "V100-50",
+  "result_type": "positive",
+  "verdict": "+21% on a 7B target. The same draft on a 14B target slows decoding by 43% — the technique has to be measured per pair, not assumed."
  },
  {
   "id": "V100-51",
-  "title": "32k context for 30B MoE on 16 GB",
-  "result_type": "unstated",
-  "verdict": "Qwen3-Coder-30B-A3B (17.3 GB, MoE 30B with 3.1 billion active parameters) on 16 GB holds 32k context only with expert offloading to CPU and compressed KV cache. llama.cpp master 51831d4, CUDA 12.9, `-c 32768`, single runs of 8 tokens each: | KV | experts on CPU | prompt | generation | |---|---|---|---| | fp16 | 24 | 50.8 tok/s | 16.6 tok/s | | fp16 | 32 | 27.9 | 9.5 | | **q8_0** | **16** | **39.5** | **25.2** | | q8_0 | 20 | 46.2 | 4.9 | Working setup for long context: `-c 32768 -ctk q8_0 -ctv q8_0 -ncmoe 16`. Compressed KV cache saves enough VRAM to hold more experts on GPU, and generation is faster than with fp16 at 24 experts on CPU. Numbers are single and noisy (spread for ncmoe=20 suspiciously large, likely swap), for accuracy a run of n=3 with real long prompt is needed. 16k context with the same settings should be noticeably faster."
+  "title": "V100-51",
+  "result_type": "mixed",
+  "verdict": "32k is reachable only with compressed KV plus offloaded experts: `-c 32768 -ctk q8_0 -ctv q8_0 -ncmoe 16` gives 25 tok/s. Without compression the same window needs 24+ CPU layers and drops to 16 tok/s."
  },
  {
   "id": "V100-52",
-  "title": "Local loop \"edit → test → repair\"",
-  "result_type": "unstated",
-  "verdict": "The \"fix -> test -> repair\" loop on the local model runs completely autonomously. The script `/tmp/v100_52_loop.py`, model Qwen3-Coder-30B-A3B on llama-server (`-ngl 99 -ncmoe 8`), tests are launched with a regular python-assert, not pytest (which is not in venv). The task: the function `apply_discount(price, percent)` returned `price - percent` instead of the percentage of the price, three assert checks. The model received the broken code and tests, the response is parsed by a regex for the block ```python, then the test is run for real. | Metric | Value | --- | --- | | attempts | **1** | | loop time | 15.5 s | | outcome | `return price - (price * percent / 100)` - tests passed | That is, the cycle \"received task -> got code -> ran tests -> accepted or returned error\" on a local card closes without a person and without cloud support. 15 seconds per iteration with 30B MoE is acceptable for night tasks (rewrite a module, fix fallen tests). On dense 32B this would be 3 tok/s and not feasible. Stability check will require a task with several consecutive failures: one iteration does not show whether the model can correct errors by text."
+  "title": "V100-52",
+  "result_type": "positive",
+  "verdict": "The loop closes locally in 15 seconds per iteration, which makes unattended refactoring and test-fixing practical. A dense 32B on the same card would run at 3 tok/s and be unusable for this."
  }
 ]
