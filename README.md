@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **49** — 13 positive, 7 mixed,
+Closed experiments: **51** — 13 positive, 7 mixed,
 5 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -86,9 +86,11 @@ Read this before quoting a number.
 | [V100-67](results/V100-67.md) | 16 GB: Q4_K_M - 128 bits, Q5_K_M - 160 bits, Q6_K - 256 bits, Q8 - 320 bits | Q5_K_M outperforms Q4_K_M in quality with a slight speed loss.** | Quant | Size | VRAM | Prefill pp128 | Decode tg32 | MBPP pass@1 | |---|---|---|---|---|---| | Q4_K_M | 4.68 GB | ~5 GB… |
 | [V100-68](results/V100-68.md) | Speculation on 30B MoE: Draft 0.5B vs Qwen3-Coder | Speculation on 30B is not profitable.** With a draft of 0.5B, the model had to be raised from `-ncmoe 12` instead of 8 (draft subtracts VRAM): base in these conditions **36.0 / 32.6 /… |
 | [V100-69](results/V100-69.md) | Special dec without second model | N-grams in file editing don't provide anything, draft hurts.** Prompt 200 lines of source code, model appends function based on pattern: base **71.5 / 106.3 / 106.4 tok/s**,… |
+| [V100-70](results/V100-70.md) | Re-rank surface search by code | The reranker works and separates trash confidently.** bge-reranker-v2-m3 (568M, fp16) took **6.9 s** to launch on V100 and used **1092 MiB** VRAM - fits alongside working LLM, no need to… |
 | [V100-71](results/V100-71.md) | The cost of 1M tokens on your own hardware is | Cost of 1M output tokens on own hardware.** Power consumption measured via `nvidia-smi power.draw`: idle **20.7-46.6 W**, under load (7B, 65% utilization) **159.0 W**, peak rated 300 W.… |
 | [V100-72](results/V100-72.md) | Agent with four tools and an error on the first call | 1 of 3 scenarios.** Three tasks, four tools, the first call `get_time` was intentionally broken (server responded with `unknown argument 'location'; the only valid argument is 'city'`.… |
 | [V100-74](results/V100-74.md) | Olala-v1.0-mini-7A1B: MoE with 1B active on 16 GB | Blocked by engine (24.11).** File downloaded and intact (5,990,551,040 bytes, exact size verified), but llama.cpp master from 24.11 (build 12.9, sm_70) responds with `unknown model… |
+| [V100-75](results/V100-75.md) | GLM-4.7-Flash-30B-A3B IQ4_XS: fresh 30B MoE | Speed is good, model is degenerative.** Architecture is `deepseek2` (like DeepSeek-Coder-V2), so FA is off. Matrix `-ncmoe` (IQ4_XS 15.56 GB, 31.22B): ncmoe 8 - prefill **727.5** tok/s,… |
 | [V100-76](results/V100-76.md) | Ternary-Bonsai-2-27B: 27B in 6 GB on ternary scales | Blocked by format (24.11).** File is valid (GGUF v3, 851 tensor, 5,946,648,928 bytes), but weights are compressed with type `PTQ1_0`, which llama.cpp does not support: the engine knows… |
 | [V100-77](results/V100-77.md) | Raon-1-nano MTP: Multi-token prediction without draft | Blocked by engine (24.11).** File downloaded (2,145,934,208 bytes), but the architecture `raon1nano` is unknown to current llama.cpp. MTP head not verified - nothing to verify until the… |
 | [V100-78](results/V100-78.md) | Rapid Averages: Nemotron-Bolt-E4B and SenseNova-Loop-9B | - ## Queue P1v - New Ideas Following Review (24.11.2026) | # | Idea | Stage | Resources | Status | Outcome | Ready | |---|---|---|---|---|---|---| | V100-66 | Code Quality: MBPP on Three… |

@@ -258,6 +258,12 @@
   "verdict": "N-grams in file editing don't provide anything, draft hurts.** Prompt 200 lines of source code, model appends function based on pattern: base **71.5 / 106.3 / 106.4 tok/s**, `ngram-simple` **71.1 / 103.4 / 101.5** (-3%, within noise), `draft-simple` with 0.5B **57.9 / 85.8 / 85.9** (-19%). Draft loses where answer is short and structural: 0.5B doesn't guess long names `handler_N`, and overhead remains. In V100-50, the same draft gave +21% in free generation - means task type matters more than draft size. For auto-completion and edits, don't include speculation."
  },
  {
+  "id": "V100-70",
+  "title": "Re-rank surface search by code",
+  "result_type": "unstated",
+  "verdict": "The reranker works and separates trash confidently.** bge-reranker-v2-m3 (568M, fp16) took **6.9 s** to launch on V100 and used **1092 MiB** VRAM - fits alongside working LLM, no need to unload it. On the \"query - three candidates\" test, scores were **2.516 / -8.930 / -5.449**: correct function was first with a 11-point lead over the next one, so threshold can be set confidently. Issues: in venv `/var/lib/ollama/venvs/video` transformers pulled `torchaudio`, which was built for CUDA 13 and failed with `libcudart.so.13: cannot open shared object file` - import broke before model loading. Fixed by `pip uninstall torchaudio` (not needed for reranker). Weights of 2.27 GB were downloaded via `dl_append.sh`: regular `curl -C -` on this file hung at 8 KB."
+ },
+ {
   "id": "V100-71",
   "title": "The cost of 1M tokens on your own hardware is",
   "result_type": "unstated",
@@ -274,6 +280,12 @@
   "title": "Olala-v1.0-mini-7A1B: MoE with 1B active on 16 GB",
   "result_type": "unstated",
   "verdict": "Blocked by engine (24.11).** File downloaded and intact (5,990,551,040 bytes, exact size verified), but llama.cpp master from 24.11 (build 12.9, sm_70) responds with `unknown model architecture: 'olala'`. Support not yet available upstream - model released on 23.11. Model remains in queue: once llama.cpp learns to read it, harness run will take 20 minutes, file already on disk."
+ },
+ {
+  "id": "V100-75",
+  "title": "GLM-4.7-Flash-30B-A3B IQ4_XS: fresh 30B MoE",
+  "result_type": "unstated",
+  "verdict": "Speed is good, model is degenerative.** Architecture is `deepseek2` (like DeepSeek-Coder-V2), so FA is off. Matrix `-ncmoe` (IQ4_XS 15.56 GB, 31.22B): ncmoe 8 - prefill **727.5** tok/s, decode **59.5**; ncmoe 12 - 539.0 / 55.4; ncmoe 16 - 445.8 / 52.9. For comparison, Qwen3-Coder-30B-A3B on ncmoe 8 gives 411.9 / 75.5: GLM is faster on prefill and slower on decode. **But quality is zero due to assembly, not architecture.** Harness gave code 0/40, format 1/5, RAG 0/2, content 0 words at 1400 generated tokens, tools 0 calls. Checking response structure explained: model writes infinite `GGGGGGGG...` in `reasoning_content` field and never reaches `content` - at limit 200 and at 800 tokens same, `finish_reason=length`. This is a defect of specific DavidAU (Hellfire-Turbo-Brilliance-50x-AGI-NEO) build, not all GLM-4.7. Official checkpoint was not tested: 18 GB channel spent on this build overnight. Conclusion: speed and capacity class has, but official weights should be taken."
  },
  {
   "id": "V100-76",
