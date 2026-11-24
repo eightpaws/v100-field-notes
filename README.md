@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **59** — 13 positive, 7 mixed,
+Closed experiments: **60** — 13 positive, 7 mixed,
 5 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -59,6 +59,7 @@ Read this before quoting a number.
 | [V100-03](results/V100-03.md) | imatrix Q4_K under Russian chassis | - **Environment Status (configuration, 23.11.2026 21:13).** The llama.cpp build in `~/llama-new` was killed by a VM reboot at 20:48, and was rebuilt on **CUDA 12.9**: `BUILD_OK` in **7… |
 | [V100-13](results/V100-13.md) | AWQ/int4 vs GGUF Q4 on Volta | AWQ/int4 via vLLM 1.5.4: model loaded (14287 MiB VRAM), decode **117 tok/s** (114.2 / 116.9 after warm-up, first request 66.5), code is correct. Against GGUF Q4_K_M in llama.cpp: 132… |
 | [V100-14](results/V100-14.md) | 24B in 16 GB: Mistral-Small-3.1-24B AWQ | Mistral Small 24B AWQ does not fit in 16 GB via vLLM. The model is fully downloaded (3 shards, 13.4 GB, all tensors are read), 1Cat-vLLM 1.5.4 compiled for sm_70 and has separate… |
+| [V100-17](results/V100-17.md) | LMDeploy TurboMind: AWQ without forks | Partial: TurboMind works on sm_70 but loses quality in 4-bit. Speed: decode 131.2 tok/s (n=3, stdev 0.13), prefill 4266 tok/s at 751 token, VRAM 14.8 GiB, warm-up 50s. Quality: MBPP… |
 | [V100-18](results/V100-18.md) | xllama.cpp: compress KV instead of q8 | Compressed KV in xllama.cpp works, but on long context it becomes too slow. Built with xllama.cpp f9287a9 (fork of llama.cpp from April 2026 with… |
 | [V100-20](results/V100-20.md) | fni8: int8 dp4a for DiT | Rejected along with V100-22: this is the same fni8 package family (int8 dp4a for DiT in ComfyUI). The author himself writes that acceleration was measured on a CMP 100-210 park with… |
 | [V100-21](results/V100-21.md) | Tachyon, Ninfer, Lapilli | Tachyon-v100 is being built and run on our card, but our models do not support it. Verified step by step. Build (Rust + nvcc), three pitfalls: 1. build.rs looks for the compiler strictly… |
