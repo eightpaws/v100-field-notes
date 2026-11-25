@@ -85,8 +85,8 @@
  },
  {
   "id": "V100-100",
-  "title": "Style presets and immutable prompt part",
-  "result_type": "unstated",
+  "title": "V100-100",
+  "result_type": "positive",
   "verdict": "Three presets (catalog_white, warm_interior, flatlay_social) x 5 seeds, one position (bouquet of peonies in craft cone), 832x1216, RealVisXL V5 fp16, cuDNN off, CPU-offload: 15/15 frames, 10.0-11.5 sec per frame, VRAM peak 5.37 GB, pipeline load 1.6 sec. Background and lighting matched in 5 out of 5 for all three presets; background color variation per seed 3.9-5.8 RGB for catalog_white, 4.0-5.6 for warm_interior, 5.8-9.1 for flatlay_social, brightness 215.7 / 187.2 / 180.4 (±4.6...7.6). Preset switching - edit presets.json, code remains unchanged. Defect: in 1 out of 15 frames (catalog_white, seed 103) hand appeared in frame despite negative - negative does not guarantee, manual inspection required."
  },
  {
@@ -193,9 +193,9 @@
  },
  {
   "id": "V100-123",
-  "title": "Quantum 30B under codes: Q4, Q5, Q6, Q8",
-  "result_type": "unstated",
-  "verdict": "Work in progress:** Q4 previously measured (MBPP 0.525, 21/40, -ncmoe 16, ctx 8192, /srv/media/night/eval_qwen3coder30b.json). Downloading Q5_K_M, Q6_K, Q8_0 from hf-mirror: full file CDN request throttles at 357 B/s, sequential resume curl -C - goes at 10-11 MB/s (parallel CDN ranges cut down to 15 KB). Sizes: Q5 21.7 GB, Q6 25.1 GB, Q8 32.5 GB; on 25.11 17:20 Q5 was 8.9 out of 21.7 GB. Artifacts placed in /srv/media/ai-cache/downloads, log at /srv/media/night/dl_qwen30b.log."
+  "title": "V100-123",
+  "result_type": "negative",
+  "verdict": "Negative for Q6 and Q8: no quality gain over Q5_K_M, only more time, RAM and disk. Q5_K_M is the recommended quant for a 30B-A3B code model on one 16 GB Volta card."
  },
  {
   "id": "V100-124",

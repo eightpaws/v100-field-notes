@@ -4,8 +4,8 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **92** — 14 positive, 13 mixed,
-9 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **92** — 15 positive, 13 mixed,
+10 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -57,7 +57,7 @@ Read this before quoting a number.
 | [V100-15](results/V100-15.md) | Stack snapshot: how long sm_70 stays supportable | **Positive.** Freeze the stack and keep the wheels on disk — the failure mode here is silent, and after CUDA 13 / PyTorch 2.15 the only way back is a source build. Rule for this card: update nothing… |
 | [V100-01](results/V100-01.md) | Speculative decoding in llama.cpp | Speculative decoding was tested on two targets, and the result depends on the model pair: it accelerates on 7B, but slows down almost twofold on 14B. llama.cpp master 51831d4, CUDA 12.9,… |
 | [V100-03](results/V100-03.md) | imatrix Q4_K under Russian chassis | - **Environment Status (configuration, 23.11.2026 21:13).** The llama.cpp build in `~/llama-new` was killed by a VM reboot at 20:48, and was rebuilt on **CUDA 12.9**: `BUILD_OK` in **7… |
-| [V100-100](results/V100-100.md) | Style presets and immutable prompt part | Three presets (catalog_white, warm_interior, flatlay_social) x 5 seeds, one position (bouquet of peonies in craft cone), 832x1216, RealVisXL V5 fp16, cuDNN off, CPU-offload: 15/15… |
+| [V100-100](results/V100-100.md) | V100-100 | **Positive.** Three presets (catalog_white, warm_interior, flatlay_social) x 5 seeds, one position (bouquet of peonies in craft cone), 832x1216, RealVisXL V5 fp16, cuDNN off, CPU-offload: 15/15… |
 | [V100-103](results/V100-103.md) | V100-103 | **Positive.** Group of four runs on one model: batch 23.9 s vs. variance 39.1 s, savings 38.8%. Warm switching: 7B 1.5 s, 16B 2.5 s, 30B 3.5 s, i.e., 10 times less than the 40-60 s figure from the… |
 | [V100-105](results/V100-105.md) | Polyglot: eight languages on one harness | 6 languages (Python, JavaScript, PHP, Ruby, Go, Java) x 10 functions x 21 statements per language, three models, temperature 0, one run 3m 4s. Qwen2.5-Coder-7B Q8 - 6/6 languages (all… |
 | [V100-106](results/V100-106.md) | Linters as acceptance: how much code passes on the first try | (25.11.2026) 40 tasks MBPP, Qwen2.5-Coder-7B-Instruct Q8_0. Tests pass 24 out of 40 (0.60). Linters: `ruff --select E,F` clean in 39 files out of 40 (one note for the whole sample),… |
@@ -75,7 +75,7 @@ Read this before quoting a number.
 | [V100-120](results/V100-120.md) | Russian text in generated code | 8 out of 10 tasks accepted without revision according to the task criteria: names in Latin 10/10, Russian text in place 10/10, long hyphens 0, typos 0, syntax valid 10/10. Terms in Latin… |
 | [V100-121](results/V100-121.md) | Consistency of style with existing code | 20 runs (10 tasks x 2 models), temp 0, baseline Harness passed ruff/mypy/pytest 10/10. Qwen2.5-Coder-7B Q8: ruff clean 4/10, mypy 9/10, tests 8/10, median deviation from baseline 19.5%… |
 | [V100-122](results/V100-122.md) | V100-122 | **Negative.** Negative: 0 of 5 runs green at temperature 0 and 0 of 5 at 0.2, so the shipping bar is not met. Repeatability is not quality — temperature 0 reproduces the same defect with byte-exact… |
-| [V100-123](results/V100-123.md) | Quant ladder for a 30B MoE code model: Q4, Q5, Q6, Q8 | Negative for Q6/Q8: no task gained over Q5_K_M, Q8 1.8x slower (4.98 vs 2.73 s/task); Q5_K_M is the ceiling on 16 GB |
+| [V100-123](results/V100-123.md) | V100-123 | **Negative.** Negative for Q6 and Q8: no quality gain over Q5_K_M, only more time, RAM and disk. Q5_K_M is the recommended quant for a 30B-A3B code model on one 16 GB Volta card. |
 | [V100-124](results/V100-124.md) | V100-124 | **Negative.** Negative: 3 of 10 scenarios in both runs. The retry skeleton is sound, but one shadowed name kills every request the client makes — exactly the class of defect that a test suite finds… |
 | [V100-125](results/V100-125.md) | V100-125 | **Mixed.** All three models passed both suites on the first attempt, with no retries and no manual fixes: Qwen2.5-Coder-14B Q4_K_M scored 10/10 and 6/6 in 7 and 8 seconds at a 9565 MiB VRAM peak;… |
 | [V100-126](results/V100-126.md) | Generated code productivity | Ten tasks on 100,000 records, n=3, median. Correct in 9/10 cases, all nine within 3x of the standard: median ratio 0.95, worst 1.02, so model code indistinguishable from the standard in… |
