@@ -163,7 +163,7 @@
  },
  {
   "id": "V100-120",
-  "title": "in code and documentation",
+  "title": "Russian text in generated code",
   "result_type": "unstated",
   "verdict": "8 out of 10 tasks accepted without revision according to the task criteria: names in Latin 10/10, Russian text in place 10/10, long hyphens 0, typos 0, syntax valid 10/10. Terms in Latin not retained in two tasks out of ten: token turned into \"tokens\", cache - into \"caching\". Plus one typo (\"Raschityvaet\") and English README header with Russian body; with these three revisions, 7 out of 10 are accepted. Generation of 10 tasks - 19.3 s, VRAM not measured (server was launched without monitoring)."
  },
