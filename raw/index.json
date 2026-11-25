@@ -84,6 +84,12 @@
   "verdict": "- **Environment Status (configuration, 23.11.2026 21:13).** The llama.cpp build in `~/llama-new` was killed by a VM reboot at 20:48, and was rebuilt on **CUDA 12.9**: `BUILD_OK` in **7 min 14 s** (on the system's nvcc 12.0, the same build took four hours and did not complete). Binaries are in place: `~/llama-new/build/bin/llama-bench` and `llama-cli`, tree is clean (commit 51831d4), `llama-bench` sees the card: `Tesla V100-SXM2-16GB, compute capability 7.0`. Log: `~/llama_rebuild_129.log`. For new builds — `~/bin/build-cuda.sh <directory> [targets]`; environment check — `~/bin/cuda-preflight.sh`."
  },
  {
+  "id": "V100-105",
+  "title": "Polyglot: eight languages on one harness",
+  "result_type": "unstated",
+  "verdict": "6 languages (Python, JavaScript, PHP, Ruby, Go, Java) x 10 functions x 21 statements per language, three models, temperature 0, one run 3m 4s. Qwen2.5-Coder-7B Q8 - 6/6 languages (all 21/21 statements), DeepSeek-Coder-V2-Lite - 6/6, Qwen3-Coder-30B-A3B with `-ncmoe 8` - 5/6: PHP model did not return code in block at all. Syntax validity checked by compiler, not parser in prompt: `py_compile`, `node --check`, `php -l`, `ruby -c`, `go build`, `javac`. Server startup: 2.0s / 30.0s / 50.1s."
+ },
+ {
   "id": "V100-108",
   "title": "Tests that catch: mutation testing of generated tests",
   "result_type": "unstated",

@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **68** — 13 positive, 8 mixed,
+Closed experiments: **69** — 13 positive, 8 mixed,
 5 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -57,6 +57,7 @@ Read this before quoting a number.
 | [V100-15](results/V100-15.md) | Stack snapshot: how long sm_70 stays supportable | **Positive.** Freeze the stack and keep the wheels on disk — the failure mode here is silent, and after CUDA 13 / PyTorch 2.15 the only way back is a source build. Rule for this card: update nothing… |
 | [V100-01](results/V100-01.md) | Speculative decoding in llama.cpp | Speculative decoding was tested on two targets, and the result depends on the model pair: it accelerates on 7B, but slows down almost twofold on 14B. llama.cpp master 51831d4, CUDA 12.9,… |
 | [V100-03](results/V100-03.md) | imatrix Q4_K under Russian chassis | - **Environment Status (configuration, 23.11.2026 21:13).** The llama.cpp build in `~/llama-new` was killed by a VM reboot at 20:48, and was rebuilt on **CUDA 12.9**: `BUILD_OK` in **7… |
+| [V100-105](results/V100-105.md) | Polyglot: eight languages on one harness | 6 languages (Python, JavaScript, PHP, Ruby, Go, Java) x 10 functions x 21 statements per language, three models, temperature 0, one run 3m 4s. Qwen2.5-Coder-7B Q8 - 6/6 languages (all… |
 | [V100-108](results/V100-108.md) | Tests that catch: mutation testing of generated tests | 10 commits with 5 planted defects each (boundary, null, race, injection, leak), Qwen2.5-Coder-7B Q8_0, 16 seconds total. Found 17 out of 50 (34%), false 0 on commit. Completely failed… |
 | [V100-110](results/V100-110.md) | Red test cycle → repair on four languages | 20 tasks (5 each in Python, JavaScript, C, Perl), Qwen2.5-Coder-7B-Instruct Q8_0, `llama-server` build129, temperature 0; total set - 25s, server up in 2s. Successfully fixed 18 out of… |
 | [V100-111](results/V100-111.md) | Review diff: five planted bugs, accuracy and completeness | 10 commits with 5 planted defects each (boundary, null, race, injection, leak), Qwen2.5-Coder-7B Q8_0, 16 seconds total. Found 17 out of 50 (34%), false positives 0 per commit.… |
