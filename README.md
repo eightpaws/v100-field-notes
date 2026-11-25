@@ -4,8 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **93** — 15 positive, 13 mixed,
-11 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **96** — 17 positive, 13 mixed, 12 negative; the rest are operational notes (build fixed, model loaded, driver swapped) with no verdict to give. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
