@@ -123,7 +123,7 @@
   "id": "V100-116",
   "title": "V100-116",
   "result_type": "mixed",
-  "verdict": "| Project | Files | Score | Failed checks | |---|---|---|---| | FastAPI + JWT + Postgres | 12 | **10/10** | none | | CLI ETL into SQLite | 8 | 8/10 | LICENSE, Dockerfile | | REST API client | 7 | 8/10 | Dockerfile, secret scan (test constant) | Checklist of ten items: README with run commands, LICENSE file, env sample when the code reads environment variables, pinned requirements, no hardcoded credentials, tests present, `.gitignore` covering the env file, Dockerfile, sane file names, code parses with no stub markers. Mean 8.67/10, best 10/10 against a card criterion of 8/10. The only scanner hit is `TOKEN = 'test_access_token'` inside the API-client test file: a fixture placeholder, not a key. Generation: 3267, 966 and 853 completion tokens at 82–84 tok/s, longest response 39.6 s, whole run 63.7 s including 2 s server start."
+  "verdict": "Deliverable, but only what was asked for: the model emitted a Dockerfile and a LICENSE exactly where the prompt named them and skipped them where it did not. The delivery checklist therefore belongs in the prompt, not in expectations — with the full checklist stated, one of three projects came out client-ready without edits."
  },
  {
   "id": "V100-13",
