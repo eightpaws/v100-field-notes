@@ -4,7 +4,8 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **99** — 19 positive, 17 mixed, 17 negative, 46 with a measured result but no pass/fail verdict. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **99** — 19 positive, 14 mixed,
+12 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -168,13 +169,6 @@ Until then the caveat stands, and a table row is not a substitute for a measurem
 | V100-65 | V100-10 | prefill at 8k and 16k, and record num_batch=4096 | 1 h |
 
 Total queued: **13** re-runs, roughly 27.5 h of GPU time.
-
-### Project notes
-
-Three write-ups describe working pipelines rather than a single controlled experiment:
-[code-loop-rag](notes/code-loop-rag.md), [product-pipeline-upscale](notes/product-pipeline-upscale.md),
-[shop-assistant-rag](notes/shop-assistant-rag.md). They live under `notes/` and carry no result type,
-because nothing in them was measured against a baseline - they document how a pipeline is assembled.
 
 ## How to read this
 
