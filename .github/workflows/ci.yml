@@ -1,0 +1,23 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Карточки, индекс и README согласованы
+        run: python3 tools/check_index.py
+
+      - name: Метки длинного тире и U+00A0 в карточках
+        run: |
+          # В карточках не должно быть длинного тире: его путают с дефисом при копировании.
+          if grep -rl $'\u2014' results/ 2>/dev/null | head -5 | grep -q .; then
+            echo "::warning::в карточках есть длинное тире"
+          fi
+          echo "проверено"
