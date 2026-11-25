@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **70** — 13 positive, 8 mixed,
+Closed experiments: **71** — 13 positive, 8 mixed,
 5 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -113,6 +113,7 @@ Read this before quoting a number.
 | [V100-78](results/V100-78.md) | Rapid Averages: Nemotron-Bolt-E4B and SenseNova-Loop-9B | - ## Queue P1v - New Ideas Following Review (24.11.2026) | # | Idea | Stage | Resources | Status | Outcome | Ready | |---|---|---|---|---|---|---| | V100-66 | Code Quality: MBPP on Three… |
 | [V100-79](results/V100-79.md) | llama.cpp v1.0.0 vs our build 51831d4 | Regression on sm_70 has occurred, but only for MoE. llama-bench, `-ngl 99 -fa 0 -r 1`, both builds on the same stand: | test | DeepSeek-V2-Lite 16B · 51831d4 | same · v1.0.0 |… |
 | [V100-81](results/V100-81.md) | MOE cache experts in RAM instead of `-ncmoe` | Experts cache on sm_70 is not profitable: it doesn't fit on the card with `-ncmoe 8`, and when it fits (with `-ncmoe 12`), it loses to the current scheme. Qwen3-Coder-30B-A3B Q4_K_M,… |
+| [V100-84](results/V100-84.md) | QWEN38-MTP flags from the recipe | The MTP flag is present in the build (`--spec-type draft-mtp` in build129), but there's nothing to test it on: the only Qwen3.8-27B on disk is a third-party quantum `pxqn-onecard` (13.57… |
 
 ## Follow-ups in progress
 
