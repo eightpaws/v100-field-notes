@@ -162,6 +162,12 @@
   "verdict": "Same 7B Q4_K_M, 10 MBPP tasks, temperature 0: one prompt 7/10 (0.70), pipeline spec-code-tests-reviews 6/10 (0.60) - difference **-10 points**. Pipeline takes **12 times longer** (6.1s vs 0.5s per task) and **13 times more tokens** (6516 vs 490). Card criterion (+20 points) not met: at n=10 one task = 10 points, no gain even within noise, but cost increased by an order of magnitude. Model's own checks passed on 3 tasks that MBPP hidden tests failed, - self-check as a filter does not work."
  },
  {
+  "id": "V100-120",
+  "title": "in code and documentation",
+  "result_type": "unstated",
+  "verdict": "8 out of 10 tasks accepted without revision according to the task criteria: names in Latin 10/10, Russian text in place 10/10, long hyphens 0, typos 0, syntax valid 10/10. Terms in Latin not retained in two tasks out of ten: token turned into \"tokens\", cache - into \"caching\". Plus one typo (\"Raschityvaet\") and English README header with Russian body; with these three revisions, 7 out of 10 are accepted. Generation of 10 tasks - 19.3 s, VRAM not measured (server was launched without monitoring)."
+ },
+ {
   "id": "V100-122",
   "title": "V100-122",
   "result_type": "negative",
