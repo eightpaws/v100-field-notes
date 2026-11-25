@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: How to contribute a card
+    url: https://github.com/eightpaws/v100-field-notes/blob/main/CONTRIBUTING.md
+    about: The eight blocks every card must contain, and the consistency gate to run first

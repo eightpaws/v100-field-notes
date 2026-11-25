@@ -1,0 +1,27 @@
+name: Bug in the tooling
+description: The index check, the generator or a script in tools/ misbehaves
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: file or command, e.g. tools/check_index.py
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happens
+      description: The command, its output, and what you expected instead
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Python and OS
+      description: python3 --version, uname -a
+    validations:
+      required: true
