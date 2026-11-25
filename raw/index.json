@@ -540,6 +540,12 @@
   "verdict": "The MTP flag is present in the build (`--spec-type draft-mtp` in build129), but there's nothing to test it on: the only Qwen3.8-27B on disk is a third-party quantum `pxqn-onecard` (13.57 GB), its tensor type 263 is outside the list of llama.cpp (0..44), and the engine fails to load in 0.33s (`failed to read tensor info`, rc=1) before flag parsing even begins. Both base and MTP configurations died the same way. There's no native GGUF for this model; Qwen3.8-Flash-Next is only available in Strata shards (IQ1_M 58 GB, UD-IQ4_XS 93.7 GB), which can't be loaded in one pass on a 16 GB card. The claimed +33-39% decode boost on our card remains untested: there's no artifact that the engine accepts."
  },
  {
+  "id": "V100-85",
+  "title": "Xing4.0-29B-A4B in IQ2_M",
+  "result_type": "unstated",
+  "verdict": "MBPP pass@1 **0.425** (17/40) at 44.2 tok/s generation and 1.84 sec per task; bench decode 71.4 tok/s (fa off) and 64.1 (fa on), prefill 512 - 1949 and 1877 tok/s, VRAM 11.2 GB, server boot time 6 sec. Card threshold (pass@1 ≥ 0.55 at decode ≥ 60 tok/s) not met for quality: 2-bit IQ2_M lags behind both 7B Q8_0 (0.625), and 4-bit AWQ (0.50). First run gave 0.05, but this is an artifact of the limit, not the model: all 40 responses hit the 512 token limit because reasoning was enabled by default and the code didn't have time to start; with `enable_thinking=false` and 1536 tokens - 0.425."
+ },
+ {
   "id": "V100-86",
   "title": "V100-86",
   "result_type": "mixed",
