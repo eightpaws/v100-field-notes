@@ -529,8 +529,8 @@
  },
  {
   "id": "V100-86",
-  "title": "v100-llm-kit: ready SM70-binary",
-  "result_type": "unstated",
-  "verdict": "Translation:** (ik_llama.cpp b4578/022bd00a) on Qwen3-Coder-30B-A3B Q4_K_M with `-ngl 99 --n-cpu-moe 16 -fa 0`: prefill 645.1 ± 51.3 tok/s vs 554.3 ± 5.2 in our build b1b770d90 (+16%), decode 57.1 ± 1.5 vs 57.9 ± 1.1 - difference within noise. Ready sm70-binaries run under driver 580 without modifications and without toolkit (608 MB including libcudart/cublas). Result: prefill higher, decode same; agent wrapper (serve-qwen3.sh, Claude Code) and Gemma 4 26B-A4B QAT not tested - separate card."
+  "title": "V100-86",
+  "result_type": "mixed",
+  "verdict": "Mixed: prefill 16 % faster with the shipped sm_70 binaries, decode identical. Worth taking for long prompts (document analysis, repository context); not a reason to migrate a decode-bound workload. The vendor's agent wrapper (`serve-qwen3.sh`, Claude Code integration) and the claimed Gemma 4 26B-A4B QAT Q4_0 in 16 GB were not tested."
  }
 ]
