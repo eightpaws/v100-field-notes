@@ -1,0 +1,100 @@
+{
+ "files": 12,
+ "lines": 1325,
+ "tasks": 10,
+ "file_ok": 9,
+ "func_ok": 9,
+ "both_ok": 8,
+ "rows": [
+  {
+   "task": 1,
+   "want_file": "cache_drop.py",
+   "want_func": "model_files",
+   "got_file": "cache_drop.py",
+   "got_func": "model_files",
+   "file_ok": true,
+   "func_ok": true
+  },
+  {
+   "task": 2,
+   "want_file": "cache_drop.py",
+   "want_func": "drop",
+   "got_file": "cache_drop.py",
+   "got_func": "drop",
+   "file_ok": true,
+   "func_ok": true
+  },
+  {
+   "task": 3,
+   "want_file": "cache_drop.py",
+   "want_func": "drop_after_exit",
+   "got_file": "cache_drop.py",
+   "got_func": "drop_after_exit",
+   "file_ok": true,
+   "func_ok": true
+  },
+  {
+   "task": 4,
+   "want_file": "session_save_retry.py",
+   "want_func": "session_file",
+   "got_file": "session_save_retry.py",
+   "got_func": "session_file",
+   "file_ok": true,
+   "func_ok": true
+  },
+  {
+   "task": 5,
+   "want_file": "keepawake.py",
+   "want_func": "create",
+   "got_file": "keepawake.py",
+   "got_func": "KeepAwake.create",
+   "file_ok": true,
+   "func_ok": false
+  },
+  {
+   "task": 6,
+   "want_file": "loader_diag.py",
+   "want_func": "pe_imports",
+   "got_file": "loader_diag.py",
+   "got_func": "pe_imports",
+   "file_ok": true,
+   "func_ok": true
+  },
+  {
+   "task": 7,
+   "want_file": "loader_diag.py",
+   "want_func": "missing_note",
+   "got_file": "loader_diag.py",
+   "got_func": "missing_note",
+   "file_ok": true,
+   "func_ok": true
+  },
+  {
+   "task": 8,
+   "want_file": "winjob.py",
+   "want_func": "terminate",
+   "got_file": "winjob.py",
+   "got_func": "terminate",
+   "file_ok": true,
+   "func_ok": true
+  },
+  {
+   "task": 9,
+   "want_file": "winjob.py",
+   "want_func": "contain",
+   "got_file": "winjob.py",
+   "got_func": "contain",
+   "file_ok": true,
+   "func_ok": true
+  },
+  {
+   "task": 10,
+   "want_file": "logit_bias.py",
+   "want_func": "validate_request",
+   "got_file": "runconfig.py",
+   "got_func": "validate_request",
+   "file_ok": false,
+   "func_ok": true
+  }
+ ]
+}
