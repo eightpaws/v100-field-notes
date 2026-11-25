@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **88** — 14 positive, 11 mixed,
+Closed experiments: **89** — 14 positive, 11 mixed,
 9 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -131,6 +131,7 @@ Read this before quoting a number.
 | [V100-81](results/V100-81.md) | MOE cache experts in RAM instead of `-ncmoe` | Experts cache on sm_70 is not profitable: it doesn't fit on the card with `-ncmoe 8`, and when it fits (with `-ncmoe 12`), it loses to the current scheme. Qwen3-Coder-30B-A3B Q4_K_M,… |
 | [V100-83](results/V100-83.md) | Strata-V100: third engine for verification | Run Coder IQ1_M (25.11.2026, VM 200, V100-SXM2-16GB). | Check | Result | |---|---| | Start Model | Experts 23.42 GiB in RAM (3.86 GiB/s), expert cache 4134 slots / 7.87 GiB VRAM,… |
 | [V100-84](results/V100-84.md) | QWEN38-MTP flags from the recipe | The MTP flag is present in the build (`--spec-type draft-mtp` in build129), but there's nothing to test it on: the only Qwen3.8-27B on disk is a third-party quantum `pxqn-onecard` (13.57… |
+| [V100-86](results/V100-86.md) | v100-llm-kit: ready SM70-binary | Translation:** (ik_llama.cpp b4578/022bd00a) on Qwen3-Coder-30B-A3B Q4_K_M with `-ngl 99 --n-cpu-moe 16 -fa 0`: prefill 645.1 ± 51.3 tok/s vs 554.3 ± 5.2 in our build b1b770d90 (+16%),… |
 
 ## Follow-ups in progress
 

@@ -526,5 +526,11 @@
   "title": "QWEN38-MTP flags from the recipe",
   "result_type": "unstated",
   "verdict": "The MTP flag is present in the build (`--spec-type draft-mtp` in build129), but there's nothing to test it on: the only Qwen3.8-27B on disk is a third-party quantum `pxqn-onecard` (13.57 GB), its tensor type 263 is outside the list of llama.cpp (0..44), and the engine fails to load in 0.33s (`failed to read tensor info`, rc=1) before flag parsing even begins. Both base and MTP configurations died the same way. There's no native GGUF for this model; Qwen3.8-Flash-Next is only available in Strata shards (IQ1_M 58 GB, UD-IQ4_XS 93.7 GB), which can't be loaded in one pass on a 16 GB card. The claimed +33-39% decode boost on our card remains untested: there's no artifact that the engine accepts."
+ },
+ {
+  "id": "V100-86",
+  "title": "v100-llm-kit: ready SM70-binary",
+  "result_type": "unstated",
+  "verdict": "Translation:** (ik_llama.cpp b4578/022bd00a) on Qwen3-Coder-30B-A3B Q4_K_M with `-ngl 99 --n-cpu-moe 16 -fa 0`: prefill 645.1 ± 51.3 tok/s vs 554.3 ± 5.2 in our build b1b770d90 (+16%), decode 57.1 ± 1.5 vs 57.9 ± 1.1 - difference within noise. Ready sm70-binaries run under driver 580 without modifications and without toolkit (608 MB including libcudart/cublas). Result: prefill higher, decode same; agent wrapper (serve-qwen3.sh, Claude Code) and Gemma 4 26B-A4B QAT not tested - separate card."
  }
 ]
