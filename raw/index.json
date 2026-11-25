@@ -85,8 +85,8 @@
  },
  {
   "id": "V100-103",
-  "title": "Batch savings: Batch vs individual loads",
-  "result_type": "unstated",
+  "title": "V100-103",
+  "result_type": "positive",
   "verdict": "Group of four runs on one model: batch 23.9 s vs. variance 39.1 s, savings 38.8%. Warm switching: 7B 1.5 s, 16B 2.5 s, 30B 3.5 s, i.e., 10 times less than the 40-60 s figure from the card (which was cold). Cold first load: 7B 1.8 s, 16B 12.2 s, 30B 4.4 s; on 16B batch lost (12.9 vs. 11.0 s) due to cold first load. Conclusion: grouping cards by model is beneficial, savings 58-69% on 7B and 30B. VRAM: 4.9 / 11.1 / 12.6 GB."
  },
  {
@@ -184,6 +184,12 @@
   "title": "V100-122",
   "result_type": "negative",
   "verdict": "Negative: 0 of 5 runs green at temperature 0 and 0 of 5 at 0.2, so the shipping bar is not met. Repeatability is not quality — temperature 0 reproduces the same defect with byte-exact fidelity, which is worse for a quoted order than a model that occasionally gets it right."
+ },
+ {
+  "id": "V100-123",
+  "title": "Quantum 30B under codes: Q4, Q5, Q6, Q8",
+  "result_type": "unstated",
+  "verdict": "Work in progress:** Q4 previously measured (MBPP 0.525, 21/40, -ncmoe 16, ctx 8192, /srv/media/night/eval_qwen3coder30b.json). Downloading Q5_K_M, Q6_K, Q8_0 from hf-mirror: full file CDN request throttles at 357 B/s, sequential resume curl -C - goes at 10-11 MB/s (parallel CDN ranges cut down to 15 KB). Sizes: Q5 21.7 GB, Q6 25.1 GB, Q8 32.5 GB; on 25.11 17:20 Q5 was 8.9 out of 21.7 GB. Artifacts placed in /srv/media/ai-cache/downloads, log at /srv/media/night/dl_qwen30b.log."
  },
  {
   "id": "V100-124",
