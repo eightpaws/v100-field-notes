@@ -90,6 +90,12 @@
   "verdict": "10 commits with 5 planted defects each (boundary, null, race, injection, leak), Qwen2.5-Coder-7B Q8_0, 16 seconds total. Found 17 out of 50 (34%), false 0 on commit. Completely failed three categories out of five: 0 out of 15 defects for null, boundaries, and races. Found 10 injections out of 10 and 7 leaks out of 10. Card criterion (not less than 3 out of 5 with max 2 false) not met on any commit: model sees what is visible by form of call and does not see semantic errors."
  },
  {
+  "id": "V100-110",
+  "title": "Red test cycle → repair on four languages",
+  "result_type": "unstated",
+  "verdict": "20 tasks (5 each in Python, JavaScript, C, Perl), Qwen2.5-Coder-7B-Instruct Q8_0, `llama-server` build129, temperature 0; total set - 25s, server up in 2s. Successfully fixed 18 out of 20 (90%) on the first attempt, meeting the \"at least 70%\" criterion. Failed two: py2 (`parse_duration(\"2h\")` - parsed \"45m\" variant but not the one without minutes) and pl5 (Perl `reverse_words`: fixed separator but broke space trimming). Test file remained unchanged throughout: it was restored from the baseline before each run."
+ },
+ {
   "id": "V100-111",
   "title": "Review diff: five planted bugs, accuracy and completeness",
   "result_type": "unstated",
