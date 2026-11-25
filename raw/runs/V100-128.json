@@ -1,0 +1,59 @@
+{
+  "card": "V100-128",
+  "question": "Can Qwen2.5-Coder-7B write a green and useful pytest suite for a module it has never seen?",
+  "subject_module": "billing.py, 380 lines, 16 public functions plus one class, stdlib only",
+  "model": "Qwen2.5-Coder-7B-Instruct-Q8_0",
+  "engine": "llama.cpp 1.0.0-dev build 1 commit b1b770d, CUDA 12.9, sm_70",
+  "generation_cmd": "llama-cli -m qwen2.5-coder-7b-instruct-q8_0.gguf -f prompt.txt -n 3000 -c 8192 -ngl 99 -t 8 --temp 0.2 -st --no-display-prompt --simple-io",
+  "harness_validation": "reference suite catches 10 of 10 mutations before the model is asked for anything",
+  "runs": [
+    {
+      "run": 1,
+      "tests_total": 18,
+      "tests_passed_on_pristine": 4,
+      "tests_failed_on_pristine": 14,
+      "coverage_passing_only_percent": 22.8,
+      "mutations_caught": 1,
+      "mutations_total": 10,
+      "raw_first_score_coverage_percent": 83.6,
+      "raw_first_score_mutations_caught": 10
+    },
+    {
+      "run": 2,
+      "tests_total": 18,
+      "tests_passed_on_pristine": 3,
+      "tests_failed_on_pristine": 15,
+      "coverage_passing_only_percent": 22.2,
+      "mutations_caught": 1,
+      "mutations_total": 10
+    },
+    {
+      "run": 3,
+      "tests_total": 18,
+      "tests_passed_on_pristine": 4,
+      "tests_failed_on_pristine": 14,
+      "coverage_passing_only_percent": 22.8,
+      "mutations_caught": 1,
+      "mutations_total": 10,
+      "generation_seconds_with_load": 23.4,
+      "vram_peak_mib": 8281
+    }
+  ],
+  "survived_mutations": [
+    "bulk_tier_strict_gt",
+    "discount_cap_removed",
+    "inclusive_tax_wrong_denominator",
+    "free_shipping_strict_gt",
+    "dedupe_overwrites_quantity",
+    "return_window_strict_lt",
+    "fx_truncates",
+    "bulk_percent_last_tier",
+    "proration_off_by_one_day"
+  ],
+  "caught_mutations": ["rounding_floor"],
+  "defect_taxonomy": {
+    "name_error_missing_imports": 9,
+    "wrong_expectations": 5
+  },
+  "note": "A mutation counts as caught only when a test that passes on the pristine module fails on the mutant. The first score (83.6 percent, 10 of 10) came from a suite that was already red on correct code, so it was discarded."
+}
