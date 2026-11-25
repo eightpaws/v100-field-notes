@@ -432,12 +432,6 @@
   "verdict": "720p with VAE tiling is viable — no tile seams at 1280×704 / 97 frames on 13.55 GiB. The weak point is not tiling but overall softness and blown highlights at 30 steps with the 5B model; go to 45 steps or downscale-and-upscale instead of blaming the tiler."
  },
  {
-  "id": "V100-63",
-  "title": "Loading model: detach from start harness",
-  "result_type": "unstated",
-  "verdict": "Model loading and harness start are separated.** Measured on this card: | Engine | Model | Start to first token | |---|---|---| | llama.cpp master | 7B Q4 | 3.5-4.2 s | | llama.cpp master | 30B Q4, ncmoe 16 | 6.1 s | | 1Cat-vLLM 1.5.4 | 7B GGUF | **105-120 s** | Difference of 25-30 times: llama.cpp reads weights from NFS and is ready immediately, vLLM spends two minutes on engine initialization, profiling, and graphs. Harness `model_eval.py` accounts for this separately (field `start_sec`), so quality blocks are not mixed with start time."
- },
- {
   "id": "V100-65",
   "title": "Recheck 8k and 16k and set num\\_batch to 4096",
   "result_type": "unstated",
