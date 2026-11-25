@@ -1,0 +1,187 @@
+{
+ "card": "V100-127",
+ "question": "Can a 7B coder model edit 2-4 files per task without changing the public API and without breaking the existing test suite?",
+ "model": "qwen2.5-coder-7b-instruct-q8_0.gguf",
+ "engine": "llama.cpp build1224 (commit 51831d47)",
+ "gpu": "Tesla V100-SXM2-16GB, sm_70, driver 580.178.04",
+ "settings": {
+  "ctx": 16384,
+  "ngl": 99,
+  "fa": 0,
+  "temp": 0.2,
+  "max_tokens": 3000,
+  "threads": 8
+ },
+ "vram_used_mib": 9387,
+ "started": "2026-11-25T12:50:19Z",
+ "finished": "2026-11-25T12:51:46Z",
+ "wall_seconds": 87,
+ "reference_project": "shopcore: 5 modules (models, pricing, storage, cart, api), about 200 lines, 10 pytest tests",
+ "gates": [
+  "public signature compatibility via inspect.signature snapshot",
+  "baseline pytest suite stays green"
+ ],
+ "passed": 7,
+ "total": 10,
+ "tasks": [
+  {
+   "id": "t01",
+   "task": "extract rounding into shopcore/rounding.py",
+   "files_written": [
+    "shopcore/rounding.py",
+    "shopcore/pricing.py",
+    "shopcore/cart.py",
+    "shopcore/api.py"
+   ],
+   "files_count": 4,
+   "generation_s": 10.1,
+   "completion_tokens": 745,
+   "api_compatible": true,
+   "tests_green": false,
+   "pass": false,
+   "note": "returned totals scaled by 100: round_cents implemented as int(value * 100), 5 of 10 tests red"
+  },
+  {
+   "id": "t02",
+   "task": "currency keyword argument",
+   "files_written": [
+    "shopcore/cart.py",
+    "shopcore/pricing.py",
+    "shopcore/api.py"
+   ],
+   "files_count": 3,
+   "generation_s": 9.1,
+   "completion_tokens": 710,
+   "api_compatible": true,
+   "tests_green": false,
+   "pass": false,
+   "note": "with_tax and Cart.subtotal returned {'total': ..., 'currency': ...} instead of int, 2 tests red"
+  },
+  {
+   "id": "t03",
+   "task": "stock availability check",
+   "files_written": [
+    "shopcore/storage.py",
+    "shopcore/api.py"
+   ],
+   "files_count": 2,
+   "generation_s": 5.9,
+   "completion_tokens": 462,
+   "api_compatible": true,
+   "tests_green": true,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "t04",
+   "task": "per-product discount field",
+   "files_written": [
+    "shopcore/models.py",
+    "shopcore/pricing.py",
+    "shopcore/cart.py",
+    "shopcore/api.py"
+   ],
+   "files_count": 4,
+   "generation_s": 10.6,
+   "completion_tokens": 830,
+   "api_compatible": false,
+   "tests_green": true,
+   "pass": false,
+   "note": "discount_percent inserted before stock, positional constructor arguments shifted"
+  },
+  {
+   "id": "t05",
+   "task": "created_at field on the order",
+   "files_written": [
+    "shopcore/models.py",
+    "shopcore/api.py",
+    "shopcore/storage.py"
+   ],
+   "files_count": 3,
+   "generation_s": 7.6,
+   "completion_tokens": 599,
+   "api_compatible": true,
+   "tests_green": true,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "t06",
+   "task": "constants moved to shopcore/config.py",
+   "files_written": [
+    "shopcore/config.py",
+    "shopcore/pricing.py",
+    "shopcore/cart.py",
+    "shopcore/api.py"
+   ],
+   "files_count": 4,
+   "generation_s": 9.3,
+   "completion_tokens": 722,
+   "api_compatible": true,
+   "tests_green": true,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "t07",
+   "task": "logging in storage, cart and api",
+   "files_written": [
+    "shopcore/storage.py",
+    "shopcore/cart.py",
+    "shopcore/api.py"
+   ],
+   "files_count": 3,
+   "generation_s": 9.6,
+   "completion_tokens": 757,
+   "api_compatible": true,
+   "tests_green": true,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "t08",
+   "task": "clear cart after checkout",
+   "files_written": [
+    "shopcore/cart.py",
+    "shopcore/api.py"
+   ],
+   "files_count": 2,
+   "generation_s": 6.6,
+   "completion_tokens": 521,
+   "api_compatible": true,
+   "tests_green": true,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "t09",
+   "task": "cancel order",
+   "files_written": [
+    "shopcore/storage.py",
+    "shopcore/api.py"
+   ],
+   "files_count": 2,
+   "generation_s": 6.9,
+   "completion_tokens": 545,
+   "api_compatible": true,
+   "tests_green": true,
+   "pass": true,
+   "note": ""
+  },
+  {
+   "id": "t10",
+   "task": "delegate the discounted subtotal",
+   "files_written": [
+    "shopcore/cart.py",
+    "shopcore/api.py"
+   ],
+   "files_count": 2,
+   "generation_s": 6.3,
+   "completion_tokens": 496,
+   "api_compatible": true,
+   "tests_green": true,
+   "pass": true,
+   "note": ""
+  }
+ ]
+}
