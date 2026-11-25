@@ -181,9 +181,9 @@
  },
  {
   "id": "V100-127",
-  "title": "Compatibility of API during multifile editing",
-  "result_type": "unstated",
-  "verdict": "7 out of 10 edits passed (criterion 8/10 not met) on Qwen2.5-Coder-7B Q8 (llama.cpp build1224, c=16384, ngl 99, fa 0, VRAM 9.4 GB). Each edit affected 2-4 files, generation took 6-11 s per task, total run was 87 s. Base set of 10 tests passed green for seven edits. Three failures: t01 implemented `round_cents` as multiplication by 100 (money in rubles) and failed 5 tests; t02 returned a dictionary from `with_tax`/`subtotal` instead of an int; t04 inserted new field `discount_percent` before `stock` - positional arguments of the constructor shifted, old call would give a 10% discount instead of the remaining 10."
+  "title": "V100-127",
+  "result_type": "negative",
+  "verdict": "No. 7 of 10 edits pass both gates; the stated criterion was 8 of 10. | Task | Files written | Generation | API gate | Tests | Pass | |---|---|---|---|---|---| | t01 rounding module | 4 | 10.1 s | ok | red (5 failed) | no | | t02 currency argument | 3 | 9.1 s | ok | red (2 failed) | no | | t03 stock check | 2 | 5.9 s | ok | green | yes | | t04 product discount | 4 | 10.6 s | no | green | no | | t05 created_at field | 3 | 7.6 s | ok | green | yes | | t06 config constants | 4 | 9.3 s | ok | green | yes | | t07 logging | 3 | 9.6 s | ok | green | yes | | t08 clear cart | 2 | 6.6 s | ok | green | yes | | t09 cancel order | 2 | 6.9 s | ok | green | yes | | t10 delegated subtotal | 2 | 6.3 s | ok | green | yes | Generation is 5.9-10.6 s per task and 462-830 completion tokens per answer; the whole ten-task run took 87 s wall clock, model load included. The three failures are three different mistakes, which is the useful part: * **t01 - wrong unit.** `round_cents` was implemented as `int(value * 100)`, i.e. the model decided the money values were rubles, not cents. Every total came back one hundred times too large and five tests went red. The API gate saw nothing wrong: names and signatures were intact. * **t02 - wrong return type.** `with_tax` and `Cart.subtotal` were changed to return `{'total': 1200, 'currency': 'RUB'}`. The signature gate passes (parameters are unchanged), only the test suite caught it. * **t04 - shifted positional arguments.** `discount_percent: int = 0` was inserted before `stock` in the `Product` dataclass, so `Product(1, 'tulip', 1000, 10)` now reads as a 10 percent discount with zero stock. Tests still pass because they use keyword arguments; the API gate caught the field order."
  },
  {
   "id": "V100-128",

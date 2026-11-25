@@ -5,7 +5,7 @@ Every number below was measured on the card, not copied from a project README. N
 published on purpose: they are the expensive part of anyone's time.
 
 Closed experiments: **84** — 13 positive, 10 mixed,
-8 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
+9 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -73,7 +73,7 @@ Read this before quoting a number.
 | [V100-120](results/V100-120.md) | Russian text in generated code | 8 out of 10 tasks accepted without revision according to the task criteria: names in Latin 10/10, Russian text in place 10/10, long hyphens 0, typos 0, syntax valid 10/10. Terms in Latin… |
 | [V100-122](results/V100-122.md) | V100-122 | **Negative.** Negative: 0 of 5 runs green at temperature 0 and 0 of 5 at 0.2, so the shipping bar is not met. Repeatability is not quality — temperature 0 reproduces the same defect with byte-exact… |
 | [V100-124](results/V100-124.md) | V100-124 | **Negative.** Negative: 3 of 10 scenarios in both runs. The retry skeleton is sound, but one shadowed name kills every request the client makes — exactly the class of defect that a test suite finds… |
-| [V100-127](results/V100-127.md) | Compatibility of API during multifile editing | 7 out of 10 edits passed (criterion 8/10 not met) on Qwen2.5-Coder-7B Q8 (llama.cpp build1224, c=16384, ngl 99, fa 0, VRAM 9.4 GB). Each edit affected 2-4 files, generation took 6-11 s… |
+| [V100-127](results/V100-127.md) | V100-127 | **Negative.** No. 7 of 10 edits pass both gates; the stated criterion was 8 of 10. | Task | Files written | Generation | API gate | Tests | Pass | |---|---|---|---|---|---| | t01 rounding module | 4 |… |
 | [V100-128](results/V100-128.md) | V100-128 | **Negative.** No. All three suites are red on the correct code: 14 of 18 tests fail. Counting only the tests that are green on the pristine module, coverage is 22.2-22.8 % against a 60 % target, and 1… |
 | [V100-13](results/V100-13.md) | AWQ/int4 vs GGUF Q4 on Volta | AWQ/int4 via vLLM 1.5.4: model loaded (14287 MiB VRAM), decode **117 tok/s** (114.2 / 116.9 after warm-up, first request 66.5), code is correct. Against GGUF Q4_K_M in llama.cpp: 132… |
 | [V100-14](results/V100-14.md) | 24B in 16 GB: Mistral-Small-3.1-24B AWQ | Mistral Small 24B AWQ does not fit in 16 GB via vLLM. The model is fully downloaded (3 shards, 13.4 GB, all tensors are read), 1Cat-vLLM 1.5.4 compiled for sm_70 and has separate… |
