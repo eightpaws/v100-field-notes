@@ -108,6 +108,12 @@
   "verdict": "10 commits with 5 planted defects each (boundary, null, race, injection, leak), Qwen2.5-Coder-7B Q8_0, 16 seconds total. Found 17 out of 50 (34%), false positives 0 per commit. Completely failed three categories out of five: 0 out of 15 null, boundary, and race defects found. Found 10 injections out of 10 and 7 leaks out of 10. Card criterion (no less than 3 out of 5 with max 2 false positives) not met on any commit: model sees what's visible by form, doesn't see semantic errors."
  },
  {
+  "id": "V100-112",
+  "title": "Refactoring with green tests",
+  "result_type": "unstated",
+  "verdict": "Refactoring Tasks: 10 tasks, 2-3 files each (helper code extraction, global renaming, deduplication, signature change, constant extraction, module separation, dead parameter removal, common exception module, nested calculation extraction, keyword-only parameter), Qwen2.5-Coder-7B Q8_0, `llama-server` build129, temperature 0; All 10 responses - 20.5s (avg 1.6s per task), server startup 2s, peak VRAM 8115 MiB. Tests green after edit in 9/10, public API preserved in 9/10, unrelated file unchanged (0/10), but one task rewrote test file - violation, not solution. By letter of criteria (tests green, no edits in unrelated files) 8/10, strictly accounting for public API 7/10, thus criterion not met.**"
+ },
+ {
   "id": "V100-113",
   "title": "Schema, migrations, and queries against SQLite",
   "result_type": "unstated",

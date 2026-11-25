@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **69** — 13 positive, 8 mixed,
+Closed experiments: **70** — 13 positive, 8 mixed,
 5 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -61,6 +61,7 @@ Read this before quoting a number.
 | [V100-108](results/V100-108.md) | Tests that catch: mutation testing of generated tests | 10 commits with 5 planted defects each (boundary, null, race, injection, leak), Qwen2.5-Coder-7B Q8_0, 16 seconds total. Found 17 out of 50 (34%), false 0 on commit. Completely failed… |
 | [V100-110](results/V100-110.md) | Red test cycle → repair on four languages | 20 tasks (5 each in Python, JavaScript, C, Perl), Qwen2.5-Coder-7B-Instruct Q8_0, `llama-server` build129, temperature 0; total set - 25s, server up in 2s. Successfully fixed 18 out of… |
 | [V100-111](results/V100-111.md) | Review diff: five planted bugs, accuracy and completeness | 10 commits with 5 planted defects each (boundary, null, race, injection, leak), Qwen2.5-Coder-7B Q8_0, 16 seconds total. Found 17 out of 50 (34%), false positives 0 per commit.… |
+| [V100-112](results/V100-112.md) | Refactoring with green tests | Refactoring Tasks: 10 tasks, 2-3 files each (helper code extraction, global renaming, deduplication, signature change, constant extraction, module separation, dead parameter removal,… |
 | [V100-113](results/V100-113.md) | Schema, migrations, and queries against SQLite | 20 tasks on SQLite (schema, migration, 3 queries to each), Qwen2.5-Coder-7B Q8_0, two runs of 37s each. Completely correct 7 and 9 tasks out of 20 with a criterion of 15, queries correct… |
 | [V100-13](results/V100-13.md) | AWQ/int4 vs GGUF Q4 on Volta | AWQ/int4 via vLLM 1.5.4: model loaded (14287 MiB VRAM), decode **117 tok/s** (114.2 / 116.9 after warm-up, first request 66.5), code is correct. Against GGUF Q4_K_M in llama.cpp: 132… |
 | [V100-14](results/V100-14.md) | 24B in 16 GB: Mistral-Small-3.1-24B AWQ | Mistral Small 24B AWQ does not fit in 16 GB via vLLM. The model is fully downloaded (3 shards, 13.4 GB, all tensors are read), 1Cat-vLLM 1.5.4 compiled for sm_70 and has separate… |
