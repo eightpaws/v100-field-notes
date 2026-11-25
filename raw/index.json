@@ -552,6 +552,12 @@
   "verdict": "Mixed: prefill 16 % faster with the shipped sm_70 binaries, decode identical. Worth taking for long prompts (document analysis, repository context); not a reason to migrate a decode-bound workload. The vendor's agent wrapper (`serve-qwen3.sh`, Claude Code integration) and the claimed Gemma 4 26B-A4B QAT Q4_0 in 16 GB were not tested."
  },
  {
+  "id": "V100-91",
+  "title": "Recheck sm70-attn with head_dim 256",
+  "result_type": "unstated",
+  "verdict": "Yes, the D256 core is faster than our build: a fork of fishlikeX/sm70-attn (5e11845) on Qwen3.8-27B IQ3_S yields **1279.4** tok/s prefill at 8k and **1224.6** at 16k, compared to **1178.9** and **1100.9** in our dbaf582 build (same -fa on, q4_0 KV, V100 16 GB), an increase of +8.5% and +11.2%; decoding is the same (35.9 vs 36.3 tok/s). The core's contribution alone (same binary, LLAMA_SM70_D256=0/1) is more modest: +4.2% at 8k and +8.6% at 16k, with the README-claimed +34-48% applicable to 100-174k context and not reproducible at 8-16k. At f16 KV 16k, neither fork nor our build can run (OOM), so no comparison is possible. Quality was not measured."
+ },
+ {
   "id": "V100-99",
   "title": "Prompt-expander: LLM writes prompt for photographer",
   "result_type": "unstated",

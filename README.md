@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **93** — 15 positive, 13 mixed,
+Closed experiments: **94** — 15 positive, 13 mixed,
 11 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -135,6 +135,7 @@ Read this before quoting a number.
 | [V100-84](results/V100-84.md) | QWEN38-MTP flags from the recipe | The MTP flag is present in the build (`--spec-type draft-mtp` in build129), but there's nothing to test it on: the only Qwen3.8-27B on disk is a third-party quantum `pxqn-onecard` (13.57… |
 | [V100-85](results/V100-85.md) | V100-85 | **Negative.** Negative. The 2-bit quant does what it promises on memory - a 29B MoE resident in 16 GB at 71 tok/s decode - but code quality lands at 0.425, below the card's 0.55 bar and below even a… |
 | [V100-86](results/V100-86.md) | V100-86 | **Mixed.** Mixed: prefill 16 % faster with the shipped sm_70 binaries, decode identical. Worth taking for long prompts (document analysis, repository context); not a reason to migrate a… |
+| [V100-91](results/V100-91.md) | Recheck sm70-attn with head_dim 256 | Yes, the D256 core is faster than our build: a fork of fishlikeX/sm70-attn (5e11845) on Qwen3.8-27B IQ3_S yields **1279.4** tok/s prefill at 8k and **1224.6** at 16k, compared to… |
 | [V100-99](results/V100-99.md) | Prompt-expander: LLM writes prompt for photographer | The hypothesis was partially confirmed, and the solution depends on the prompt length. 20 product positions via vikhr-nemo-12b: valid JSON 20/20, all three keys 20/20, English without… |
 
 ## Follow-ups in progress
