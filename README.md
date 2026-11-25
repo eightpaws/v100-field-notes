@@ -5,7 +5,7 @@ Every number below was measured on the card, not copied from a project README. N
 published on purpose: they are the expensive part of anyone's time.
 
 Closed experiments: **80** — 13 positive, 10 mixed,
-5 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
+6 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -70,7 +70,7 @@ Read this before quoting a number.
 | [V100-116](results/V100-116.md) | What a generated project still needs before delivery | **Mixed.** Deliverable, but only what was asked for: the model emitted a Dockerfile and a LICENSE exactly where the prompt named them and skipped them where it did not. The delivery checklist… |
 | [V100-117](results/V100-117.md) | V100-117 | **Mixed.** The machine is not the cost. Six orders cost seven kopecks of electricity and under three minutes of GPU time; two of six needed the full two repair rounds and still failed, which is… |
 | [V100-118](results/V100-118.md) | Conveyor spec → plan → code → tests → review against one prompt | Same 7B Q4_K_M, 10 MBPP tasks, temperature 0: one prompt 7/10 (0.70), pipeline spec-code-tests-reviews 6/10 (0.60) - difference **-10 points**. Pipeline takes **12 times longer** (6.1s… |
-| [V100-122](results/V100-122.md) | Stability of output: five repeats of one task | 5 runs at temperature 0 produced byte-for-byte identical files (110 lines, sha 250c6b60), at 0.2 - five different ones (73-115 lines, average 97), so repeatability at 0 is absolute, and… |
+| [V100-122](results/V100-122.md) | V100-122 | **Negative.** Negative: 0 of 5 runs green at temperature 0 and 0 of 5 at 0.2, so the shipping bar is not met. Repeatability is not quality — temperature 0 reproduces the same defect with byte-exact… |
 | [V100-13](results/V100-13.md) | AWQ/int4 vs GGUF Q4 on Volta | AWQ/int4 via vLLM 1.5.4: model loaded (14287 MiB VRAM), decode **117 tok/s** (114.2 / 116.9 after warm-up, first request 66.5), code is correct. Against GGUF Q4_K_M in llama.cpp: 132… |
 | [V100-14](results/V100-14.md) | 24B in 16 GB: Mistral-Small-3.1-24B AWQ | Mistral Small 24B AWQ does not fit in 16 GB via vLLM. The model is fully downloaded (3 shards, 13.4 GB, all tensors are read), 1Cat-vLLM 1.5.4 compiled for sm_70 and has separate… |
 | [V100-17](results/V100-17.md) | LMDeploy TurboMind: AWQ without forks | Partial: TurboMind works on sm_70 but loses quality in 4-bit. Speed: decode 131.2 tok/s (n=3, stdev 0.13), prefill 4266 tok/s at 751 token, VRAM 14.8 GiB, warm-up 50s. Quality: MBPP… |

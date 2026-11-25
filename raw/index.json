@@ -163,9 +163,9 @@
  },
  {
   "id": "V100-122",
-  "title": "Stability of output: five repeats of one task",
-  "result_type": "unstated",
-  "verdict": "5 runs at temperature 0 produced byte-for-byte identical files (110 lines, sha 250c6b60), at 0.2 - five different ones (73-115 lines, average 97), so repeatability at 0 is absolute, and at 0.2 the format varies by ±40% lines. Out of 12 tests in each of ten runs, only 4 passed: the criterion \"not less than 4 successful out of 5\" was not met (0 out of 5 at both temperatures). The defect occurs in all ten files: `next()` constructs `self.tasks.index(x)` when `self.tasks` is a dictionary and raises AttributeError, loading in the constructor falls with TypeError, therefore CLI `stats` on existing file does not work. Only add with pending counter passed, KeyError on unknown id, ValueError on broken JSON and empty next() = None."
+  "title": "V100-122",
+  "result_type": "negative",
+  "verdict": "Negative: 0 of 5 runs green at temperature 0 and 0 of 5 at 0.2, so the shipping bar is not met. Repeatability is not quality — temperature 0 reproduces the same defect with byte-exact fidelity, which is worse for a quoted order than a model that occasionally gets it right."
  },
  {
   "id": "V100-13",
