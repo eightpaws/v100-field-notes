@@ -132,6 +132,12 @@
   "verdict": "Deliverable, but only what was asked for: the model emitted a Dockerfile and a LICENSE exactly where the prompt named them and skipped them where it did not. The delivery checklist therefore belongs in the prompt, not in expectations — with the full checklist stated, one of three projects came out client-ready without edits."
  },
  {
+  "id": "V100-118",
+  "title": "Conveyor spec → plan → code → tests → review against one prompt",
+  "result_type": "unstated",
+  "verdict": "Same 7B Q4_K_M, 10 MBPP tasks, temperature 0: one prompt 7/10 (0.70), pipeline spec-code-tests-reviews 6/10 (0.60) - difference **-10 points**. Pipeline takes **12 times longer** (6.1s vs 0.5s per task) and **13 times more tokens** (6516 vs 490). Card criterion (+20 points) not met: at n=10 one task = 10 points, no gain even within noise, but cost increased by an order of magnitude. Model's own checks passed on 3 tasks that MBPP hidden tests failed, - self-check as a filter does not work."
+ },
+ {
   "id": "V100-13",
   "title": "AWQ/int4 vs GGUF Q4 on Volta",
   "result_type": "unstated",
