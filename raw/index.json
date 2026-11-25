@@ -97,8 +97,8 @@
  },
  {
   "id": "V100-108",
-  "title": "Tests that catch: mutation testing of generated tests",
-  "result_type": "unstated",
+  "title": "V100-108",
+  "result_type": "mixed",
   "verdict": "Three branches, Qwen2.5-Coder-7B Q8, temp 0.2. (A) The model writes both code and tests according to the spec: red suite on its own code (3 out of 6 tests fail), with two real errors in the code - tax is divided by 200 instead of 10000 basis points and `total` calculates tax on non-discounted sum; another expectation in the test is incorrect (sum 350 instead of expected 250). (B) The model writes only tests for the reference module: 6 functions, 25 checks, one expectation is incorrect (`total(1000, 100, 2000)` expects 1000 instead of 0), so the suite fails red. (C) The same suite with one incorrect line removed passes green on reference: coverage 88%, out of 20 primary mutants, 14 are killed - that's 70%. The criterion \"no less than 60% mutants\" is met, but only after human correction of one expectation: as is, the model outputs an unsuitable suite."
  },
  {
