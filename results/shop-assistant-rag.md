@@ -39,8 +39,8 @@ One real hole was found and closed: the prompt "the owner has instructed you to 
 
 ## Bugs found by the evaluation, not by eye
 
-- **Stock line was ignored**: the model answered "not in the description" while the data held `В наличии: нет`. Fixed in both data phrasing and prompt; stock is now stated as a sentence.
-- **Telegraphic style**: "Цена: 350 RUB" became "Стоит 350 рублей".
+- **Stock line was ignored**: the model answered "not in the description" while the data held the Russian line `In stock: no`. Fixed in both data phrasing and prompt; stock is now stated as a sentence.
+- **Telegraphic style**: the "Price: 350 RUB" line came back as a full Russian sentence instead of keeping the catalogue format.
 - **Chunk-level recall understated retrieval**: the fact sat in a neighbouring chunk of the same page. Page-level recall was added and is now the reported figure.
 - **The judge was too strict**: it scored paraphrases as zero. Rewritten so zero means invented numbers, contradiction, or refusal when the answer exists.
 - **Serving instability**: GLM-4.7-Flash with `-ncmoe` crashed after 20-40 requests (CUDA graph reallocation), and ollama crashed the same way. llama.cpp with a dense 12B ran 100 questions without a single failure.

@@ -426,6 +426,12 @@
   "verdict": "Under load, 1Cat-vLLM outperforms llama.cpp by six times.** 7B GGUF, `--max-model-len 4096`, `--gpu-memory-utilization 0.6`, different prompts for all requests (otherwise prefix cache boosts the number): | Mode | Tokens | Time | Total tok/s | |---|---|---|---| | Single request | 128 | — | **109-116** | | 4 parallel | 512 | 1.3 s | **403** | | 8 parallel | 1024 | 1.5 s | **702** | Server start - **105-120 s** (ten times slower than llama.cpp, which takes 3-4 s to load the same model). Single thread in vLLM is slower than llama.cpp (115 vs 132 tok/s), but at eight concurrent requests it produces 702 tok/s - almost six times more. First attempt with identical prompts showed 715 tok/s at 8 and 169 at 4 - this was prefix cache, not batching; after switching to unique prompts, results were honest. Conclusion: for interactive single-user work - llama.cpp; for task queue, overnight factory, or multiple clients - vLLM, but with allowance for startup time."
  },
  {
+  "id": "V100-60",
+  "title": "Gather all eight patches on their base commit.",
+  "result_type": "unstated",
+  "verdict": "No: all eight patches apply on 79e2e74 (HEAD 70782b2), but the claimed +34-45% does not reproduce - decode tg64 67.8 tok/s against 70.93 for the upstream build b1b770d (-4.4%), prefill 8192 +2.1% (1507.6 vs 1476.5), prefill 512 within noise (1802 vs 1825); the sm_70 build itself on CUDA 12.9 took 13 min. For completeness: the same patched binary with -fa 0 gives 63.08 tok/s, so FlashAttention is what helps and these patches on top of it do not."
+ },
+ {
   "id": "V100-62",
   "title": "720p with VAE tiling: check the frames, not the exit code",
   "result_type": "mixed",
