@@ -168,6 +168,12 @@
   "verdict": "Negative: 0 of 5 runs green at temperature 0 and 0 of 5 at 0.2, so the shipping bar is not met. Repeatability is not quality — temperature 0 reproduces the same defect with byte-exact fidelity, which is worse for a quoted order than a model that occasionally gets it right."
  },
  {
+  "id": "V100-124",
+  "title": "V100-124",
+  "result_type": "negative",
+  "verdict": "Negative: 3 of 10 scenarios in both runs. The retry skeleton is sound, but one shadowed name kills every request the client makes — exactly the class of defect that a test suite finds and a code review often misses."
+ },
+ {
   "id": "V100-13",
   "title": "AWQ/int4 vs GGUF Q4 on Volta",
   "result_type": "unstated",
