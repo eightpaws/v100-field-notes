@@ -198,6 +198,12 @@
   "verdict": "Negative: 3 of 10 scenarios in both runs. The retry skeleton is sound, but one shadowed name kills every request the client makes — exactly the class of defect that a test suite finds and a code review often misses."
  },
  {
+  "id": "V100-125",
+  "title": "WordPress and WooCommerce: Plugin Editing with Tests",
+  "result_type": "unstated",
+  "verdict": "Partially: both tasks (10 tests on delivery threshold by categories and 6 tests on hook wrapping) passed without edits on three models - Qwen2.5-Coder-14B Q4: 10/10 and 6/6, generation 7 and 8 sec, VRAM 9.6 GB; DeepSeek-Coder-V2-Lite 16B Q4: 10/10 and 6/6, 6 and 6 sec, 11.5 GB; Qwen3-Coder-30B-A3B Q4 with `-ncmoe 16`: 10/10 and 6/6, 16 and 20 sec, 12.9 GB. Syntax is clean in all six files, ksort/round/zero cost bid and suffix label done correctly on first pass. Models differ only in speed and memory, quality did not differ: The tasks with precise requirements for them were simple. **Not tested:** live WordPress/WooCommerce (no MySQL and WP-CLI in guest, store not touched) - \"does not break existing hooks\" point remains untested, clean functions without WP load were tested."
+ },
+ {
   "id": "V100-126",
   "title": "Generated code productivity",
   "result_type": "unstated",

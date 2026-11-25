@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **89** — 14 positive, 12 mixed,
+Closed experiments: **90** — 14 positive, 12 mixed,
 9 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -76,6 +76,7 @@ Read this before quoting a number.
 | [V100-122](results/V100-122.md) | V100-122 | **Negative.** Negative: 0 of 5 runs green at temperature 0 and 0 of 5 at 0.2, so the shipping bar is not met. Repeatability is not quality — temperature 0 reproduces the same defect with byte-exact… |
 | [V100-123](results/V100-123.md) | Quantum 30B under codes: Q4, Q5, Q6, Q8 | Work in progress:** Q4 previously measured (MBPP 0.525, 21/40, -ncmoe 16, ctx 8192, /srv/media/night/eval_qwen3coder30b.json). Downloading Q5_K_M, Q6_K, Q8_0 from hf-mirror: full file… |
 | [V100-124](results/V100-124.md) | V100-124 | **Negative.** Negative: 3 of 10 scenarios in both runs. The retry skeleton is sound, but one shadowed name kills every request the client makes — exactly the class of defect that a test suite finds… |
+| [V100-125](results/V100-125.md) | WordPress and WooCommerce: Plugin Editing with Tests | Partially: both tasks (10 tests on delivery threshold by categories and 6 tests on hook wrapping) passed without edits on three models - Qwen2.5-Coder-14B Q4: 10/10 and 6/6, generation 7… |
 | [V100-126](results/V100-126.md) | Generated code productivity | Ten tasks on 100,000 records, n=3, median. Correct in 9/10 cases, all nine within 3x of the standard: median ratio 0.95, worst 1.02, so model code indistinguishable from the standard in… |
 | [V100-127](results/V100-127.md) | V100-127 | **Negative.** No. 7 of 10 edits pass both gates; the stated criterion was 8 of 10. | Task | Files written | Generation | API gate | Tests | Pass | |---|---|---|---|---|---| | t01 rounding module | 4 |… |
 | [V100-128](results/V100-128.md) | V100-128 | **Negative.** No. All three suites are red on the correct code: 14 of 18 tests fail. Counting only the tests that are green on the pristine module, coverage is 22.2-22.8 % against a 60 % target, and 1… |
