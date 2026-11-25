@@ -180,6 +180,12 @@
   "verdict": "Negative: 3 of 10 scenarios in both runs. The retry skeleton is sound, but one shadowed name kills every request the client makes — exactly the class of defect that a test suite finds and a code review often misses."
  },
  {
+  "id": "V100-127",
+  "title": "Compatibility of API during multifile editing",
+  "result_type": "unstated",
+  "verdict": "7 out of 10 edits passed (criterion 8/10 not met) on Qwen2.5-Coder-7B Q8 (llama.cpp build1224, c=16384, ngl 99, fa 0, VRAM 9.4 GB). Each edit affected 2-4 files, generation took 6-11 s per task, total run was 87 s. Base set of 10 tests passed green for seven edits. Three failures: t01 implemented `round_cents` as multiplication by 100 (money in rubles) and failed 5 tests; t02 returned a dictionary from `with_tax`/`subtotal` instead of an int; t04 inserted new field `discount_percent` before `stock` - positional arguments of the constructor shifted, old call would give a 10% discount instead of the remaining 10."
+ },
+ {
   "id": "V100-128",
   "title": "V100-128",
   "result_type": "negative",
