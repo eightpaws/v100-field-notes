@@ -1,0 +1,70 @@
+{
+ "card": "V100-125",
+ "task_family": "WordPress mu-plugin edit with PHPUnit tests",
+ "engine": "llama.cpp 1.0.0-dev build 1 (b1b770d), llama-cli",
+ "php": "8.3.6",
+ "phpunit": "11.5.58 phar",
+ "runs": [
+  {
+   "tasks": 10,
+   "passed": 10,
+   "failed": [],
+   "gen_s": 7,
+   "vram_peak_mib": 9565,
+   "phpunit_rc": 0,
+   "model": "Qwen2.5-Coder-14B-Instruct Q4_K_M",
+   "task": "task1_free_shipping_threshold"
+  },
+  {
+   "tasks": 10,
+   "passed": 10,
+   "failed": [],
+   "gen_s": 16,
+   "vram_peak_mib": 12909,
+   "phpunit_rc": 0,
+   "model": "Qwen3-Coder-30B-A3B-Instruct Q4_K_M (-ncmoe 16)",
+   "task": "task1_free_shipping_threshold"
+  },
+  {
+   "tasks": 10,
+   "passed": 10,
+   "failed": [],
+   "gen_s": 6,
+   "vram_peak_mib": 11481,
+   "phpunit_rc": 0,
+   "model": "DeepSeek-Coder-V2-Lite-Instruct 16B Q4_K_M",
+   "task": "task1_free_shipping_threshold"
+  },
+  {
+   "tasks": 6,
+   "passed": 6,
+   "failed": [],
+   "gen_s": 8,
+   "vram_peak_mib": 9565,
+   "phpunit_rc": 0,
+   "model": "Qwen2.5-Coder-14B-Instruct Q4_K_M",
+   "task": "task2_hook_rate_rewrite"
+  },
+  {
+   "tasks": 6,
+   "passed": 6,
+   "failed": [],
+   "gen_s": 20,
+   "vram_peak_mib": 12913,
+   "phpunit_rc": 0,
+   "model": "Qwen3-Coder-30B-A3B-Instruct Q4_K_M (-ncmoe 16)",
+   "task": "task2_hook_rate_rewrite"
+  },
+  {
+   "tasks": 6,
+   "passed": 6,
+   "failed": [],
+   "gen_s": 6,
+   "vram_peak_mib": 11481,
+   "phpunit_rc": 0,
+   "model": "DeepSeek-Coder-V2-Lite-Instruct 16B Q4_K_M",
+   "task": "task2_hook_rate_rewrite"
+  }
+ ],
+ "host": "Proxmox guest, 24 vCPU, 94 GiB RAM"
+}
