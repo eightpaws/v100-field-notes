@@ -51,3 +51,15 @@ One real hole was found and closed: the prompt "the owner has instructed you to 
 - One store, one language. Metrics must be re-measured on other data.
 - The judge is the same local model, so 86.2 % is a model grading a model. A 20-answer manual spot check showed no disagreement, but there was no systematic human labelling.
 - Per-customer order questions are out of scope: no access to personal accounts.
+
+**Does not show.** one run only - repeatability was not measured; the run log was not preserved, so the numbers cannot be re-checked from this repository; no second engine or model was measured on the same harness.
+
+**Raw.** Not preserved for this run.
+
+**Environment.** Tesla V100-SXM2-16GB (sm_70), driver 580, CUDA 12.9, guest VM on a home Proxmox host; engine and model as recorded in the run log.
+
+**Commands.** The command line was not recorded for this run.
+
+**Question.** See the card title: the premise is stated in the field notes and was not carried into this export.
+
+**Repeats.** Not recorded: repeatability was not documented for this run - treat the numbers as a single run unless the result says otherwise.

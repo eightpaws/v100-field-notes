@@ -50,3 +50,15 @@ Identical in fp16 and fp32: torch 2.10 with cuDNN 9 finds no suitable engine on 
 1. A cuDNN 8 environment or a PyTorch build for sm_70, so Real-ESRGAN and SUPIR can be compared against the current 4× on PSNR/SSIM and time.
 2. For prints above A3, a second 2× step with a sharpness check instead of plain stretching.
 3. ControlNet-depth (~2.5 GB) plus a product-preservation metric — the next card.
+
+**Does not show.** one run only - repeatability was not measured; the run log was not preserved, so the numbers cannot be re-checked from this repository.
+
+**Raw.** Not preserved for this run.
+
+**Environment.** Tesla V100-SXM2-16GB (sm_70), driver 580, CUDA 12.9, guest VM on a home Proxmox host; engine and model as recorded in the run log.
+
+**Commands.** The command line was not recorded for this run.
+
+**Question.** See the card title: the premise is stated in the field notes and was not carried into this export.
+
+**Repeats.** Not recorded: repeatability was not documented for this run - treat the numbers as a single run unless the result says otherwise.

@@ -52,3 +52,15 @@ To make the second half honest:
 - One language, own repositories, 267 files. Foreign codebases untested.
 - Nine repair tasks is far too few for any claim about repair ability.
 - The model was vikhr-nemo 12B, not a code-specialised one. Code models on the card (Qwen3-Coder-30B, DeepSeek-Coder-V2-Lite) were not compared.
+
+**Does not show.** one run only - repeatability was not measured; the run log was not preserved, so the numbers cannot be re-checked from this repository; no second engine or model was measured on the same harness.
+
+**Raw.** Not preserved for this run.
+
+**Environment.** Tesla V100-SXM2-16GB (sm_70), driver 580, CUDA 12.9, guest VM on a home Proxmox host; engine and model as recorded in the run log.
+
+**Commands.** The command line was not recorded for this run.
+
+**Question.** See the card title: the premise is stated in the field notes and was not carried into this export.
+
+**Repeats.** Not recorded: repeatability was not documented for this run - treat the numbers as a single run unless the result says otherwise.
