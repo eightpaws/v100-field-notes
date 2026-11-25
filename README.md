@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **100** — 19 positive, 14 mixed,
+Closed experiments: **101** — 19 positive, 14 mixed,
 12 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -84,6 +84,7 @@ Read this before quoting a number.
 | [V100-128](results/V100-128.md) | Writing tests for someone else's code: coverage and defect detection | **Negative.** No. All three suites are red on the correct code: 14 of 18 tests fail. Counting only the tests that are green on the pristine module, coverage is 22.2-22.8 % against a 60 % target, and 1… |
 | [V100-129](results/V100-129.md) | Censored 27B on one card | Dense 27B IQ3_S (10.95 GiB) fit entirely: decode 37.26 tok/s (tg64, n=3), prefill 837.69 on pp512 and 800.49 on pp8192, server with `-c 16384` launched in 9s with 12,977 MiB VRAM, peak… |
 | [V100-13](results/V100-13.md) | AWQ/int4 vs GGUF Q4 on Volta | AWQ/int4 via vLLM 1.5.4: model loaded (14287 MiB VRAM), decode **117 tok/s** (114.2 / 116.9 after warm-up, first request 66.5), code is correct. Against GGUF Q4_K_M in llama.cpp: 132… |
+| [V100-131](results/V100-131.md) | Failure metric: 20 prompts, uncensored vs censored | Translation:** 27B abliterated IQ3_S (model 2 of 3): class A 7/7 direct response, class B 9/9 direct (zero failures), class C 4/4 refusal. 11.5s for 400 tokens (~35 tok/s), VRAM 12,443… |
 | [V100-14](results/V100-14.md) | 24B in 16 GB: Mistral-Small-3.1-24B AWQ | Mistral Small 24B AWQ does not fit in 16 GB via vLLM. The model is fully downloaded (3 shards, 13.4 GB, all tensors are read), 1Cat-vLLM 1.5.4 compiled for sm_70 and has separate… |
 | [V100-17](results/V100-17.md) | LMDeploy TurboMind: AWQ without forks | Partial: TurboMind works on sm_70 but loses quality in 4-bit. Speed: decode 131.2 tok/s (n=3, stdev 0.13), prefill 4266 tok/s at 751 token, VRAM 14.8 GiB, warm-up 50s. Quality: MBPP… |
 | [V100-18](results/V100-18.md) | xllama.cpp: compress KV instead of q8 | Compressed KV in xllama.cpp works, but on long context it becomes too slow. Built with xllama.cpp f9287a9 (fork of llama.cpp from April 2026 with… |
