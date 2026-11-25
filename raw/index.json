@@ -120,6 +120,12 @@
   "verdict": "20 tasks on SQLite (schema, migration, 3 queries to each), Qwen2.5-Coder-7B Q8_0, two runs of 37s each. Completely correct 7 and 9 tasks out of 20 with a criterion of 15, queries correct 46 and 50 out of 60, migrations 14 out of 20. Errors in both runs are the same: `ALTER` without backfill (column exists, values empty), NULL instead of 0 for empty group, forgotten join to `plays`, subtracting textual dates instead of `julianday`. Criterion not met: 7B is suitable for SQL only under review, cannot send its queries to the client without checking."
  },
  {
+  "id": "V100-114",
+  "title": "Frontend: page with form, checking Playwright",
+  "result_type": "unstated",
+  "verdict": "Qwen2.5-Coder-7B-Instruct generated 10 pages of one specification in 109 seconds (9.7-12.4 seconds per page, 3.2-5.0 thousand symbols). Playwright scenario (desktop 1280, mobile 390, empty submission, valid submission, console) completed **1 out of 10 pages**; card criterion (8 out of 10) not met."
+ },
+ {
   "id": "V100-116",
   "title": "What a generated project still needs before delivery",
   "result_type": "mixed",
