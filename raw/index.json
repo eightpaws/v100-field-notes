@@ -168,6 +168,12 @@
   "verdict": "8 out of 10 tasks accepted without revision according to the task criteria: names in Latin 10/10, Russian text in place 10/10, long hyphens 0, typos 0, syntax valid 10/10. Terms in Latin not retained in two tasks out of ten: token turned into \"tokens\", cache - into \"caching\". Plus one typo (\"Raschityvaet\") and English README header with Russian body; with these three revisions, 7 out of 10 are accepted. Generation of 10 tasks - 19.3 s, VRAM not measured (server was launched without monitoring)."
  },
  {
+  "id": "V100-121",
+  "title": "Consistency of style with existing code",
+  "result_type": "unstated",
+  "verdict": "20 runs (10 tasks x 2 models), temp 0, baseline Harness passed ruff/mypy/pytest 10/10. Qwen2.5-Coder-7B Q8: ruff clean 4/10, mypy 9/10, tests 8/10, median deviation from baseline 19.5% lines; 14B Q4: ruff 4/10, mypy 10/10, tests 10/10, median 17.5%. Overall defect in both: imports written after code without sorting (I001 in 5-6 tasks) and typing.List instead of list (t06)."
+ },
+ {
   "id": "V100-122",
   "title": "V100-122",
   "result_type": "negative",
