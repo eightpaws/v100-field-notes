@@ -151,15 +151,21 @@
  },
  {
   "id": "V100-117",
-  "title": "Cost of a typical order: hours and price for six types of work",
-  "result_type": "unstated",
-  "verdict": "Six standard orders for Qwen2.5-Coder-7B Q8_0, acceptance tests provided in advance (as per client): accepted on first try with Telegram-bot (10.7 s), WooCommerce hook (6.9 s), client API with retries (22.9 s); landing page 9 out of 10 checks passed (catalog without prices); price parser and auto-file layout not accepted, even after two repairs ('1290 rub' error, files not moving). Total machine time for all six orders: 142.7 s at 300 W: 0.012 kWh, approximately 0.07 ₽, 20.5k input and 11.3k output tokens, 79 tok/s, 1M output tokens around 6.3 ₽. Conclusion: machine is cheap, order price determined by human editing, not tokens. Not measured: human-hours of refinement and time for gathering TZ, 4-hour estimate from card not verified."
+  "title": "V100-117",
+  "result_type": "mixed",
+  "verdict": "The machine is not the cost. Six orders cost seven kopecks of electricity and under three minutes of GPU time; two of six needed the full two repair rounds and still failed, which is where the hours go. Price an order by human review and debugging time, not by tokens: a 7B Q8 model passes three of six acceptance suites on the first attempt, matches one more on nine of ten checks, and loses two to defects a reviewer has to find and fix."
  },
  {
   "id": "V100-118",
   "title": "Conveyor spec → plan → code → tests → review against one prompt",
   "result_type": "unstated",
   "verdict": "Same 7B Q4_K_M, 10 MBPP tasks, temperature 0: one prompt 7/10 (0.70), pipeline spec-code-tests-reviews 6/10 (0.60) - difference **-10 points**. Pipeline takes **12 times longer** (6.1s vs 0.5s per task) and **13 times more tokens** (6516 vs 490). Card criterion (+20 points) not met: at n=10 one task = 10 points, no gain even within noise, but cost increased by an order of magnitude. Model's own checks passed on 3 tasks that MBPP hidden tests failed, - self-check as a filter does not work."
+ },
+ {
+  "id": "V100-122",
+  "title": "Stability of output: five repeats of one task",
+  "result_type": "unstated",
+  "verdict": "5 runs at temperature 0 produced byte-for-byte identical files (110 lines, sha 250c6b60), at 0.2 - five different ones (73-115 lines, average 97), so repeatability at 0 is absolute, and at 0.2 the format varies by ±40% lines. Out of 12 tests in each of ten runs, only 4 passed: the criterion \"not less than 4 successful out of 5\" was not met (0 out of 5 at both temperatures). The defect occurs in all ten files: `next()` constructs `self.tasks.index(x)` when `self.tasks` is a dictionary and raises AttributeError, loading in the constructor falls with TypeError, therefore CLI `stats` on existing file does not work. Only add with pending counter passed, KeyError on unknown id, ValueError on broken JSON and empty next() = None."
  },
  {
   "id": "V100-13",

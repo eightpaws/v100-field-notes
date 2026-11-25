@@ -7,7 +7,7 @@
  "orders": [
   {
    "id": "parser",
-   "title": "Парсер каталога: цены в CSV",
+   "title": "Catalog parser: prices to CSV",
    "stack": "python",
    "files": 2,
    "first_version_s": 31.1,
@@ -24,7 +24,7 @@
   },
   {
    "id": "tg_bot",
-   "title": "Телеграм-бот: заявка на букет",
+   "title": "Telegram bot: bouquet order form",
    "stack": "python",
    "files": 2,
    "first_version_s": 10.3,
@@ -40,7 +40,7 @@
   },
   {
    "id": "woo",
-   "title": "WooCommerce: скидка за самовывоз",
+   "title": "WooCommerce: pickup discount",
    "stack": "php",
    "files": 2,
    "first_version_s": 6.8,
@@ -56,7 +56,7 @@
   },
   {
    "id": "api_client",
-   "title": "Интеграция API: клиент с ретраями",
+   "title": "API integration: client with retries",
    "stack": "python",
    "files": 7,
    "first_version_s": 21.6,
@@ -72,7 +72,7 @@
   },
   {
    "id": "landing",
-   "title": "Лендинг: страница доставки цветов",
+   "title": "Landing page: flower delivery page",
    "stack": "html",
    "files": 3,
    "first_version_s": 22.6,
@@ -84,11 +84,11 @@
    "failed": 1,
    "prompt_tokens": 2283,
    "completion_tokens": 1847,
-   "tail": "hero:ok; преимущества x3:ok; каталог с ценами:нет; форма имя+телефон:ok; label у полей:ok; подвал:ok; alt у картинок:ok; нет внешних ссылок:ok; media query:ok; системные шрифты:ok"
+   "tail": "hero:ok; benefits x3:ok; catalog with prices:no; form name+phone:ok; labels:ok; footer:ok; image alt:ok; no external links:ok; media query:ok; system fonts:ok"
   },
   {
    "id": "automation",
-   "title": "Скрипт автоматизации: раскладка файлов",
+   "title": "Automation script: file sorting",
    "stack": "python",
    "files": 2,
    "first_version_s": 27.7,
@@ -110,5 +110,6 @@
   "prompt_tokens": 20489,
   "completion_tokens": 11334,
   "repairs": 4
- }
+ },
+ "note": "Order titles and one check-list string translated from Russian for publication."
 }
