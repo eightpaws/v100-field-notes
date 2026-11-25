@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **101** — 19 positive, 14 mixed,
+Closed experiments: **102** — 19 positive, 14 mixed,
 12 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -97,6 +97,7 @@ Read this before quoting a number.
 | [V100-29](results/V100-29.md) | PXA 4.0 engine: a 27B model on a 16 GB card | **Positive.** The first configuration that puts a 27B dense model fully on the card and still decodes faster than the 30B MoE with CPU offload. Stock llama.cpp cannot read the PXQN4 file — the PXA… |
 | [V100-30](results/V100-30.md) | sm70-attn: FA2-D256 in llama.cpp | Rejected based on the card criterion: "do we have a model with head_dim 256 and do we need context over 64k". The answer is no and no. What was actually checked: - We don't have models… |
 | [V100-32](results/V100-32.md) | Prepared sm_70-weights with Hugging Face | NInfer-V100 1.7.2 unpacks and runs: three binaries of 421-424 MB (ninfer, ninfer-serve, ninfer-perplexity), no missing libraries, help opens. But it has nothing to work with. The engine… |
+| [V100-38](results/V100-38.md) | ACE-Step 4B and work alongside SDXL | Test 25.11:** `music-studio` service starts, stops `imgd` (no coexistence in fact, despite the description claiming "coexists with SDXL"), loads weights and crashes on loading 5Hz LM:… |
 | [V100-40](results/V100-40.md) | ik_llama.cpp vs upstream llama.cpp on V100 | **Negative.** The advertised 2.2x does not reproduce: prefill on the fork is about half of upstream (843–890 vs 1638–1779 tok/s) and decode is only 4% better with flash attention (73.53 vs 70.92). On… |
 | [V100-41](results/V100-41.md) | GPT-OSS-20B MXFP4 on a 16 GB Volta card | **Mixed.** Usable only with flash attention on and 4 expert layers pushed to CPU: 24 tok/s decode. Both faster coding candidates (DeepSeek-Coder-V2-Lite at 183 tok/s, Qwen3-Coder-30B at 75 tok/s)… |
 | [V100-42](results/V100-42.md) | MoE experts in system RAM: -ncmoe on V100 16 GB | **Positive.** Yes: 8 expert layers on CPU is the entry threshold, and every extra layer costs both prefill and decode roughly linearly. At 8 layers a 17.3 GB model — 1.3 GB larger than the card —… |

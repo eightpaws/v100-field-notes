@@ -324,6 +324,12 @@
   "verdict": "NInfer-V100 1.7.2 unpacks and runs: three binaries of 421-424 MB (ninfer, ninfer-serve, ninfer-perplexity), no missing libraries, help opens. But it has nothing to work with. The engine accepts only its own `.ninfer` weight format compiled for V100-32GB: NVFP4, FP8 or block formats GGUF repacked from `.gguf` by their tool. No weights included, README lists 27B-class artifacts of 14-17 GB size, targeted at 32 GB card. We have 16 GB, and cannot download artifacts: network to HF is currently 700 bytes/s. Plus a crucial detail: all measurements in their README were taken on V100-PCIE-32GB, while we have SXM2-16GB with different memory bandwidth (900 GB/s for SXM2 vs ~650 for PCIe), so their numbers do not transfer even with weights. Conclusion: reject until 32 GB card (that's V100-33 and V100-34 cards) or their artifacts for 16 GB appear."
  },
  {
+  "id": "V100-38",
+  "title": "ACE-Step 4B and work alongside SDXL",
+  "result_type": "unstated",
+  "verdict": "Test 25.11:** `music-studio` service starts, stops `imgd` (no coexistence in fact, despite the description claiming \"coexists with SDXL\"), loads weights and crashes on loading 5Hz LM: the last line in the log is \"loading 5Hz LM tokenizer\", after that the process disappears without a traceback, no OOM in dmesg, 27GB of free memory. Manual launch reaches \"xl-sft/1.7B engine ready in 55.8s\" and runs until stopped externally, but does not open HTTP port 8400. The musical part is non-functional on this build, requires native crash analysis and checking if the port is listening at all."
+ },
+ {
   "id": "V100-40",
   "title": "ik_llama.cpp vs upstream llama.cpp on V100",
   "result_type": "negative",
