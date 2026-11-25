@@ -150,6 +150,12 @@
   "verdict": "Deliverable, but only what was asked for: the model emitted a Dockerfile and a LICENSE exactly where the prompt named them and skipped them where it did not. The delivery checklist therefore belongs in the prompt, not in expectations — with the full checklist stated, one of three projects came out client-ready without edits."
  },
  {
+  "id": "V100-117",
+  "title": "Cost of a typical order: hours and price for six types of work",
+  "result_type": "unstated",
+  "verdict": "Six standard orders for Qwen2.5-Coder-7B Q8_0, acceptance tests provided in advance (as per client): accepted on first try with Telegram-bot (10.7 s), WooCommerce hook (6.9 s), client API with retries (22.9 s); landing page 9 out of 10 checks passed (catalog without prices); price parser and auto-file layout not accepted, even after two repairs ('1290 rub' error, files not moving). Total machine time for all six orders: 142.7 s at 300 W: 0.012 kWh, approximately 0.07 ₽, 20.5k input and 11.3k output tokens, 79 tok/s, 1M output tokens around 6.3 ₽. Conclusion: machine is cheap, order price determined by human editing, not tokens. Not measured: human-hours of refinement and time for gathering TZ, 4-hour estimate from card not verified."
+ },
+ {
   "id": "V100-118",
   "title": "Conveyor spec → plan → code → tests → review against one prompt",
   "result_type": "unstated",
