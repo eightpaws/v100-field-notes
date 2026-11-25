@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **76** — 13 positive, 9 mixed,
+Closed experiments: **77** — 13 positive, 9 mixed,
 5 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -60,6 +60,7 @@ Read this before quoting a number.
 | [V100-105](results/V100-105.md) | Polyglot: eight languages on one harness | 6 languages (Python, JavaScript, PHP, Ruby, Go, Java) x 10 functions x 21 statements per language, three models, temperature 0, one run 3m 4s. Qwen2.5-Coder-7B Q8 - 6/6 languages (all… |
 | [V100-106](results/V100-106.md) | Linters as acceptance: how much code passes on the first try | (25.11.2026) 40 tasks MBPP, Qwen2.5-Coder-7B-Instruct Q8_0. Tests pass 24 out of 40 (0.60). Linters: `ruff --select E,F` clean in 39 files out of 40 (one note for the whole sample),… |
 | [V100-108](results/V100-108.md) | Tests that catch: mutation testing of generated tests | 10 commits with 5 planted defects each (boundary, null, race, injection, leak), Qwen2.5-Coder-7B Q8_0, 16 seconds total. Found 17 out of 50 (34%), false 0 on commit. Completely failed… |
+| [V100-109](results/V100-109.md) | Medium-sized project from scratch: FastAPI, Postgres, authorization, tests, Docker | The project has been assembled but does not launch. Qwen2.5-Coder-7B Q8 produced 11 files and 634 lines according to plan (main, models, schemas, auth, notes, tests, README, Dockerfile,… |
 | [V100-110](results/V100-110.md) | Red test cycle → repair on four languages | 20 tasks (5 each in Python, JavaScript, C, Perl), Qwen2.5-Coder-7B-Instruct Q8_0, `llama-server` build129, temperature 0; total set - 25s, server up in 2s. Successfully fixed 18 out of… |
 | [V100-111](results/V100-111.md) | Review diff: five planted bugs, accuracy and completeness | 10 commits with 5 planted defects each (boundary, null, race, injection, leak), Qwen2.5-Coder-7B Q8_0, 16 seconds total. Found 17 out of 50 (34%), false positives 0 per commit.… |
 | [V100-112](results/V100-112.md) | Refactoring with green tests | Refactoring Tasks: 10 tasks, 2-3 files each (helper code extraction, global renaming, deduplication, signature change, constant extraction, module separation, dead parameter removal,… |

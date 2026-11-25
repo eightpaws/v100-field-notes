@@ -102,6 +102,12 @@
   "verdict": "10 commits with 5 planted defects each (boundary, null, race, injection, leak), Qwen2.5-Coder-7B Q8_0, 16 seconds total. Found 17 out of 50 (34%), false 0 on commit. Completely failed three categories out of five: 0 out of 15 defects for null, boundaries, and races. Found 10 injections out of 10 and 7 leaks out of 10. Card criterion (not less than 3 out of 5 with max 2 false) not met on any commit: model sees what is visible by form of call and does not see semantic errors."
  },
  {
+  "id": "V100-109",
+  "title": "Medium-sized project from scratch: FastAPI, Postgres, authorization, tests, Docker",
+  "result_type": "unstated",
+  "verdict": "The project has been assembled but does not launch. Qwen2.5-Coder-7B Q8 produced 11 files and 634 lines according to plan (main, models, schemas, auth, notes, tests, README, Dockerfile, requirements), bandit found 25 issues, all LOW, none HIGH or MEDIUM. However, pytest does not build, uvicorn fails on import. Criterion \"runs and tests pass green without changes\" is not met. **Four defect classes, each found on run, not read:** 1. `int(os.getenv(\"ACCESS_TOKEN_EXPIRE_MINUTES\"))` without default value - crashes on start if no `.env`. 2. Tests use relative imports (`from .main import`) in catalog without `__init__.py` - test build fails. 3. `models.py` imports `from .database import Base`, but `database.py` was not in plan - model invented dependency it didn't create. 4. Pydantic schema `UserInDB` inherited from ORM-base (`Base`) instead of `BaseModel` - SQLAlchemy refuses to parse annotations, service does not start. First two fixed with one line each, third and fourth require moving responsibility between files, thus understanding, not renaming."
+ },
+ {
   "id": "V100-110",
   "title": "Red test cycle → repair on four languages",
   "result_type": "unstated",
