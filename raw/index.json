@@ -84,6 +84,12 @@
   "verdict": "- **Environment Status (configuration, 23.11.2026 21:13).** The llama.cpp build in `~/llama-new` was killed by a VM reboot at 20:48, and was rebuilt on **CUDA 12.9**: `BUILD_OK` in **7 min 14 s** (on the system's nvcc 12.0, the same build took four hours and did not complete). Binaries are in place: `~/llama-new/build/bin/llama-bench` and `llama-cli`, tree is clean (commit 51831d4), `llama-bench` sees the card: `Tesla V100-SXM2-16GB, compute capability 7.0`. Log: `~/llama_rebuild_129.log`. For new builds — `~/bin/build-cuda.sh <directory> [targets]`; environment check — `~/bin/cuda-preflight.sh`."
  },
  {
+  "id": "V100-113",
+  "title": "Schema, migrations, and queries against SQLite",
+  "result_type": "unstated",
+  "verdict": "20 tasks on SQLite (schema, migration, 3 queries to each), Qwen2.5-Coder-7B Q8_0, two runs of 37s each. Completely correct 7 and 9 tasks out of 20 with a criterion of 15, queries correct 46 and 50 out of 60, migrations 14 out of 20. Errors in both runs are the same: `ALTER` without backfill (column exists, values empty), NULL instead of 0 for empty group, forgotten join to `plays`, subtracting textual dates instead of `julianday`. Criterion not met: 7B is suitable for SQL only under review, cannot send its queries to the client without checking."
+ },
+ {
   "id": "V100-13",
   "title": "AWQ/int4 vs GGUF Q4 on Volta",
   "result_type": "unstated",
