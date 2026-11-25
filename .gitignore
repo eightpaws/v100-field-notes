@@ -1,0 +1,4 @@
+tr_*.json
+tr_*.jsonl
+*.tmp
+__pycache__/
