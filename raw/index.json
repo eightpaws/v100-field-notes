@@ -541,9 +541,9 @@
  },
  {
   "id": "V100-85",
-  "title": "Xing4.0-29B-A4B in IQ2_M",
-  "result_type": "unstated",
-  "verdict": "MBPP pass@1 **0.425** (17/40) at 44.2 tok/s generation and 1.84 sec per task; bench decode 71.4 tok/s (fa off) and 64.1 (fa on), prefill 512 - 1949 and 1877 tok/s, VRAM 11.2 GB, server boot time 6 sec. Card threshold (pass@1 ≥ 0.55 at decode ≥ 60 tok/s) not met for quality: 2-bit IQ2_M lags behind both 7B Q8_0 (0.625), and 4-bit AWQ (0.50). First run gave 0.05, but this is an artifact of the limit, not the model: all 40 responses hit the 512 token limit because reasoning was enabled by default and the code didn't have time to start; with `enable_thinking=false` and 1536 tokens - 0.425."
+  "title": "V100-85",
+  "result_type": "negative",
+  "verdict": "Negative. The 2-bit quant does what it promises on memory - a 29B MoE resident in 16 GB at 71 tok/s decode - but code quality lands at 0.425, below the card's 0.55 bar and below even a 7B model at Q8_0 (0.625) and a 7B in 4-bit AWQ (0.50). Worth keeping only as a fast drafter or summarizer, not as a coding model."
  },
  {
   "id": "V100-86",

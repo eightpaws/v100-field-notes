@@ -1,0 +1,888 @@
+{
+ "card": "V100-85",
+ "model": "xing4_0-29b-iq2_M-slim.gguf",
+ "model_bytes": 11800813760,
+ "model_sha256": "eab889116ae30ab32c3d2948f42409c4e2a4f238b89904b6976448cd067be312",
+ "engine": "llama.cpp build 400 commit dbaf582 (llama-inkling build dir), CUDA 12.9, sm_70",
+ "specs": {
+  "gpu": "Tesla V100-SXM2-16GB",
+  "driver": "580.178.04"
+ },
+ "bench_fa_off": [
+  {
+   "build_commit": "dbaf582",
+   "build_number": 400,
+   "cpu_info": "AMD EPYC 7282 16-Core Processor",
+   "gpu_info": "Tesla V100-SXM2-16GB",
+   "backends": "CUDA",
+   "model_filename": "/srv/ssd-strata/xing4/xing4_0-29b-iq2_M-slim.gguf",
+   "model_type": "xing4_0 ?B IQ2_M - 2.7 bpw",
+   "model_size": 11797629632,
+   "model_n_params": 31215031088,
+   "n_batch": 2048,
+   "n_ubatch": 512,
+   "n_threads": 24,
+   "cpu_mask": "0x0",
+   "cpu_strict": false,
+   "poll": 50,
+   "type_k": "f16",
+   "type_v": "f16",
+   "n_gpu_layers": 99,
+   "n_cpu_moe": 0,
+   "split_mode": "layer",
+   "main_gpu": 0,
+   "no_kv_offload": false,
+   "flash_attn": 0,
+   "devices": "auto",
+   "tensor_split": "0.00",
+   "tensor_buft_overrides": "none",
+   "load_mode": "auto",
+   "lazy_mode": "auto",
+   "embeddings": false,
+   "no_op_offload": 0,
+   "no_host": false,
+   "repack": true,
+   "fit_target": 0,
+   "fit_min_ctx": 0,
+   "n_prompt": 512,
+   "n_gen": 0,
+   "n_depth": 0,
+   "test_time": "2026-11-25T17:23:52Z",
+   "avg_ns": 262801309,
+   "stddev_ns": 6275821,
+   "avg_ts": 1948.795581,
+   "stddev_ts": 46.537866,
+   "samples_ns": [
+    267238956,
+    258363663
+   ],
+   "samples_ts": [
+    1915.89,
+    1981.7
+   ]
+  },
+  {
+   "build_commit": "dbaf582",
+   "build_number": 400,
+   "cpu_info": "AMD EPYC 7282 16-Core Processor",
+   "gpu_info": "Tesla V100-SXM2-16GB",
+   "backends": "CUDA",
+   "model_filename": "/srv/ssd-strata/xing4/xing4_0-29b-iq2_M-slim.gguf",
+   "model_type": "xing4_0 ?B IQ2_M - 2.7 bpw",
+   "model_size": 11797629632,
+   "model_n_params": 31215031088,
+   "n_batch": 2048,
+   "n_ubatch": 512,
+   "n_threads": 24,
+   "cpu_mask": "0x0",
+   "cpu_strict": false,
+   "poll": 50,
+   "type_k": "f16",
+   "type_v": "f16",
+   "n_gpu_layers": 99,
+   "n_cpu_moe": 0,
+   "split_mode": "layer",
+   "main_gpu": 0,
+   "no_kv_offload": false,
+   "flash_attn": 0,
+   "devices": "auto",
+   "tensor_split": "0.00",
+   "tensor_buft_overrides": "none",
+   "load_mode": "auto",
+   "lazy_mode": "auto",
+   "embeddings": false,
+   "no_op_offload": 0,
+   "no_host": false,
+   "repack": true,
+   "fit_target": 0,
+   "fit_min_ctx": 0,
+   "n_prompt": 0,
+   "n_gen": 128,
+   "n_depth": 0,
+   "test_time": "2026-11-25T17:23:53Z",
+   "avg_ns": 1793594315,
+   "stddev_ns": 2295732,
+   "avg_ts": 71.365137,
+   "stddev_ts": 0.091345,
+   "samples_ns": [
+    1795217643,
+    1791970987
+   ],
+   "samples_ts": [
+    71.3005,
+    71.4297
+   ]
+  }
+ ],
+ "bench_fa_on": [
+  {
+   "build_commit": "dbaf582",
+   "build_number": 400,
+   "cpu_info": "AMD EPYC 7282 16-Core Processor",
+   "gpu_info": "Tesla V100-SXM2-16GB",
+   "backends": "CUDA",
+   "model_filename": "/srv/ssd-strata/xing4/xing4_0-29b-iq2_M-slim.gguf",
+   "model_type": "xing4_0 ?B IQ2_M - 2.7 bpw",
+   "model_size": 11797629632,
+   "model_n_params": 31215031088,
+   "n_batch": 2048,
+   "n_ubatch": 512,
+   "n_threads": 24,
+   "cpu_mask": "0x0",
+   "cpu_strict": false,
+   "poll": 50,
+   "type_k": "f16",
+   "type_v": "f16",
+   "n_gpu_layers": 99,
+   "n_cpu_moe": 0,
+   "split_mode": "layer",
+   "main_gpu": 0,
+   "no_kv_offload": false,
+   "flash_attn": 1,
+   "devices": "auto",
+   "tensor_split": "0.00",
+   "tensor_buft_overrides": "none",
+   "load_mode": "auto",
+   "lazy_mode": "auto",
+   "embeddings": false,
+   "no_op_offload": 0,
+   "no_host": false,
+   "repack": true,
+   "fit_target": 0,
+   "fit_min_ctx": 0,
+   "n_prompt": 512,
+   "n_gen": 0,
+   "n_depth": 0,
+   "test_time": "2026-11-25T17:23:59Z",
+   "avg_ns": 272775385,
+   "stddev_ns": 5395950,
+   "avg_ts": 1877.369529,
+   "stddev_ts": 37.137488,
+   "samples_ns": [
+    276590898,
+    268959872
+   ],
+   "samples_ts": [
+    1851.11,
+    1903.63
+   ]
+  },
+  {
+   "build_commit": "dbaf582",
+   "build_number": 400,
+   "cpu_info": "AMD EPYC 7282 16-Core Processor",
+   "gpu_info": "Tesla V100-SXM2-16GB",
+   "backends": "CUDA",
+   "model_filename": "/srv/ssd-strata/xing4/xing4_0-29b-iq2_M-slim.gguf",
+   "model_type": "xing4_0 ?B IQ2_M - 2.7 bpw",
+   "model_size": 11797629632,
+   "model_n_params": 31215031088,
+   "n_batch": 2048,
+   "n_ubatch": 512,
+   "n_threads": 24,
+   "cpu_mask": "0x0",
+   "cpu_strict": false,
+   "poll": 50,
+   "type_k": "f16",
+   "type_v": "f16",
+   "n_gpu_layers": 99,
+   "n_cpu_moe": 0,
+   "split_mode": "layer",
+   "main_gpu": 0,
+   "no_kv_offload": false,
+   "flash_attn": 1,
+   "devices": "auto",
+   "tensor_split": "0.00",
+   "tensor_buft_overrides": "none",
+   "load_mode": "auto",
+   "lazy_mode": "auto",
+   "embeddings": false,
+   "no_op_offload": 0,
+   "no_host": false,
+   "repack": true,
+   "fit_target": 0,
+   "fit_min_ctx": 0,
+   "n_prompt": 0,
+   "n_gen": 128,
+   "n_depth": 0,
+   "test_time": "2026-11-25T17:24:00Z",
+   "avg_ns": 1997023544,
+   "stddev_ns": 2563385,
+   "avg_ts": 64.095441,
+   "stddev_ts": 0.082273,
+   "samples_ns": [
+    1998836131,
+    1995210957
+   ],
+   "samples_ts": [
+    64.0373,
+    64.1536
+   ]
+  }
+ ],
+ "mbpp_first_run_default_thinking_limit_512": {
+  "model": "xing4",
+  "tasks": 40,
+  "repeats": 1,
+  "runs": 40,
+  "passed": 2,
+  "pass@1": 0.05,
+  "avg_sec": 11.06,
+  "tok_s": 45.5,
+  "rows": [
+   {
+    "task": 1,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.38,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'min_cost' is not defined\n"
+   },
+   {
+    "task": 2,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.29,
+    "tok": 512,
+    "err": "eback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'similar_elements' is not defined\n"
+   },
+   {
+    "task": 3,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.19,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'is_not_prime' is not defined\n"
+   },
+   {
+    "task": 4,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.23,
+    "tok": 512,
+    "err": "ack (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'heap_queue_largest' is not defined\n"
+   },
+   {
+    "task": 5,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.25,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'count_ways' is not defined\n"
+   },
+   {
+    "task": 6,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.28,
+    "tok": 512,
+    "err": " (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'differ_At_One_Bit_Pos' is not defined\n"
+   },
+   {
+    "task": 7,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.23,
+    "tok": 512,
+    "err": "aceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'find_char_long' is not defined\n"
+   },
+   {
+    "task": 8,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.27,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'square_nums' is not defined\n"
+   },
+   {
+    "task": 9,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.23,
+    "tok": 512,
+    "err": "aceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'find_Rotations' is not defined\n"
+   },
+   {
+    "task": 10,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.28,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'small_nnum' is not defined\n"
+   },
+   {
+    "task": 11,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.21,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'remove_Occ' is not defined\n"
+   },
+   {
+    "task": 12,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.27,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'sort_matrix' is not defined\n"
+   },
+   {
+    "task": 13,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.26,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'count_common' is not defined\n"
+   },
+   {
+    "task": 14,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.25,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'find_Volume' is not defined\n"
+   },
+   {
+    "task": 15,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.22,
+    "tok": 512,
+    "err": "back (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'split_lowerstring' is not defined\n"
+   },
+   {
+    "task": 16,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.26,
+    "tok": 512,
+    "err": "st recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'text_lowercase_underscore' is not defined\n"
+   },
+   {
+    "task": 17,
+    "repeat": 0,
+    "ok": true,
+    "sec": 5.76,
+    "tok": 261,
+    "err": null
+   },
+   {
+    "task": 18,
+    "repeat": 0,
+    "ok": true,
+    "sec": 11.08,
+    "tok": 506,
+    "err": null
+   },
+   {
+    "task": 19,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.3,
+    "tok": 512,
+    "err": "aceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'test_duplicate' is not defined\n"
+   },
+   {
+    "task": 20,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.24,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'is_woodall' is not defined\n"
+   },
+   {
+    "task": 21,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.24,
+    "tok": 512,
+    "err": "eback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'multiples_of_num' is not defined\n"
+   },
+   {
+    "task": 22,
+    "repeat": 0,
+    "ok": false,
+    "sec": 9.68,
+    "tok": 442,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 10, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 23,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.22,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'maximum_Sum' is not defined\n"
+   },
+   {
+    "task": 24,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.22,
+    "tok": 512,
+    "err": "back (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'binary_to_decimal' is not defined\n"
+   },
+   {
+    "task": 25,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.24,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'find_Product' is not defined\n"
+   },
+   {
+    "task": 26,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.24,
+    "tok": 512,
+    "err": "eback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'check_k_elements' is not defined\n"
+   },
+   {
+    "task": 27,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.24,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'remove' is not defined\n"
+   },
+   {
+    "task": 28,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.24,
+    "tok": 512,
+    "err": "aceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'binomial_Coeff' is not defined\n"
+   },
+   {
+    "task": 29,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.26,
+    "tok": 512,
+    "err": "ack (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'get_Odd_Occurrence' is not defined\n"
+   },
+   {
+    "task": 30,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.26,
+    "tok": 512,
+    "err": "ent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'count_Substring_With_Equal_Ends' is not defined\n"
+   },
+   {
+    "task": 31,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.26,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'func' is not defined\n"
+   },
+   {
+    "task": 32,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.22,
+    "tok": 512,
+    "err": "back (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'max_Prime_Factors' is not defined\n"
+   },
+   {
+    "task": 33,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.27,
+    "tok": 512,
+    "err": "back (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'decimal_To_Binary' is not defined\n"
+   },
+   {
+    "task": 34,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.27,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'find_missing' is not defined\n"
+   },
+   {
+    "task": 35,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.22,
+    "tok": 512,
+    "err": "raceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'find_rect_num' is not defined\n"
+   },
+   {
+    "task": 36,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.24,
+    "tok": 512,
+    "err": "aceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'find_Nth_Digit' is not defined\n"
+   },
+   {
+    "task": 37,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.15,
+    "tok": 512,
+    "err": "ceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'sort_mixed_list' is not defined\n"
+   },
+   {
+    "task": 38,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.19,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'div_even_odd' is not defined\n"
+   },
+   {
+    "task": 39,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.21,
+    "tok": 512,
+    "err": "ceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'rearange_string' is not defined\n"
+   },
+   {
+    "task": 40,
+    "repeat": 0,
+    "ok": false,
+    "sec": 11.2,
+    "tok": 512,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'freq_element' is not defined\n"
+   }
+  ]
+ },
+ "mbpp_no_think_1536": {
+  "model": "xing4",
+  "tasks": 40,
+  "repeats": 1,
+  "runs": 40,
+  "passed": 17,
+  "pass@1": 0.425,
+  "avg_sec": 1.84,
+  "tok_s": 44.2,
+  "rows": [
+   {
+    "task": 1,
+    "repeat": 0,
+    "ok": false,
+    "sec": 4.94,
+    "tok": 222,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 15, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 2,
+    "repeat": 0,
+    "ok": false,
+    "sec": 1.12,
+    "tok": 48,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 6, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 3,
+    "repeat": 0,
+    "ok": true,
+    "sec": 2.51,
+    "tok": 113,
+    "err": null
+   },
+   {
+    "task": 4,
+    "repeat": 0,
+    "ok": false,
+    "sec": 0.95,
+    "tok": 40,
+    "err": "t):\n  File \"<string>\", line 6, in <module>\nTypeError: heap_queue_largest() takes 1 positional argument but 2 were given\n"
+   },
+   {
+    "task": 5,
+    "repeat": 0,
+    "ok": false,
+    "sec": 2.88,
+    "tok": 129,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 13, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 6,
+    "repeat": 0,
+    "ok": true,
+    "sec": 1.28,
+    "tok": 55,
+    "err": null
+   },
+   {
+    "task": 7,
+    "repeat": 0,
+    "ok": true,
+    "sec": 0.96,
+    "tok": 40,
+    "err": null
+   },
+   {
+    "task": 8,
+    "repeat": 0,
+    "ok": true,
+    "sec": 0.71,
+    "tok": 29,
+    "err": null
+   },
+   {
+    "task": 9,
+    "repeat": 0,
+    "ok": false,
+    "sec": 2.77,
+    "tok": 125,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 14, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 10,
+    "repeat": 0,
+    "ok": true,
+    "sec": 0.64,
+    "tok": 26,
+    "err": null
+   },
+   {
+    "task": 11,
+    "repeat": 0,
+    "ok": false,
+    "sec": 1.88,
+    "tok": 83,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 11, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 12,
+    "repeat": 0,
+    "ok": true,
+    "sec": 0.71,
+    "tok": 29,
+    "err": null
+   },
+   {
+    "task": 13,
+    "repeat": 0,
+    "ok": false,
+    "sec": 0.72,
+    "tok": 30,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 5, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 14,
+    "repeat": 0,
+    "ok": true,
+    "sec": 0.89,
+    "tok": 38,
+    "err": null
+   },
+   {
+    "task": 15,
+    "repeat": 0,
+    "ok": false,
+    "sec": 2.36,
+    "tok": 106,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 19, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 16,
+    "repeat": 0,
+    "ok": false,
+    "sec": 2.16,
+    "tok": 96,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 15, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 17,
+    "repeat": 0,
+    "ok": true,
+    "sec": 0.53,
+    "tok": 21,
+    "err": null
+   },
+   {
+    "task": 18,
+    "repeat": 0,
+    "ok": true,
+    "sec": 0.93,
+    "tok": 39,
+    "err": null
+   },
+   {
+    "task": 19,
+    "repeat": 0,
+    "ok": true,
+    "sec": 0.66,
+    "tok": 27,
+    "err": null
+   },
+   {
+    "task": 20,
+    "repeat": 0,
+    "ok": false,
+    "sec": 1.75,
+    "tok": 77,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 10, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 21,
+    "repeat": 0,
+    "ok": false,
+    "sec": 0.85,
+    "tok": 36,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 22,
+    "repeat": 0,
+    "ok": false,
+    "sec": 1.18,
+    "tok": 51,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 10, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 23,
+    "repeat": 0,
+    "ok": true,
+    "sec": 0.87,
+    "tok": 37,
+    "err": null
+   },
+   {
+    "task": 24,
+    "repeat": 0,
+    "ok": false,
+    "sec": 0.62,
+    "tok": 25,
+    "err": "n <module>\n  File \"<string>\", line 2, in binary_to_decimal\nTypeError: int() can't convert non-string with explicit base\n"
+   },
+   {
+    "task": 25,
+    "repeat": 0,
+    "ok": false,
+    "sec": 1.12,
+    "tok": 48,
+    "err": "ll last):\n  File \"<string>\", line 8, in <module>\nTypeError: find_Product() takes 1 positional argument but 2 were given\n"
+   },
+   {
+    "task": 26,
+    "repeat": 0,
+    "ok": false,
+    "sec": 1.16,
+    "tok": 50,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 27,
+    "repeat": 0,
+    "ok": true,
+    "sec": 1.82,
+    "tok": 81,
+    "err": null
+   },
+   {
+    "task": 28,
+    "repeat": 0,
+    "ok": true,
+    "sec": 1.98,
+    "tok": 88,
+    "err": null
+   },
+   {
+    "task": 29,
+    "repeat": 0,
+    "ok": false,
+    "sec": 1.32,
+    "tok": 57,
+    "err": "):\n  File \"<string>\", line 10, in <module>\nTypeError: get_Odd_Occurrence() takes 1 positional argument but 2 were given\n"
+   },
+   {
+    "task": 30,
+    "repeat": 0,
+    "ok": false,
+    "sec": 1.87,
+    "tok": 83,
+    "err": "ine 10, in <module>\n  File \"<string>\", line 6, in count_Substring_With_Equal_Ends\nIndexError: string index out of range\n"
+   },
+   {
+    "task": 31,
+    "repeat": 0,
+    "ok": false,
+    "sec": 4.41,
+    "tok": 199,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 22, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 32,
+    "repeat": 0,
+    "ok": true,
+    "sec": 2.08,
+    "tok": 92,
+    "err": null
+   },
+   {
+    "task": 33,
+    "repeat": 0,
+    "ok": false,
+    "sec": 1.53,
+    "tok": 67,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 10, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 34,
+    "repeat": 0,
+    "ok": false,
+    "sec": 1.33,
+    "tok": 58,
+    "err": "ll last):\n  File \"<string>\", line 7, in <module>\nTypeError: find_missing() takes 1 positional argument but 2 were given\n"
+   },
+   {
+    "task": 35,
+    "repeat": 0,
+    "ok": false,
+    "sec": 0.74,
+    "tok": 31,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 36,
+    "repeat": 0,
+    "ok": false,
+    "sec": 10.51,
+    "tok": 481,
+    "err": "Traceback (most recent call last):\n  File \"<string>\", line 45, in <module>\nAssertionError\n"
+   },
+   {
+    "task": 37,
+    "repeat": 0,
+    "ok": true,
+    "sec": 0.89,
+    "tok": 37,
+    "err": null
+   },
+   {
+    "task": 38,
+    "repeat": 0,
+    "ok": true,
+    "sec": 2.09,
+    "tok": 93,
+    "err": null
+   },
+   {
+    "task": 39,
+    "repeat": 0,
+    "ok": false,
+    "sec": 4.88,
+    "tok": 222,
+    "err": "le \"<string>\", line 24, in <module>\nNameError: name 'rearange_string' is not defined. Did you mean: 'rearrange_string'?\n"
+   },
+   {
+    "task": 40,
+    "repeat": 0,
+    "ok": true,
+    "sec": 0.86,
+    "tok": 36,
+    "err": null
+   }
+  ]
+ },
+ "note": "First MBPP pass used default chat template with reasoning enabled and max_tokens=512; every row reports tok=512, so the generated code never started and pass@1 0.05 is a harness artifact. The 0.425 run sets chat_template_kwargs.enable_thinking=false and max_tokens=1536."
+}
