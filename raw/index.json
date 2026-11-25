@@ -538,5 +538,11 @@
   "title": "V100-86",
   "result_type": "mixed",
   "verdict": "Mixed: prefill 16 % faster with the shipped sm_70 binaries, decode identical. Worth taking for long prompts (document analysis, repository context); not a reason to migrate a decode-bound workload. The vendor's agent wrapper (`serve-qwen3.sh`, Claude Code integration) and the claimed Gemma 4 26B-A4B QAT Q4_0 in 16 GB were not tested."
+ },
+ {
+  "id": "V100-99",
+  "title": "Prompt-expander: LLM writes prompt for photographer",
+  "result_type": "unstated",
+  "verdict": "The hypothesis was partially confirmed, and the solution depends on the prompt length. 20 product positions via vikhr-nemo-12b: valid JSON 20/20, all three keys 20/20, English without Cyrillic 20/20, 2.52 seconds per position on average (first 16.5s - cold load), 98-131 output tokens (was 124-189 in prototype). Visual spot-check on 5 positions (RealVisXL V5, 832x1216, 30 steps): long prompt 27-36 words gave 3/5 for material and color (vase and eustoma disappeared, pot lost packaging), short prompt in fixed order (16-22 words, 53-67 tokens) - 5/5. Packaging-box in frame 1 out of 5: SDXL draws the product, not the packaging, and ask for box separately."
  }
 ]
