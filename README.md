@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **84** — 13 positive, 10 mixed,
+Closed experiments: **85** — 13 positive, 10 mixed,
 9 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -71,6 +71,7 @@ Read this before quoting a number.
 | [V100-117](results/V100-117.md) | V100-117 | **Mixed.** The machine is not the cost. Six orders cost seven kopecks of electricity and under three minutes of GPU time; two of six needed the full two repair rounds and still failed, which is… |
 | [V100-118](results/V100-118.md) | Conveyor spec → plan → code → tests → review against one prompt | Same 7B Q4_K_M, 10 MBPP tasks, temperature 0: one prompt 7/10 (0.70), pipeline spec-code-tests-reviews 6/10 (0.60) - difference **-10 points**. Pipeline takes **12 times longer** (6.1s… |
 | [V100-120](results/V100-120.md) | Russian text in generated code | 8 out of 10 tasks accepted without revision according to the task criteria: names in Latin 10/10, Russian text in place 10/10, long hyphens 0, typos 0, syntax valid 10/10. Terms in Latin… |
+| [V100-121](results/V100-121.md) | Consistency of style with existing code | 20 runs (10 tasks x 2 models), temp 0, baseline Harness passed ruff/mypy/pytest 10/10. Qwen2.5-Coder-7B Q8: ruff clean 4/10, mypy 9/10, tests 8/10, median deviation from baseline 19.5%… |
 | [V100-122](results/V100-122.md) | V100-122 | **Negative.** Negative: 0 of 5 runs green at temperature 0 and 0 of 5 at 0.2, so the shipping bar is not met. Repeatability is not quality — temperature 0 reproduces the same defect with byte-exact… |
 | [V100-124](results/V100-124.md) | V100-124 | **Negative.** Negative: 3 of 10 scenarios in both runs. The retry skeleton is sound, but one shadowed name kills every request the client makes — exactly the class of defect that a test suite finds… |
 | [V100-127](results/V100-127.md) | V100-127 | **Negative.** No. 7 of 10 edits pass both gates; the stated criterion was 8 of 10. | Task | Files written | Generation | API gate | Tests | Pass | |---|---|---|---|---|---| | t01 rounding module | 4 |… |
