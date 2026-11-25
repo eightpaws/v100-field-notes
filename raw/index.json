@@ -121,7 +121,7 @@
  },
  {
   "id": "V100-116",
-  "title": "V100-116",
+  "title": "What a generated project still needs before delivery",
   "result_type": "mixed",
   "verdict": "Deliverable, but only what was asked for: the model emitted a Dockerfile and a LICENSE exactly where the prompt named them and skipped them where it did not. The delivery checklist therefore belongs in the prompt, not in expectations — with the full checklist stated, one of three projects came out client-ready without edits."
  },
