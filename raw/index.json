@@ -428,8 +428,8 @@
  {
   "id": "V100-91",
   "title": "Recheck sm70-attn with head_dim 256",
-  "result_type": "unstated",
-  "verdict": "Yes, the D256 core is faster than our build: a fork of fishlikeX/sm70-attn (5e11845) on Qwen3.8-27B IQ3_S yields 1279.4 tok/s prefill at 8k and 1224.6 at 16k, compared to 1178.9 and 1100.9 in our dbaf582 build (same -fa on, q4_0 KV, V100 16 GB), an increase of +8.5% and +11.2%; decoding is the same ..."
+  "result_type": "positive",
+  "verdict": "Positive for the narrow claim: the fork is faster on prefill at both measured lengths, and the margin at 16k (+11.2 %) is large enough to matter for long prompts. The numbers published in the fork's README (+34-48 %) do not reproduce at 8-16k: they belong to the 100-174k range, where the D256 ..."
  },
  {
   "id": "V100-93",
