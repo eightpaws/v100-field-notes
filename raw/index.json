@@ -99,7 +99,7 @@
   "id": "V100-108",
   "title": "Tests that catch: mutation testing of generated tests",
   "result_type": "unstated",
-  "verdict": "10 commits with 5 planted defects each (boundary, null, race, injection, leak), Qwen2.5-Coder-7B Q8_0, 16 seconds total. Found 17 out of 50 (34%), false 0 on commit. Completely failed three categories out of five: 0 out of 15 defects for null, boundaries, and races. Found 10 injections out of 10 and 7 leaks out of 10. Card criterion (not less than 3 out of 5 with max 2 false) not met on any commit: model sees what is visible by form of call and does not see semantic errors."
+  "verdict": "Three branches, Qwen2.5-Coder-7B Q8, temp 0.2. (A) The model writes both code and tests according to the spec: red suite on its own code (3 out of 6 tests fail), with two real errors in the code - tax is divided by 200 instead of 10000 basis points and `total` calculates tax on non-discounted sum; another expectation in the test is incorrect (sum 350 instead of expected 250). (B) The model writes only tests for the reference module: 6 functions, 25 checks, one expectation is incorrect (`total(1000, 100, 2000)` expects 1000 instead of 0), so the suite fails red. (C) The same suite with one incorrect line removed passes green on reference: coverage 88%, out of 20 primary mutants, 14 are killed - that's 70%. The criterion \"no less than 60% mutants\" is met, but only after human correction of one expectation: as is, the model outputs an unsuitable suite."
  },
  {
   "id": "V100-109",
