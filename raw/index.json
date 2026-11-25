@@ -180,6 +180,12 @@
   "verdict": "Negative: 3 of 10 scenarios in both runs. The retry skeleton is sound, but one shadowed name kills every request the client makes — exactly the class of defect that a test suite finds and a code review often misses."
  },
  {
+  "id": "V100-128",
+  "title": "Tests on foreign code: coverage and benefit",
+  "result_type": "unstated",
+  "verdict": "No: three runs, all sets red on correct code (14 out of 18 tests fail). Coverage by passing tests is 22.2-22.8%, catches 1 out of 10 planted defects (rounding substitution). Criterion (60% coverage and half of defects) not met. Defects are similar: 9 out of 14 - NameError on BillingError/CouponError (model writes pytest.raises but does not import exceptions), others - incorrect expectations (progressive tariffs, tax rate in percentage instead of fraction, rounding proportion). Claimed 83.6% coverage and 10/10 mutations first count - artifact of red set: failing test fails on any mutation; recalculation by tests green on standard gives 1/10."
+ },
+ {
   "id": "V100-13",
   "title": "AWQ/int4 vs GGUF Q4 on Volta",
   "result_type": "unstated",
