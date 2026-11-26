@@ -668,8 +668,8 @@
  {
   "id": "V100-144",
   "title": "Inkling 2 Mini: Looped MoE, depth without weight growth",
-  "result_type": "unstated",
-  "verdict": "Three levels of reasoning_effort on 12 MBPP tasks, clean map: none 7/12 (pass@1 0.583), medium 9/12 (0.750), high 7/12 (0.583)."
+  "result_type": "mixed",
+  "verdict": "The knob moves the token budget, not the speed: decode sits at 33 tok/s on all three levels, while high spends 51% more tokens per answer and is not better than medium (7/12 against 9/12). Loop depth is not a free quality dial on this card."
  },
  {
   "id": "4060ti-capabilities-vs-v100",

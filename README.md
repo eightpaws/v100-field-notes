@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **131** - 23 positive, 24 mixed, 26 negative, 58 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **131** - 23 positive, 25 mixed, 26 negative, 57 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -153,7 +153,7 @@ Read this before quoting a number.
 | [V100-131](results/V100-131.md) | Failure metric: 20 prompts, uncensored vs censored | Translation: 27B abliterated IQ3_S (model 2 of 3): class A 7/7 direct response, class B 9/9 direct (zero failures), class C 4/4 refusal. |
 | [V100-141](results/V100-141.md) | cuDNN 8 environment for graphics and video models | **Positive.** Positive: cuDNN 8 restores the missing convolution path on sm_70, and all three pipelines run with cuDNN enabled. It removes the engine failure, not the memory ceiling - 720p video still runs out of VRAM after the model has loaded. |
 | [V100-143](results/V100-143.md) | Raw archive: nine of thirteen missing logs recovered | **Mixed.** Mixed, and the useful half is positive: for nine cards the "missing raw" was a naming and search problem, not a lost run. For four it is a genuine loss and the caveat stands until they are re-measured. |
-| [V100-144](results/V100-144.md) | Inkling 2 Mini: Looped MoE, depth without weight growth | Three levels of reasoning_effort on 12 MBPP tasks, clean map: none 7/12 (pass@1 0.583), medium 9/12 (0.750), high 7/12 (0.583). |
+| [V100-144](results/V100-144.md) | Inkling 2 Mini: Looped MoE, depth without weight growth | **Mixed.** The knob moves the token budget, not the speed: decode sits at 33 tok/s on all three levels, while high spends 51% more tokens per answer and is not better than medium (7/12 against… |
 | [4060ti-capabilities-vs-v100](results/4060ti-capabilities-vs-v100.md) | What the 4060 Ti can do that the V100 cannot | The split is clean and measured: the 4060 Ti is the card that can train QLoRA at 398 tok/s (3B) and run bf16 paths, while the V100 is the card that serves inference with 900 GB/s and answers prefill-bound requests; routing training to the 4060 Ti and serving to the V100 is the rule these numbers ... |
 | [background-swap-three-methods](results/background-swap-three-methods.md) | Background replacement: three methods, the deterministic one won | **Positive.** Positive for the catalogue path: the deterministic white background wins on untouchable product pixels and cost, while img2img and inpainting stay for interior scenes where a prompt cannot steer colour reliably. Three methods, three clear roles, no method pretending to do all three. |
 | [code-loop-agentic](results/code-loop-agentic.md) | Agentic repair loop — running the tests at every step still leaves 12B at zero | **Negative.** Feedback is not the bottleneck: 0 of 8 with four iterations each, every patch syntactically valid and every one wrong, because the fixes need coordinated changes across files that the loop never allows. |
