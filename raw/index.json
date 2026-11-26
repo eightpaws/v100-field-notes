@@ -504,6 +504,12 @@
   "verdict": "Positive: three presets from one config file keep background and light within 4-9 RGB points across five seeds each, cost 10-11.5 s per frame on one 16 GB V100, and switch without code changes. The negative prompt does not protect against unwanted body parts - 1 frame in 15 had to be rejected."
  },
  {
+  "id": "V100-101",
+  "title": "LoRA under the product and brand",
+  "result_type": "mixed",
+  "verdict": "LoRA on 24 frames of a single product (640 px, rank 8, lr 1e-4): 800 steps in 16.1 min, 2400 steps in 48.9 min, peak VRAM 7.8 GiB."
+ },
+ {
   "id": "V100-102",
   "title": "Image-to-image and depth: Save product, change background",
   "result_type": "mixed",
