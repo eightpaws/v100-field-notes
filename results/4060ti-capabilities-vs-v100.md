@@ -54,7 +54,27 @@ This is the task where the PC wins at equal quality: bf16 and fp16 carry the sam
 /d/venvs/image/Scripts/python.exe train_step_bench.py
 
 # on the V100
-ssh ai-gpu 'cd /srv/media/projects && /home/hermes/venvs/cu121/bin/python caps_bench.py'
+ssh the GPU guest 'cd /srv/media/projects && /home/hermes/venvs/cu121/bin/python caps_bench.py'
 ```
 
-Scripts `caps_bench.py`, `caps_fp8.py`, `train_step_bench.py` live in the PC home directory and in `/srv/media/projects/` on ai-gpu.
+Scripts `caps_bench.py`, `caps_fp8.py`, `train_step_bench.py` live in the PC home directory and in `/srv/media/projects/` on the GPU guest.
+
+**Repeats.** Not recorded: repeatability was not documented for this run - treat the numbers as a single run unless the result says otherwise.
+
+**Environment.** Tesla V100-SXM2-16GB (sm_70), driver 580, CUDA 12.9, guest VM on a home Proxmox host; engine and model as recorded in the run log.
+
+**Does not show.** one run only - repeatability was not measured; the run log was not preserved, so the numbers cannot be re-checked from this repository.
+
+**Raw.** Not preserved for this run.
+
+**Commands.** The command line was not recorded for this run.
+
+**Question.** See the card title: the premise is stated in the field notes and was not carried into this export.
+
+**Verdict.** The split is clean and measured: the 4060 Ti is the card that can train QLoRA at 398 tok/s
+(3B) and run bf16 paths, while the V100 is the card that serves inference with 900 GB/s and answers
+prefill-bound requests; routing training to the 4060 Ti and serving to the V100 is the rule these
+numbers support.
+
+**Result type.** Unstated - this note compares two cards on the same task, it does not test a change
+against a baseline.

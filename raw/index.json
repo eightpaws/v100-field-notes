@@ -355,9 +355,9 @@
  },
  {
   "id": "V100-74",
-  "title": "Olala-v1.0-mini-7A1B: MoE with 1B active on a 16 GB card",
+  "title": "Olala-v1.0-mini-7A1B: MoE with 1B active on 16 GB",
   "result_type": "unstated",
-  "verdict": "Negative on the card's own criterion: 43.5 tok/s against a 140 tok/s bar, and no usable quality number. Keeping the model makes sense only if its chat template is rewritten so answers arrive without the think-aloud preamble; nothing else here justifies the extra fork in the stack."
+  "verdict": "Blocked by engine (24.11). File downloaded and intact (5,990,551,040 bytes, exact size verified), but llama.cpp master from 24.11 (build 12.9, sm_70) responds with unknown model architecture: 'olala'."
  },
  {
   "id": "V100-75",
@@ -367,15 +367,15 @@
  },
  {
   "id": "V100-76",
-  "title": "Ternary-Bonsai 2 27B: ternary weights on Volta",
-  "result_type": "negative",
-  "verdict": "Negative and final for this card: ternary weights do not execute on Volta at all - the kernel refuses by design rather than falling back silently, and the CPU path is 85 times below the 40 tok/s bar. A 27B in 6 GiB is a real thing, but not on this card; the same 6 GiB on a 40-series card is where ..."
+  "title": "Ternary-Bonsai-2-27B: 27B in 6 GB on ternary scales",
+  "result_type": "unstated",
+  "verdict": "Blocked by format (24.11). File is valid (GGUF v3, 851 tensor, 5,946,648,928 bytes), but weights are compressed with type PTQ1_0, which llama.cpp does not support: the engine knows TQ1_0 and TQ2_0, not the P-variant, and fails."
  },
  {
   "id": "V100-77",
-  "title": "Raon-1-nano MTP: Multi-token prediction without draft",
+  "title": "Raon-1-nano: the MTP head exists, the engine does not run it",
   "result_type": "unstated",
-  "verdict": "Blocked by engine (24.11). File downloaded (2,145,934,208 bytes), but the architecture raon1nano is unknown to current llama.cpp."
+  "verdict": "Negative as stated: the MTP head is dead weight on this engine - it costs 25 % decode in the bench and changes nothing through the server, because no speculative rounds are run. The plain Q4_K_M file is the one to use at 85 tok/s. Reopen the card when upstream llama.cpp or ik_llama learns to ..."
  },
  {
   "id": "V100-78",
@@ -618,6 +618,12 @@
   "verdict": "Translation: 27B abliterated IQ3_S (model 2 of 3): class A 7/7 direct response, class B 9/9 direct (zero failures), class C 4/4 refusal."
  },
  {
+  "id": "4060ti-capabilities-vs-v100",
+  "title": "What the 4060 Ti can do that the V100 cannot",
+  "result_type": "unstated",
+  "verdict": "The split is clean and measured: the 4060 Ti is the card that can train QLoRA at 398 tok/s (3B) and run bf16 paths, while the V100 is the card that serves inference with 900 GB/s and answers prefill-bound requests; routing training to the 4060 Ti and serving to the V100 is the rule these numbers ..."
+ },
+ {
   "id": "background-swap-three-methods",
   "title": "Background replacement: three methods, the deterministic one won",
   "result_type": "positive",
@@ -652,6 +658,12 @@
   "title": "GPU Unlock: baseline measured, unlock not installed",
   "result_type": "unstated",
   "verdict": "Baseline only: the stock card was measured and the unlock was deliberately not installed, so this note answers \"what we have now\", not \"what the unlock gives\". No pass/fail is claimed."
+ },
+ {
+  "id": "iclight-color-drift",
+  "title": "IC-Light: light changes, product colour does not survive",
+  "result_type": "mixed",
+  "verdict": "Unsuitable for the catalogue: ΔE 24-37 against a threshold of 5-10."
  },
  {
   "id": "image-quality-checker",

@@ -1,0 +1,41 @@
+{
+ "card": "V100-77",
+ "files": {
+  "plain": {
+   "name": "raon-1-nano-Q4_K_M.gguf",
+   "bytes": 2082677632
+  },
+  "mtp": {
+   "name": "raon-1-nano-Q4_K_M_MTP.gguf",
+   "bytes": 2145934208
+  }
+ },
+ "params_b": {
+  "plain": 3.56,
+  "mtp": 3.61
+ },
+ "engine": "ik_llama.cpp build ac21694, CUDA for sm_70 (upstream llama.cpp: unknown architecture 'raon1nano')",
+ "llama_bench_tg64": {
+  "plain_tok_s": 84.97,
+  "plain_sd": 3.88,
+  "mtp_tok_s": 63.54,
+  "mtp_sd": 1.27,
+  "flags": "-p 256 -n 64 -r 3"
+ },
+ "server_short_generation": {
+  "prompt": "write a factorial function and explain briefly",
+  "plain": {
+   "tokens": 212,
+   "wall_s": 2.5,
+   "server_tok_s": 93.7,
+   "draft_stats": null
+  },
+  "mtp": {
+   "tokens": 212,
+   "wall_s": 2.5,
+   "server_tok_s": 92.7,
+   "draft_stats": null
+  }
+ },
+ "mtp_verdict": "the head loads but no draft acceptance is reported and throughput is identical, so MTP is not executed"
+}

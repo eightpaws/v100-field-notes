@@ -50,8 +50,24 @@ If different lighting is needed in a catalogue, the path is different: shoot the
 ## Reproduction
 
 ```
-ssh ai-gpu 'cd /srv/media/projects/iclight && HF_HOME=/srv/media/ai-cache/hf \
+ssh the GPU guest 'cd /srv/media/projects/iclight && HF_HOME=/srv/media/ai-cache/hf \
   /home/hermes/venvs/cu121/bin/python iclight_run.py'
 ```
 
 Scripts: `iclight_run.py` (three scenes), `iclight_neutral.py` (neutral light). Logs `/srv/media/night/iclight*.log`, results in `out/result.json` and `out/neutral.json`.
+
+**Repeats.** Not recorded: repeatability was not documented for this run - treat the numbers as a single run unless the result says otherwise.
+
+**Environment.** Tesla V100-SXM2-16GB (sm_70), driver 580, CUDA 12.9, guest VM on a home Proxmox host; engine and model as recorded in the run log.
+
+**Does not show.** one run only - repeatability was not measured; the run log was not preserved, so the numbers cannot be re-checked from this repository.
+
+**Raw.** Not preserved for this run.
+
+**Commands.** The command line was not recorded for this run.
+
+**Question.** See the card title: the premise is stated in the field notes and was not carried into this export.
+
+**Verdict.** Unsuitable for the catalogue: ΔE 24-37 against a threshold of 5-10.
+
+**Result type.** Mixed.
