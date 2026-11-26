@@ -462,6 +462,12 @@
   "verdict": "Positive: three presets from one config file keep background and light within 4-9 RGB points across five seeds each, cost 10-11.5 s per frame on one 16 GB V100, and switch without code changes. The negative prompt does not protect against unwanted body parts - 1 frame in 15 had to be rejected."
  },
  {
+  "id": "V100-102",
+  "title": "Image-to-image and depth: Save product, change background",
+  "result_type": "mixed",
+  "verdict": "Confirmed partially. Diffusion (SDXL + ControlNet depth 1.0-small, strength 0.45, 25 steps) preserves the product but does not remove the background to white: background brightness is 145 out of 255, with halos around leaf edges."
+ },
+ {
   "id": "V100-103",
   "title": "Batch savings: Batch vs individual loads",
   "result_type": "positive",
