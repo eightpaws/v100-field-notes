@@ -452,8 +452,8 @@
  {
   "id": "V100-90",
   "title": "FlashQLA-SM70: Gated DeltaNet",
-  "result_type": "mixed",
-  "verdict": "The SM70 Gated DeltaNet kernel runs on the V100 and matches the reference loop exactly (max deviation 0.0, 0.5 ms against 575 ms for a Python loop). The card criterion - a 25 % end-to-end gain - could not be tested, because no engine calls this operator."
+  "result_type": "unstated",
+  "verdict": "The V100 core executes and is accurate with a maximum deviation from the reference cycle of 0.0 on the form 1x512x2hx4kvxd128, time 0.5 ms compared to 575 ms for the Python cycle (1099x - against the cycle, not against the optimized."
  },
  {
   "id": "V100-91",
@@ -663,7 +663,13 @@
   "id": "V100-143",
   "title": "Raw archive: nine of thirteen missing logs recovered",
   "result_type": "mixed",
-  "verdict": "Nine of the thirteen \"missing\" raw logs were on the rig all along under suffixed names and are now archived in raw/runs; four (V100-41, 42, 49, 52) are genuinely lost and stay queued for re-measurement."
+  "verdict": "Mixed, and the useful half is positive: for nine cards the \"missing raw\" was a naming and search problem, not a lost run. For four it is a genuine loss and the caveat stands until they are re-measured."
+ },
+ {
+  "id": "V100-144",
+  "title": "Inkling 2 Mini: Looped MoE, depth without weight growth",
+  "result_type": "unstated",
+  "verdict": "Three levels of reasoning_effort on 12 MBPP tasks, clean map: none 7/12 (pass@1 0.583), medium 9/12 (0.750), high 7/12 (0.583)."
  },
  {
   "id": "4060ti-capabilities-vs-v100",
