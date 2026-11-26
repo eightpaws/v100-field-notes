@@ -1,758 +1,758 @@
 [
-  {
-    "id": "V100-01",
-    "title": "Speculative decoding in llama.cpp",
-    "result_type": "unstated",
-    "verdict": "Speculative decoding was tested on two targets, and the result depends on the model pair: it accelerates on 7B, but slows down almost twofold on 14B."
-  },
-  {
-    "id": "V100-02",
-    "title": "q8_0 KV cache: how much context a 14B model gets in 16 GB",
-    "result_type": "mixed",
-    "verdict": "Keep q8_0 KV with FlashAttention on, and treat 32k as the practical ceiling for a 14B model on a 16 GB card. 64k does not fit at any KV precision, so the \"64k on a V100\" advice is worth ignoring rather than retrying."
-  },
-  {
-    "id": "V100-03",
-    "title": "imatrix Q4_K under Russian chassis",
-    "result_type": "unstated",
-    "verdict": "- Environment Status (configuration, 23.11.2026 21:13). The llama.cpp build in ~/llama-new was killed by a VM reboot at 20:48, and was rebuilt on CUDA 12.9: BUILD_OK in 7 min 14 s (on the system's nvcc 12.0, the same build."
-  },
-  {
-    "id": "V100-10",
-    "title": "Prefill and batching: where a V100 actually loses throughput",
-    "result_type": "positive",
-    "verdict": "Set num_batch=2048 explicitly on a V100 — it is ×3 over 128 and +31 % over the Ollama default, and the default is the main reason the card looks slow in off-the-shelf setups. The penalty for long prompts is real but small: −19 % at 16 440 tokens."
-  },
-  {
-    "id": "V100-11",
-    "title": "System-prompt KV cache: prefix reuse in llama-server vs Ollama",
-    "result_type": "positive",
-    "verdict": "Enable the prefix cache in llama-server — it is the cheap win, and it is the only one of the two that survives a tail edit (95 ms instead of re-prefilling 1697 tokens). Ollama reuses the prefix on a byte-identical repeat but recomputes the whole prefix on any tail change. Either way, freeze the ..."
-  },
-  {
-    "id": "V100-12",
-    "title": "1Cat-vLLM: a modern serving stack that still builds for sm_70",
-    "result_type": "mixed",
-    "verdict": "The fork runs: a real modern serving stack on Volta, roughly a quarter behind llama.cpp on 7B GGUF, with an OpenAI API and batching model that llama.cpp does not give you. Two pitfalls cost the most time — --disable-log-requests is gone in this fork (use --enforce-eager), and the card must be empty ..."
-  },
-  {
-    "id": "V100-13",
-    "title": "AWQ/int4 vs GGUF Q4 on Volta",
-    "result_type": "unstated",
-    "verdict": "AWQ/int4 via vLLM 1.5.4: model loaded (14287 MiB VRAM), decode 117 tok/s (114.2 / 116.9 after warm-up, first request 66.5), code is correct."
-  },
-  {
-    "id": "V100-14",
-    "title": "24B in 16 GB: Mistral-Small-3.1-24B AWQ",
-    "result_type": "negative",
-    "verdict": "Mistral Small 24B AWQ does not fit in 16 GB via vLLM."
-  },
-  {
-    "id": "V100-15",
-    "title": "Stack snapshot: how long sm_70 stays supportable",
-    "result_type": "positive",
-    "verdict": "Freeze the stack and keep the wheels on disk — the failure mode here is silent, and after CUDA 13 / PyTorch 2.15 the only way back is a source build. Rule for this card: update nothing on a V100 without a reason you can write down. One item is still open and is stated here rather than hidden: the ..."
-  },
-  {
-    "id": "V100-16",
-    "title": "volta-fa patches for llama.cpp: measured, not promised",
-    "result_type": "negative",
-    "verdict": "The promised +34–45 % is not there: +7.4 % on decode and +2.6 % on prefill, and most of that is FlashAttention itself (+8.7 % on decode), not the Volta patches. Moving off Ollama for 7 % is not worth the maintenance burden of a pinned fork — but 4 of 8 patches not applying is the more useful ..."
-  },
-  {
-    "id": "V100-17",
-    "title": "LMDeploy TurboMind: AWQ without forks",
-    "result_type": "mixed",
-    "verdict": "Partial: TurboMind works on sm_70 but loses quality in 4-bit."
-  },
-  {
-    "id": "V100-18",
-    "title": "xllama.cpp: compress KV instead of q8",
-    "result_type": "unstated",
-    "verdict": "Compressed KV in xllama.cpp works, but on long context it becomes too slow."
-  },
-  {
-    "id": "V100-19",
-    "title": "GQA to MHA: the silent attention fallback that costs 7x",
-    "result_type": "positive",
-    "verdict": "Check the attention path before blaming the pipeline: on sm_70 a GQA model can run 7x slower with no error message, and the same shape then OOMs at 8192 tokens. Expanding K/V to MHA recovers almost all of it at the cost of copied weights. LTX-Video, Wan, CogVideoX and SDXL on this rig are already ..."
-  },
-  {
-    "id": "V100-20",
-    "title": "fni8: int8 dp4a for DiT",
-    "result_type": "negative",
-    "verdict": "Rejected along with V100-22: this is the same fni8 package family (int8 dp4a for DiT in ComfyUI)."
-  },
-  {
-    "id": "V100-21",
-    "title": "Tachyon, Ninfer, Lapilli",
-    "result_type": "unstated",
-    "verdict": "Tachyon-v100 is being built and run on our card, but our models do not support it."
-  },
-  {
-    "id": "V100-22",
-    "title": "fni8 for LLM: int8 dp4a instead of tensor cores",
-    "result_type": "negative",
-    "verdict": "Rejected based on the author's documentation facts."
-  },
-  {
-    "id": "V100-24",
-    "title": "DRY sampler and reasoning budget: a negative result",
-    "result_type": "negative",
-    "verdict": "The DRY penalty did not reproduce here: qwen2.5-coder-14b does not loop on Russian tasks at temperature=0, so there is nothing for it to fix, and it costs about 3 % of decode speed. Keep DRY off by default and enable it only for a specific model that actually loops. The build does accept ..."
-  },
-  {
-    "id": "V100-25",
-    "title": "CUDA graphs for musical pipeline",
-    "result_type": "unstated",
-    "verdict": "Capture of CUDA graphs for ACE-Step 1.5 won't yield significant gain."
-  },
-  {
-    "id": "V100-26",
-    "title": "llama.cpp build flags matrix for Volta",
-    "result_type": "unstated",
-    "verdict": "The build flag matrix was previously verified (CUDA 12.0, llama.cpp build b7743fbfd8, model 14B Q4_K, llama-bench pp512/tg128, median of three runs)."
-  },
-  {
-    "id": "V100-27",
-    "title": "volta-forever: running CUDA 13 binaries on a V100",
-    "result_type": "mixed",
-    "verdict": "The layer does what it says at the compatibility level: it runs code compiled without Volta, and it is worth keeping for exactly one situation — software released only for CUDA 13 with no sources. It is not a speed path: emulated sm_75 instructions run on ordinary CUDA cores, so a frame that takes ..."
-  },
-  {
-    "id": "V100-28",
-    "title": "V100-LLM: ready presets for 16 GB",
-    "result_type": "negative",
-    "verdict": "Rejected: the release does not include the engine."
-  },
-  {
-    "id": "V100-29",
-    "title": "PXA 4.0 engine: a 27B model on a 16 GB card",
-    "result_type": "positive",
-    "verdict": "The first configuration that puts a 27B dense model fully on the card and still decodes faster than the 30B MoE with CPU offload. Stock llama.cpp cannot read the PXQN4 file — the PXA engine is mandatory."
-  },
-  {
-    "id": "V100-30",
-    "title": "sm70-attn: FA2-D256 in llama.cpp",
-    "result_type": "negative",
-    "verdict": "Rejected based on the card criterion: \"do we have a model with head_dim 256 and do we need context over 64k\"."
-  },
-  {
-    "id": "V100-32",
-    "title": "Prepared sm_70-weights with Hugging Face",
-    "result_type": "unstated",
-    "verdict": "NInfer-V100 1.7.2 unpacks and runs: three binaries of 421-424 MB (ninfer, ninfer-serve, ninfer-perplexity), no missing libraries, help opens."
-  },
-  {
-    "id": "V100-36",
-    "title": "Video without the RAM ceiling: clip length and 720p",
-    "result_type": "mixed",
-    "verdict": "RAM was never the ceiling: process RSS sat at 41.6 GB across every clip length while VRAM moved 12.7→13.0 GB. The wall is the 16 GB card. Without tricks: 12 s at 480p, or 6 s at 720p with VAE tiling — and tiling costs ~50 % more time (594 s vs 394 s) plus a decode warning that the returned frames ..."
-  },
-  {
-    "id": "V100-37",
-    "title": "32B dense vs 30B MoE: decode re-measured with 96 GB RAM",
-    "result_type": "negative",
-    "verdict": "The ceiling is the 16 GB card, not system RAM: 96 GB does not let a dense 32B model run at a usable speed (3.0 tok/s at 20 layers, refuses to load above that). Among large models only MoE is viable here — the same 20 layers give 24.5 tok/s, eight times the dense model. Practical rule: on 16 GB ..."
-  },
-  {
-    "id": "V100-38",
-    "title": "ACE-Step 4B and work alongside SDXL",
-    "result_type": "unstated",
-    "verdict": "Test 25.11: music-studio service starts, stops imgd (no coexistence in fact, despite the description claiming \"coexists with SDXL\"), loads weights and crashes on loading 5Hz LM: the last line in the log is \"loading 5Hz LM tokenizer\",."
-  },
-  {
-    "id": "V100-39",
-    "title": "TTFT and model loading with a warm page cache",
-    "result_type": "positive",
-    "verdict": "A warm page cache changes the picture by an order of magnitude: 22.4 s cold against 3.2 s warm for llama.cpp, and 0.197 s for the repeated Ollama call with the whole prefix coming from cache. The old \"14B loads in 16 s\" figure is only true for the first run after a reboot — in a working loop the ..."
-  },
-  {
-    "id": "V100-40",
-    "title": "ik_llama.cpp vs upstream llama.cpp on V100",
-    "result_type": "negative",
-    "verdict": "The advertised 2.2x does not reproduce: prefill on the fork is about half of upstream (843–890 vs 1638–1779 tok/s) and decode is only 4% better with flash attention (73.53 vs 70.92). On DeepSeek-Coder-V2-Lite (arch deepseek2) the fork crashes with a core dump at startup, while upstream reaches 2250 ..."
-  },
-  {
-    "id": "V100-41",
-    "title": "GPT-OSS-20B MXFP4 on a 16 GB Volta card",
-    "result_type": "mixed",
-    "verdict": "Usable only with flash attention on and 4 expert layers pushed to CPU: 24 tok/s decode. Both faster coding candidates (DeepSeek-Coder-V2-Lite at 183 tok/s, Qwen3-Coder-30B at 75 tok/s) beat it, so it stays out of the working stack."
-  },
-  {
-    "id": "V100-42",
-    "title": "MoE experts in system RAM: -ncmoe on V100 16 GB",
-    "result_type": "positive",
-    "verdict": "Yes: 8 expert layers on CPU is the entry threshold, and every extra layer costs both prefill and decode roughly linearly. At 8 layers a 17.3 GB model — 1.3 GB larger than the card — decodes at 75 tok/s, against 3 tok/s for a dense 32B on the same card."
-  },
-  {
-    "id": "V100-43",
-    "title": "llama-server as the working server: prefix cache and batching",
-    "result_type": "positive",
-    "verdict": "Prefix caching works and is the main reason to run llama-server for agent workloads: prompt processing drops from 845 ms to 89 ms (9.5x), round trip from 1.18 s to 0.39 s."
-  },
-  {
-    "id": "V100-44",
-    "title": "NVFP4 on sm_70: 4-bit float in 16 GB",
-    "result_type": "unstated",
-    "verdict": "Works on sm_70. vLLM 1.5.4 (--quantization modelopt_fp4) boosted Ornith-1.5-9B-NVFP4 on V100: 14 133 MiB VRAM, decode 86.7-86.8 tok/s (first request 83.0), code is correct."
-  },
-  {
-    "id": "V100-45",
-    "title": "Qwen3-Coder-30B-A3B as a coding writer on 16 GB",
-    "result_type": "positive",
-    "verdict": "Working configuration is -ngl 99 -ncmoe 8 -c 4096. An 8192-token context needs more VRAM (compute buffer allocation fails), so long files require either 12 CPU layers or a smaller context."
-  },
-  {
-    "id": "V100-46",
-    "title": "Tool calling on a local V100 model",
-    "result_type": "positive",
-    "verdict": "Tool calling works correctly with the Qwen3-Coder chat template: valid JSON arguments, no extra calls, correct final answer. At 75 tok/s decode a conversational turn costs 2–3 s."
-  },
-  {
-    "id": "V100-47",
-    "title": "DeepSeek-Coder-V2-Lite 16B MoE: the fastest decode on V100",
-    "result_type": "positive",
-    "verdict": "Best decode measured on this card by a wide margin: 183.6 tok/s with 2250 tok/s prefill, working configuration -ngl 99 -fa 0. Flash attention must be off — it is 160x slower on this architecture."
-  },
-  {
-    "id": "V100-48",
-    "title": "FIM autocomplete in the editor via llama-server /infill",
-    "result_type": "mixed",
-    "verdict": "FIM works and is fast enough to type ahead of a human. Latency is unstable (126 ms to 1.5 s on the same prompt) — the old build's slot handling is the suspect; a single slot with --cache-reuse is the next thing to try."
-  },
-  {
-    "id": "V100-49",
-    "title": "Embeddings for code search with bge-m3 on V100",
-    "result_type": "positive",
-    "verdict": "Ranking is correct with a clear margin, and the 606 MB model handles a Russian query against English code without translation. Indexing a repository is a matter of minutes on this card."
-  },
-  {
-    "id": "V100-50",
-    "title": "Speculative decoding for code generation",
-    "result_type": "negative",
-    "verdict": "Not reproducible. The first run on build 51831d4 showed +21% on a 7B target, but on master af5c583 with the same pair the gain is gone: base 105.5 / 111.9 / 113.0 tok/s versus 102.6 / 111.2 / 112.5 with the draft. A per-prompt check (one run each, seed 42) shows the draft is neutral on fresh code ..."
-  },
-  {
-    "id": "V100-51",
-    "title": "32k context for a 30B MoE on 16 GB",
-    "result_type": "mixed",
-    "verdict": "32k is reachable only with compressed KV plus offloaded experts: -c 32768 -ctk q8_0 -ctv q8_0 -ncmoe 16 gives 25 tok/s. Without compression the same window needs 24+ CPU layers and drops to 16 tok/s."
-  },
-  {
-    "id": "V100-52",
-    "title": "Local edit → test → fix loop",
-    "result_type": "positive",
-    "verdict": "The loop closes locally in 15 seconds per iteration, which makes unattended refactoring and test-fixing practical. A dense 32B on the same card would run at 3 tok/s and be unusable for this."
-  },
-  {
-    "id": "V100-53",
-    "title": "Cache prefix: equal comparison with equal prompt length",
-    "result_type": "unstated",
-    "verdict": "Cache prefix is real and not an artifact of length. Control with equal prompt length (8737 tokens in all three requests), llama-server with --cache-reuse 256, 7B Q4: \\| Request \\| Prompt eval \\| Total \\| \\|---\\|---\\|---\\| \\| Cold \\| 4154.7 ms \\|."
-  },
-  {
-    "id": "V100-54",
-    "title": "Volt-forever: Honest native base with included cuDNN",
-    "result_type": "mixed",
-    "verdict": "Partial: cuDNN-on is not available on our stack."
-  },
-  {
-    "id": "V100-55",
-    "title": "Llama-Bench refuses to load more than 20 layers.",
-    "result_type": "unstated",
-    "verdict": "There is no limit of 20 layers. The matrix is based on Qwen3-Coder-30B (17.28 GiB), f16 KV, p128/n16: \\| ncmoe \\| prefill pp128 \\| decode tg16 \\| \\|---\\|---\\|---\\| \\| 24 \\| 179.2 \\| 39.2 \\| \\| 32 \\| 145.2 \\| 34.6 \\| Both configurations load and."
-  },
-  {
-    "id": "V100-56",
-    "title": "32kB Q8_0 and check Q4_0 at 64k",
-    "result_type": "unstated",
-    "verdict": "32k and 64k are achievable, decoding is unaffected. Qwen2.5-Coder-7B Q4 (4.36 GiB), FA enabled: \\| Context \\| KV \\| Prefill \\| Decode \\| \\|---\\|---\\|---\\|---\\| \\| 32,768 \\| q8_0 \\| 1860 tok/s \\| 121.5 tok/s \\| \\| 65,536 \\| q4_0 \\| 1247 tok/s \\|."
-  },
-  {
-    "id": "V100-57",
-    "title": "Q8_0 KV: Confirm double decoding or attribute to noise",
-    "result_type": "unstated",
-    "verdict": "No double acceleration: compressed KV is slightly slower. Qwen2.5-Coder-7B Q4 (4,36 GiB), p512/n128, r=2: \\| KV \\| FA \\| prefill pp512 \\| decode tg128 \\| \\|---\\|---\\|---\\|---\\| \\| f16 \\| off \\| 3265.8 ± 75.0 \\| 123.95 ± 0.17 \\| \\| f16 \\| on \\| 3324.8 ±."
-  },
-  {
-    "id": "V100-58",
-    "title": "Throughput, batching, quality",
-    "result_type": "unstated",
-    "verdict": "Under load, 1Cat-vLLM outperforms llama.cpp by six times. 7B GGUF, --max-model-len 4096, --gpu-memory-utilization 0.6, different prompts for all requests (otherwise prefix cache boosts the number): \\| Mode \\| Tokens \\| Time \\| Total."
-  },
-  {
-    "id": "V100-60",
-    "title": "Gather all eight patches on their base commit.",
-    "result_type": "unstated",
-    "verdict": "No: all eight patches apply on 79e2e74 (HEAD 70782b2), but the claimed +34-45% does not reproduce - decode tg64 67.8 tok/s against 70.93 for the upstream build b1b770d (-4.4%), prefill 8192 +2.1% (1507.6 vs 1476.5), prefill 512 within."
-  },
-  {
-    "id": "V100-62",
-    "title": "720p with VAE tiling: check the frames, not just the return code",
-    "result_type": "mixed",
-    "verdict": "720p with VAE tiling is viable — no tile seams at 1280×704 / 97 frames on 13.55 GiB. The weak point is not tiling but overall softness and blown highlights at 30 steps with the 5B model; go to 45 steps or downscale-and-upscale instead of blaming the tiler."
-  },
-  {
-    "id": "V100-63",
-    "title": "Model loading is not the same number as harness start",
-    "result_type": "mixed",
-    "verdict": "Any load-time number from this rig has to name the engine. For llama.cpp, 3.5-4.2 s for a 7B model is real. For vLLM on Volta the correct figure is about two minutes, paid once per server start rather than per request. Quoting \"3 s\" for both makes the vLLM card look 30x worse on throughput than it ..."
-  },
-  {
-    "id": "V100-65",
-    "title": "Recheck 8k and 16k and set num\\_batch to 4096",
-    "result_type": "unstated",
-    "verdict": "Prefill decays smoothly, but 30B can't handle 8k at ncmoe 8. Measurements llama-bench, n=0, r=1: \\| Model \\| pp2048 \\| pp8192 \\| pp16384 \\| \\|---\\|---\\|---\\|---\\| \\| DeepSeek-Coder-V2-Lite 16B, fully on GPU \\| 3462 \\| 2713 \\| 1976 \\| \\|."
-  },
-  {
-    "id": "V100-66",
-    "title": "Quality over speed: MBPP on three models",
-    "result_type": "unstated",
-    "verdict": "Harness run of model_eval.py, one server ascent, 40 MBPP tasks + 8 blocks."
-  },
-  {
-    "id": "V100-67",
-    "title": "16 GB: Q4_K_M - 128 bits, Q5_K_M - 160 bits, Q6_K - 256 bits, Q8 - 320 bits",
-    "result_type": "unstated",
-    "verdict": "Q5_K_M outperforms Q4_K_M in quality with a slight speed loss. \\| Quant \\| Size \\| VRAM \\| Prefill pp128 \\| Decode tg32 \\| MBPP pass@1 \\| \\|---\\|---\\|---\\|---\\|---\\|---\\| \\| Q4_K_M \\| 4.68 GB \\| ~5 GB \\| 3304 (pp512 in V100-66) \\| 132.2 \\| 0.60 (24/40)."
-  },
-  {
-    "id": "V100-68",
-    "title": "Speculation on 30B MoE: Draft 0.5B vs Qwen3-Coder",
-    "result_type": "unstated",
-    "verdict": "Speculation on 30B is not profitable. With a draft of 0.5B, the model had to be raised from -ncmoe 12 instead of 8 (draft subtracts VRAM): base in these conditions 36.0 / 32.6 / 35.3 tok/s, with speculation 33.7 / 37.4 / 38.3."
-  },
-  {
-    "id": "V100-69",
-    "title": "Special dec without second model",
-    "result_type": "unstated",
-    "verdict": "N-grams in file editing don't provide anything, draft hurts. Prompt 200 lines of source code, model appends function based on pattern: base 71.5 / 106.3 / 106.4 tok/s, ngram-simple 71.1 / 103.4 / 101.5 (-3%, within noise),."
-  },
-  {
-    "id": "V100-70",
-    "title": "Re-rank surface search by code",
-    "result_type": "unstated",
-    "verdict": "The reranker works and separates trash confidently. bge-reranker-v2-m3 (568M, fp16) took 6.9 s to launch on V100 and used 1092 MiB VRAM - fits alongside working LLM, no need to unload it."
-  },
-  {
-    "id": "V100-71",
-    "title": "The cost of 1M tokens on your own hardware is",
-    "result_type": "unstated",
-    "verdict": "Cost of 1M output tokens on own hardware. Power consumption measured via nvidia-smi power.draw: idle 20.7-46.6 W, under load (7B, 65% utilization) 159.0 W, peak rated 300 W."
-  },
-  {
-    "id": "V100-72",
-    "title": "Agent with four tools and an error on the first call",
-    "result_type": "unstated",
-    "verdict": "1 of 3 scenarios. Three tasks, four tools, the first call get_time was intentionally broken (server responded with unknown argument 'location'; the only valid argument is 'city'."
-  },
-  {
-    "id": "V100-73",
-    "title": "Goods cards per hour: image generation throughput",
-    "result_type": "unstated",
-    "verdict": "On a 768 px card, it yields ~2100 images per hour, but on 1024 px it hits memory. Tested on DreamShaperXL-Turbo (6 steps, guidance 1.5, fp16) via diffusers, local single-file checkpoint: \\| Size \\| Seconds per image \\| Images per hour \\|."
-  },
-  {
-    "id": "V100-74",
-    "title": "Olala-v1.0-mini-7A1B: MoE with 1B active on 16 GB",
-    "result_type": "unstated",
-    "verdict": "Blocked by engine (24.11). File downloaded and intact (5,990,551,040 bytes, exact size verified), but llama.cpp master from 24.11 (build 12.9, sm_70) responds with unknown model architecture: 'olala'."
-  },
-  {
-    "id": "V100-75",
-    "title": "GLM-4.7-Flash-30B-A3B IQ4_XS: fresh 30B MoE",
-    "result_type": "unstated",
-    "verdict": "Speed is good, model is degenerative. Architecture of the file is deepseek2 (like DeepSeek-Coder-V2), so FA is off."
-  },
-  {
-    "id": "V100-76",
-    "title": "Ternary-Bonsai-2-27B: a 27B model in 6 GB on ternary weights",
-    "result_type": "mixed",
-    "verdict": "Ternary kernels work on sm_70 once the server actually builds, and 27B fits in roughly 6.8 GB of VRAM at 8k context. Quality does not carry it: 0.325 pass@1 on the 40-task code battery, below the 0.5 threshold set in the card and well below the 0.625 of Qwen2.5-Coder-7B Q8. Useful where memory is ..."
-  },
-  {
-    "id": "V100-77",
-    "title": "Raon-1-nano MTP: multi-token prediction without a draft model",
-    "result_type": "unstated",
-    "verdict": "The MTP head is dead weight in this engine: decode speed is identical to the plain file (93.28 vs 92.72 tok/s, within one sigma), the head is loaded but never executed, and no speculative counters appear in server responses. Use the plain Q4_K_M."
-  },
-  {
-    "id": "V100-78",
-    "title": "Rapid Averages: Nemotron-Bolt-E4B and SenseNova-Loop-9B",
-    "result_type": "unstated",
-    "verdict": "- ## Queue P1v - New Ideas Following Review (24.11.2026) \\| # \\| Idea \\| Stage \\| Resources \\| Status \\| Outcome \\| Ready \\| \\|---\\|---\\|---\\|---\\|---\\|---\\|---\\| \\| V100-66 \\| Code Quality: MBPP on Three Models \\| P0 \\| 40 Tasks \\| Done \\| Code 0.55 / RAG 2/2."
-  },
-  {
-    "id": "V100-79",
-    "title": "llama.cpp v1.0.0 vs our build 51831d4",
-    "result_type": "unstated",
-    "verdict": "Regression on sm_70 has occurred, but only for MoE."
-  },
-  {
-    "id": "V100-80",
-    "title": "Inkling-2-Mini 26B/3.4B Q3 on sm_70: NaN check",
-    "result_type": "positive",
-    "verdict": "Usable: a 26B MoE at 13.6 GB answers correctly on a 16 GB Volta card at about 29 tok/s, provided the client allows a long thinking budget and reads reasoning_content as part of the stream."
-  },
-  {
-    "id": "V100-81",
-    "title": "MOE cache experts in RAM instead of `-ncmoe`",
-    "result_type": "unstated",
-    "verdict": "Experts cache on sm_70 is not profitable: it doesn't fit on the card with -ncmoe 8, and when it fits (with -ncmoe 12), it loses to the current scheme."
-  },
-  {
-    "id": "V100-82",
-    "title": "262K context on a single 16 GB card",
-    "result_type": "positive",
-    "verdict": "Yes for a small model: 262k fits on 16 GB with quantised KV. The ceiling is set by model size, not by the card: 0.5–1B reaches 262k, a dense 7B is realistic at 64k, and a 30B MoE at 8–16k."
-  },
-  {
-    "id": "V100-83",
-    "title": "Strata-V100: third engine for verification",
-    "result_type": "unstated",
-    "verdict": "Run Coder IQ1_M (25.11.2026, VM 200, V100-SXM2-16GB)."
-  },
-  {
-    "id": "V100-84",
-    "title": "QWEN38-MTP flags from the recipe",
-    "result_type": "unstated",
-    "verdict": "The MTP flag is present in the build (--spec-type draft-mtp in build129), but there's nothing to test it on: the only Qwen3.8-27B on disk is a third-party quantum pxqn-onecard (13.57 GB), its tensor type 263 is outside the list of."
-  },
-  {
-    "id": "V100-85",
-    "title": "Xing4.0-29B-A4B in IQ2_M",
-    "result_type": "negative",
-    "verdict": "Negative. The 2-bit quant does what it promises on memory - a 29B MoE resident in 16 GB at 71 tok/s decode - but code quality lands at 0.425, below the card's 0.55 bar and below even a 7B model at Q8_0 (0.625) and a 7B in 4-bit AWQ (0.50). Worth keeping only as a fast drafter or summarizer, not as ..."
-  },
-  {
-    "id": "V100-86",
-    "title": "v100-llm-kit: prebuilt SM70 binaries vs our own build",
-    "result_type": "mixed",
-    "verdict": "Mixed: prefill 16 % faster with the shipped sm_70 binaries, decode identical. Worth taking for long prompts (document analysis, repository context); not a reason to migrate a decode-bound workload. The vendor's agent wrapper (serve-qwen3.sh, Claude Code integration) and the claimed Gemma 4 26B-A4B ..."
-  },
-  {
-    "id": "V100-89",
-    "title": "colibri: a three-tier expert engine, slower than llama.cpp here",
-    "result_type": "unstated",
-    "verdict": "Negative on this card: the advertised ~144 tok/s assumes a card where most experts stay resident, while 16 GB forces the cold tier into play and the tiering costs more than llama.cpp's -ncmoe offload. colibri is worth another look on a card with 32 GB or more; on the V100 the record stands."
-  },
-  {
-    "id": "V100-91",
-    "title": "Recheck sm70-attn with head_dim 256",
-    "result_type": "positive",
-    "verdict": "Positive for the narrow claim: the fork is faster on prefill at both measured lengths, and the margin at 16k (+11.2 %) is large enough to matter for long prompts. The numbers published in the fork's README (+34-48 %) do not reproduce at 8-16k: they belong to the 100-174k range, where the D256 ..."
-  },
-  {
-    "id": "V100-92",
-    "title": "PR #31802: fused quantised-KV dequant costs prefill on Volta",
-    "result_type": "unstated",
-    "verdict": "Negative for Volta: the fused path is slower here, most likely because the 25 % prefill headroom the PR recovers lives in the tensor-core MMA path, while sm_70 falls to the vector kernel where the extra fused branch just adds work. The card stays open upstream-wise - the PR may merge and change - ..."
-  },
-  {
-    "id": "V100-93",
-    "title": "Two-machine pipeline: V100 writes, 4060 Ti reviews",
-    "result_type": "negative",
-    "verdict": "Negative for the criterion. The split mode is 4.1x slower, not 15 % faster, and the margin is far outside any noise. The mechanism is visible in the numbers: the writer in mode (b) gave up 8 layers to the CPU (-ngl 12, otherwise it does not fit beside a 30B reviewer), decode fell from ~9 to ~4 ..."
-  },
-  {
-    "id": "V100-99",
-    "title": "Prompt-expander: LLM writes prompt for photographer",
-    "result_type": "mixed",
-    "verdict": "The hypothesis was partially confirmed, and the solution depends on the prompt length."
-  },
-  {
-    "id": "V100-100",
-    "title": "Style presets and immutable prompt part",
-    "result_type": "positive",
-    "verdict": "Positive: three presets from one config file keep background and light within 4-9 RGB points across five seeds each, cost 10-11.5 s per frame on one 16 GB V100, and switch without code changes. The negative prompt does not protect against unwanted body parts - 1 frame in 15 had to be rejected."
-  },
-  {
-    "id": "V100-102",
-    "title": "Image-to-image and depth: Save product, change background",
-    "result_type": "mixed",
-    "verdict": "Confirmed partially. Diffusion (SDXL + ControlNet depth 1.0-small, strength 0.45, 25 steps) preserves the product but does not remove the background to white: background brightness is 145 out of 255, with halos around leaf edges."
-  },
-  {
-    "id": "V100-103",
-    "title": "Batch savings: Batch vs individual loads",
-    "result_type": "positive",
-    "verdict": "Group of four runs on one model: batch 23.9 s vs."
-  },
-  {
-    "id": "V100-105",
-    "title": "Polyglot: eight languages on one harness",
-    "result_type": "unstated",
-    "verdict": "6 languages (Python, JavaScript, PHP, Ruby, Go, Java) x 10 functions x 21 statements per language, three models, temperature 0, one run 3m 4s."
-  },
-  {
-    "id": "V100-106",
-    "title": "Linters as acceptance: how much code passes on the first try",
-    "result_type": "unstated",
-    "verdict": "(25.11.2026) 40 tasks MBPP, Qwen2.5-Coder-7B-Instruct Q8_0."
-  },
-  {
-    "id": "V100-108",
-    "title": "Tests that catch: mutation testing of generated tests",
-    "result_type": "mixed",
-    "verdict": "Three branches, Qwen2.5-Coder-7B Q8, temp 0.2."
-  },
-  {
-    "id": "V100-109",
-    "title": "Medium-sized project from scratch: FastAPI, Postgres, authorization, tests, Docker",
-    "result_type": "unstated",
-    "verdict": "The project has been assembled but does not launch."
-  },
-  {
-    "id": "V100-110",
-    "title": "Red test cycle → repair on four languages",
-    "result_type": "unstated",
-    "verdict": "20 tasks (5 each in Python, JavaScript, C, Perl), Qwen2.5-Coder-7B-Instruct Q8_0, llama-server build129, temperature 0; total set - 25s, server up in 2s."
-  },
-  {
-    "id": "V100-111",
-    "title": "Review diff: five planted bugs, accuracy and completeness",
-    "result_type": "unstated",
-    "verdict": "10 commits with 5 planted defects each (boundary, null, race, injection, leak), Qwen2.5-Coder-7B Q8_0, 16 seconds total."
-  },
-  {
-    "id": "V100-112",
-    "title": "Refactoring with green tests",
-    "result_type": "unstated",
-    "verdict": "Refactoring Tasks: 10 tasks, 2-3 files each (helper code extraction, global renaming, deduplication, signature change, constant extraction, module separation, dead parameter removal, common exception module, nested calculation extraction,."
-  },
-  {
-    "id": "V100-113",
-    "title": "Schema, migrations, and queries against SQLite",
-    "result_type": "unstated",
-    "verdict": "20 tasks on SQLite (schema, migration, 3 queries to each), Qwen2.5-Coder-7B Q8_0, two runs of 37s each."
-  },
-  {
-    "id": "V100-114",
-    "title": "Frontend: page with form, checking Playwright",
-    "result_type": "unstated",
-    "verdict": "Qwen2.5-Coder-7B-Instruct generated 10 pages of one specification in 109 seconds (9.7-12.4 seconds per page, 3.2-5.0 thousand symbols)."
-  },
-  {
-    "id": "V100-115",
-    "title": "CI and Docker: how many repositories are being built",
-    "result_type": "unstated",
-    "verdict": "5 projects from previous cards (V100-109 FastAPI-notes, V100-114 static page, V100-116: api-client, CLI-ETL, FastAPI+JWT)."
-  },
-  {
-    "id": "V100-116",
-    "title": "What a generated project still needs before delivery",
-    "result_type": "mixed",
-    "verdict": "Deliverable, but only what was asked for: the model emitted a Dockerfile and a LICENSE exactly where the prompt named them and skipped them where it did not. The delivery checklist therefore belongs in the prompt, not in expectations — with the full checklist stated, one of three projects came out ..."
-  },
-  {
-    "id": "V100-117",
-    "title": "Cost of a typical order: machine hours and price for six types of work",
-    "result_type": "mixed",
-    "verdict": "The machine is not the cost. Six orders cost seven kopecks of electricity and under three minutes of GPU time; two of six needed the full two repair rounds and still failed, which is where the hours go. Price an order by human review and debugging time, not by tokens: a 7B Q8 model passes three of ..."
-  },
-  {
-    "id": "V100-118",
-    "title": "Conveyor spec → plan → code → tests → review against one prompt",
-    "result_type": "unstated",
-    "verdict": "Same 7B Q4_K_M, 10 MBPP tasks, temperature 0: one prompt 7/10 (0.70), pipeline spec-code-tests-reviews 6/10 (0.60) - difference -10 points."
-  },
-  {
-    "id": "V100-119",
-    "title": "Someone else's repository: where to change",
-    "result_type": "positive",
-    "verdict": "Positive against the stated criterion, with a caveat worth reading before selling it: the 8 of 10 is a strict string match, so the true hit rate is closer to 9 of 10 once a reviewer accepts method-qualified names. The remaining failure is semantic, not syntactic - name clones in a repository defeat ..."
-  },
-  {
-    "id": "V100-120",
-    "title": "Russian text in generated code",
-    "result_type": "unstated",
-    "verdict": "8 out of 10 tasks accepted without revision according to the task criteria: names in Latin 10/10, Russian text in place 10/10, long hyphens 0, typos 0, syntax valid 10/10."
-  },
-  {
-    "id": "V100-121",
-    "title": "Consistency of style with existing code",
-    "result_type": "unstated",
-    "verdict": "20 runs (10 tasks x 2 models), temp 0, baseline Harness passed ruff/mypy/pytest 10/10."
-  },
-  {
-    "id": "V100-122",
-    "title": "Output stability: five repeats of one task",
-    "result_type": "negative",
-    "verdict": "Negative: 0 of 5 runs green at temperature 0 and 0 of 5 at 0.2, so the shipping bar is not met. Repeatability is not quality — temperature 0 reproduces the same defect with byte-exact fidelity, which is worse for a quoted order than a model that occasionally gets it right."
-  },
-  {
-    "id": "V100-123",
-    "title": "Quant ladder for a 30B MoE code model: Q4, Q5, Q6, Q8",
-    "result_type": "negative",
-    "verdict": "Negative for Q6 and Q8: no quality gain over Q5_K_M, only more time, RAM and disk. Q5_K_M is the recommended quant for a 30B-A3B code model on one 16 GB Volta card."
-  },
-  {
-    "id": "V100-124",
-    "title": "Third-party API integration: retries, timeouts, idempotency",
-    "result_type": "negative",
-    "verdict": "Negative: 3 of 10 scenarios in both runs. The retry skeleton is sound, but one shadowed name kills every request the client makes — exactly the class of defect that a test suite finds and a code review often misses."
-  },
-  {
-    "id": "V100-125",
-    "title": "WordPress and WooCommerce: plugin edit with tests",
-    "result_type": "mixed",
-    "verdict": "Yes for the edit itself, not for the integration: all three local coders wrote both functions correctly on the first attempt (10/10 and 6/6, no fixes), so a 14B Q4 at 9.6 GB and 7 s covers this class of work and the 30B buys nothing in quality. What the experiment cannot promise is the part the ..."
-  },
-  {
-    "id": "V100-126",
-    "title": "Generated code productivity",
-    "result_type": "unstated",
-    "verdict": "Ten tasks on 100,000 records, n=3, median."
-  },
-  {
-    "id": "V100-127",
-    "title": "Multi-file edits that keep the public API intact",
-    "result_type": "negative",
-    "verdict": "A 7B coder handles a multi-file edit about seven times out of ten, and the failures are not random: one wrong unit, one changed return type, one inserted dataclass field. Signatures stayed compatible in 9 of 10 cases, so the API gate alone is not an acceptance test - it has to be paired with a ..."
-  },
-  {
-    "id": "V100-128",
-    "title": "Writing tests for someone else's code: coverage and defect detection",
-    "result_type": "negative",
-    "verdict": "A single-shot 7B coder writes tests that do not even run against the code it was given (14 of 18 fail, mostly on missing exception imports), and the subset that is green covers 22 % and catches 1 of 10 defects. Acceptance gates must run the generated tests before they are trusted; asking for branch ..."
-  },
-  {
-    "id": "V100-129",
-    "title": "Censored 27B on one card",
-    "result_type": "unstated",
-    "verdict": "Dense 27B IQ3_S (10.95 GiB) fit entirely: decode 37.26 tok/s (tg64, n=3), prefill 837.69 on pp512 and 800.49 on pp8192, server with -c 16384 launched in 9s with 12,977 MiB VRAM, peak 13,193 MiB."
-  },
-  {
-    "id": "V100-130",
-    "title": "Uncensored Flash-Next Q2_0 under Strata",
-    "result_type": "mixed",
-    "verdict": "The uncensored Q2_0 is a drop-in replacement for the censored coder: same code score within noise, slightly faster, tool calling works. It answers refused topics and therefore belongs to a personal loop - never behind a public endpoint, same rule as V100-129."
-  },
-  {
-    "id": "V100-131",
-    "title": "Failure metric: 20 prompts, uncensored vs censored",
-    "result_type": "unstated",
-    "verdict": "Translation: 27B abliterated IQ3_S (model 2 of 3): class A 7/7 direct response, class B 9/9 direct (zero failures), class C 4/4 refusal."
-  },
-  {
-    "id": "V100-141",
-    "title": "cuDNN 8 environment for graphics and video models",
-    "result_type": "positive",
-    "verdict": "Positive: cuDNN 8 restores the missing convolution path on sm_70, and all three pipelines run with cuDNN enabled. It removes the engine failure, not the memory ceiling - 720p video still…"
-  },
-  {
-    "id": "4060ti-capabilities-vs-v100",
-    "title": "What the 4060 Ti can do that the V100 cannot",
-    "result_type": "unstated",
-    "verdict": "The split is clean and measured: the 4060 Ti is the card that can train QLoRA at 398 tok/s (3B) and run bf16 paths, while the V100 is the card that serves inference with 900 GB/s and answers prefill-bound requests; routing training to the 4060 Ti and serving to the V100 is the rule these numbers ..."
-  },
-  {
-    "id": "background-swap-three-methods",
-    "title": "Background replacement: three methods, the deterministic one won",
-    "result_type": "positive",
-    "verdict": "Positive for the catalogue path: the deterministic white background wins on untouchable product pixels and cost, while img2img and inpainting stay for interior scenes where a prompt cannot steer colour reliably. Three methods, three clear roles, no method pretending to do all three."
-  },
-  {
-    "id": "code-loop-agentic",
-    "title": "Agentic repair loop — running the tests at every step still leaves 12B at zero",
-    "result_type": "negative",
-    "verdict": "Feedback is not the bottleneck: 0 of 8 with four iterations each, every patch syntactically valid and every one wrong, because the fixes need coordinated changes across files that the loop never allows."
-  },
-  {
-    "id": "code-loop-real-fixes",
-    "title": "Code loop on real fixes — 0 of 18, and why that is the useful result",
-    "result_type": "negative",
-    "verdict": "Single-shot repair of real bugs with 12B models does not work: 0 of 18, though every patch was valid and safe. What does work in the same harness is retrieval (82.5 % recall@5 by file) and the safety gate."
-  },
-  {
-    "id": "code-loop-whole-package",
-    "title": "Whole package in context — 0 of 5, plus a separate finding about q4_0 KV",
-    "result_type": "negative",
-    "verdict": "Whole-package context does not rescue a 7B model: 0 of 5, and most returned files were unchanged. The useful outcome is the side finding that q4_0 KV corrupts generation while q8_0 does not."
-  },
-  {
-    "id": "cudnn8-unblocks-graphics",
-    "title": "A cuDNN 8 environment unblocked three tasks",
-    "result_type": "positive",
-    "verdict": "Switching to cuDNN 8 is the fix for fp16 convolutions on sm_70: all three tasks run, 480p video included; 720p still runs out of memory, so on this card the limit is memory, not the build."
-  },
-  {
-    "id": "gpu-unlock-baseline",
-    "title": "GPU Unlock: baseline measured, unlock not installed",
-    "result_type": "unstated",
-    "verdict": "Baseline only: the stock card was measured and the unlock was deliberately not installed, so this note answers \"what we have now\", not \"what the unlock gives\". No pass/fail is claimed."
-  },
-  {
-    "id": "iclight-color-drift",
-    "title": "IC-Light: light changes, product colour does not survive",
-    "result_type": "mixed",
-    "verdict": "Unsuitable for the catalogue: ΔE 24-37 against a threshold of 5-10."
-  },
-  {
-    "id": "image-quality-checker",
-    "title": "Card quality checker without a VLM — 11 663 images, 0.1 % printable",
-    "result_type": "negative",
-    "verdict": "The library is not printable: 0.1 % reaches A4 and 99.8 % is under 768 px, so upscaling is mandatory; the clipping flag is unusable, with 93.5 % false positives on flower close-ups."
-  },
-  {
-    "id": "lora-monstera-no-benefit",
-    "title": "LoRA on monstera: training succeeded, no visible benefit",
-    "result_type": "negative",
-    "verdict": "Training ran to completion on 30 monstera images and changed nothing visible in the product shots, so this LoRA is not worth keeping; the same budget is better spent on reference images per SKU than on a brand-wide adapter."
-  },
-  {
-    "id": "nemotron-bolt-e4b-fast-honest",
-    "title": "Nemotron-Bolt-E4B on the V100: 113 tok/s and honest answers",
-    "result_type": "positive",
-    "verdict": "Positive with a caveat: the model reaches 113 tok/s and answers honestly on the tested questions, so it qualifies as the fast working model; SenseNova is blocked outright by the engine."
-  },
-  {
-    "id": "olala-mini-unblocked-slow",
-    "title": "Olala-v1.0-mini-7A1B on the V100: unblocked, but slow",
-    "result_type": "negative",
-    "verdict": "Negative against the card's own bar: the model can be made to run on the fork, but the throughput it reaches is far below the 140 tok/s criterion, so the MoE shape bought memory headroom rather than speed."
-  },
-  {
-    "id": "print-from-640-library",
-    "title": "Printing from the 640 px library — x4 reaches A4, not A3",
-    "result_type": "mixed",
-    "verdict": "A4 at 310 dpi is print-ready after one x4 pass at 0.7 s per card; A3 is not (219 dpi) and needs a second tiled ESRGAN pass, which doubles sharpness on the same output size but costs about a hundred times more time."
-  },
-  {
-    "id": "product-background-swap",
-    "title": "Background replacement with the product kept — SSIM 0.833, but details drift",
-    "result_type": "mixed",
-    "verdict": "Backgrounds can be replaced, the product cannot: product SSIM reaches 0.851 with depth conditioning while contour SSIM stays at 0.701, and the eye confirms redrawn petals and centres. Product cards need a manual cutout over a generated background."
-  },
-  {
-    "id": "rag-nemotron-vs-vikhr",
-    "title": "Shop RAG assistant: Nemotron is twice as fast and three times more wrong",
-    "result_type": "negative",
-    "verdict": "Negative for the RAG role: Nemotron is twice as fast but three times more often wrong against the local vikhr model, so for customer-facing retrieval it loses on accuracy."
-  },
-  {
-    "id": "shop-assistant-similar-products",
-    "title": "Assistant on similar products — 87.5 % on full names, 15 % on short ones",
-    "result_type": "mixed",
-    "verdict": "Retrieval is fine and first choice is not: the right variant is in the top five 90 % of the time but first only 15 %, so the assistant must list the varieties instead of picking one, which is now enforced in the system prompt."
-  },
-  {
-    "id": "ternary-bonsai-27b",
-    "title": "Ternary-Bonsai-2-27B on the V100: 27B in 6.8 GB at 67 tok/s",
-    "result_type": "unstated",
-    "verdict": "Mixed: the ternary 27B does run here and holds 6.8 GB, but the throughput it reaches decides whether the trade is worth it for the shop - see the measurement above."
-  },
-  {
-    "id": "video-cogvideox-blocked",
-    "title": "CogVideoX on V100 — blocked by the build, not by the model",
-    "result_type": "negative",
-    "verdict": "With cuDNN 9 video is blocked for a build reason, not a model limit: fp16 convolutions find no engine on sm_70, and without cuDNN the VAE asks 17.8 GiB. The fix is a cuDNN 8 environment, measured in V100-141, not a smaller clip."
-  },
-  {
-    "id": "vlm-card-controller-fails",
-    "title": "Card controller: Qwen2.5-VL-3B calls everything good",
-    "result_type": "negative",
-    "verdict": "Negative: the 3B VLM accepted every card it was shown, good and bad alike, so as a controller it carries no signal - a human or a mechanical check still has to do the deciding."
-  }
+ {
+  "id": "V100-01",
+  "title": "Speculative decoding in llama.cpp",
+  "result_type": "unstated",
+  "verdict": "Speculative decoding was tested on two targets, and the result depends on the model pair: it accelerates on 7B, but slows down almost twofold on 14B."
+ },
+ {
+  "id": "V100-02",
+  "title": "q8_0 KV cache: how much context a 14B model gets in 16 GB",
+  "result_type": "mixed",
+  "verdict": "Keep q8_0 KV with FlashAttention on, and treat 32k as the practical ceiling for a 14B model on a 16 GB card. 64k does not fit at any KV precision, so the \"64k on a V100\" advice is worth ignoring rather than retrying."
+ },
+ {
+  "id": "V100-03",
+  "title": "imatrix Q4_K under Russian chassis",
+  "result_type": "unstated",
+  "verdict": "- Environment Status (configuration, 23.11.2026 21:13). The llama.cpp build in ~/llama-new was killed by a VM reboot at 20:48, and was rebuilt on CUDA 12.9: BUILD_OK in 7 min 14 s (on the system's nvcc 12.0, the same build."
+ },
+ {
+  "id": "V100-10",
+  "title": "Prefill and batching: where a V100 actually loses throughput",
+  "result_type": "positive",
+  "verdict": "Set num_batch=2048 explicitly on a V100 — it is ×3 over 128 and +31 % over the Ollama default, and the default is the main reason the card looks slow in off-the-shelf setups. The penalty for long prompts is real but small: −19 % at 16 440 tokens."
+ },
+ {
+  "id": "V100-11",
+  "title": "System-prompt KV cache: prefix reuse in llama-server vs Ollama",
+  "result_type": "positive",
+  "verdict": "Enable the prefix cache in llama-server — it is the cheap win, and it is the only one of the two that survives a tail edit (95 ms instead of re-prefilling 1697 tokens). Ollama reuses the prefix on a byte-identical repeat but recomputes the whole prefix on any tail change. Either way, freeze the ..."
+ },
+ {
+  "id": "V100-12",
+  "title": "1Cat-vLLM: a modern serving stack that still builds for sm_70",
+  "result_type": "mixed",
+  "verdict": "The fork runs: a real modern serving stack on Volta, roughly a quarter behind llama.cpp on 7B GGUF, with an OpenAI API and batching model that llama.cpp does not give you. Two pitfalls cost the most time — --disable-log-requests is gone in this fork (use --enforce-eager), and the card must be empty ..."
+ },
+ {
+  "id": "V100-13",
+  "title": "AWQ/int4 vs GGUF Q4 on Volta",
+  "result_type": "unstated",
+  "verdict": "AWQ/int4 via vLLM 1.5.4: model loaded (14287 MiB VRAM), decode 117 tok/s (114.2 / 116.9 after warm-up, first request 66.5), code is correct."
+ },
+ {
+  "id": "V100-14",
+  "title": "24B in 16 GB: Mistral-Small-3.1-24B AWQ",
+  "result_type": "negative",
+  "verdict": "Mistral Small 24B AWQ does not fit in 16 GB via vLLM."
+ },
+ {
+  "id": "V100-15",
+  "title": "Stack snapshot: how long sm_70 stays supportable",
+  "result_type": "positive",
+  "verdict": "Freeze the stack and keep the wheels on disk — the failure mode here is silent, and after CUDA 13 / PyTorch 2.15 the only way back is a source build. Rule for this card: update nothing on a V100 without a reason you can write down. One item is still open and is stated here rather than hidden: the ..."
+ },
+ {
+  "id": "V100-16",
+  "title": "volta-fa patches for llama.cpp: measured, not promised",
+  "result_type": "negative",
+  "verdict": "The promised +34–45 % is not there: +7.4 % on decode and +2.6 % on prefill, and most of that is FlashAttention itself (+8.7 % on decode), not the Volta patches. Moving off Ollama for 7 % is not worth the maintenance burden of a pinned fork — but 4 of 8 patches not applying is the more useful ..."
+ },
+ {
+  "id": "V100-17",
+  "title": "LMDeploy TurboMind: AWQ without forks",
+  "result_type": "mixed",
+  "verdict": "Partial: TurboMind works on sm_70 but loses quality in 4-bit."
+ },
+ {
+  "id": "V100-18",
+  "title": "xllama.cpp: compress KV instead of q8",
+  "result_type": "unstated",
+  "verdict": "Compressed KV in xllama.cpp works, but on long context it becomes too slow."
+ },
+ {
+  "id": "V100-19",
+  "title": "GQA to MHA: the silent attention fallback that costs 7x",
+  "result_type": "positive",
+  "verdict": "Check the attention path before blaming the pipeline: on sm_70 a GQA model can run 7x slower with no error message, and the same shape then OOMs at 8192 tokens. Expanding K/V to MHA recovers almost all of it at the cost of copied weights. LTX-Video, Wan, CogVideoX and SDXL on this rig are already ..."
+ },
+ {
+  "id": "V100-20",
+  "title": "fni8: int8 dp4a for DiT",
+  "result_type": "negative",
+  "verdict": "Rejected along with V100-22: this is the same fni8 package family (int8 dp4a for DiT in ComfyUI)."
+ },
+ {
+  "id": "V100-21",
+  "title": "Tachyon, Ninfer, Lapilli",
+  "result_type": "unstated",
+  "verdict": "Tachyon-v100 is being built and run on our card, but our models do not support it."
+ },
+ {
+  "id": "V100-22",
+  "title": "fni8 for LLM: int8 dp4a instead of tensor cores",
+  "result_type": "negative",
+  "verdict": "Rejected based on the author's documentation facts."
+ },
+ {
+  "id": "V100-24",
+  "title": "DRY sampler and reasoning budget: a negative result",
+  "result_type": "negative",
+  "verdict": "The DRY penalty did not reproduce here: qwen2.5-coder-14b does not loop on Russian tasks at temperature=0, so there is nothing for it to fix, and it costs about 3 % of decode speed. Keep DRY off by default and enable it only for a specific model that actually loops. The build does accept ..."
+ },
+ {
+  "id": "V100-25",
+  "title": "CUDA graphs for musical pipeline",
+  "result_type": "unstated",
+  "verdict": "Capture of CUDA graphs for ACE-Step 1.5 won't yield significant gain."
+ },
+ {
+  "id": "V100-26",
+  "title": "llama.cpp build flags matrix for Volta",
+  "result_type": "unstated",
+  "verdict": "The build flag matrix was previously verified (CUDA 12.0, llama.cpp build b7743fbfd8, model 14B Q4_K, llama-bench pp512/tg128, median of three runs)."
+ },
+ {
+  "id": "V100-27",
+  "title": "volta-forever: running CUDA 13 binaries on a V100",
+  "result_type": "mixed",
+  "verdict": "The layer does what it says at the compatibility level: it runs code compiled without Volta, and it is worth keeping for exactly one situation — software released only for CUDA 13 with no sources. It is not a speed path: emulated sm_75 instructions run on ordinary CUDA cores, so a frame that takes ..."
+ },
+ {
+  "id": "V100-28",
+  "title": "V100-LLM: ready presets for 16 GB",
+  "result_type": "negative",
+  "verdict": "Rejected: the release does not include the engine."
+ },
+ {
+  "id": "V100-29",
+  "title": "PXA 4.0 engine: a 27B model on a 16 GB card",
+  "result_type": "positive",
+  "verdict": "The first configuration that puts a 27B dense model fully on the card and still decodes faster than the 30B MoE with CPU offload. Stock llama.cpp cannot read the PXQN4 file — the PXA engine is mandatory."
+ },
+ {
+  "id": "V100-30",
+  "title": "sm70-attn: FA2-D256 in llama.cpp",
+  "result_type": "negative",
+  "verdict": "Rejected based on the card criterion: \"do we have a model with head_dim 256 and do we need context over 64k\"."
+ },
+ {
+  "id": "V100-32",
+  "title": "Prepared sm_70-weights with Hugging Face",
+  "result_type": "unstated",
+  "verdict": "NInfer-V100 1.7.2 unpacks and runs: three binaries of 421-424 MB (ninfer, ninfer-serve, ninfer-perplexity), no missing libraries, help opens."
+ },
+ {
+  "id": "V100-36",
+  "title": "Video without the RAM ceiling: clip length and 720p",
+  "result_type": "mixed",
+  "verdict": "RAM was never the ceiling: process RSS sat at 41.6 GB across every clip length while VRAM moved 12.7→13.0 GB. The wall is the 16 GB card. Without tricks: 12 s at 480p, or 6 s at 720p with VAE tiling — and tiling costs ~50 % more time (594 s vs 394 s) plus a decode warning that the returned frames ..."
+ },
+ {
+  "id": "V100-37",
+  "title": "32B dense vs 30B MoE: decode re-measured with 96 GB RAM",
+  "result_type": "negative",
+  "verdict": "The ceiling is the 16 GB card, not system RAM: 96 GB does not let a dense 32B model run at a usable speed (3.0 tok/s at 20 layers, refuses to load above that). Among large models only MoE is viable here — the same 20 layers give 24.5 tok/s, eight times the dense model. Practical rule: on 16 GB ..."
+ },
+ {
+  "id": "V100-38",
+  "title": "ACE-Step 4B and work alongside SDXL",
+  "result_type": "unstated",
+  "verdict": "Test 25.11: music-studio service starts, stops imgd (no coexistence in fact, despite the description claiming \"coexists with SDXL\"), loads weights and crashes on loading 5Hz LM: the last line in the log is \"loading 5Hz LM tokenizer\",."
+ },
+ {
+  "id": "V100-39",
+  "title": "TTFT and model loading with a warm page cache",
+  "result_type": "positive",
+  "verdict": "A warm page cache changes the picture by an order of magnitude: 22.4 s cold against 3.2 s warm for llama.cpp, and 0.197 s for the repeated Ollama call with the whole prefix coming from cache. The old \"14B loads in 16 s\" figure is only true for the first run after a reboot — in a working loop the ..."
+ },
+ {
+  "id": "V100-40",
+  "title": "ik_llama.cpp vs upstream llama.cpp on V100",
+  "result_type": "negative",
+  "verdict": "The advertised 2.2x does not reproduce: prefill on the fork is about half of upstream (843–890 vs 1638–1779 tok/s) and decode is only 4% better with flash attention (73.53 vs 70.92). On DeepSeek-Coder-V2-Lite (arch deepseek2) the fork crashes with a core dump at startup, while upstream reaches 2250 ..."
+ },
+ {
+  "id": "V100-41",
+  "title": "GPT-OSS-20B MXFP4 on a 16 GB Volta card",
+  "result_type": "mixed",
+  "verdict": "Usable only with flash attention on and 4 expert layers pushed to CPU: 24 tok/s decode. Both faster coding candidates (DeepSeek-Coder-V2-Lite at 183 tok/s, Qwen3-Coder-30B at 75 tok/s) beat it, so it stays out of the working stack."
+ },
+ {
+  "id": "V100-42",
+  "title": "MoE experts in system RAM: -ncmoe on V100 16 GB",
+  "result_type": "positive",
+  "verdict": "Yes: 8 expert layers on CPU is the entry threshold, and every extra layer costs both prefill and decode roughly linearly. At 8 layers a 17.3 GB model — 1.3 GB larger than the card — decodes at 75 tok/s, against 3 tok/s for a dense 32B on the same card."
+ },
+ {
+  "id": "V100-43",
+  "title": "llama-server as the working server: prefix cache and batching",
+  "result_type": "positive",
+  "verdict": "Prefix caching works and is the main reason to run llama-server for agent workloads: prompt processing drops from 845 ms to 89 ms (9.5x), round trip from 1.18 s to 0.39 s."
+ },
+ {
+  "id": "V100-44",
+  "title": "NVFP4 on sm_70: 4-bit float in 16 GB",
+  "result_type": "unstated",
+  "verdict": "Works on sm_70. vLLM 1.5.4 (--quantization modelopt_fp4) boosted Ornith-1.5-9B-NVFP4 on V100: 14 133 MiB VRAM, decode 86.7-86.8 tok/s (first request 83.0), code is correct."
+ },
+ {
+  "id": "V100-45",
+  "title": "Qwen3-Coder-30B-A3B as a coding writer on 16 GB",
+  "result_type": "positive",
+  "verdict": "Working configuration is -ngl 99 -ncmoe 8 -c 4096. An 8192-token context needs more VRAM (compute buffer allocation fails), so long files require either 12 CPU layers or a smaller context."
+ },
+ {
+  "id": "V100-46",
+  "title": "Tool calling on a local V100 model",
+  "result_type": "positive",
+  "verdict": "Tool calling works correctly with the Qwen3-Coder chat template: valid JSON arguments, no extra calls, correct final answer. At 75 tok/s decode a conversational turn costs 2–3 s."
+ },
+ {
+  "id": "V100-47",
+  "title": "DeepSeek-Coder-V2-Lite 16B MoE: the fastest decode on V100",
+  "result_type": "positive",
+  "verdict": "Best decode measured on this card by a wide margin: 183.6 tok/s with 2250 tok/s prefill, working configuration -ngl 99 -fa 0. Flash attention must be off — it is 160x slower on this architecture."
+ },
+ {
+  "id": "V100-48",
+  "title": "FIM autocomplete in the editor via llama-server /infill",
+  "result_type": "mixed",
+  "verdict": "FIM works and is fast enough to type ahead of a human. Latency is unstable (126 ms to 1.5 s on the same prompt) — the old build's slot handling is the suspect; a single slot with --cache-reuse is the next thing to try."
+ },
+ {
+  "id": "V100-49",
+  "title": "Embeddings for code search with bge-m3 on V100",
+  "result_type": "positive",
+  "verdict": "Ranking is correct with a clear margin, and the 606 MB model handles a Russian query against English code without translation. Indexing a repository is a matter of minutes on this card."
+ },
+ {
+  "id": "V100-50",
+  "title": "Speculative decoding for code generation",
+  "result_type": "negative",
+  "verdict": "Not reproducible. The first run on build 51831d4 showed +21% on a 7B target, but on master af5c583 with the same pair the gain is gone: base 105.5 / 111.9 / 113.0 tok/s versus 102.6 / 111.2 / 112.5 with the draft. A per-prompt check (one run each, seed 42) shows the draft is neutral on fresh code ..."
+ },
+ {
+  "id": "V100-51",
+  "title": "32k context for a 30B MoE on 16 GB",
+  "result_type": "mixed",
+  "verdict": "32k is reachable only with compressed KV plus offloaded experts: -c 32768 -ctk q8_0 -ctv q8_0 -ncmoe 16 gives 25 tok/s. Without compression the same window needs 24+ CPU layers and drops to 16 tok/s."
+ },
+ {
+  "id": "V100-52",
+  "title": "Local edit → test → fix loop",
+  "result_type": "positive",
+  "verdict": "The loop closes locally in 15 seconds per iteration, which makes unattended refactoring and test-fixing practical. A dense 32B on the same card would run at 3 tok/s and be unusable for this."
+ },
+ {
+  "id": "V100-53",
+  "title": "Cache prefix: equal comparison with equal prompt length",
+  "result_type": "unstated",
+  "verdict": "Cache prefix is real and not an artifact of length. Control with equal prompt length (8737 tokens in all three requests), llama-server with --cache-reuse 256, 7B Q4: \\| Request \\| Prompt eval \\| Total \\| \\|---\\|---\\|---\\| \\| Cold \\| 4154.7 ms \\|."
+ },
+ {
+  "id": "V100-54",
+  "title": "Volt-forever: Honest native base with included cuDNN",
+  "result_type": "mixed",
+  "verdict": "Partial: cuDNN-on is not available on our stack."
+ },
+ {
+  "id": "V100-55",
+  "title": "Llama-Bench refuses to load more than 20 layers.",
+  "result_type": "unstated",
+  "verdict": "There is no limit of 20 layers. The matrix is based on Qwen3-Coder-30B (17.28 GiB), f16 KV, p128/n16: \\| ncmoe \\| prefill pp128 \\| decode tg16 \\| \\|---\\|---\\|---\\| \\| 24 \\| 179.2 \\| 39.2 \\| \\| 32 \\| 145.2 \\| 34.6 \\| Both configurations load and."
+ },
+ {
+  "id": "V100-56",
+  "title": "32kB Q8_0 and check Q4_0 at 64k",
+  "result_type": "unstated",
+  "verdict": "32k and 64k are achievable, decoding is unaffected. Qwen2.5-Coder-7B Q4 (4.36 GiB), FA enabled: \\| Context \\| KV \\| Prefill \\| Decode \\| \\|---\\|---\\|---\\|---\\| \\| 32,768 \\| q8_0 \\| 1860 tok/s \\| 121.5 tok/s \\| \\| 65,536 \\| q4_0 \\| 1247 tok/s \\|."
+ },
+ {
+  "id": "V100-57",
+  "title": "Q8_0 KV: Confirm double decoding or attribute to noise",
+  "result_type": "unstated",
+  "verdict": "No double acceleration: compressed KV is slightly slower. Qwen2.5-Coder-7B Q4 (4,36 GiB), p512/n128, r=2: \\| KV \\| FA \\| prefill pp512 \\| decode tg128 \\| \\|---\\|---\\|---\\|---\\| \\| f16 \\| off \\| 3265.8 ± 75.0 \\| 123.95 ± 0.17 \\| \\| f16 \\| on \\| 3324.8 ±."
+ },
+ {
+  "id": "V100-58",
+  "title": "Throughput, batching, quality",
+  "result_type": "unstated",
+  "verdict": "Under load, 1Cat-vLLM outperforms llama.cpp by six times. 7B GGUF, --max-model-len 4096, --gpu-memory-utilization 0.6, different prompts for all requests (otherwise prefix cache boosts the number): \\| Mode \\| Tokens \\| Time \\| Total."
+ },
+ {
+  "id": "V100-60",
+  "title": "Gather all eight patches on their base commit.",
+  "result_type": "unstated",
+  "verdict": "No: all eight patches apply on 79e2e74 (HEAD 70782b2), but the claimed +34-45% does not reproduce - decode tg64 67.8 tok/s against 70.93 for the upstream build b1b770d (-4.4%), prefill 8192 +2.1% (1507.6 vs 1476.5), prefill 512 within."
+ },
+ {
+  "id": "V100-62",
+  "title": "720p with VAE tiling: check the frames, not just the return code",
+  "result_type": "mixed",
+  "verdict": "720p with VAE tiling is viable — no tile seams at 1280×704 / 97 frames on 13.55 GiB. The weak point is not tiling but overall softness and blown highlights at 30 steps with the 5B model; go to 45 steps or downscale-and-upscale instead of blaming the tiler."
+ },
+ {
+  "id": "V100-63",
+  "title": "Model loading is not the same number as harness start",
+  "result_type": "mixed",
+  "verdict": "Any load-time number from this rig has to name the engine. For llama.cpp, 3.5-4.2 s for a 7B model is real. For vLLM on Volta the correct figure is about two minutes, paid once per server start rather than per request. Quoting \"3 s\" for both makes the vLLM card look 30x worse on throughput than it ..."
+ },
+ {
+  "id": "V100-65",
+  "title": "Recheck 8k and 16k and set num\\_batch to 4096",
+  "result_type": "unstated",
+  "verdict": "Prefill decays smoothly, but 30B can't handle 8k at ncmoe 8. Measurements llama-bench, n=0, r=1: \\| Model \\| pp2048 \\| pp8192 \\| pp16384 \\| \\|---\\|---\\|---\\|---\\| \\| DeepSeek-Coder-V2-Lite 16B, fully on GPU \\| 3462 \\| 2713 \\| 1976 \\| \\|."
+ },
+ {
+  "id": "V100-66",
+  "title": "Quality over speed: MBPP on three models",
+  "result_type": "unstated",
+  "verdict": "Harness run of model_eval.py, one server ascent, 40 MBPP tasks + 8 blocks."
+ },
+ {
+  "id": "V100-67",
+  "title": "16 GB: Q4_K_M - 128 bits, Q5_K_M - 160 bits, Q6_K - 256 bits, Q8 - 320 bits",
+  "result_type": "unstated",
+  "verdict": "Q5_K_M outperforms Q4_K_M in quality with a slight speed loss. \\| Quant \\| Size \\| VRAM \\| Prefill pp128 \\| Decode tg32 \\| MBPP pass@1 \\| \\|---\\|---\\|---\\|---\\|---\\|---\\| \\| Q4_K_M \\| 4.68 GB \\| ~5 GB \\| 3304 (pp512 in V100-66) \\| 132.2 \\| 0.60 (24/40)."
+ },
+ {
+  "id": "V100-68",
+  "title": "Speculation on 30B MoE: Draft 0.5B vs Qwen3-Coder",
+  "result_type": "unstated",
+  "verdict": "Speculation on 30B is not profitable. With a draft of 0.5B, the model had to be raised from -ncmoe 12 instead of 8 (draft subtracts VRAM): base in these conditions 36.0 / 32.6 / 35.3 tok/s, with speculation 33.7 / 37.4 / 38.3."
+ },
+ {
+  "id": "V100-69",
+  "title": "Special dec without second model",
+  "result_type": "unstated",
+  "verdict": "N-grams in file editing don't provide anything, draft hurts. Prompt 200 lines of source code, model appends function based on pattern: base 71.5 / 106.3 / 106.4 tok/s, ngram-simple 71.1 / 103.4 / 101.5 (-3%, within noise),."
+ },
+ {
+  "id": "V100-70",
+  "title": "Re-rank surface search by code",
+  "result_type": "unstated",
+  "verdict": "The reranker works and separates trash confidently. bge-reranker-v2-m3 (568M, fp16) took 6.9 s to launch on V100 and used 1092 MiB VRAM - fits alongside working LLM, no need to unload it."
+ },
+ {
+  "id": "V100-71",
+  "title": "The cost of 1M tokens on your own hardware is",
+  "result_type": "unstated",
+  "verdict": "Cost of 1M output tokens on own hardware. Power consumption measured via nvidia-smi power.draw: idle 20.7-46.6 W, under load (7B, 65% utilization) 159.0 W, peak rated 300 W."
+ },
+ {
+  "id": "V100-72",
+  "title": "Agent with four tools and an error on the first call",
+  "result_type": "unstated",
+  "verdict": "1 of 3 scenarios. Three tasks, four tools, the first call get_time was intentionally broken (server responded with unknown argument 'location'; the only valid argument is 'city'."
+ },
+ {
+  "id": "V100-73",
+  "title": "Goods cards per hour: image generation throughput",
+  "result_type": "unstated",
+  "verdict": "On a 768 px card, it yields ~2100 images per hour, but on 1024 px it hits memory. Tested on DreamShaperXL-Turbo (6 steps, guidance 1.5, fp16) via diffusers, local single-file checkpoint: \\| Size \\| Seconds per image \\| Images per hour \\|."
+ },
+ {
+  "id": "V100-74",
+  "title": "Olala-v1.0-mini-7A1B: MoE with 1B active on 16 GB",
+  "result_type": "unstated",
+  "verdict": "Blocked by engine (24.11). File downloaded and intact (5,990,551,040 bytes, exact size verified), but llama.cpp master from 24.11 (build 12.9, sm_70) responds with unknown model architecture: 'olala'."
+ },
+ {
+  "id": "V100-75",
+  "title": "GLM-4.7-Flash-30B-A3B IQ4_XS: fresh 30B MoE",
+  "result_type": "unstated",
+  "verdict": "Speed is good, model is degenerative. Architecture of the file is deepseek2 (like DeepSeek-Coder-V2), so FA is off."
+ },
+ {
+  "id": "V100-76",
+  "title": "Ternary-Bonsai-2-27B: a 27B model in 6 GB on ternary weights",
+  "result_type": "mixed",
+  "verdict": "Ternary kernels work on sm_70 once the server actually builds, and 27B fits in roughly 6.8 GB of VRAM at 8k context. Quality does not carry it: 0.325 pass@1 on the 40-task code battery, below the 0.5 threshold set in the card and well below the 0.625 of Qwen2.5-Coder-7B Q8. Useful where memory is ..."
+ },
+ {
+  "id": "V100-77",
+  "title": "Raon-1-nano MTP: multi-token prediction without a draft model",
+  "result_type": "unstated",
+  "verdict": "The MTP head is dead weight in this engine: decode speed is identical to the plain file (93.28 vs 92.72 tok/s, within one sigma), the head is loaded but never executed, and no speculative counters appear in server responses. Use the plain Q4_K_M."
+ },
+ {
+  "id": "V100-78",
+  "title": "Rapid Averages: Nemotron-Bolt-E4B and SenseNova-Loop-9B",
+  "result_type": "unstated",
+  "verdict": "- ## Queue P1v - New Ideas Following Review (24.11.2026) \\| # \\| Idea \\| Stage \\| Resources \\| Status \\| Outcome \\| Ready \\| \\|---\\|---\\|---\\|---\\|---\\|---\\|---\\| \\| V100-66 \\| Code Quality: MBPP on Three Models \\| P0 \\| 40 Tasks \\| Done \\| Code 0.55 / RAG 2/2."
+ },
+ {
+  "id": "V100-79",
+  "title": "llama.cpp v1.0.0 vs our build 51831d4",
+  "result_type": "unstated",
+  "verdict": "Regression on sm_70 has occurred, but only for MoE."
+ },
+ {
+  "id": "V100-80",
+  "title": "Inkling-2-Mini 26B/3.4B Q3 on sm_70: NaN check",
+  "result_type": "positive",
+  "verdict": "Usable: a 26B MoE at 13.6 GB answers correctly on a 16 GB Volta card at about 29 tok/s, provided the client allows a long thinking budget and reads reasoning_content as part of the stream."
+ },
+ {
+  "id": "V100-81",
+  "title": "MOE cache experts in RAM instead of `-ncmoe`",
+  "result_type": "unstated",
+  "verdict": "Experts cache on sm_70 is not profitable: it doesn't fit on the card with -ncmoe 8, and when it fits (with -ncmoe 12), it loses to the current scheme."
+ },
+ {
+  "id": "V100-82",
+  "title": "262K context on a single 16 GB card",
+  "result_type": "positive",
+  "verdict": "Yes for a small model: 262k fits on 16 GB with quantised KV. The ceiling is set by model size, not by the card: 0.5–1B reaches 262k, a dense 7B is realistic at 64k, and a 30B MoE at 8–16k."
+ },
+ {
+  "id": "V100-83",
+  "title": "Strata-V100: third engine for verification",
+  "result_type": "unstated",
+  "verdict": "Run Coder IQ1_M (25.11.2026, VM 200, V100-SXM2-16GB)."
+ },
+ {
+  "id": "V100-84",
+  "title": "QWEN38-MTP flags from the recipe",
+  "result_type": "unstated",
+  "verdict": "The MTP flag is present in the build (--spec-type draft-mtp in build129), but there's nothing to test it on: the only Qwen3.8-27B on disk is a third-party quantum pxqn-onecard (13.57 GB), its tensor type 263 is outside the list of."
+ },
+ {
+  "id": "V100-85",
+  "title": "Xing4.0-29B-A4B in IQ2_M",
+  "result_type": "negative",
+  "verdict": "Negative. The 2-bit quant does what it promises on memory - a 29B MoE resident in 16 GB at 71 tok/s decode - but code quality lands at 0.425, below the card's 0.55 bar and below even a 7B model at Q8_0 (0.625) and a 7B in 4-bit AWQ (0.50). Worth keeping only as a fast drafter or summarizer, not as ..."
+ },
+ {
+  "id": "V100-86",
+  "title": "v100-llm-kit: prebuilt SM70 binaries vs our own build",
+  "result_type": "mixed",
+  "verdict": "Mixed: prefill 16 % faster with the shipped sm_70 binaries, decode identical. Worth taking for long prompts (document analysis, repository context); not a reason to migrate a decode-bound workload. The vendor's agent wrapper (serve-qwen3.sh, Claude Code integration) and the claimed Gemma 4 26B-A4B ..."
+ },
+ {
+  "id": "V100-89",
+  "title": "colibri: a three-tier expert engine, slower than llama.cpp here",
+  "result_type": "unstated",
+  "verdict": "Negative on this card: the advertised ~144 tok/s assumes a card where most experts stay resident, while 16 GB forces the cold tier into play and the tiering costs more than llama.cpp's -ncmoe offload. colibri is worth another look on a card with 32 GB or more; on the V100 the record stands."
+ },
+ {
+  "id": "V100-91",
+  "title": "Recheck sm70-attn with head_dim 256",
+  "result_type": "positive",
+  "verdict": "Positive for the narrow claim: the fork is faster on prefill at both measured lengths, and the margin at 16k (+11.2 %) is large enough to matter for long prompts. The numbers published in the fork's README (+34-48 %) do not reproduce at 8-16k: they belong to the 100-174k range, where the D256 ..."
+ },
+ {
+  "id": "V100-92",
+  "title": "PR #31802: fused quantised-KV dequant costs prefill on Volta",
+  "result_type": "unstated",
+  "verdict": "Negative for Volta: the fused path is slower here, most likely because the 25 % prefill headroom the PR recovers lives in the tensor-core MMA path, while sm_70 falls to the vector kernel where the extra fused branch just adds work. The card stays open upstream-wise - the PR may merge and change - ..."
+ },
+ {
+  "id": "V100-93",
+  "title": "Two-machine pipeline: V100 writes, 4060 Ti reviews",
+  "result_type": "negative",
+  "verdict": "Negative for the criterion. The split mode is 4.1x slower, not 15 % faster, and the margin is far outside any noise. The mechanism is visible in the numbers: the writer in mode (b) gave up 8 layers to the CPU (-ngl 12, otherwise it does not fit beside a 30B reviewer), decode fell from ~9 to ~4 ..."
+ },
+ {
+  "id": "V100-99",
+  "title": "Prompt-expander: LLM writes prompt for photographer",
+  "result_type": "mixed",
+  "verdict": "The hypothesis was partially confirmed, and the solution depends on the prompt length."
+ },
+ {
+  "id": "V100-100",
+  "title": "Style presets and immutable prompt part",
+  "result_type": "positive",
+  "verdict": "Positive: three presets from one config file keep background and light within 4-9 RGB points across five seeds each, cost 10-11.5 s per frame on one 16 GB V100, and switch without code changes. The negative prompt does not protect against unwanted body parts - 1 frame in 15 had to be rejected."
+ },
+ {
+  "id": "V100-102",
+  "title": "Image-to-image and depth: Save product, change background",
+  "result_type": "mixed",
+  "verdict": "Confirmed partially. Diffusion (SDXL + ControlNet depth 1.0-small, strength 0.45, 25 steps) preserves the product but does not remove the background to white: background brightness is 145 out of 255, with halos around leaf edges."
+ },
+ {
+  "id": "V100-103",
+  "title": "Batch savings: Batch vs individual loads",
+  "result_type": "positive",
+  "verdict": "Group of four runs on one model: batch 23.9 s vs."
+ },
+ {
+  "id": "V100-105",
+  "title": "Polyglot: eight languages on one harness",
+  "result_type": "unstated",
+  "verdict": "6 languages (Python, JavaScript, PHP, Ruby, Go, Java) x 10 functions x 21 statements per language, three models, temperature 0, one run 3m 4s."
+ },
+ {
+  "id": "V100-106",
+  "title": "Linters as acceptance: how much code passes on the first try",
+  "result_type": "unstated",
+  "verdict": "(25.11.2026) 40 tasks MBPP, Qwen2.5-Coder-7B-Instruct Q8_0."
+ },
+ {
+  "id": "V100-108",
+  "title": "Tests that catch: mutation testing of generated tests",
+  "result_type": "mixed",
+  "verdict": "Three branches, Qwen2.5-Coder-7B Q8, temp 0.2."
+ },
+ {
+  "id": "V100-109",
+  "title": "Medium-sized project from scratch: FastAPI, Postgres, authorization, tests, Docker",
+  "result_type": "unstated",
+  "verdict": "The project has been assembled but does not launch."
+ },
+ {
+  "id": "V100-110",
+  "title": "Red test cycle → repair on four languages",
+  "result_type": "unstated",
+  "verdict": "20 tasks (5 each in Python, JavaScript, C, Perl), Qwen2.5-Coder-7B-Instruct Q8_0, llama-server build129, temperature 0; total set - 25s, server up in 2s."
+ },
+ {
+  "id": "V100-111",
+  "title": "Review diff: five planted bugs, accuracy and completeness",
+  "result_type": "unstated",
+  "verdict": "10 commits with 5 planted defects each (boundary, null, race, injection, leak), Qwen2.5-Coder-7B Q8_0, 16 seconds total."
+ },
+ {
+  "id": "V100-112",
+  "title": "Refactoring with green tests",
+  "result_type": "unstated",
+  "verdict": "Refactoring Tasks: 10 tasks, 2-3 files each (helper code extraction, global renaming, deduplication, signature change, constant extraction, module separation, dead parameter removal, common exception module, nested calculation extraction,."
+ },
+ {
+  "id": "V100-113",
+  "title": "Schema, migrations, and queries against SQLite",
+  "result_type": "unstated",
+  "verdict": "20 tasks on SQLite (schema, migration, 3 queries to each), Qwen2.5-Coder-7B Q8_0, two runs of 37s each."
+ },
+ {
+  "id": "V100-114",
+  "title": "Frontend: page with form, checking Playwright",
+  "result_type": "unstated",
+  "verdict": "Qwen2.5-Coder-7B-Instruct generated 10 pages of one specification in 109 seconds (9.7-12.4 seconds per page, 3.2-5.0 thousand symbols)."
+ },
+ {
+  "id": "V100-115",
+  "title": "CI and Docker: how many repositories are being built",
+  "result_type": "unstated",
+  "verdict": "5 projects from previous cards (V100-109 FastAPI-notes, V100-114 static page, V100-116: api-client, CLI-ETL, FastAPI+JWT)."
+ },
+ {
+  "id": "V100-116",
+  "title": "What a generated project still needs before delivery",
+  "result_type": "mixed",
+  "verdict": "Deliverable, but only what was asked for: the model emitted a Dockerfile and a LICENSE exactly where the prompt named them and skipped them where it did not. The delivery checklist therefore belongs in the prompt, not in expectations — with the full checklist stated, one of three projects came out ..."
+ },
+ {
+  "id": "V100-117",
+  "title": "Cost of a typical order: machine hours and price for six types of work",
+  "result_type": "mixed",
+  "verdict": "The machine is not the cost. Six orders cost seven kopecks of electricity and under three minutes of GPU time; two of six needed the full two repair rounds and still failed, which is where the hours go. Price an order by human review and debugging time, not by tokens: a 7B Q8 model passes three of ..."
+ },
+ {
+  "id": "V100-118",
+  "title": "Conveyor spec → plan → code → tests → review against one prompt",
+  "result_type": "unstated",
+  "verdict": "Same 7B Q4_K_M, 10 MBPP tasks, temperature 0: one prompt 7/10 (0.70), pipeline spec-code-tests-reviews 6/10 (0.60) - difference -10 points."
+ },
+ {
+  "id": "V100-119",
+  "title": "Someone else's repository: where to change",
+  "result_type": "positive",
+  "verdict": "Positive against the stated criterion, with a caveat worth reading before selling it: the 8 of 10 is a strict string match, so the true hit rate is closer to 9 of 10 once a reviewer accepts method-qualified names. The remaining failure is semantic, not syntactic - name clones in a repository defeat ..."
+ },
+ {
+  "id": "V100-120",
+  "title": "Russian text in generated code",
+  "result_type": "unstated",
+  "verdict": "8 out of 10 tasks accepted without revision according to the task criteria: names in Latin 10/10, Russian text in place 10/10, long hyphens 0, typos 0, syntax valid 10/10."
+ },
+ {
+  "id": "V100-121",
+  "title": "Consistency of style with existing code",
+  "result_type": "unstated",
+  "verdict": "20 runs (10 tasks x 2 models), temp 0, baseline Harness passed ruff/mypy/pytest 10/10."
+ },
+ {
+  "id": "V100-122",
+  "title": "Output stability: five repeats of one task",
+  "result_type": "negative",
+  "verdict": "Negative: 0 of 5 runs green at temperature 0 and 0 of 5 at 0.2, so the shipping bar is not met. Repeatability is not quality — temperature 0 reproduces the same defect with byte-exact fidelity, which is worse for a quoted order than a model that occasionally gets it right."
+ },
+ {
+  "id": "V100-123",
+  "title": "Quant ladder for a 30B MoE code model: Q4, Q5, Q6, Q8",
+  "result_type": "negative",
+  "verdict": "Negative for Q6 and Q8: no quality gain over Q5_K_M, only more time, RAM and disk. Q5_K_M is the recommended quant for a 30B-A3B code model on one 16 GB Volta card."
+ },
+ {
+  "id": "V100-124",
+  "title": "Third-party API integration: retries, timeouts, idempotency",
+  "result_type": "negative",
+  "verdict": "Negative: 3 of 10 scenarios in both runs. The retry skeleton is sound, but one shadowed name kills every request the client makes — exactly the class of defect that a test suite finds and a code review often misses."
+ },
+ {
+  "id": "V100-125",
+  "title": "WordPress and WooCommerce: plugin edit with tests",
+  "result_type": "mixed",
+  "verdict": "Yes for the edit itself, not for the integration: all three local coders wrote both functions correctly on the first attempt (10/10 and 6/6, no fixes), so a 14B Q4 at 9.6 GB and 7 s covers this class of work and the 30B buys nothing in quality. What the experiment cannot promise is the part the ..."
+ },
+ {
+  "id": "V100-126",
+  "title": "Generated code productivity",
+  "result_type": "unstated",
+  "verdict": "Ten tasks on 100,000 records, n=3, median."
+ },
+ {
+  "id": "V100-127",
+  "title": "Multi-file edits that keep the public API intact",
+  "result_type": "negative",
+  "verdict": "A 7B coder handles a multi-file edit about seven times out of ten, and the failures are not random: one wrong unit, one changed return type, one inserted dataclass field. Signatures stayed compatible in 9 of 10 cases, so the API gate alone is not an acceptance test - it has to be paired with a ..."
+ },
+ {
+  "id": "V100-128",
+  "title": "Writing tests for someone else's code: coverage and defect detection",
+  "result_type": "negative",
+  "verdict": "A single-shot 7B coder writes tests that do not even run against the code it was given (14 of 18 fail, mostly on missing exception imports), and the subset that is green covers 22 % and catches 1 of 10 defects. Acceptance gates must run the generated tests before they are trusted; asking for branch ..."
+ },
+ {
+  "id": "V100-129",
+  "title": "Censored 27B on one card",
+  "result_type": "unstated",
+  "verdict": "Dense 27B IQ3_S (10.95 GiB) fit entirely: decode 37.26 tok/s (tg64, n=3), prefill 837.69 on pp512 and 800.49 on pp8192, server with -c 16384 launched in 9s with 12,977 MiB VRAM, peak 13,193 MiB."
+ },
+ {
+  "id": "V100-130",
+  "title": "Uncensored Flash-Next Q2_0 under Strata",
+  "result_type": "mixed",
+  "verdict": "The uncensored Q2_0 is a drop-in replacement for the censored coder: same code score within noise, slightly faster, tool calling works. It answers refused topics and therefore belongs to a personal loop - never behind a public endpoint, same rule as V100-129."
+ },
+ {
+  "id": "V100-131",
+  "title": "Failure metric: 20 prompts, uncensored vs censored",
+  "result_type": "unstated",
+  "verdict": "Translation: 27B abliterated IQ3_S (model 2 of 3): class A 7/7 direct response, class B 9/9 direct (zero failures), class C 4/4 refusal."
+ },
+ {
+  "id": "V100-141",
+  "title": "cuDNN 8 environment for graphics and video models",
+  "result_type": "positive",
+  "verdict": "Positive: cuDNN 8 restores the missing convolution path on sm_70, and all three pipelines run with cuDNN enabled. It removes the engine failure, not the memory ceiling - 720p video still runs out of VRAM after the model has loaded."
+ },
+ {
+  "id": "4060ti-capabilities-vs-v100",
+  "title": "What the 4060 Ti can do that the V100 cannot",
+  "result_type": "unstated",
+  "verdict": "The split is clean and measured: the 4060 Ti is the card that can train QLoRA at 398 tok/s (3B) and run bf16 paths, while the V100 is the card that serves inference with 900 GB/s and answers prefill-bound requests; routing training to the 4060 Ti and serving to the V100 is the rule these numbers ..."
+ },
+ {
+  "id": "background-swap-three-methods",
+  "title": "Background replacement: three methods, the deterministic one won",
+  "result_type": "positive",
+  "verdict": "Positive for the catalogue path: the deterministic white background wins on untouchable product pixels and cost, while img2img and inpainting stay for interior scenes where a prompt cannot steer colour reliably. Three methods, three clear roles, no method pretending to do all three."
+ },
+ {
+  "id": "code-loop-agentic",
+  "title": "Agentic repair loop — running the tests at every step still leaves 12B at zero",
+  "result_type": "negative",
+  "verdict": "Feedback is not the bottleneck: 0 of 8 with four iterations each, every patch syntactically valid and every one wrong, because the fixes need coordinated changes across files that the loop never allows."
+ },
+ {
+  "id": "code-loop-real-fixes",
+  "title": "Code loop on real fixes — 0 of 18, and why that is the useful result",
+  "result_type": "negative",
+  "verdict": "Single-shot repair of real bugs with 12B models does not work: 0 of 18, though every patch was valid and safe. What does work in the same harness is retrieval (82.5 % recall@5 by file) and the safety gate."
+ },
+ {
+  "id": "code-loop-whole-package",
+  "title": "Whole package in context — 0 of 5, plus a separate finding about q4_0 KV",
+  "result_type": "negative",
+  "verdict": "Whole-package context does not rescue a 7B model: 0 of 5, and most returned files were unchanged. The useful outcome is the side finding that q4_0 KV corrupts generation while q8_0 does not."
+ },
+ {
+  "id": "cudnn8-unblocks-graphics",
+  "title": "A cuDNN 8 environment unblocked three tasks",
+  "result_type": "positive",
+  "verdict": "Switching to cuDNN 8 is the fix for fp16 convolutions on sm_70: all three tasks run, 480p video included; 720p still runs out of memory, so on this card the limit is memory, not the build."
+ },
+ {
+  "id": "gpu-unlock-baseline",
+  "title": "GPU Unlock: baseline measured, unlock not installed",
+  "result_type": "unstated",
+  "verdict": "Baseline only: the stock card was measured and the unlock was deliberately not installed, so this note answers \"what we have now\", not \"what the unlock gives\". No pass/fail is claimed."
+ },
+ {
+  "id": "iclight-color-drift",
+  "title": "IC-Light: light changes, product colour does not survive",
+  "result_type": "mixed",
+  "verdict": "Unsuitable for the catalogue: ΔE 24-37 against a threshold of 5-10."
+ },
+ {
+  "id": "image-quality-checker",
+  "title": "Card quality checker without a VLM — 11 663 images, 0.1 % printable",
+  "result_type": "negative",
+  "verdict": "The library is not printable: 0.1 % reaches A4 and 99.8 % is under 768 px, so upscaling is mandatory; the clipping flag is unusable, with 93.5 % false positives on flower close-ups."
+ },
+ {
+  "id": "lora-monstera-no-benefit",
+  "title": "LoRA on monstera: training succeeded, no visible benefit",
+  "result_type": "negative",
+  "verdict": "Training ran to completion on 30 monstera images and changed nothing visible in the product shots, so this LoRA is not worth keeping; the same budget is better spent on reference images per SKU than on a brand-wide adapter."
+ },
+ {
+  "id": "nemotron-bolt-e4b-fast-honest",
+  "title": "Nemotron-Bolt-E4B on the V100: 113 tok/s and honest answers",
+  "result_type": "positive",
+  "verdict": "Positive with a caveat: the model reaches 113 tok/s and answers honestly on the tested questions, so it qualifies as the fast working model; SenseNova is blocked outright by the engine."
+ },
+ {
+  "id": "olala-mini-unblocked-slow",
+  "title": "Olala-v1.0-mini-7A1B on the V100: unblocked, but slow",
+  "result_type": "negative",
+  "verdict": "Negative against the card's own bar: the model can be made to run on the fork, but the throughput it reaches is far below the 140 tok/s criterion, so the MoE shape bought memory headroom rather than speed."
+ },
+ {
+  "id": "print-from-640-library",
+  "title": "Printing from the 640 px library — x4 reaches A4, not A3",
+  "result_type": "mixed",
+  "verdict": "A4 at 310 dpi is print-ready after one x4 pass at 0.7 s per card; A3 is not (219 dpi) and needs a second tiled ESRGAN pass, which doubles sharpness on the same output size but costs about a hundred times more time."
+ },
+ {
+  "id": "product-background-swap",
+  "title": "Background replacement with the product kept — SSIM 0.833, but details drift",
+  "result_type": "mixed",
+  "verdict": "Backgrounds can be replaced, the product cannot: product SSIM reaches 0.851 with depth conditioning while contour SSIM stays at 0.701, and the eye confirms redrawn petals and centres. Product cards need a manual cutout over a generated background."
+ },
+ {
+  "id": "rag-nemotron-vs-vikhr",
+  "title": "Shop RAG assistant: Nemotron is twice as fast and three times more wrong",
+  "result_type": "negative",
+  "verdict": "Negative for the RAG role: Nemotron is twice as fast but three times more often wrong against the local vikhr model, so for customer-facing retrieval it loses on accuracy."
+ },
+ {
+  "id": "shop-assistant-similar-products",
+  "title": "Assistant on similar products — 87.5 % on full names, 15 % on short ones",
+  "result_type": "mixed",
+  "verdict": "Retrieval is fine and first choice is not: the right variant is in the top five 90 % of the time but first only 15 %, so the assistant must list the varieties instead of picking one, which is now enforced in the system prompt."
+ },
+ {
+  "id": "ternary-bonsai-27b",
+  "title": "Ternary-Bonsai-2-27B on the V100: 27B in 6.8 GB at 67 tok/s",
+  "result_type": "unstated",
+  "verdict": "Mixed: the ternary 27B does run here and holds 6.8 GB, but the throughput it reaches decides whether the trade is worth it for the shop - see the measurement above."
+ },
+ {
+  "id": "video-cogvideox-blocked",
+  "title": "CogVideoX on V100 — blocked by the build, not by the model",
+  "result_type": "negative",
+  "verdict": "With cuDNN 9 video is blocked for a build reason, not a model limit: fp16 convolutions find no engine on sm_70, and without cuDNN the VAE asks 17.8 GiB. The fix is a cuDNN 8 environment, measured in V100-141, not a smaller clip."
+ },
+ {
+  "id": "vlm-card-controller-fails",
+  "title": "Card controller: Qwen2.5-VL-3B calls everything good",
+  "result_type": "negative",
+  "verdict": "Negative: the 3B VLM accepted every card it was shown, good and bad alike, so as a controller it carries no signal - a human or a mechanical check still has to do the deciding."
+ }
 ]
