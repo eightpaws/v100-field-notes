@@ -666,6 +666,12 @@
   "verdict": "Translation: 27B abliterated IQ3_S (model 2 of 3): class A 7/7 direct response, class B 9/9 direct (zero failures), class C 4/4 refusal."
  },
  {
+  "id": "V100-132",
+  "title": "Captcha: Local VLM vs Service",
+  "result_type": "unstated",
+  "verdict": "26.11.2026, V100 16 GB, Qwen2.5-VL-7B-Instruct Q4_K_M + mmproj-F16, 200 synthetic CAPTCHAs: distorted text 88/100 (88%), arithmetic 50/50 (100%), \"how many figures\" grid 15/50 (30%); total 153/200 (76.5%), average 0.11s per CAPTCHA (p95."
+ },
+ {
   "id": "V100-141",
   "title": "cuDNN 8 environment for graphics and video models",
   "result_type": "positive",
@@ -685,9 +691,9 @@
  },
  {
   "id": "V100-145",
-  "title": "Gemma 4 26B-A4B at 4 bits: the 16 GB sweet spot arrives",
-  "result_type": "positive",
-  "verdict": "Positive. The review's 16 GB recommendation survives the move to Volta: a 25B MoE at 4 bits is the fastest thing measured on this card so far - 2,4x the Flash-Next MoE on decode and 3,5x on prefill - and its code quality is at least equal (0,575 against 0,51). The reason is structural, not a lucky ..."
+  "title": "Gemini 4 26B-A4B in 4 bits: 16-GB sweet spot on Volta",
+  "result_type": "unstated",
+  "verdict": "Fits entirely and fastest among those measured on this map: prefill 2696.3 ± 94.7 tok/s on pp256, decode 124.09 ± 0.53 tok/s on tg64, peak VRAM 15331 MiB at 8k context, server ready in 5s."
  },
  {
   "id": "4060ti-capabilities-vs-v100",
