@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **131** - 23 positive, 25 mixed, 27 negative, 56 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **132** - 23 positive, 25 mixed, 27 negative, 57 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -45,6 +45,7 @@ Read this before quoting a number.
 | [V100-01](results/V100-01.md) | Speculative decoding in llama.cpp | Speculative decoding was tested on two targets, and the result depends on the model pair: it accelerates on 7B, but slows down almost twofold on 14B. |
 | [V100-02](results/V100-02.md) | q8_0 KV cache: how much context a 14B model gets in 16 GB | **Mixed.** Keep q8_0 KV with FlashAttention on, and treat 32k as the practical ceiling for a 14B model on a 16 GB card. 64k does not fit at any KV precision, so the "64k on a V100" advice is worth ignoring rather than retrying. |
 | [V100-03](results/V100-03.md) | imatrix Q4_K under Russian chassis | - Environment Status (configuration, 23.11.2026 21:13). The llama.cpp build in ~/llama-new was killed by a VM reboot at 20:48, and was rebuilt on CUDA 12.9: BUILD_OK in 7 min 14 s (on the system's nvcc 12.0, the same build. |
+| [V100-04](results/V100-04.md) | VLM as a card reject controller | Qwen2.5-VL-3B-Instruct (fp16, device_map=cuda) on 24 generated cards 640x640 produced 24 out of 24 "good", 1.8 sec per image (45.4 sec per batch), peak VRAM 7,634 MiB. |
 | [V100-10](results/V100-10.md) | Prefill and batching: where a V100 actually loses throughput | **Positive.** Set num_batch=2048 explicitly on a V100 — it is ×3 over 128 and +31 % over the Ollama default, and the default is the main reason the card looks slow in off-the-shelf setups. The penalty for long prompts is real but small: −19 % at 16 440 tokens. |
 | [V100-11](results/V100-11.md) | System-prompt KV cache: prefix reuse in llama-server vs Ollama | **Positive.** Enable the prefix cache in llama-server — it is the cheap win, and it is the only one of the two that survives a tail edit (95 ms instead of re-prefilling 1697 tokens). Ollama reuses the prefix on a byte-identical repeat but recomputes the whole prefix on any tail change. Either way, freeze the ... |
 | [V100-12](results/V100-12.md) | 1Cat-vLLM: a modern serving stack that still builds for sm_70 | **Mixed.** The fork runs: a real modern serving stack on Volta, roughly a quarter behind llama.cpp on 7B GGUF, with an OpenAI API and batching model that llama.cpp does not give you. Two pitfalls cost the most time — --disable-log-requests is gone in this fork (use --enforce-eager), and the card must be empty ... |
