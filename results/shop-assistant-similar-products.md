@@ -3,6 +3,10 @@
 
 _Testing the weak spot of any shop search: 936 products where many differ by one word — "Primula Belarina, Pink Ice" versus "Pink Champagne", "Adenium, Multi-graft 17" versus "27". 58 groups of similar products were found, the largest with 43 variants._
 
+**Question.** How often does the shop assistant find the right variant when the customer names the product but not the variety?
+
+**Environment.** Tesla V100-SXM2 16 GB, sm_70, Ubuntu 24.04; shop corpus of 936 products with 58 groups of similar names, largest 43 variants; 40 questions per phrasing with a fixed seed; retrieval scored top-1 and top-5.
+
 ## Three measurements, 40 questions each
 
 | How the question was phrased | top-1 | top-5 |
@@ -34,3 +38,13 @@ The set is built from the assistant corpus automatically: group by the first par
 - 40 questions, one shop. Misses are rare, so the confidence interval is wide.
 - Only retrieval is measured; answer wording was not separately labelled.
 - Name grouping is crude: "Violet set" and "Violet set Bordered" land in one group although they are different products.
+
+**Repeats.** 40 questions per measurement, three measurements, one shop.
+
+**Verdict.** Retrieval is fine and first choice is not: the right variant is in the top five 90 % of the time but first only 15 %, so the assistant must list the varieties instead of picking one, which is now enforced in the system prompt.
+
+**Result type.** Mixed.
+
+**Does not show.** Only retrieval is measured, not answer wording; 40 questions per cell leave a wide interval; the name grouping is crude and puts different products in one group.
+
+**Raw.** `raw/runs/shop-assistant-similar-products.json` - scores of the three runs. Question text and product titles are Russian and stay on the rig: the repository is English-only, so only the numbers are published.

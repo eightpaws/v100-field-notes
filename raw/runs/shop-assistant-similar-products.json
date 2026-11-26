@@ -1,0 +1,28 @@
+{
+ "note": "summary only: question text and product titles are Russian and stay on the rig, the repository is English-only",
+ "runs": {
+  "full_name": {
+   "questions": 40,
+   "top1_percent": 87.5,
+   "top5_percent": 100.0,
+   "misses": 0
+  },
+  "name_only": {
+   "questions": 40,
+   "top1_percent": 15.0,
+   "top5_percent": 90.0,
+   "misses": 4
+  },
+  "short": {
+   "questions": 40,
+   "top1_percent": 27.5,
+   "top5_percent": 37.5,
+   "misses": 25
+  }
+ },
+ "misses_listed": {
+  "full_name": 0,
+  "name_only": 4,
+  "short": 25
+ }
+}

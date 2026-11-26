@@ -3,6 +3,10 @@
 
 _Automatic quality control over our own image library using measurable signals instead of a vision model: resolution, sharpness, subject coverage, edge clipping, A4 print readiness._
 
+**Question.** How much of the image library is printable as is, and which heuristic flags can be trusted?
+
+**Environment.** Tesla V100-SXM2 16 GB, sm_70, driver 580.178.04, Ubuntu 24.04. 11 663 files under the generated-images library; Laplacian variance on a 512 px copy; coverage from corner colour with a threshold of 60 summed channels; A4 needs a 2480 px short side.
+
 ## What the full run showed
 
 Processed **11 663** files from `/srv/media/generated/images`.
@@ -34,6 +38,16 @@ The "too small" flag is formal as well: it separates the factory's 640 px files 
 The visual defect controller — a VLM that looks at a card and says "bud is cut, background is dirty, wrong variety" — was not built: there is no vision model on the card and downloading 2–3 GB is expensive on this link right now. The heuristic checker works and produces the numbers above.
 
 To finish it properly: download Qwen2.5-VL-3B (~2.5 GB) or InternVL2-2B, run it over 200 manually labelled images, and measure accuracy. Without labels any VLM judgement is an opinion, not a metric.
+
+**Repeats.** single pass over the whole library.
+
+**Verdict.** The library is not printable: 0.1 % reaches A4 and 99.8 % is under 768 px, so upscaling is mandatory; the clipping flag is unusable, with 93.5 % false positives on flower close-ups.
+
+**Result type.** Negative.
+
+**Does not show.** No vision model was run and no labelled set exists, so what a VLM would catch is unmeasured; the sharpness thresholds are not validated against human judgement.
+
+**Raw.** `raw/runs/image-quality-checker.log` - stdout of the harness described under Method.
 
 ## Method
 

@@ -1,0 +1,18 @@
+=== agent_loop2.log ===
+5a7d3386 нет       шагов 4 fix(requirements): parse === followed by a spaced 
+8efde605 нет       шагов 4 fix(dependency-groups): report self-inclusion for 
+7d0611d4 нет       шагов 4 feat: allow set of extras (#1438)
+491af5d5 нет       шагов 4 fix(markers): keep chained & and | markers flat (#
+a03bde12 нет       шагов 4 fix: Requirement pickle handle inner prereleases (
+8c37b047 нет       шагов 4 fix(licenses): Reject non-ASCII LicenseRefs before
+b1c439b0 нет       шагов 4 fix: inherited metadata class field validation and
+31b2d013 нет       шагов 4 fix(dependency-groups): collect includes from malf
+{
+ "задач": 8,
+ "починено": 0,
+ "процент": 0.0,
+ "среднее_шагов": 4.0,
+ "опасных_вставок": 0,
+ "среднее_секунд": 66.8
+}
+

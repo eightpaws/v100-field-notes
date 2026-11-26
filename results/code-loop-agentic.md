@@ -3,6 +3,10 @@
 
 _Follow-up to the real-fix experiment. This time the model does not patch blind: the loop is apply → run pytest → read the output → fix again, up to four steps per task. Same `pypa/packaging` task set, same acceptance criterion — the test's exit code._
 
+**Question.** Does an apply-run-read-fix loop with pytest feedback fix real bugs that single-pass repair missed?
+
+**Environment.** Tesla V100-SXM2 16 GB, sm_70, driver 580.178.04, Ubuntu 24.04. DeepSeek-Coder-V2-Lite (16B MoE, 2.4B active) via llama.cpp; eight pypa/packaging tasks; up to four steps per task; acceptance is the test exit code.
+
 ## Result
 
 | Metric | Value |
@@ -33,3 +37,13 @@ Script `/srv/media/projects/code-real/agent_loop.py`, results `loop_result.json`
 - One file per step, at most four steps: multi-file fixes are out of reach by construction.
 - The model is 16B-MoE with 2.4B active, not 30B+; larger does not fit 16 GB with KV.
 - Not tested: feeding the whole package into context, allowing multi-file edits, or an external linter as feedback.
+
+**Repeats.** eight tasks, up to four steps each, single run.
+
+**Verdict.** Feedback is not the bottleneck: 0 of 8 with four iterations each, every patch syntactically valid and every one wrong, because the fixes need coordinated changes across files that the loop never allows.
+
+**Result type.** Negative.
+
+**Does not show.** Multi-file edits, linter feedback and 30B+ models were not tested; one repository and one language.
+
+**Raw.** `raw/runs/code-loop-agentic.log` - stdout of the harness described under Method.

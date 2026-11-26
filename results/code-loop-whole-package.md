@@ -3,6 +3,10 @@
 
 _Whether agentic repair helps when the model gets the entire package (20 files, 12 638 lines) and may edit several files. Context raised to 65 536 tokens; the prompt was cut to 80 KB (about 19 k tokens by the server's own counter)._
 
+**Question.** Does handing a 12 638-line package in a 64k context let a 7B model fix real failing tests?
+
+**Environment.** Tesla V100-SXM2 16 GB, sm_70, driver 580.178.04, Ubuntu 24.04. Qwen2.5-Coder-7B q4_K_M via llama.cpp server, context 65 536, KV q8_0; pypa/packaging commits; five tasks; prompt capped at 80 KB.
+
 ## Result
 
 | Metric | Value |
@@ -27,6 +31,16 @@ Practical rule: **q4_0 KV is a last resort for context length only, and every en
 Three approaches in a row scored zero: single file (0/18), test-driven loop (0/8), whole package (0/5). Neither context delivery nor feedback is the bottleneck; 7B–12B models cannot reason about unfamiliar code at this difficulty. Real repair needs a 30B+ class with the full package, a human in the loop, or dropping the task.
 
 What does work and stays in the loop: code retrieval (82.5 % recall@5 by file) and the safety gate (0 dangerous insertions across 28 patches in all series).
+
+**Repeats.** five tasks, one pass each.
+
+**Verdict.** Whole-package context does not rescue a 7B model: 0 of 5, and most returned files were unchanged. The useful outcome is the side finding that q4_0 KV corrupts generation while q8_0 does not.
+
+**Result type.** Negative.
+
+**Does not show.** The prompt was cut to 80 KB of 201 KB, so part of the package was never seen; 30B-class models were not tested.
+
+**Raw.** `raw/runs/code-loop-whole-package.log` - stdout of the harness described under Method.
 
 ## Method
 

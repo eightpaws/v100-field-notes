@@ -4,8 +4,8 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **102** — 19 positive, 14 mixed,
-12 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **111** — 20 positive, 17 mixed,
+17 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -144,6 +144,15 @@ Read this before quoting a number.
 | [V100-86](results/V100-86.md) | v100-llm-kit: prebuilt SM70 binaries vs our own build | **Mixed.** Mixed: prefill 16 % faster with the shipped sm_70 binaries, decode identical. Worth taking for long prompts (document analysis, repository context); not a reason to migrate a… |
 | [V100-91](results/V100-91.md) | Recheck sm70-attn with head_dim 256 | **Positive.** Prefill, tokens per second: | Context | Fork `sm70-attn` 5e11845 | Our build dbaf582 | Delta | |---|---|---|---| | 8k | **1279.4** | 1178.9 | +8.5 % | | 16k | **1224.6** | 1100.9 | +11.2… |
 | [V100-93](results/V100-93.md) | Two-machine pipeline: V100 writes, 4060 Ti reviews | **Negative.** 20 tasks per mode, the same task set: | Metric | (a) both stages on the V100 | (b) writer + separate reviewer | |---|---|---| | Total | **26.52 s** (1.33 s/task) | **108.47 s** (5.42… |
+| [cudnn8-unblocks-graphics](results/cudnn8-unblocks-graphics.md) | A cuDNN 8 environment unblocked three tasks | **Positive.** Switching to cuDNN 8 is the fix for fp16 convolutions on sm_70: all three tasks run, 480p video included; 720p still runs out of memory, so on this card the limit is memory, not the build. |
+| [video-cogvideox-blocked](results/video-cogvideox-blocked.md) | CogVideoX on V100 — blocked by the build, not by the model | **Negative.** With cuDNN 9 video is blocked for a build reason, not a model limit: fp16 convolutions find no engine on sm_70, and without cuDNN the VAE asks 17.8 GiB. The fix is a cuDNN 8 environment,… |
+| [image-quality-checker](results/image-quality-checker.md) | Card quality checker without a VLM — 11 663 images, 0.1 % printable | **Negative.** The library is not printable: 0.1 % reaches A4 and 99.8 % is under 768 px, so upscaling is mandatory; the clipping flag is unusable, with 93.5 % false positives on flower close-ups. |
+| [print-from-640-library](results/print-from-640-library.md) | Printing from the 640 px library — x4 reaches A4, not A3 | **Mixed.** A4 at 310 dpi is print-ready after one x4 pass at 0.7 s per card; A3 is not (219 dpi) and needs a second tiled ESRGAN pass, which doubles sharpness on the same output size but costs… |
+| [product-background-swap](results/product-background-swap.md) | Background replacement with the product kept — SSIM 0.833, but details drift | **Mixed.** Backgrounds can be replaced, the product cannot: product SSIM reaches 0.851 with depth conditioning while contour SSIM stays at 0.701, and the eye confirms redrawn petals and centres.… |
+| [shop-assistant-similar-products](results/shop-assistant-similar-products.md) | Assistant on similar products — 87.5 % on full names, 15 % on short ones | **Mixed.** Retrieval is fine and first choice is not: the right variant is in the top five 90 % of the time but first only 15 %, so the assistant must list the varieties instead of picking one,… |
+| [code-loop-whole-package](results/code-loop-whole-package.md) | Whole package in context — 0 of 5, plus a separate finding about q4_0 KV | **Negative.** Whole-package context does not rescue a 7B model: 0 of 5, and most returned files were unchanged. The useful outcome is the side finding that q4_0 KV corrupts generation while q8_0 does not. |
+| [code-loop-agentic](results/code-loop-agentic.md) | Agentic repair loop — running the tests at every step still leaves 12B at zero | **Negative.** Feedback is not the bottleneck: 0 of 8 with four iterations each, every patch syntactically valid and every one wrong, because the fixes need coordinated changes across files that the… |
+| [code-loop-real-fixes](results/code-loop-real-fixes.md) | Code loop on real fixes — 0 of 18, and why that is the useful result | **Negative.** Single-shot repair of real bugs with 12B models does not work: 0 of 18, though every patch was valid and safe. What does work in the same harness is retrieval (82.5 % recall@5 by file)… |
 | [V100-99](results/V100-99.md) | Prompt-expander: LLM writes prompt for photographer | The hypothesis was partially confirmed, and the solution depends on the prompt length. 20 product positions via vikhr-nemo-12b: valid JSON 20/20, all three keys 20/20, English without… |
 
 ## Follow-ups in progress

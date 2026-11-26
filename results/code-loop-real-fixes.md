@@ -3,6 +3,10 @@
 
 _Not synthetic tasks: real commits in `pypa/packaging` that changed both code and tests. For each, the test from the commit was kept, the source was reverted to the pre-commit state, the test was confirmed failing, the model got the file plus the pytest output, and the test was run again._
 
+**Question.** Can 12B-class local models fix real bugs when given the failing test and the file it belongs to?
+
+**Environment.** Tesla V100-SXM2 16 GB, sm_70, driver 580.178.04, Ubuntu 24.04. vikhr-nemo 12B and DeepSeek-Coder-V2-Lite via llama.cpp; 18 real pypa/packaging commits, source reverted to the pre-commit state, the commit test kept and confirmed failing; single pass per task.
+
 ## Results
 
 | Model | Tasks | Fixed | Valid syntax | Dangerous insertions | Seconds per task |
@@ -25,6 +29,16 @@ The cause is the task shape, not model competence. Three things showed up in fai
 A negative result closes a question: **single-shot repair of real bugs with 12B-class models does not work**, regardless of language or whether the model is code-specialised. A code loop needs either an agentic cycle that runs tests at every step, a much larger model, or both.
 
 What already works in this same harness: code retrieval (82.5 % recall@5 by file) and the safety gate (0 dangerous insertions across 18 patches). Both can serve as the base of an agentic loop unchanged.
+
+**Repeats.** 18 tasks (10 and 8), one pass each.
+
+**Verdict.** Single-shot repair of real bugs with 12B models does not work: 0 of 18, though every patch was valid and safe. What does work in the same harness is retrieval (82.5 % recall@5 by file) and the safety gate.
+
+**Result type.** Negative.
+
+**Does not show.** Multi-file patches and larger models were out of scope here; the iterative variant is measured separately in code-loop-agentic.
+
+**Raw.** `raw/runs/code-loop-real-fixes.log` - stdout of the harness described under Method.
 
 ## Method
 

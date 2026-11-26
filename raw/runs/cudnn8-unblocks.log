@@ -1,0 +1,147 @@
+=== esrgan_cu121c.log ===
+картинок: 6
+8marta.jpg               lanczos 37.64 дБ / 0.980 | esrgan 31.78 дБ / 0.940 | 0.9 с
+biznes.jpg               lanczos 36.75 дБ / 0.975 | esrgan 33.23 дБ / 0.951 | 0.75 с
+dostavka.jpg             lanczos 35.61 дБ / 0.973 | esrgan 27.85 дБ / 0.890 | 0.75 с
+osen.jpg                 lanczos 39.01 дБ / 0.974 | esrgan 32.46 дБ / 0.929 | 0.75 с
+svadba.jpg               lanczos 43.42 дБ / 0.989 | esrgan 37.15 дБ / 0.969 | 0.75 с
+vesna.jpg                lanczos 43.96 дБ / 0.991 | esrgan 38.53 дБ / 0.975 | 0.75 с
+{
+ "картинок": 6,
+ "lanczos_psnr": 39.398,
+ "lanczos_ssim": 0.98,
+ "esrgan_psnr": 33.5,
+ "esrgan_ssim": 0.942,
+ "esrgan_секунд": 0.775,
+ "vrgb_пик_МиБ": 2445,
+ "резкость_оригинал": 12.0,
+ "резкость_lanczos": 6.4,
+ "резкость_esrgan": 18.3
+}
+
+=== bg_cu121.log ===
+картинок: 3
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]The config attributes {'decay': 0.9999, 'inv_gamma': 1.0, 'min_decay': 0.0, 'optimization_step': 37000, 'power': 0.6666666666666666, 'update_after_step': 0, 'use_ema_warmup': False} were passed to UNet2DConditionModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:03,  1.81it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:01,  2.55it/s]Loading pipeline components...:  57%|█████▋    | 4/7 [00:01<00:00,  3.58it/s]Loading pipeline components...:  86%|████████▌ | 6/7 [00:01<00:00,  5.64it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:01<00:00,  4.74it/s]
+модель загружена
+[W NNPACK.cpp:61] Could not initialize NNPACK! Reason: Unsupported hardware.
+8marta     SSIM товара 0.763 | фон изменён  66.5% | 40.1 с
+biznes     SSIM товара 0.914 | фон изменён  73.7% | 7.8 с
+dostavka   SSIM товара 0.836 | фон изменён  90.4% | 7.5 с
+{
+ "картинок": 3,
+ "SSIM_товара": 0.838,
+ "фон_изменён_процент": 76.9,
+ "секунд": 18.5,
+ "VRAM_пик_МиБ": 5295
+}
+
+=== video_cu121.log ===
+The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.07s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.24s/it][ALoading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.22s/it]
+Loading pipeline components...:  20%|██        | 1/5 [00:02<00:10,  2.54s/it]The config attributes {'invert_scale_latents': False} were passed to AutoencoderKLCogVideoX, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  40%|████      | 2/5 [00:02<00:03,  1.27s/it]Loading pipeline components...:  60%|██████    | 3/5 [00:06<00:04,  2.32s/it]Loading pipeline components...:  80%|████████  | 4/5 [00:06<00:01,  1.51s/it]Loading pipeline components...: 100%|██████████| 5/5 [00:06<00:00,  1.36s/it]
+модель загружена за 7 с
+{
+ "промпт": "A greenhouse shelf with blooming begonias, soft daylight, ca",
+ "разрешение": "480x320",
+ "кадров_запрошено": 17,
+ "шагов": 20,
+ "секунд_загрузки": 7,
+ "секунд_генерации": 46,
+ "секунд_на_кадр": 2.7,
+ "VRAM_пик_МиБ": 11119,
+ "кадров": 17,
+ "размер": "480x320",
+ "резкость_медиана": 272.2,
+ "резкость_мин": 230.9,
+ "движение_медиана": 10.8,
+ "замерших_кадров": 0
+}
+
+=== video720_cu121.log ===
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  40%|████      | 2/5 [00:02<00:04,  1.39s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  1.01it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.06it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.05it/s]
+Loading pipeline components...:  60%|██████    | 3/5 [00:04<00:03,  1.63s/it]Loading pipeline components...:  80%|████████  | 4/5 [00:04<00:01,  1.07s/it]The config attributes {'invert_scale_latents': False} were passed to AutoencoderKLCogVideoX, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...: 100%|██████████| 5/5 [00:05<00:00,  1.28it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:05<00:00,  1.02s/it]
+модель загружена за 5 с
+Traceback (most recent call last):
+  File "/srv/media/projects/video-720/video720.py", line 83, in <module>
+    main()
+  File "/srv/media/projects/video-720/video720.py", line 60, in main
+    frames = pipe(prompt=PROMPT, height=H, width=W, num_frames=FRAMES, num_inference_steps=STEPS,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/diffusers/pipelines/cogvideo/pipeline_cogvideox.py", line 733, in __call__
+    video = self.decode_latents(latents)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/diffusers/pipelines/cogvideo/pipeline_cogvideox.py", line 350, in decode_latents
+    frames = self.vae.decode(latents).sample
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/diffusers/utils/accelerate_utils.py", line 46, in wrapper
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_cogvideox.py", line 1278, in decode
+    decoded = self._decode(z).sample
+              ^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_cogvideox.py", line 1249, in _decode
+    z_intermediate, conv_cache = self.decoder(z_intermediate, conv_cache=conv_cache)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_cogvideox.py", line 970, in forward
+    hidden_states, new_conv_cache[conv_cache_key] = up_block(
+                                                    ^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_cogvideox.py", line 647, in forward
+    hidden_states, new_conv_cache[conv_cache_key] = resnet(
+                                                    ^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_cogvideox.py", line 291, in forward
+    hidden_states, new_conv_cache["norm1"] = self.norm1(hidden_states, zq, conv_cache=conv_cache.get("norm1"))
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_cogvideox.py", line 186, in forward
+    norm_f = self.norm_layer(f)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/torch/nn/modules/normalization.py", line 287, in forward
+    return F.group_norm(
+           ^^^^^^^^^^^^^
+  File "/home/hermes/venvs/cu121/lib/python3.12/site-packages/torch/nn/functional.py", line 2588, in group_norm
+    return torch.group_norm(input, num_groups, weight, bias, eps, torch.backends.cudnn.enabled)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.32 GiB. GPU 
+

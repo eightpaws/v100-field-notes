@@ -3,6 +3,10 @@
 
 _Testing video generation on the card: CogVideoX-5B is already on disk (17 GB). The goal was an actual clip plus frame checks, not just an exit code. No clip was produced, for the same reason on both paths._
 
+**Question.** Can CogVideoX-5B produce a 480p and a 720p clip on a 16 GB V100 with cuDNN 9?
+
+**Environment.** Tesla V100-SXM2 16 GB, sm_70, driver 580.178.04, Ubuntu 24.04. venvs/video with torch 2.10 and cuDNN 9; model cogvideox-5b from local disk; 480x320x17 frames, 20 steps, and 720x480x25.
+
 ## What happened
 
 **Path one, cuDNN enabled (fp16):**
@@ -32,6 +36,16 @@ Practical options:
 ## What remains unmeasured
 
 The card asked for 720p with tiling and frame checks. There are no frames, so frame metrics (sharpness, motion, frozen frames) were not collected — the script computes them, but no file was produced. Once a working build exists, the run is a single command.
+
+**Repeats.** single run per configuration; no successful clip to repeat.
+
+**Verdict.** With cuDNN 9 video is blocked for a build reason, not a model limit: fp16 convolutions find no engine on sm_70, and without cuDNN the VAE asks 17.8 GiB. The fix is a cuDNN 8 environment, measured in V100-141, not a smaller clip.
+
+**Result type.** Negative.
+
+**Does not show.** No clip was produced, so frame metrics were never collected; 720p with tiling remains unmeasured.
+
+**Raw.** `raw/runs/video-cogvideox.log` - stdout of the harness described under Method.
 
 ## Method
 

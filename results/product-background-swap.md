@@ -3,6 +3,10 @@
 
 _Whether product photos can get a new background without a reshoot. Local SDXL inpainting (`stable-diffusion-xl-1.0-inpainting-0.1`, already on disk in InvokeAI); the background mask was built from corner colour and edge connectivity, the product left outside the mask._
 
+**Question.** Can SDXL inpainting replace a product background while keeping the exact plant?
+
+**Environment.** Tesla V100-SXM2 16 GB, sm_70, driver 580.178.04, Ubuntu 24.04. SDXL inpainting 1.0, fp16-only weights, 512 px width with CPU offload. Pass 1: colour mask, strength 0.95. Pass 2: depth mask from Depth-Anything-V2-Small with ControlNet-depth, strength 0.80, conditioning scale 0.95. Three promo images.
+
 ## Results on three promo images
 
 | Image | Product SSIM | Background changed | Time |
@@ -42,7 +46,6 @@ Script `/srv/media/projects/depth-bg/bg_inpaint.py`, output `result.json`, log `
 - SSIM is computed inside a crude product mask, so the figure is optimistic relative to what the eye sees.
 - ControlNet-depth is downloaded but was not used in this series: the first question was whether the card can inpaint at all.
 
-
 ## Second pass - depth mask plus ControlNet-depth
 
 The first result (SSIM 0.833) used a colour mask and free regeneration. The second pass builds the background mask from a depth map (Depth-Anything-V2-Small) and generates through SDXL ControlNet-inpaint with depth conditioning, strength 0.80, conditioning scale 0.95.
@@ -61,3 +64,13 @@ Peak VRAM 5 766 MiB.
 **Verdict:** ControlNet-depth helps but does not solve preservation of a specific plant. Product cards need a manual cutout composited over a generated background, or the admission that neural background replacement is for advertising material only.
 
 Script `/srv/media/projects/depth-bg/bg_depth.py`, results `result_controlnet.json`, log `/srv/media/night/bg_depth3.log`.
+
+**Repeats.** three images per pass, two passes, single run each.
+
+**Verdict.** Backgrounds can be replaced, the product cannot: product SSIM reaches 0.851 with depth conditioning while contour SSIM stays at 0.701, and the eye confirms redrawn petals and centres. Product cards need a manual cutout over a generated background.
+
+**Result type.** Mixed.
+
+**Does not show.** Three images and one background prompt; the strength sweep and manual masks were not tried; SSIM inside a crude product mask is optimistic.
+
+**Raw.** `raw/runs/product-background-swap.log` - stdout of the harness described under Method.

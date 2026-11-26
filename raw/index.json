@@ -610,5 +610,59 @@
   "title": "Prompt-expander: LLM writes prompt for photographer",
   "result_type": "unstated",
   "verdict": "The hypothesis was partially confirmed, and the solution depends on the prompt length. 20 product positions via vikhr-nemo-12b: valid JSON 20/20, all three keys 20/20, English without Cyrillic 20/20, 2.52 seconds per position on average (first 16.5s - cold load), 98-131 output tokens (was 124-189 in prototype). Visual spot-check on 5 positions (RealVisXL V5, 832x1216, 30 steps): long prompt 27-36 words gave 3/5 for material and color (vase and eustoma disappeared, pot lost packaging), short prompt in fixed order (16-22 words, 53-67 tokens) - 5/5. Packaging-box in frame 1 out of 5: SDXL draws the product, not the packaging, and ask for box separately."
+ },
+ {
+  "id": "cudnn8-unblocks-graphics",
+  "title": "A cuDNN 8 environment unblocked three tasks",
+  "result_type": "positive",
+  "verdict": "Switching to cuDNN 8 is the fix for fp16 convolutions on sm_70: all three tasks run, 480p video included; 720p still runs out of memory, so on this card the limit is memory, not the build."
+ },
+ {
+  "id": "video-cogvideox-blocked",
+  "title": "CogVideoX on V100 — blocked by the build, not by the model",
+  "result_type": "negative",
+  "verdict": "With cuDNN 9 video is blocked for a build reason, not a model limit: fp16 convolutions find no engine on sm_70, and without cuDNN the VAE asks 17.8 GiB. The fix is a cuDNN 8 environment, measured in V100-141, not a smaller clip."
+ },
+ {
+  "id": "image-quality-checker",
+  "title": "Card quality checker without a VLM — 11 663 images, 0.1 % printable",
+  "result_type": "negative",
+  "verdict": "The library is not printable: 0.1 % reaches A4 and 99.8 % is under 768 px, so upscaling is mandatory; the clipping flag is unusable, with 93.5 % false positives on flower close-ups."
+ },
+ {
+  "id": "print-from-640-library",
+  "title": "Printing from the 640 px library — x4 reaches A4, not A3",
+  "result_type": "mixed",
+  "verdict": "A4 at 310 dpi is print-ready after one x4 pass at 0.7 s per card; A3 is not (219 dpi) and needs a second tiled ESRGAN pass, which doubles sharpness on the same output size but costs about a hundred times more time."
+ },
+ {
+  "id": "product-background-swap",
+  "title": "Background replacement with the product kept — SSIM 0.833, but details drift",
+  "result_type": "mixed",
+  "verdict": "Backgrounds can be replaced, the product cannot: product SSIM reaches 0.851 with depth conditioning while contour SSIM stays at 0.701, and the eye confirms redrawn petals and centres. Product cards need a manual cutout over a generated background."
+ },
+ {
+  "id": "shop-assistant-similar-products",
+  "title": "Assistant on similar products — 87.5 % on full names, 15 % on short ones",
+  "result_type": "mixed",
+  "verdict": "Retrieval is fine and first choice is not: the right variant is in the top five 90 % of the time but first only 15 %, so the assistant must list the varieties instead of picking one, which is now enforced in the system prompt."
+ },
+ {
+  "id": "code-loop-whole-package",
+  "title": "Whole package in context — 0 of 5, plus a separate finding about q4_0 KV",
+  "result_type": "negative",
+  "verdict": "Whole-package context does not rescue a 7B model: 0 of 5, and most returned files were unchanged. The useful outcome is the side finding that q4_0 KV corrupts generation while q8_0 does not."
+ },
+ {
+  "id": "code-loop-agentic",
+  "title": "Agentic repair loop — running the tests at every step still leaves 12B at zero",
+  "result_type": "negative",
+  "verdict": "Feedback is not the bottleneck: 0 of 8 with four iterations each, every patch syntactically valid and every one wrong, because the fixes need coordinated changes across files that the loop never allows."
+ },
+ {
+  "id": "code-loop-real-fixes",
+  "title": "Code loop on real fixes — 0 of 18, and why that is the useful result",
+  "result_type": "negative",
+  "verdict": "Single-shot repair of real bugs with 12B models does not work: 0 of 18, though every patch was valid and safe. What does work in the same harness is retrieval (82.5 % recall@5 by file) and the safety gate."
  }
 ]

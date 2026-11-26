@@ -3,6 +3,10 @@
 
 _Three failures in a row — Real-ESRGAN, SDXL inpainting and CogVideoX — shared one cause: cuDNN 9 in the PyTorch 2.10 build cannot find an engine for fp16 convolutions on sm_70. A separate environment `venvs/cu121` was built: torch 2.3.1+cu121, cuDNN **8.9.2**, numpy 1.26, diffusers 0.31, transformers 4.46. All three tasks now run._
 
+**Question.** Does a separate cuDNN 8 environment unblock Real-ESRGAN, SDXL inpainting and CogVideoX-480p on sm_70?
+
+**Environment.** Tesla V100-SXM2 16 GB, sm_70, driver 580.178.04, Ubuntu 24.04. Environment venvs/cu121: torch 2.3.1+cu121, cuDNN 8.9.2 (8902), numpy 1.26, diffusers 0.31, transformers 4.46. Six promo images, three background-swap images, one 480x320x17 clip.
+
 ## 1. Real-ESRGAN (was: `GET was unable to find an engine`)
 
 Six promo images, scheme "original 768 → downscale to 384 → back to 768", compared against the original:
@@ -52,6 +56,16 @@ The clip was written and the frames are alive: motion in every transition, even 
 - Graphics on the V100 is no longer a dead end: ESRGAN, SDXL and video all run in `venvs/cu121`.
 - The older `venvs/video` (torch 2.10, cuDNN 9) is kept for ACE-Step, which has its own requirements.
 - Rule going forward: for any fp16 convolution on sm_70 use the cu121 environment; on `GET was unable to find an engine`, do not disable cuDNN — switch environments.
+
+**Repeats.** single run per task; six images for the upscale, three for the swap.
+
+**Verdict.** Switching to cuDNN 8 is the fix for fp16 convolutions on sm_70: all three tasks run, 480p video included; 720p still runs out of memory, so on this card the limit is memory, not the build.
+
+**Result type.** Positive.
+
+**Does not show.** Video is judged by frame sharpness and motion, not by eye; 720p with tiling, and fp16 models other than these three, were not tried.
+
+**Raw.** `raw/runs/cudnn8-unblocks.log` - stdout of the harness described under Method.
 
 ## Method
 

@@ -3,6 +3,10 @@
 
 _Tested on real cards from the library rather than on synthetic images: take a 640 px file, upscale x4 with Real-ESRGAN (cuDNN 8 environment), then check dpi and sharpness._
 
+**Question.** Can a 640 px library photo be printed at A4 and A3 after upscaling, judged by dpi and sharpness rather than by eye?
+
+**Environment.** Tesla V100-SXM2 16 GB, sm_70, driver 580.178.04, Ubuntu 24.04. Real-ESRGAN x4plus in a cu121 environment (torch 2.3.1+cu121, cuDNN 8.9.2). Six library cards, 640x640 source.
+
 ## Result on six cards
 
 | Card | Before | After | Sharpness before | ESRGAN | LANCZOS | A4 | A3 |
@@ -33,7 +37,6 @@ Absolute values are not comparable across resolutions: doubling the size halves 
 
 Script `/srv/media/projects/print-check/print_check.py`, result `result.json`, log `/srv/media/night/print_check.log`. Produced files live in `/srv/media/projects/print-check/`.
 
-
 ## Second step for A3
 
 A single x4 pass gives 2560 px, while A3 needs 4961. Two variants were compared on three cards: (a) stretch 2560 to 4961 with interpolation, (b) run a second ESRGAN x4 pass to 10240 and downscale to 4961.
@@ -50,3 +53,13 @@ At the same 4961 px output sharpness doubled (+95 %), which is 424 dpi on A3 —
 One important detail: the second pass without tiling runs out of memory (asks 12.5 GiB for one layer); with `tile=256` it completes by processing roughly a hundred tiles per card. Time per card is tens of seconds versus 0.7 s for the first pass, so A3 costs about a hundred times more time than A4.
 
 Final print scheme: 640 px original → ESRGAN x4 (0.7 s) → A4 at 310 dpi; for A3 → second tiled pass → 4961 px at 424 dpi.
+
+**Repeats.** single run per card; the A3 two-pass comparison on three cards.
+
+**Verdict.** A4 at 310 dpi is print-ready after one x4 pass at 0.7 s per card; A3 is not (219 dpi) and needs a second tiled ESRGAN pass, which doubles sharpness on the same output size but costs about a hundred times more time.
+
+**Result type.** Mixed.
+
+**Does not show.** A3 quality is measured by Laplacian sharpness and arithmetic dpi only, not by a printed proof or colour accuracy; six cards from one product genre.
+
+**Raw.** `raw/runs/print-from-640-library.log` - stdout of the harness described under Method.
