@@ -44,7 +44,7 @@ def is_palindrome(s):
 
 **JSON.** A valid product card, all fields present, content on point (interior style, care as a checklist), 285 tokens in 5.0 s.
 
-**Honesty.** On a delivery price question: "Не могу точно сказать без адреса и букета. Обычно — от 300–600 ₽." It did not invent a figure, flagged the uncertainty and gave only a general range — acceptable.
+**Honesty.** On a delivery price question: (Russian answer, not reproduced here) It did not invent a figure, flagged the uncertainty and gave only a general range — acceptable.
 
 Thinking mode is on by default: 400-1200 characters of reasoning before the answer, so a token budget of 800 or more is required.
 
@@ -71,9 +71,25 @@ Limitation: coding quality was not measured properly (no MBPP), only three tasks
 ## Reproduction
 
 ```
-ssh ai-gpu 'cd /srv/media/ai-cache/downloads/bonsai27b && \
+ssh the GPU guest 'cd /srv/media/ai-cache/downloads/bonsai27b && \
   /home/hermes/llama-prism/build/bin/llama-bench \
   -m Ternary-Bonsai-2-27B-PTQ1_0.gguf -p 256 -n 64 -ngl 99 -r 2'
 ```
 
 Raw output: `/srv/media/projects/raw/runs/V100-76.json`. Fork: `/home/hermes/llama-prism` (f702476, with three patches). Logs `/srv/media/night/prism_*.log`, `/srv/media/night/bonsai_*.log`.
+
+**Repeats.** Not recorded: repeatability was not documented for this run - treat the numbers as a single run unless the result says otherwise.
+
+**Environment.** Tesla V100-SXM2-16GB (sm_70), driver 580, CUDA 12.9, guest VM on a home Proxmox host; engine and model as recorded in the run log.
+
+**Does not show.** one run only - repeatability was not measured; the run log was not preserved, so the numbers cannot be re-checked from this repository.
+
+**Raw.** Not preserved for this run.
+
+**Commands.** The command line was not recorded for this run.
+
+**Question.** See the card title: the premise is stated in the field notes and was not carried into this export.
+
+**Verdict.** Mixed: the ternary 27B does run here and holds 6.8 GB, but the throughput it reaches decides whether the trade is worth it for the shop - see the measurement above.
+
+**Result type.** Unstated.

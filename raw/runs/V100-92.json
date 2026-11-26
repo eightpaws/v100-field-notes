@@ -1,0 +1,28 @@
+{
+ "card": "V100-92",
+ "pr": {
+  "url": "https://github.com/ggml-org/llama.cpp/pull/31802",
+  "state": "open",
+  "title": "ggml-cuda: fused q8_0/q4_0/f8_e4m3 KV dequant in the MMA flash-attention kernels",
+  "head": "01eb64f",
+  "files_touched": [
+   "fattn-common.cuh",
+   "fattn-mma-f16.cuh",
+   "fattn-vec.cuh",
+   "fattn.cu"
+  ]
+ },
+ "baseline": {
+  "build": "llama.cpp build129 (af5c583)",
+  "pp8192_tok_s": 799.82,
+  "tg8_tok_s": 35.18
+ },
+ "pr_build": {
+  "build": "PR head 01eb64f, CUDA sm_70, GGML_CUDA_FA_ALL_QUANTS=OFF",
+  "pp8192_tok_s": 599.35,
+  "tg8_tok_s": 35.1
+ },
+ "flags": "-m Huihui-Qwen3.8-27B-abliterated-GSQ-RCO-IQ3_S.gguf -p 8192 -n 8 -ctk q8_0 -ctv q8_0 -r 1",
+ "build_time_note": "the PR tree compiles fattn template instances for about 90 minutes on this box; three attempts, the third with GGML_CUDA_FA_ALL_QUANTS=OFF succeeded",
+ "verdict": "prefill 25 percent slower on sm_70, decode unchanged"
+}

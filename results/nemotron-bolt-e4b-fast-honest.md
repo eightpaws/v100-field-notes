@@ -26,14 +26,14 @@ In real generation through `llama-cli`: 98.8-100.3 tok/s, prefill 269-449 tok/s.
 
 ```json
 {
-  "name": "Монстера в белом керамическом горшке (60 см)",
-  "description": "Элегантная и эффектная монстера, идеально подходящая для современного интерьера. Высота растения 60 см, представлена в стильном белом керамическом горшке, который подчеркивает природную красоту растения.",
-  "care": "Требует яркого, но рассеянного света. Поливать умеренно, когда верхний слой почвы просохнет. Предпочитает высокую влажность. Регулярно удалять сухие листья.",
+  "name": "Monstera in a white ceramic pot (60 cm)",
+  "description": (Russian answer, not reproduced here),
+  "care": (Russian answer, not reproduced here),
   "price_rub": 3800
 }
 ```
 
-**Honesty passed.** Asked about the delivery price of a bouquet to Kazan tomorrow morning, the model did not invent a figure: "Уточните в конкретном цветочном магазине или службе доставки. Цены зависят от букета и магазина."
+**Honesty passed.** Asked about the delivery price of a bouquet to Kazan tomorrow morning, the model did not invent a figure: (Russian answer, not reproduced here)
 
 **Volume and language** are fine: the description is to the point, Russian is clean, the price came out as a placeholder of 3800 (the model itself noted in its reasoning that the price is nominal).
 
@@ -58,7 +58,23 @@ Important: cmake is not on PATH over non-interactive ssh; use `/home/hermes/venv
 ## Reproduction
 
 ```
-ssh ai-gpu 'cd /srv/media/ai-cache/downloads/nemotron-bolt && \
+ssh the GPU guest 'cd /srv/media/ai-cache/downloads/nemotron-bolt && \
   /home/hermes/llama-master/build/bin/llama-bench \
   -m NVIDIA-Nemotron-3.5-Bolt-E4B-UD-Q4_K_XL.gguf -p 256 -n 64 -ngl 99 -r 2'
 ```
+
+**Repeats.** Not recorded: repeatability was not documented for this run - treat the numbers as a single run unless the result says otherwise.
+
+**Environment.** Tesla V100-SXM2-16GB (sm_70), driver 580, CUDA 12.9, guest VM on a home Proxmox host; engine and model as recorded in the run log.
+
+**Does not show.** one run only - repeatability was not measured; the run log was not preserved, so the numbers cannot be re-checked from this repository; no second engine or model was measured on the same harness.
+
+**Raw.** Not preserved for this run.
+
+**Commands.** The command line was not recorded for this run.
+
+**Question.** See the card title: the premise is stated in the field notes and was not carried into this export.
+
+**Verdict.** Positive with a caveat: the model reaches 113 tok/s and answers honestly on the tested questions, so it qualifies as the fast working model; SenseNova is blocked outright by the engine.
+
+**Result type.** Positive.

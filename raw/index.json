@@ -373,15 +373,15 @@
  },
  {
   "id": "V100-77",
-  "title": "Raon-1-nano MTP: Multi-token prediction without draft",
+  "title": "Raon-1-nano MTP: multi-token prediction without a draft model",
   "result_type": "unstated",
-  "verdict": "Blocked by engine (24.11). File downloaded (2,145,934,208 bytes), but the architecture raon1nano is unknown to current llama.cpp."
+  "verdict": "The MTP head is dead weight in this engine: decode speed is identical to the plain file (93.28 vs 92.72 tok/s, within one sigma), the head is loaded but never executed, and no speculative counters appear in server responses. Use the plain Q4_K_M."
  },
  {
   "id": "V100-78",
-  "title": "Two fast mid-size models through one harness",
+  "title": "Rapid Averages: Nemotron-Bolt-E4B and SenseNova-Loop-9B",
   "result_type": "unstated",
-  "verdict": "Positive: Nemotron-Bolt-E4B is the working model for shop text - faster than the 90 tok/s bar by a comfortable margin, 4 GB of VRAM, clean on all four quality blocks. SenseNova is its equal on quality but at half the speed and behind a fork, so it stays a spare."
+  "verdict": "- ## Queue P1v - New Ideas Following Review (24.11.2026) \\| # \\| Idea \\| Stage \\| Resources \\| Status \\| Outcome \\| Ready \\| \\|---\\|---\\|---\\|---\\|---\\|---\\|---\\| \\| V100-66 \\| Code Quality: MBPP on Three Models \\| P0 \\| 40 Tasks \\| Done \\| Code 0.55 / RAG 2/2."
  },
  {
   "id": "V100-79",
@@ -436,6 +436,12 @@
   "title": "Recheck sm70-attn with head_dim 256",
   "result_type": "positive",
   "verdict": "Positive for the narrow claim: the fork is faster on prefill at both measured lengths, and the margin at 16k (+11.2 %) is large enough to matter for long prompts. The numbers published in the fork's README (+34-48 %) do not reproduce at 8-16k: they belong to the 100-174k range, where the D256 ..."
+ },
+ {
+  "id": "V100-92",
+  "title": "PR #31802: fused quantised-KV dequant costs prefill on Volta",
+  "result_type": "unstated",
+  "verdict": "Negative for Volta: the fused path is slower here, most likely because the 25 % prefill headroom the PR recovers lives in the tensor-core MMA path, while sm_70 falls to the vector kernel where the extra fused branch just adds work. The card stays open upstream-wise - the PR may merge and change - ..."
  },
  {
   "id": "V100-93",
@@ -678,6 +684,12 @@
   "verdict": "Training ran to completion on 30 monstera images and changed nothing visible in the product shots, so this LoRA is not worth keeping; the same budget is better spent on reference images per SKU than on a brand-wide adapter."
  },
  {
+  "id": "nemotron-bolt-e4b-fast-honest",
+  "title": "Nemotron-Bolt-E4B on the V100: 113 tok/s and honest answers",
+  "result_type": "positive",
+  "verdict": "Positive with a caveat: the model reaches 113 tok/s and answers honestly on the tested questions, so it qualifies as the fast working model; SenseNova is blocked outright by the engine."
+ },
+ {
   "id": "olala-mini-unblocked-slow",
   "title": "Olala-v1.0-mini-7A1B on the V100: unblocked, but slow",
   "result_type": "negative",
@@ -696,10 +708,22 @@
   "verdict": "Backgrounds can be replaced, the product cannot: product SSIM reaches 0.851 with depth conditioning while contour SSIM stays at 0.701, and the eye confirms redrawn petals and centres. Product cards need a manual cutout over a generated background."
  },
  {
+  "id": "rag-nemotron-vs-vikhr",
+  "title": "Shop RAG assistant: Nemotron is twice as fast and three times more wrong",
+  "result_type": "negative",
+  "verdict": "Negative for the RAG role: Nemotron is twice as fast but three times more often wrong against the local vikhr model, so for customer-facing retrieval it loses on accuracy."
+ },
+ {
   "id": "shop-assistant-similar-products",
   "title": "Assistant on similar products — 87.5 % on full names, 15 % on short ones",
   "result_type": "mixed",
   "verdict": "Retrieval is fine and first choice is not: the right variant is in the top five 90 % of the time but first only 15 %, so the assistant must list the varieties instead of picking one, which is now enforced in the system prompt."
+ },
+ {
+  "id": "ternary-bonsai-27b",
+  "title": "Ternary-Bonsai-2-27B on the V100: 27B in 6.8 GB at 67 tok/s",
+  "result_type": "unstated",
+  "verdict": "Mixed: the ternary 27B does run here and holds 6.8 GB, but the throughput it reaches decides whether the trade is worth it for the shop - see the measurement above."
  },
  {
   "id": "video-cogvideox-blocked",

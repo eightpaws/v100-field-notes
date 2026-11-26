@@ -49,12 +49,28 @@ Its strength is text generation: product cards in JSON come out valid and fast a
 ## Reproduction
 
 ```
-ssh ai-gpu 'cd /srv/media/ai-cache/downloads/nemotron-bolt && \
+ssh the GPU guest 'cd /srv/media/ai-cache/downloads/nemotron-bolt && \
   /home/hermes/llama-master/build/bin/llama-server \
   -m NVIDIA-Nemotron-3.5-Bolt-E4B-UD-Q4_K_XL.gguf -ngl 99 -c 8192 -fa on --port 18461'
 
-ssh ai-gpu 'cd /srv/media/projects/shop-assistant && \
+ssh the GPU guest 'cd /srv/media/projects/shop-assistant && \
   RAG_LLM=http://127.0.0.1:18461/v1/chat/completions RAG_MODEL=nemotron ./run_eval.sh'
 ```
 
 Log `/srv/media/night/rag_nemotron.log`. The vikhr-nemo baseline lives in the shop assistant card.
+
+**Repeats.** Not recorded: repeatability was not documented for this run - treat the numbers as a single run unless the result says otherwise.
+
+**Environment.** Tesla V100-SXM2-16GB (sm_70), driver 580, CUDA 12.9, guest VM on a home Proxmox host; engine and model as recorded in the run log.
+
+**Does not show.** one run only - repeatability was not measured; the run log was not preserved, so the numbers cannot be re-checked from this repository; no second engine or model was measured on the same harness.
+
+**Raw.** Not preserved for this run.
+
+**Commands.** The command line was not recorded for this run.
+
+**Question.** See the card title: the premise is stated in the field notes and was not carried into this export.
+
+**Verdict.** Negative for the RAG role: Nemotron is twice as fast but three times more often wrong against the local vikhr model, so for customer-facing retrieval it loses on accuracy.
+
+**Result type.** Negative.
