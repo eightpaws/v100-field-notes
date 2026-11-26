@@ -93,3 +93,31 @@ Raw output: `/srv/media/projects/raw/runs/V100-76.json`. Fork: `/home/hermes/lla
 **Verdict.** Mixed: the ternary 27B does run here and holds 6.8 GB, but the throughput it reaches decides whether the trade is worth it for the shop - see the measurement above.
 
 **Result type.** Unstated.
+## Coding quality on MBPP: 0.55 with thinking disabled
+
+The card's main gap — coding quality — is now closed. Run on 40 MBPP tasks, function name hinted in the prompt, acceptance by running the tests.
+
+| Mode | pass@1 | Time per task | Note |
+|---|---|---|---|
+| thinking on, 512-token cap | 0.325 (13/40) | 7.4 s | **invalid**: 23 of 40 answers truncated by the cap |
+| thinking off, 900-token cap | **0.55 (22/40)** | 1.9 s | valid measurement |
+
+The first run is the exact trap our own skill warns about: a reasoning model spends the budget on `reasoning_content`, the answer is cut, and the number measures the token limit rather than the model. The tell was obvious — mean answer 408 tokens against a 512 ceiling.
+
+With thinking off the answers become short (19-240 tokens) and accuracy nearly doubles.
+
+## What it means
+
+Both card criteria are met: tg 67.4 ≥ 40 and pass@1 0.55 ≥ 0.5.
+
+For comparison on the same harness, Qwen2.5-Coder-7B Q8 scores 0.60 on 40 tasks. So the ternary 27B is roughly on par with a dense 7B coder for code, while occupying 6.8 GB and writing prose nearly three times faster — as a general-purpose model on a 16 GB card it looks better than a 30B MoE with expert offloading.
+
+Noise caveat: 40 tasks give an interval of about ±0.15, so 0.55 means 0.40-0.70. Claiming it beats or trails the 7B coder is not supported at this sample size; 200 tasks would be needed.
+
+## Traps hit along the way
+
+1. **A harness with a fixed 512-token cap** produces a false failure for any reasoning model.
+2. **A 2000-token cap drops the connection**: the server generates 1300+ tokens, the harness sees `Remote end closed connection` and aborts the series on the first error.
+3. **`enable_thinking` via `chat_template_kwargs`** is accepted by the server, but the series still died on the first long answer; the working path was a custom loop with retries and a 900-token cap.
+
+Rule: for reasoning models, disable thinking first, then measure, and never trust a result that contains truncated answers.
