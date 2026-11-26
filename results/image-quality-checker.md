@@ -52,3 +52,5 @@ To finish it properly: download Qwen2.5-VL-3B (~2.5 GB) or InternVL2-2B, run it 
 ## Method
 
 Script `/srv/media/projects/image-qa/image_qa.py`, result `quality.json` (first 2000 rows in detail, summary over all 11 663), log `/srv/media/night/image_qa.log`. Sharpness is Laplacian variance on a 512 px copy; coverage is the share of pixels differing from the corner colour by more than 60 summed over channels.
+
+**Commands.** The command line was not recorded for this run.

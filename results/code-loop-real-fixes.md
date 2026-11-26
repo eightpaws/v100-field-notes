@@ -52,3 +52,5 @@ Script: `/srv/media/projects/code-real/real_fixes.py`; results `result.json`; lo
 - Models received only the single changed file; multi-file fixes are lost by construction.
 - Not tested: 30B+ models (Qwen3-Coder-30B does not fit in 16 GB with KV), an agentic loop, or feeding the whole repository into context.
 - The ControlNet-depth download for the neighbouring card crawled (129 MB of 2.5 GB in an hour), so the product work slipped.
+
+**Commands.** The command line was not recorded for this run.

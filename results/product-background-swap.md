@@ -74,3 +74,5 @@ Script `/srv/media/projects/depth-bg/bg_depth.py`, results `result_controlnet.js
 **Does not show.** Three images and one background prompt; the strength sweep and manual masks were not tried; SSIM inside a crude product mask is optimistic.
 
 **Raw.** `raw/runs/product-background-swap.log` - stdout of the harness described under Method.
+
+**Commands.** The command line was not recorded for this run.

@@ -70,3 +70,5 @@ The clip was written and the frames are alive: motion in every transition, even 
 ## Method
 
 Scripts `upscale_bench.py`, `bg_inpaint.py`, `video720.py`; logs `/srv/media/night/esrgan_cu121c.log`, `bg_cu121.log`, `video_cu121.log`, `video720_cu121.log`. Environment `/home/hermes/venvs/cu121` (torch 2.3.1+cu121, cuDNN 8902). A `torchvision.transforms.functional_tensor` shim was created because basicsr requires it on newer torchvision.
+
+**Commands.** The command line was not recorded for this run.

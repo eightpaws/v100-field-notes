@@ -48,3 +48,5 @@ The set is built from the assistant corpus automatically: group by the first par
 **Does not show.** Only retrieval is measured, not answer wording; 40 questions per cell leave a wide interval; the name grouping is crude and puts different products in one group.
 
 **Raw.** `raw/runs/shop-assistant-similar-products.json` - scores of the three runs. Question text and product titles are Russian and stay on the rig: the repository is English-only, so only the numbers are published.
+
+**Commands.** The command line was not recorded for this run.

@@ -50,3 +50,5 @@ The card asked for 720p with tiling and frame checks. There are no frames, so fr
 ## Method
 
 Script `/srv/media/projects/video-720/video720.py` (frame sharpness, inter-frame motion, writes mp4), logs `/srv/media/night/video720.log`, `video480.log`, `video480b.log`. Model `/srv/media/ai-cache/models/cogvideox-5b`, local, no downloads.
+
+**Commands.** The command line was not recorded for this run.

@@ -51,3 +51,5 @@ Script `/srv/media/projects/code-real/whole_pkg.py`, results `whole_result.json`
 - The prompt was cut to 80 KB: the full 201 KB did not fit, so some modules were never seen.
 - Five tasks instead of eight: each takes about a minute of prefill.
 - 7B model; 30B+ does not fit 16 GB together with a 64k context.
+
+**Commands.** The command line was not recorded for this run.

@@ -63,3 +63,5 @@ Final print scheme: 640 px original → ESRGAN x4 (0.7 s) → A4 at 310 dpi; for
 **Does not show.** A3 quality is measured by Laplacian sharpness and arithmetic dpi only, not by a printed proof or colour accuracy; six cards from one product genre.
 
 **Raw.** `raw/runs/print-from-640-library.log` - stdout of the harness described under Method.
+
+**Commands.** The command line was not recorded for this run.

@@ -47,3 +47,22 @@ A separate version set is required, otherwise everything breaks:
 - The training base must be saved shard-free with `variant="fp16"`, otherwise the script cannot find the weights.
 
 Scripts: `lora_prep.py`, `train_lora_029.py`, `lora_control2.py` in `/srv/media/projects/lora/`, logs `/srv/media/night/lora_*.log`.
+
+**Repeats.** Not recorded: repeatability was not documented for this run - treat the numbers as a single run unless the result says otherwise.
+
+**Environment.** Tesla V100-SXM2-16GB (sm_70), driver 580, CUDA 12.9, guest VM on a home Proxmox host; engine and model as recorded in the run log.
+
+**Does not show.** one run only - repeatability was not measured; the run log was not preserved, so the numbers cannot be re-checked from this repository.
+
+**Raw.** Not preserved for this run.
+
+**Commands.** The command line was not recorded for this run.
+
+**Question.** See the card title: the premise is stated in the field notes and was not carried into this export.
+
+**Result type.** Negative - the LoRA trained without error and produced no visible change on the
+product shots, so the criterion (a measurable likeness gain on 30 monstera images) was not met.
+
+**Verdict.** Training ran to completion on 30 monstera images and changed nothing visible in the
+product shots, so this LoRA is not worth keeping; the same budget is better spent on reference
+images per SKU than on a brand-wide adapter.

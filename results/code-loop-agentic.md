@@ -47,3 +47,5 @@ Script `/srv/media/projects/code-real/agent_loop.py`, results `loop_result.json`
 **Does not show.** Multi-file edits, linter feedback and 30B+ models were not tested; one repository and one language.
 
 **Raw.** `raw/runs/code-loop-agentic.log` - stdout of the harness described under Method.
+
+**Commands.** The command line was not recorded for this run.
