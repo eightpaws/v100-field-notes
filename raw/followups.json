@@ -76,5 +76,83 @@
   "parent": "V100-10",
   "what": "prefill at 8k and 16k, and record num_batch=4096",
   "estimate": "1 h"
+ },
+ {
+  "id": "V100-29b",
+  "parent": "V100-29",
+  "what": "re-measure and archive the raw output; the original run was not archived",
+  "estimate": "1 h"
+ },
+ {
+  "id": "V100-40b",
+  "parent": "V100-40",
+  "what": "re-measure and archive the raw output; the original run was not archived",
+  "estimate": "1 h"
+ },
+ {
+  "id": "V100-41b",
+  "parent": "V100-41",
+  "what": "re-measure and archive the raw output; the original run was not archived",
+  "estimate": "1 h"
+ },
+ {
+  "id": "V100-42b",
+  "parent": "V100-42",
+  "what": "re-measure and archive the raw output; the original run was not archived",
+  "estimate": "1 h"
+ },
+ {
+  "id": "V100-43b",
+  "parent": "V100-43",
+  "what": "re-measure and archive the raw output; the original run was not archived",
+  "estimate": "1 h"
+ },
+ {
+  "id": "V100-45b",
+  "parent": "V100-45",
+  "what": "re-measure and archive the raw output; the original run was not archived",
+  "estimate": "1 h"
+ },
+ {
+  "id": "V100-46b",
+  "parent": "V100-46",
+  "what": "re-measure and archive the raw output; the original run was not archived",
+  "estimate": "1 h"
+ },
+ {
+  "id": "V100-47b",
+  "parent": "V100-47",
+  "what": "re-measure and archive the raw output; the original run was not archived",
+  "estimate": "1 h"
+ },
+ {
+  "id": "V100-48b",
+  "parent": "V100-48",
+  "what": "re-measure and archive the raw output; the original run was not archived",
+  "estimate": "1 h"
+ },
+ {
+  "id": "V100-49b",
+  "parent": "V100-49",
+  "what": "re-measure and archive the raw output; the original run was not archived",
+  "estimate": "1 h"
+ },
+ {
+  "id": "V100-50b",
+  "parent": "V100-50",
+  "what": "re-measure and archive the raw output; the original run was not archived",
+  "estimate": "1 h"
+ },
+ {
+  "id": "V100-51b",
+  "parent": "V100-51",
+  "what": "re-measure and archive the raw output; the original run was not archived",
+  "estimate": "1 h"
+ },
+ {
+  "id": "V100-52b",
+  "parent": "V100-52",
+  "what": "re-measure and archive the raw output; the original run was not archived",
+  "estimate": "1 h"
  }
 ]

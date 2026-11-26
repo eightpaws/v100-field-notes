@@ -5,7 +5,7 @@ Every number below was measured on the card, not copied from a project README. N
 published on purpose: they are the expensive part of anyone's time.
 
 Closed experiments: **111** — 20 positive, 17 mixed,
-17 negative. Follow-ups queued: **13** — each card names the re-run that closes its caveat, and the results are published here as they land.
+17 negative. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -179,8 +179,21 @@ Until then the caveat stands, and a table row is not a substitute for a measurem
 | V100-63 | V100-39 | separate model load time from harness start | 1 h |
 | V100-64 | V100-15 | offline restore of the snapshot on a clean VM | 3 h |
 | V100-65 | V100-10 | prefill at 8k and 16k, and record num_batch=4096 | 1 h |
+| V100-29b | V100-29 | re-measure and archive the raw output; the original run was not archived | 1 h |
+| V100-40b | V100-40 | re-measure and archive the raw output; the original run was not archived | 1 h |
+| V100-41b | V100-41 | re-measure and archive the raw output; the original run was not archived | 1 h |
+| V100-42b | V100-42 | re-measure and archive the raw output; the original run was not archived | 1 h |
+| V100-43b | V100-43 | re-measure and archive the raw output; the original run was not archived | 1 h |
+| V100-45b | V100-45 | re-measure and archive the raw output; the original run was not archived | 1 h |
+| V100-46b | V100-46 | re-measure and archive the raw output; the original run was not archived | 1 h |
+| V100-47b | V100-47 | re-measure and archive the raw output; the original run was not archived | 1 h |
+| V100-48b | V100-48 | re-measure and archive the raw output; the original run was not archived | 1 h |
+| V100-49b | V100-49 | re-measure and archive the raw output; the original run was not archived | 1 h |
+| V100-50b | V100-50 | re-measure and archive the raw output; the original run was not archived | 1 h |
+| V100-51b | V100-51 | re-measure and archive the raw output; the original run was not archived | 1 h |
+| V100-52b | V100-52 | re-measure and archive the raw output; the original run was not archived | 1 h |
 
-Total queued: **13** re-runs, roughly 27.5 h of GPU time.
+Total queued: **26** re-runs, roughly 40.5 h of GPU time.
 
 ## How to read this
 
