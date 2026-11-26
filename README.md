@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **123** — 22 positive, 19 mixed,
+Closed experiments: **123** — 22 positive, 20 mixed,
 21 negative. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -104,7 +104,7 @@ Read this before quoting a number.
 | [V100-73](results/V100-73.md) | Goods cards per hour: image generation throughput | On a 768 px card, it yields ~2100 images per hour, but on 1024 px it hits memory. Tested on DreamShaperXL-Turbo (6 steps, guidance 1.5, fp16) via diffusers, local single-file checkpoint: \| Size \| Seconds per image \| Images per hour \|. |
 | [V100-74](results/V100-74.md) | Olala-v1.0-mini-7A1B: MoE with 1B active on 16 GB | Blocked by engine (24.11). File downloaded and intact (5,990,551,040 bytes, exact size verified), but llama.cpp master from 24.11 (build 12.9, sm_70) responds with unknown model architecture: 'olala'. |
 | [V100-75](results/V100-75.md) | GLM-4.7-Flash-30B-A3B IQ4_XS: fresh 30B MoE | Speed is good, model is degenerative. Architecture of the file is deepseek2 (like DeepSeek-Coder-V2), so FA is off. |
-| [V100-76](results/V100-76.md) | Ternary-Bonsai-2-27B: 27B in 6 GB on ternary scales | Blocked by format (24.11). File is valid (GGUF v3, 851 tensor, 5,946,648,928 bytes), but weights are compressed with type PTQ1_0, which llama.cpp does not support: the engine knows TQ1_0 and TQ2_0, not the P-variant, and fails. |
+| [V100-76](results/V100-76.md) | Ternary-Bonsai-2-27B: a 27B model in 6 GB on ternary weights | **Mixed.** Ternary kernels work on sm_70 once the server actually builds, and 27B fits in roughly 6.8 GB of VRAM at 8k context. Quality does not carry it: 0.325 pass@1 on the 40-task code battery, below the 0.5 threshold set in the card and well below the 0.625 of Qwen2.5-Coder-7B Q8. Useful where memory is ... |
 | [V100-77](results/V100-77.md) | Raon-1-nano MTP: multi-token prediction without a draft model | The MTP head is dead weight in this engine: decode speed is identical to the plain file (93.28 vs 92.72 tok/s, within one sigma), the head is loaded but never executed, and no speculative counters appear in server responses. Use the plain Q4_K_M. |
 | [V100-78](results/V100-78.md) | Rapid Averages: Nemotron-Bolt-E4B and SenseNova-Loop-9B | - ## Queue P1v - New Ideas Following Review (24.11.2026) \| # \| Idea \| Stage \| Resources \| Status \| Outcome \| Ready \| \|---\|---\|---\|---\|---\|---\|---\| \| V100-66 \| Code Quality: MBPP on Three Models \| P0 \| 40 Tasks \| Done \| Code 0.55 / RAG 2/2. |
 | [V100-79](results/V100-79.md) | llama.cpp v1.0.0 vs our build 51831d4 | Regression on sm_70 has occurred, but only for MoE. |

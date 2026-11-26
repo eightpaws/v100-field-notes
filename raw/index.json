@@ -367,9 +367,9 @@
  },
  {
   "id": "V100-76",
-  "title": "Ternary-Bonsai-2-27B: 27B in 6 GB on ternary scales",
-  "result_type": "unstated",
-  "verdict": "Blocked by format (24.11). File is valid (GGUF v3, 851 tensor, 5,946,648,928 bytes), but weights are compressed with type PTQ1_0, which llama.cpp does not support: the engine knows TQ1_0 and TQ2_0, not the P-variant, and fails."
+  "title": "Ternary-Bonsai-2-27B: a 27B model in 6 GB on ternary weights",
+  "result_type": "mixed",
+  "verdict": "Ternary kernels work on sm_70 once the server actually builds, and 27B fits in roughly 6.8 GB of VRAM at 8k context. Quality does not carry it: 0.325 pass@1 on the 40-task code battery, below the 0.5 threshold set in the card and well below the 0.625 of Qwen2.5-Coder-7B Q8. Useful where memory is ..."
  },
  {
   "id": "V100-77",
