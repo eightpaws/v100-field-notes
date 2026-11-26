@@ -289,9 +289,9 @@
  },
  {
   "id": "V100-61",
-  "title": "GQA to MHA: no pipeline in this stack carries the change",
+  "title": "GQA→MHA: Throughput measurement of pipeline, not core.",
   "result_type": "unstated",
-  "verdict": "Unstated, and deliberately not a \"no effect\" claim: the honest statement is that the test has no carrier, not that the effect is absent. Measuring it means building a pipeline around the V100-19 extension - wiring its K/V expansion into a real model, then timing frames with it on and off. That is a ..."
+  "verdict": "Carrier not present, see Result."
  },
  {
   "id": "V100-62",
@@ -436,6 +436,12 @@
   "title": "v100-llm-kit: prebuilt SM70 binaries vs our own build",
   "result_type": "mixed",
   "verdict": "Mixed: prefill 16 % faster with the shipped sm_70 binaries, decode identical. Worth taking for long prompts (document analysis, repository context); not a reason to migrate a decode-bound workload. The vendor's agent wrapper (serve-qwen3.sh, Claude Code integration) and the claimed Gemma 4 26B-A4B ..."
+ },
+ {
+  "id": "V100-87",
+  "title": "Marlin_v100: INT4-cores Marlin on sm_70",
+  "result_type": "unstated",
+  "verdict": "Workspace assembled: BUILD_RC=0 in 3368 s (56 min), _C.abi3.so 509 MB and _moe_C.abi3.so 447 MB, loading on sm_70, torch.ops._C.marlin_gemm in place."
  },
  {
   "id": "V100-89",

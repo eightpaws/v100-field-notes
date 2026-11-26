@@ -1,0 +1,220 @@
+{
+ "card": "V100-87",
+ "engine": "zhinianqin/marlin_v100 @ 3f16d44, CUTLASS upstream, CUDA 12.9, torch 2.10.0+cu128",
+ "harness": "benchmarks/benchmark_marlin_dense.py --max-cases 12 --iters 30 --check",
+ "entries": [
+  {
+   "dense_class": "marlin_linear_kernel",
+   "quant": "uint4",
+   "group_size": "-1",
+   "shape": "dense_align_cta256_tiny_square_m1_k512_n256",
+   "M": 1,
+   "K": 512,
+   "N": 256,
+   "status": "OK",
+   "marlin_us": 178.18,
+   "marlin_tflops": 0.001471,
+   "all_finite": "yes"
+  },
+  {
+   "dense_class": "marlin_linear_kernel",
+   "quant": "uint4",
+   "group_size": "-1",
+   "shape": "dense_align_cta256_tiny_square_m8_k512_n256",
+   "M": 8,
+   "K": 512,
+   "N": 256,
+   "status": "OK",
+   "marlin_us": 182.27,
+   "marlin_tflops": 0.011506,
+   "all_finite": "yes"
+  },
+  {
+   "dense_class": "marlin_linear_kernel",
+   "quant": "uint4",
+   "group_size": "-1",
+   "shape": "dense_align_cta256_tiny_square_m16_k512_n256",
+   "M": 16,
+   "K": 512,
+   "N": 256,
+   "status": "OK",
+   "marlin_us": 177.15,
+   "marlin_tflops": 0.023676,
+   "all_finite": "yes"
+  },
+  {
+   "dense_class": "marlin_linear_kernel",
+   "quant": "uint4",
+   "group_size": "-1",
+   "shape": "dense_align_cta256_tiny_square_m24_k512_n256",
+   "M": 24,
+   "K": 512,
+   "N": 256,
+   "status": "OK",
+   "marlin_us": 177.15,
+   "marlin_tflops": 0.035514,
+   "all_finite": "yes"
+  },
+  {
+   "dense_class": "marlin_linear_kernel",
+   "quant": "uint4",
+   "group_size": "-1",
+   "shape": "dense_align_cta256_tiny_square_m32_k512_n256",
+   "M": 32,
+   "K": 512,
+   "N": 256,
+   "status": "OK",
+   "marlin_us": 175.1,
+   "marlin_tflops": 0.047906,
+   "all_finite": "yes"
+  },
+  {
+   "dense_class": "marlin_linear_kernel",
+   "quant": "uint4",
+   "group_size": "-1",
+   "shape": "dense_align_cta256_tiny_square_m48_k512_n256",
+   "M": 48,
+   "K": 512,
+   "N": 256,
+   "status": "OK",
+   "marlin_us": 175.1,
+   "marlin_tflops": 0.07186,
+   "all_finite": "yes"
+  },
+  {
+   "dense_class": "marlin_linear_kernel",
+   "quant": "uint4",
+   "group_size": "-1",
+   "shape": "dense_align_cta256_tiny_square_m64_k512_n256",
+   "M": 64,
+   "K": 512,
+   "N": 256,
+   "status": "OK",
+   "marlin_us": 179.71,
+   "marlin_tflops": 0.093356,
+   "all_finite": "yes"
+  },
+  {
+   "dense_class": "marlin_linear_kernel",
+   "quant": "uint4",
+   "group_size": "-1",
+   "shape": "dense_align_cta256_tiny_square_m1024_k512_n256",
+   "M": 1024,
+   "K": 512,
+   "N": 256,
+   "status": "OK",
+   "marlin_us": 178.18,
+   "marlin_tflops": 1.506575,
+   "all_finite": "yes"
+  },
+  {
+   "dense_class": "marlin_linear_kernel",
+   "quant": "uint4",
+   "group_size": "-1",
+   "shape": "dense_align_cta256_tiny_square_m2048_k512_n256",
+   "M": 2048,
+   "K": 512,
+   "N": 256,
+   "status": "OK",
+   "marlin_us": 176.13,
+   "marlin_tflops": 3.048186,
+   "all_finite": "yes"
+  },
+  {
+   "dense_class": "marlin_linear_kernel",
+   "quant": "uint4",
+   "group_size": "-1",
+   "shape": "dense_align_cta256_tiny_square_m4096_k512_n256",
+   "M": 4096,
+   "K": 512,
+   "N": 256,
+   "status": "OK",
+   "marlin_us": 185.34,
+   "marlin_tflops": 5.793237,
+   "all_finite": "yes"
+  },
+  {
+   "dense_class": "marlin_linear_kernel",
+   "quant": "uint4",
+   "group_size": "-1",
+   "shape": "dense_align_cta256_tiny_square_m5120_k512_n256",
+   "M": 5120,
+   "K": 512,
+   "N": 256,
+   "status": "OK",
+   "marlin_us": 184.32,
+   "marlin_tflops": 7.281778,
+   "all_finite": "yes"
+  },
+  {
+   "dense_class": "marlin_linear_kernel",
+   "quant": "uint4",
+   "group_size": "-1",
+   "shape": "dense_align_cta64_narrow_m1_k768_n192",
+   "M": 1,
+   "K": 768,
+   "N": 192,
+   "status": "OK",
+   "marlin_us": 175.1,
+   "marlin_tflops": 0.001684,
+   "all_finite": "yes"
+  }
+ ],
+ "baseline_torch_fp16_cublas": [
+  {
+   "M": 1,
+   "K": 512,
+   "N": 256,
+   "fp16_us": 17.4,
+   "fp16_tflops": 0.02,
+   "dequant_mm_us": 147.9,
+   "dequant_mm_tflops": 0.0
+  },
+  {
+   "M": 512,
+   "K": 512,
+   "N": 256,
+   "fp16_us": 18.3,
+   "fp16_tflops": 7.33,
+   "dequant_mm_us": 147.7,
+   "dequant_mm_tflops": 0.91
+  },
+  {
+   "M": 4096,
+   "K": 512,
+   "N": 256,
+   "fp16_us": 25.9,
+   "fp16_tflops": 41.53,
+   "dequant_mm_us": 148.2,
+   "dequant_mm_tflops": 7.24
+  },
+  {
+   "M": 5120,
+   "K": 512,
+   "N": 256,
+   "fp16_us": 27.5,
+   "fp16_tflops": 48.84,
+   "dequant_mm_us": 148.2,
+   "dequant_mm_tflops": 9.06
+  },
+  {
+   "M": 1,
+   "K": 4096,
+   "N": 4096,
+   "fp16_us": 47.0,
+   "fp16_tflops": 0.71,
+   "dequant_mm_us": 326.6,
+   "dequant_mm_tflops": 0.1
+  },
+  {
+   "M": 32,
+   "K": 4096,
+   "N": 4096,
+   "fp16_us": 55.5,
+   "fp16_tflops": 19.36,
+   "dequant_mm_us": 338.6,
+   "dequant_mm_tflops": 3.17
+  }
+ ],
+ "note": "Baseline measured in the same session on an idle card with a small standalone script; kernel probe log was overwritten by later runs of the same runner path, CSV and JSON survive."
+}
