@@ -1,0 +1,30 @@
+{
+ "card": "V100-90",
+ "repo": {
+  "name": "weicj/FlashQLA-SM70-SM75",
+  "kind": "TileLang-based linear-attention kernels, SM70/SM75 fork"
+ },
+ "guards_bypassed": [
+  "flash_qla/ops/gated_delta_rule/chunk/__init__.py raises 'FlashQLA now support sm90 only' unless cc == 9.0",
+  "flash_qla/ops/gated_delta_rule/chunk/cp_context.py raises the same at import",
+  "both raises replaced with None so the legacy SM70 entry point can be reached"
+ ],
+ "build": {
+  "how": "torch cpp_extension lazy build",
+  "arch": "TORCH_CUDA_ARCH_LIST=7.0",
+  "gotcha": "torch needs the ninja binary on PATH, not just installed in the venv"
+ },
+ "correctness": {
+  "shape": "batch 1, tokens 512, q_heads 2, v_heads 4, dim 128",
+  "max_abs_err": 0.0,
+  "matches_reference": true
+ },
+ "timing": {
+  "kernel_s": 0.0005,
+  "reference_loop_s": 0.5753,
+  "speedup": 1099.3,
+  "method": "5 iterations after 2 warm-ups, torch.cuda.synchronize between"
+ },
+ "vram_peak_mib": 15,
+ "not_measured": "end-to-end speedup on a hybrid model: llama.cpp and Strata do not call this operator"
+}
