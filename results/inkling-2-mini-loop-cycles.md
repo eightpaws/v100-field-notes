@@ -3,6 +3,9 @@
 
 Card V100-144, priority P2. The question was not "is it fast" but "does quality grow with `reasoning_effort`" — that is, do three passes through the same weights in the loop core pay off. Answer: on MBPP they do not.
 
+**Verdict.** Reasoning depth does not pay for short tasks: pass@1 stays flat at 0.475-0.525 across all three levels (spread ±0.15 at 95 %), while the high level doubles mean time per task (36.7 s vs 17.1 s). Decode speed is unchanged at 34 tok/s.
+
+
 ## Configuration
 
 `Inkling-2-Mini-UD-Q3_K_XL.gguf`, 13.63 GB, 26.4 B parameters with 3.4 B active, 128 experts with 8 per token. llama.cpp master build129, `-ngl 99 -c 8192 --jinja`, three `--reasoning-effort` levels.
@@ -45,9 +48,21 @@ So Inkling is interesting not for MBPP quality but because 26.4 B parameters fit
 ## Reproduction
 
 ```
-ssh ai-gpu
+ssh the GPU guest
 /home/hermes/venvs/cu121/bin/python mbpp_inkling.py none medium high      # 1400 cap
 MAXTOK=3000 /home/hermes/venvs/cu121/bin/python mbpp_inkling.py high      # 3000 cap
 ```
 
 Raw data: `/srv/media/night/v144_{none,medium,high}_40.json`, summary `v144_summary_40.json`, logs `/srv/media/night/mbpp_inkling*.log`.
+
+**Repeats.** Not recorded: repeatability was not documented for this run - treat the numbers as a single run unless the result says otherwise.
+
+**Environment.** Tesla V100-SXM2-16GB (sm_70), driver 580, CUDA 12.9, guest VM on a home Proxmox host; engine and model as recorded in the run log.
+
+**Does not show.** one run only - repeatability was not measured; the run log was not preserved, so the numbers cannot be re-checked from this repository.
+
+**Raw.** Not preserved for this run.
+
+**Commands.** The command line was not recorded for this run.
+
+**Question.** See the card title: the premise is stated in the field notes and was not carried into this export.

@@ -2,7 +2,7 @@
  {
   "id": "V100-01",
   "title": "Speculative decoding in llama.cpp",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Speculative decoding was tested on two targets, and the result depends on the model pair: it accelerates on 7B, but slows down almost twofold on 14B."
  },
  {
@@ -14,13 +14,13 @@
  {
   "id": "V100-03",
   "title": "imatrix Q4_K under Russian chassis",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "- Environment Status (configuration, 23.11.2026 21:13). The llama.cpp build in ~/llama-new was killed by a VM reboot at 20:48, and was rebuilt on CUDA 12.9: BUILD_OK in 7 min 14 s (on the system's nvcc 12.0, the same build."
  },
  {
   "id": "V100-04",
   "title": "VLM as a card reject controller",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Qwen2.5-VL-3B-Instruct (fp16, device_map=cuda) on 24 generated cards 640x640 produced 24 out of 24 \"good\", 1.8 sec per image (45.4 sec per batch), peak VRAM 7,634 MiB."
  },
  {
@@ -28,6 +28,12 @@
   "title": "Upscaling for print: ESRGAN vs UltraSharp, SUPIR blocked by the channel",
   "result_type": "mixed",
   "verdict": "Mixed. The GAN half is measured and inspected: Real-ESRGAN at 0,9 s per frame is acceptable for A4 after colour correction but adds no real texture, while 4x-UltraSharp in this form is unusable for product photos - the buyer would see details the product does not have. The diffusion half produced ..."
+ },
+ {
+  "id": "V100-06",
+  "title": "SUPIR vs Real-ESRGAN in print",
+  "result_type": "mixed",
+  "verdict": "Real part measured, diffusion stuck in channel."
  },
  {
   "id": "V100-10",
@@ -50,13 +56,13 @@
  {
   "id": "V100-13",
   "title": "AWQ/int4 vs GGUF Q4 on Volta",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "AWQ/int4 via vLLM 1.5.4: model loaded (14287 MiB VRAM), decode 117 tok/s (114.2 / 116.9 after warm-up, first request 66.5), code is correct."
  },
  {
   "id": "V100-14",
   "title": "24B in 16 GB: Mistral-Small-3.1-24B AWQ",
-  "result_type": "negative",
+  "result_type": "mixed",
   "verdict": "Mistral Small 24B AWQ does not fit in 16 GB via vLLM."
  },
  {
@@ -80,7 +86,7 @@
  {
   "id": "V100-18",
   "title": "xllama.cpp: compress KV instead of q8",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Compressed KV in xllama.cpp works, but on long context it becomes too slow."
  },
  {
@@ -92,19 +98,19 @@
  {
   "id": "V100-20",
   "title": "fni8: int8 dp4a for DiT",
-  "result_type": "negative",
+  "result_type": "mixed",
   "verdict": "Rejected along with V100-22: this is the same fni8 package family (int8 dp4a for DiT in ComfyUI)."
  },
  {
   "id": "V100-21",
   "title": "Tachyon, Ninfer, Lapilli",
   "result_type": "unstated",
-  "verdict": "Tachyon-v100 is being built and run on our card, but our models do not support it."
+  "verdict": ""
  },
  {
   "id": "V100-22",
   "title": "fni8 for LLM: int8 dp4a instead of tensor cores",
-  "result_type": "negative",
+  "result_type": "mixed",
   "verdict": "Rejected based on the author's documentation facts."
  },
  {
@@ -117,12 +123,12 @@
   "id": "V100-25",
   "title": "CUDA graphs for musical pipeline",
   "result_type": "unstated",
-  "verdict": "Capture of CUDA graphs for ACE-Step 1.5 won't yield significant gain."
+  "verdict": ""
  },
  {
   "id": "V100-26",
   "title": "llama.cpp build flags matrix for Volta",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "The build flag matrix was previously verified (CUDA 12.0, llama.cpp build b7743fbfd8, model 14B Q4_K, llama-bench pp512/tg128, median of three runs)."
  },
  {
@@ -134,7 +140,7 @@
  {
   "id": "V100-28",
   "title": "V100-LLM: ready presets for 16 GB",
-  "result_type": "negative",
+  "result_type": "mixed",
   "verdict": "Rejected: the release does not include the engine."
  },
  {
@@ -146,14 +152,14 @@
  {
   "id": "V100-30",
   "title": "sm70-attn: FA2-D256 in llama.cpp",
-  "result_type": "negative",
+  "result_type": "mixed",
   "verdict": "Rejected based on the card criterion: \"do we have a model with head_dim 256 and do we need context over 64k\"."
  },
  {
   "id": "V100-32",
   "title": "Prepared sm_70-weights with Hugging Face",
   "result_type": "unstated",
-  "verdict": "NInfer-V100 1.7.2 unpacks and runs: three binaries of 421-424 MB (ninfer, ninfer-serve, ninfer-perplexity), no missing libraries, help opens."
+  "verdict": ""
  },
  {
   "id": "V100-36",
@@ -170,7 +176,7 @@
  {
   "id": "V100-38",
   "title": "ACE-Step 4B and work alongside SDXL",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Test 25.11: music-studio service starts, stops imgd (no coexistence in fact, despite the description claiming \"coexists with SDXL\"), loads weights and crashes on loading 5Hz LM: the last line in the log is \"loading 5Hz LM tokenizer\",."
  },
  {
@@ -206,7 +212,7 @@
  {
   "id": "V100-44",
   "title": "NVFP4 on sm_70: 4-bit float in 16 GB",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Works on sm_70. vLLM 1.5.4 (--quantization modelopt_fp4) boosted Ornith-1.5-9B-NVFP4 on V100: 14 133 MiB VRAM, decode 86.7-86.8 tok/s (first request 83.0), code is correct."
  },
  {
@@ -272,37 +278,37 @@
  {
   "id": "V100-55",
   "title": "Llama-Bench refuses to load more than 20 layers.",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "There is no limit of 20 layers. The matrix is based on Qwen3-Coder-30B (17.28 GiB), f16 KV, p128/n16: \\| ncmoe \\| prefill pp128 \\| decode tg16 \\| \\|---\\|---\\|---\\| \\| 24 \\| 179.2 \\| 39.2 \\| \\| 32 \\| 145.2 \\| 34.6 \\| Both configurations load and."
  },
  {
   "id": "V100-56",
   "title": "32kB Q8_0 and check Q4_0 at 64k",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "32k and 64k are achievable, decoding is unaffected. Qwen2.5-Coder-7B Q4 (4.36 GiB), FA enabled: \\| Context \\| KV \\| Prefill \\| Decode \\| \\|---\\|---\\|---\\|---\\| \\| 32,768 \\| q8_0 \\| 1860 tok/s \\| 121.5 tok/s \\| \\| 65,536 \\| q4_0 \\| 1247 tok/s \\|."
  },
  {
   "id": "V100-57",
   "title": "Q8_0 KV: Confirm double decoding or attribute to noise",
   "result_type": "unstated",
-  "verdict": "No double acceleration: compressed KV is slightly slower. Qwen2.5-Coder-7B Q4 (4,36 GiB), p512/n128, r=2: \\| KV \\| FA \\| prefill pp512 \\| decode tg128 \\| \\|---\\|---\\|---\\|---\\| \\| f16 \\| off \\| 3265.8 ± 75.0 \\| 123.95 ± 0.17 \\| \\| f16 \\| on \\| 3324.8 ±."
+  "verdict": ""
  },
  {
   "id": "V100-58",
   "title": "Throughput, batching, quality",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Under load, 1Cat-vLLM outperforms llama.cpp by six times. 7B GGUF, --max-model-len 4096, --gpu-memory-utilization 0.6, different prompts for all requests (otherwise prefix cache boosts the number): \\| Mode \\| Tokens \\| Time \\| Total."
  },
  {
   "id": "V100-60",
   "title": "Gather all eight patches on their base commit.",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "No: all eight patches apply on 79e2e74 (HEAD 70782b2), but the claimed +34-45% does not reproduce - decode tg64 67.8 tok/s against 70.93 for the upstream build b1b770d (-4.4%), prefill 8192 +2.1% (1507.6 vs 1476.5), prefill 512 within."
  },
  {
   "id": "V100-61",
   "title": "GQA→MHA: Throughput measurement of pipeline, not core.",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Carrier not present, see Result."
  },
  {
@@ -320,68 +326,68 @@
  {
   "id": "V100-65",
   "title": "Recheck 8k and 16k and set num\\_batch to 4096",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Prefill decays smoothly, but 30B can't handle 8k at ncmoe 8. Measurements llama-bench, n=0, r=1: \\| Model \\| pp2048 \\| pp8192 \\| pp16384 \\| \\|---\\|---\\|---\\|---\\| \\| DeepSeek-Coder-V2-Lite 16B, fully on GPU \\| 3462 \\| 2713 \\| 1976 \\| \\|."
  },
  {
   "id": "V100-66",
   "title": "Quality over speed: MBPP on three models",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Harness run of model_eval.py, one server ascent, 40 MBPP tasks + 8 blocks."
  },
  {
   "id": "V100-67",
   "title": "16 GB: Q4_K_M - 128 bits, Q5_K_M - 160 bits, Q6_K - 256 bits, Q8 - 320 bits",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Q5_K_M outperforms Q4_K_M in quality with a slight speed loss. \\| Quant \\| Size \\| VRAM \\| Prefill pp128 \\| Decode tg32 \\| MBPP pass@1 \\| \\|---\\|---\\|---\\|---\\|---\\|---\\| \\| Q4_K_M \\| 4.68 GB \\| ~5 GB \\| 3304 (pp512 in V100-66) \\| 132.2 \\| 0.60 (24/40)."
  },
  {
   "id": "V100-68",
   "title": "Speculation on 30B MoE: Draft 0.5B vs Qwen3-Coder",
   "result_type": "unstated",
-  "verdict": "Speculation on 30B is not profitable. With a draft of 0.5B, the model had to be raised from -ncmoe 12 instead of 8 (draft subtracts VRAM): base in these conditions 36.0 / 32.6 / 35.3 tok/s, with speculation 33.7 / 37.4 / 38.3."
+  "verdict": ""
  },
  {
   "id": "V100-69",
   "title": "Special dec without second model",
   "result_type": "unstated",
-  "verdict": "N-grams in file editing don't provide anything, draft hurts. Prompt 200 lines of source code, model appends function based on pattern: base 71.5 / 106.3 / 106.4 tok/s, ngram-simple 71.1 / 103.4 / 101.5 (-3%, within noise),."
+  "verdict": ""
  },
  {
   "id": "V100-70",
   "title": "Re-rank surface search by code",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "The reranker works and separates trash confidently. bge-reranker-v2-m3 (568M, fp16) took 6.9 s to launch on V100 and used 1092 MiB VRAM - fits alongside working LLM, no need to unload it."
  },
  {
   "id": "V100-71",
   "title": "The cost of 1M tokens on your own hardware is",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Cost of 1M output tokens on own hardware. Power consumption measured via nvidia-smi power.draw: idle 20.7-46.6 W, under load (7B, 65% utilization) 159.0 W, peak rated 300 W."
  },
  {
   "id": "V100-72",
   "title": "Agent with four tools and an error on the first call",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "1 of 3 scenarios. Three tasks, four tools, the first call get_time was intentionally broken (server responded with unknown argument 'location'; the only valid argument is 'city'."
  },
  {
   "id": "V100-73",
   "title": "Goods cards per hour: image generation throughput",
   "result_type": "unstated",
-  "verdict": "On a 768 px card, it yields ~2100 images per hour, but on 1024 px it hits memory. Tested on DreamShaperXL-Turbo (6 steps, guidance 1.5, fp16) via diffusers, local single-file checkpoint: \\| Size \\| Seconds per image \\| Images per hour \\|."
+  "verdict": ""
  },
  {
   "id": "V100-74",
   "title": "Olala-v1.0-mini-7A1B: MoE with 1B active on 16 GB",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Blocked by engine (24.11). File downloaded and intact (5,990,551,040 bytes, exact size verified), but llama.cpp master from 24.11 (build 12.9, sm_70) responds with unknown model architecture: 'olala'."
  },
  {
   "id": "V100-75",
   "title": "GLM-4.7-Flash-30B-A3B IQ4_XS: fresh 30B MoE",
   "result_type": "unstated",
-  "verdict": "Speed is good, model is degenerative. Architecture of the file is deepseek2 (like DeepSeek-Coder-V2), so FA is off."
+  "verdict": ""
  },
  {
   "id": "V100-76",
@@ -398,13 +404,13 @@
  {
   "id": "V100-78",
   "title": "Rapid Averages: Nemotron-Bolt-E4B and SenseNova-Loop-9B",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "- ## Queue P1v - New Ideas Following Review (24.11.2026) \\| # \\| Idea \\| Stage \\| Resources \\| Status \\| Outcome \\| Ready \\| \\|---\\|---\\|---\\|---\\|---\\|---\\|---\\| \\| V100-66 \\| Code Quality: MBPP on Three Models \\| P0 \\| 40 Tasks \\| Done \\| Code 0.55 / RAG 2/2."
  },
  {
   "id": "V100-79",
   "title": "llama.cpp v1.0.0 vs our build 51831d4",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Regression on sm_70 has occurred, but only for MoE."
  },
  {
@@ -416,7 +422,7 @@
  {
   "id": "V100-81",
   "title": "MOE cache experts in RAM instead of `-ncmoe`",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Experts cache on sm_70 is not profitable: it doesn't fit on the card with -ncmoe 8, and when it fits (with -ncmoe 12), it loses to the current scheme."
  },
  {
@@ -428,13 +434,13 @@
  {
   "id": "V100-83",
   "title": "Strata-V100: third engine for verification",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Run Coder IQ1_M (25.11.2026, VM 200, V100-SXM2-16GB)."
  },
  {
   "id": "V100-84",
   "title": "QWEN38-MTP flags from the recipe",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "The MTP flag is present in the build (--spec-type draft-mtp in build129), but there's nothing to test it on: the only Qwen3.8-27B on disk is a third-party quantum pxqn-onecard (13.57 GB), its tensor type 263 is outside the list of."
  },
  {
@@ -452,7 +458,7 @@
  {
   "id": "V100-87",
   "title": "Marlin_v100: INT4-cores Marlin on sm_70",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Workspace assembled: BUILD_RC=0 in 3368 s (56 min), _C.abi3.so 509 MB and _moe_C.abi3.so 447 MB, loading on sm_70, torch.ops._C.marlin_gemm in place."
  },
  {
@@ -464,7 +470,7 @@
  {
   "id": "V100-90",
   "title": "FlashQLA-SM70: Gated DeltaNet",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "The V100 core executes and is accurate with a maximum deviation from the reference cycle of 0.0 on the form 1x512x2hx4kvxd128, time 0.5 ms compared to 575 ms for the Python cycle (1099x - against the cycle, not against the optimized."
  },
  {
@@ -510,15 +516,21 @@
   "verdict": "Group of four runs on one model: batch 23.9 s vs."
  },
  {
+  "id": "V100-104",
+  "title": "GPU Unlock: Thawing cores 4060 Ti, +24% on 4060",
+  "result_type": "mixed",
+  "verdict": "Translation: \"Measurement 'before' exists, unlock was not installed."
+ },
+ {
   "id": "V100-105",
   "title": "Polyglot: eight languages on one harness",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "6 languages (Python, JavaScript, PHP, Ruby, Go, Java) x 10 functions x 21 statements per language, three models, temperature 0, one run 3m 4s."
  },
  {
   "id": "V100-106",
   "title": "Linters as acceptance: how much code passes on the first try",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "(25.11.2026) 40 tasks MBPP, Qwen2.5-Coder-7B-Instruct Q8_0."
  },
  {
@@ -530,43 +542,43 @@
  {
   "id": "V100-109",
   "title": "Medium-sized project from scratch: FastAPI, Postgres, authorization, tests, Docker",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "The project has been assembled but does not launch."
  },
  {
   "id": "V100-110",
   "title": "Red test cycle → repair on four languages",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "20 tasks (5 each in Python, JavaScript, C, Perl), Qwen2.5-Coder-7B-Instruct Q8_0, llama-server build129, temperature 0; total set - 25s, server up in 2s."
  },
  {
   "id": "V100-111",
   "title": "Review diff: five planted bugs, accuracy and completeness",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "10 commits with 5 planted defects each (boundary, null, race, injection, leak), Qwen2.5-Coder-7B Q8_0, 16 seconds total."
  },
  {
   "id": "V100-112",
   "title": "Refactoring with green tests",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Refactoring Tasks: 10 tasks, 2-3 files each (helper code extraction, global renaming, deduplication, signature change, constant extraction, module separation, dead parameter removal, common exception module, nested calculation extraction,."
  },
  {
   "id": "V100-113",
   "title": "Schema, migrations, and queries against SQLite",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "20 tasks on SQLite (schema, migration, 3 queries to each), Qwen2.5-Coder-7B Q8_0, two runs of 37s each."
  },
  {
   "id": "V100-114",
   "title": "Frontend: page with form, checking Playwright",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Qwen2.5-Coder-7B-Instruct generated 10 pages of one specification in 109 seconds (9.7-12.4 seconds per page, 3.2-5.0 thousand symbols)."
  },
  {
   "id": "V100-115",
   "title": "CI and Docker: how many repositories are being built",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "5 projects from previous cards (V100-109 FastAPI-notes, V100-114 static page, V100-116: api-client, CLI-ETL, FastAPI+JWT)."
  },
  {
@@ -584,7 +596,7 @@
  {
   "id": "V100-118",
   "title": "Conveyor spec → plan → code → tests → review against one prompt",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Same 7B Q4_K_M, 10 MBPP tasks, temperature 0: one prompt 7/10 (0.70), pipeline spec-code-tests-reviews 6/10 (0.60) - difference -10 points."
  },
  {
@@ -596,13 +608,13 @@
  {
   "id": "V100-120",
   "title": "Russian text in generated code",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "8 out of 10 tasks accepted without revision according to the task criteria: names in Latin 10/10, Russian text in place 10/10, long hyphens 0, typos 0, syntax valid 10/10."
  },
  {
   "id": "V100-121",
   "title": "Consistency of style with existing code",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "20 runs (10 tasks x 2 models), temp 0, baseline Harness passed ruff/mypy/pytest 10/10."
  },
  {
@@ -632,7 +644,7 @@
  {
   "id": "V100-126",
   "title": "Generated code productivity",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Ten tasks on 100,000 records, n=3, median."
  },
  {
@@ -650,7 +662,7 @@
  {
   "id": "V100-129",
   "title": "Censored 27B on one card",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Dense 27B IQ3_S (10.95 GiB) fit entirely: decode 37.26 tok/s (tg64, n=3), prefill 837.69 on pp512 and 800.49 on pp8192, server with -c 16384 launched in 9s with 12,977 MiB VRAM, peak 13,193 MiB."
  },
  {
@@ -662,13 +674,13 @@
  {
   "id": "V100-131",
   "title": "Failure metric: 20 prompts, uncensored vs censored",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Translation: 27B abliterated IQ3_S (model 2 of 3): class A 7/7 direct response, class B 9/9 direct (zero failures), class C 4/4 refusal."
  },
  {
   "id": "V100-132",
   "title": "Captcha: Local VLM vs Service",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "26.11.2026, V100 16 GB, Qwen2.5-VL-7B-Instruct Q4_K_M + mmproj-F16, 200 synthetic CAPTCHAs: distorted text 88/100 (88%), arithmetic 50/50 (100%), \"how many figures\" grid 15/50 (30%); total 153/200 (76.5%), average 0.11s per CAPTCHA (p95."
  },
  {
@@ -692,7 +704,7 @@
  {
   "id": "V100-145",
   "title": "Gemini 4 26B-A4B in 4 bits: 16-GB sweet spot on Volta",
-  "result_type": "unstated",
+  "result_type": "mixed",
   "verdict": "Fits entirely and fastest among those measured on this map: prefill 2696.3 ± 94.7 tok/s on pp256, decode 124.09 ± 0.53 tok/s on tg64, peak VRAM 15331 MiB at 8k context, server ready in 5s."
  },
  {
@@ -748,6 +760,12 @@
   "title": "Card quality checker without a VLM — 11 663 images, 0.1 % printable",
   "result_type": "negative",
   "verdict": "The library is not printable: 0.1 % reaches A4 and 99.8 % is under 768 px, so upscaling is mandatory; the clipping flag is unusable, with 93.5 % false positives on flower close-ups."
+ },
+ {
+  "id": "inkling-2-mini-loop-cycles",
+  "title": "Inkling 2 Mini on the V100: the loop core's cycles do not buy quality",
+  "result_type": "unstated",
+  "verdict": "Reasoning depth does not pay for short tasks: pass@1 stays flat at 0.475-0.525 across all three levels (spread ±0.15 at 95 %), while the high level doubles mean time per task (36.7 s vs 17.1 s). Decode speed is unchanged at 34 tok/s."
  },
  {
   "id": "lora-monstera-no-benefit",
@@ -808,11 +826,5 @@
   "title": "Card controller: Qwen2.5-VL-3B calls everything good",
   "result_type": "negative",
   "verdict": "Negative: the 3B VLM accepted every card it was shown, good and bad alike, so as a controller it carries no signal - a human or a mechanical check still has to do the deciding."
- },
- {
-  "id": "inkling-2-mini-loop-cycles",
-  "title": "Inkling 2 Mini on the V100: the loop core's cycles do not buy quality",
-  "result_type": "negative",
-  "verdict": "Negative on the card's premise: three reasoning levels land inside the noise band on 40 MBPP tasks (0.500 / 0.525 / 0.475), decode stays at 34 tok/s across levels, and high costs twice the time per task - so extra loop passes buy length, not quality. The 26.4 B model does fit a 16 GB card at Q3_K_XL, using 15 033 MiB."
  }
 ]
