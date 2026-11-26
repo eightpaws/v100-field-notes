@@ -4,8 +4,8 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **123** — 20 positive, 17 mixed,
-18 negative. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **123** — 22 positive, 19 mixed,
+21 negative. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -145,7 +145,7 @@ Read this before quoting a number.
 | [V100-127](results/V100-127.md) | Multi-file edits that keep the public API intact | **Negative.** A 7B coder handles a multi-file edit about seven times out of ten, and the failures are not random: one wrong unit, one changed return type, one inserted dataclass field. Signatures stayed compatible in 9 of 10 cases, so the API gate alone is not an acceptance test - it has to be paired with a ... |
 | [V100-128](results/V100-128.md) | Writing tests for someone else's code: coverage and defect detection | **Negative.** A single-shot 7B coder writes tests that do not even run against the code it was given (14 of 18 fail, mostly on missing exception imports), and the subset that is green covers 22 % and catches 1 of 10 defects. Acceptance gates must run the generated tests before they are trusted; asking for branch ... |
 | [V100-129](results/V100-129.md) | Censored 27B on one card | Dense 27B IQ3_S (10.95 GiB) fit entirely: decode 37.26 tok/s (tg64, n=3), prefill 837.69 on pp512 and 800.49 on pp8192, server with -c 16384 launched in 9s with 12,977 MiB VRAM, peak 13,193 MiB. |
-| [V100-130](results/V100-130.md) | Uncensored Flash-Next Q2_0 under Strata | The uncensored Q2_0 is a drop-in replacement for the censored coder: same code score within noise, slightly faster, tool calling works. It answers refused topics and therefore belongs to a personal loop - never behind a public endpoint, same rule as V100-129. |
+| [V100-130](results/V100-130.md) | Uncensored Flash-Next Q2_0 under Strata | **Mixed.** The uncensored Q2_0 is a drop-in replacement for the censored coder: same code score within noise, slightly faster, tool calling works. It answers refused topics and therefore belongs to a personal loop - never behind a public endpoint, same rule as V100-129. |
 | [V100-131](results/V100-131.md) | Failure metric: 20 prompts, uncensored vs censored | Translation: 27B abliterated IQ3_S (model 2 of 3): class A 7/7 direct response, class B 9/9 direct (zero failures), class C 4/4 refusal. |
 | [4060ti-capabilities-vs-v100](results/4060ti-capabilities-vs-v100.md) | What the 4060 Ti can do that the V100 cannot | The split is clean and measured: the 4060 Ti is the card that can train QLoRA at 398 tok/s (3B) and run bf16 paths, while the V100 is the card that serves inference with 900 GB/s and answers prefill-bound requests; routing training to the 4060 Ti and serving to the V100 is the rule these numbers ... |
 | [background-swap-three-methods](results/background-swap-three-methods.md) | Background replacement: three methods, the deterministic one won | **Positive.** Positive for the catalogue path: the deterministic white background wins on untouchable product pixels and cost, while img2img and inpainting stay for interior scenes where a prompt cannot steer colour reliably. Three methods, three clear roles, no method pretending to do all three. |
