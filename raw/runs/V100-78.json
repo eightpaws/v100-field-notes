@@ -1,0 +1,162 @@
+{
+ "card": "V100-78",
+ "models": {
+  "nemotron-bolt-e4b": {
+   "file": "NVIDIA-Nemotron-3.5-Bolt-E4B-UD-Q4_K_XL.gguf",
+   "bytes": 5060482240,
+   "params_b": 7.52,
+   "arch": "gemma4",
+   "engine": "llama.cpp build129",
+   "bench_pp512": 7274.38,
+   "bench_tg64": 109.56,
+   "vram_mib": 4011
+  },
+  "sensenova-loop-9b": {
+   "file": "SenseNova-Loop-9B-Q4_K_M.gguf",
+   "bytes": 5818631072,
+   "params_b": 8.96,
+   "arch": "sensenova_loop",
+   "engine": "ik_llama.cpp ac21694 (llama.cpp: unknown architecture)",
+   "bench_pp128": 468.7,
+   "bench_tg32": 56.2
+  }
+ },
+ "harness": "mid_eval.py: five format tasks, two volume tasks, three RAG questions over a fixed fact block, three trap questions",
+ "nemotron": {
+  "format": "5/5",
+  "volume": "2/2",
+  "rag": "3/3",
+  "honesty": "3/3",
+  "decode_tg64_tok_s": [
+   95.2,
+   96.4,
+   96.2
+  ],
+  "format_detail": [
+   {
+    "task": "json_card",
+    "ok": true,
+    "seconds": 0.56
+   },
+   {
+    "task": "letter_subject",
+    "ok": true,
+    "seconds": 0.84
+   },
+   {
+    "task": "numbered_list",
+    "ok": true,
+    "seconds": 0.96
+   },
+   {
+    "task": "table",
+    "ok": true,
+    "seconds": 0.53
+   },
+   {
+    "task": "one_word",
+    "ok": true,
+    "seconds": 0.08
+   }
+  ],
+  "volume_detail": [
+   {
+    "task": "product_description",
+    "chars": 1236,
+    "words": 170,
+    "ok": true,
+    "seconds": 3.89
+   },
+   {
+    "task": "client_letter",
+    "chars": 1528,
+    "words": 217,
+    "ok": true,
+    "seconds": 4.08
+   }
+  ],
+  "rag_detail": [
+   {
+    "task": "rag_hours",
+    "ok": true
+   },
+   {
+    "task": "rag_delivery",
+    "ok": true
+   },
+   {
+    "task": "rag_pickup",
+    "ok": true
+   }
+  ]
+ },
+ "sensenova": {
+  "format": "5/5",
+  "volume": "2/2",
+  "rag": "3/3",
+  "honesty": "3/3",
+  "decode_tg64_tok_s": [
+   48.5,
+   46.2,
+   49.5
+  ],
+  "format_detail": [
+   {
+    "task": "json_card",
+    "ok": true,
+    "seconds": 1.17
+   },
+   {
+    "task": "letter_subject",
+    "ok": true,
+    "seconds": 9.46
+   },
+   {
+    "task": "numbered_list",
+    "ok": true,
+    "seconds": 3.39
+   },
+   {
+    "task": "table",
+    "ok": true,
+    "seconds": 1.2
+   },
+   {
+    "task": "one_word",
+    "ok": true,
+    "seconds": 0.34
+   }
+  ],
+  "volume_detail": [
+   {
+    "task": "product_description",
+    "chars": 1074,
+    "words": 158,
+    "ok": true,
+    "seconds": 5.39
+   },
+   {
+    "task": "client_letter",
+    "chars": 1197,
+    "words": 164,
+    "ok": true,
+    "seconds": 5.53
+   }
+  ],
+  "rag_detail": [
+   {
+    "task": "rag_hours",
+    "ok": true
+   },
+   {
+    "task": "rag_delivery",
+    "ok": true
+   },
+   {
+    "task": "rag_pickup",
+    "ok": true
+   }
+  ]
+ },
+ "honesty_note": "first pass scored 2/3 and 0/3; the hedge classifier was missing phrases the models actually used, so the block was re-run with a wider list and both scored 3/3"
+}

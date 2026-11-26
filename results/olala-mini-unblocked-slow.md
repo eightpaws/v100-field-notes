@@ -59,9 +59,27 @@ If the model is ever needed, test it on Ada (4060 Ti), where the fork has a sepa
 ## Reproduction
 
 ```
-ssh ai-gpu 'cd /srv/media/ai-cache/downloads/olala7a1b && \
+ssh the GPU guest 'cd /srv/media/ai-cache/downloads/olala7a1b && \
   /home/hermes/llama-olala/build/bin/llama-bench -m Olala-v1.0-mini-7A1B-q5_k_m.gguf \
   -p 256 -n 64 -ngl 99 -r 2'
 ```
 
 Fork: `/home/hermes/llama-olala` (branch olala-master, bd20ca9, with three local patches). Build logs `/srv/media/night/olala_*.log`.
+
+**Repeats.** Not recorded: repeatability was not documented for this run - treat the numbers as a single run unless the result says otherwise.
+
+**Environment.** Tesla V100-SXM2-16GB (sm_70), driver 580, CUDA 12.9, guest VM on a home Proxmox host; engine and model as recorded in the run log.
+
+**Does not show.** one run only - repeatability was not measured; the run log was not preserved, so the numbers cannot be re-checked from this repository.
+
+**Raw.** Not preserved for this run.
+
+**Commands.** The command line was not recorded for this run.
+
+**Question.** See the card title: the premise is stated in the field notes and was not carried into this export.
+
+**Verdict.** Negative against the card's own bar: the model can be made to run on the fork, but the
+throughput it reaches is far below the 140 tok/s criterion, so the MoE shape bought memory headroom
+rather than speed.
+
+**Result type.** Negative - the loading problem was solved, the performance criterion was not.

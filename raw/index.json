@@ -373,15 +373,15 @@
  },
  {
   "id": "V100-77",
-  "title": "Raon-1-nano: the MTP head exists, the engine does not run it",
+  "title": "Raon-1-nano MTP: Multi-token prediction without draft",
   "result_type": "unstated",
-  "verdict": "Negative as stated: the MTP head is dead weight on this engine - it costs 25 % decode in the bench and changes nothing through the server, because no speculative rounds are run. The plain Q4_K_M file is the one to use at 85 tok/s. Reopen the card when upstream llama.cpp or ik_llama learns to ..."
+  "verdict": "Blocked by engine (24.11). File downloaded (2,145,934,208 bytes), but the architecture raon1nano is unknown to current llama.cpp."
  },
  {
   "id": "V100-78",
-  "title": "Rapid Averages: Nemotron-Bolt-E4B and SenseNova-Loop-9B",
+  "title": "Two fast mid-size models through one harness",
   "result_type": "unstated",
-  "verdict": "- ## Queue P1v - New Ideas Following Review (24.11.2026) \\| # \\| Idea \\| Stage \\| Resources \\| Status \\| Outcome \\| Ready \\| \\|---\\|---\\|---\\|---\\|---\\|---\\|---\\| \\| V100-66 \\| Code Quality: MBPP on Three Models \\| P0 \\| 40 Tasks \\| Done \\| Code 0.55 / RAG 2/2."
+  "verdict": "Positive: Nemotron-Bolt-E4B is the working model for shop text - faster than the 90 tok/s bar by a comfortable margin, 4 GB of VRAM, clean on all four quality blocks. SenseNova is its equal on quality but at half the speed and behind a fork, so it stays a spare."
  },
  {
   "id": "V100-79",
@@ -676,6 +676,12 @@
   "title": "LoRA on monstera: training succeeded, no visible benefit",
   "result_type": "negative",
   "verdict": "Training ran to completion on 30 monstera images and changed nothing visible in the product shots, so this LoRA is not worth keeping; the same budget is better spent on reference images per SKU than on a brand-wide adapter."
+ },
+ {
+  "id": "olala-mini-unblocked-slow",
+  "title": "Olala-v1.0-mini-7A1B on the V100: unblocked, but slow",
+  "result_type": "negative",
+  "verdict": "Negative against the card's own bar: the model can be made to run on the fork, but the throughput it reaches is far below the 140 tok/s criterion, so the MoE shape bought memory headroom rather than speed."
  },
  {
   "id": "print-from-640-library",
