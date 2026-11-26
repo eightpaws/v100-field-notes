@@ -1,53 +1,79 @@
 === bg_inpaint6.log ===
-картинок: 3
-Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]
-Loading weights:   0%|          | 0/196 [00:00<?, ?it/s][ALoading weights: 100%|██████████| 196/196 [00:00<00:00, 2887.36it/s]
-Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:01,  3.08it/s]The config attributes {'decay': 0.9999, 'inv_gamma': 1.0, 'min_decay': 0.0, 'optimization_step': 37000, 'power': 0.6666666666666666, 'update_after_step': 0, 'use_ema_warmup': False} were passed to UNet2DConditionModel, but are not expected and will be ignored. Please verify your config.json configuration file.
-Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:01,  3.45it/s]
-Loading weights:   0%|          | 0/517 [00:00<?, ?it/s][A
-Loading weights:  32%|███▏      | 165/517 [00:00<00:00, 1579.01it/s][A
-Loading weights:  62%|██████▏   | 323/517 [00:00<00:00, 1249.46it/s][ALoading weights: 100%|██████████| 517/517 [00:00<00:00, 1914.59it/s]
-Loading pipeline components...:  71%|███████▏  | 5/7 [00:01<00:00,  3.24it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:01<00:00,  4.27it/s]
+ru: 3
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]
+
+Loading weights:   0%|          | 0/196 [00:00<?, ?it/s][A
+Loading weights: 100%|██████████| 196/196 [00:00<00:00, 2887.36it/s]
+
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:01,  3.08it/s]The config attributes {'decay': 0.9999, 'inv_gamma': 1.0, 'min_decay': 0.0, 'optimization_step': 37000, 'power': 0.6666666666666666, 'update_after_step': 0, 'use_ema_warmup': False} were passed to UNet2DConditionModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+
+Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:01,  3.45it/s]
+
+Loading weights:   0%|          | 0/517 [00:00<?, ?it/s][A
+
+Loading weights:  32%|███▏      | 165/517 [00:00<00:00, 1579.01it/s][A
+
+Loading weights:  62%|██████▏   | 323/517 [00:00<00:00, 1249.46it/s][A
+Loading weights: 100%|██████████| 517/517 [00:00<00:00, 1914.59it/s]
+
+Loading pipeline components...:  71%|███████▏  | 5/7 [00:01<00:00,  3.24it/s]
+Loading pipeline components...: 100%|██████████| 7/7 [00:01<00:00,  4.27it/s]
 /var/lib/ollama/venvs/video/lib/python3.12/site-packages/diffusers/pipelines/pipeline_utils.py:2273: FutureWarning: `enable_vae_slicing` is deprecated and will be removed in version 0.40.0. Calling `enable_vae_slicing()` on a `StableDiffusionXLInpaintPipeline` is deprecated and this method will be removed in a future version. Please use `pipe.vae.enable_slicing()`.
   deprecate(
 /var/lib/ollama/venvs/video/lib/python3.12/site-packages/diffusers/pipelines/pipeline_utils.py:2300: FutureWarning: `enable_vae_tiling` is deprecated and will be removed in version 0.40.0. Calling `enable_vae_tiling()` on a `StableDiffusionXLInpaintPipeline` is deprecated and this method will be removed in a future version. Please use `pipe.vae.enable_tiling()`.
   deprecate(
-модель загружена
-8marta     SSIM товара 0.770 | фон изменён  63.2% | 11.4 с
-biznes     SSIM товара 0.904 | фон изменён  66.8% | 7.3 с
-dostavka   SSIM товара 0.825 | фон изменён  93.2% | 7.0 с
+model ru
+8marta     SSIM ru 0.770 | ru ru  63.2% | 11.4 ru
+biznes     SSIM ru 0.904 | ru ru  66.8% | 7.3 ru
+dostavka   SSIM ru 0.825 | ru ru  93.2% | 7.0 ru
 {
- "картинок": 3,
- "SSIM_товара": 0.833,
- "фон_изменён_процент": 74.4,
- "секунд": 8.6,
- "VRAM_пик_МиБ": 5296
+ "ru": 3,
+ "SSIM_ru": 0.833,
+ "ru_ru_ru": 74.4,
+ "ru": 8.6,
+ "VRAM_ru_ru": 5296
 }
 
 === bg_depth3.log ===
 /var/lib/ollama/venvs/video/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:206: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
   warnings.warn(
-Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:00,  7.48it/s]
-Loading weights:   0%|          | 0/196 [00:00<?, ?it/s][ALoading weights: 100%|██████████| 196/196 [00:00<00:00, 2525.85it/s]
-Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00,  8.10it/s]
-Loading weights:   0%|          | 0/517 [00:00<?, ?it/s][A
-Loading weights:  22%|██▏       | 116/517 [00:00<00:00, 1158.29it/s][A
-Loading weights:  50%|████▉     | 258/517 [00:00<00:00, 1304.81it/s][ALoading weights: 100%|██████████| 517/517 [00:00<00:00, 1850.09it/s]
-Loading pipeline components...:  71%|███████▏  | 5/7 [00:01<00:00,  4.31it/s]The config attributes {'decay': 0.9999, 'inv_gamma': 1.0, 'min_decay': 0.0, 'optimization_step': 37000, 'power': 0.6666666666666666, 'update_after_step': 0, 'use_ema_warmup': False} were passed to UNet2DConditionModel, but are not expected and will be ignored. Please verify your config.json configuration file.
-Loading pipeline components...: 100%|██████████| 7/7 [00:01<00:00,  3.49it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:01<00:00,  4.07it/s]
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:00,  7.48it/s]
+
+Loading weights:   0%|          | 0/196 [00:00<?, ?it/s][A
+Loading weights: 100%|██████████| 196/196 [00:00<00:00, 2525.85it/s]
+
+Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00,  8.10it/s]
+
+Loading weights:   0%|          | 0/517 [00:00<?, ?it/s][A
+
+Loading weights:  22%|██▏       | 116/517 [00:00<00:00, 1158.29it/s][A
+
+Loading weights:  50%|████▉     | 258/517 [00:00<00:00, 1304.81it/s][A
+Loading weights: 100%|██████████| 517/517 [00:00<00:00, 1850.09it/s]
+
+Loading pipeline components...:  71%|███████▏  | 5/7 [00:01<00:00,  4.31it/s]The config attributes {'decay': 0.9999, 'inv_gamma': 1.0, 'min_decay': 0.0, 'optimization_step': 37000, 'power': 0.6666666666666666, 'update_after_step': 0, 'use_ema_warmup': False} were passed to UNet2DConditionModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+
+Loading pipeline components...: 100%|██████████| 7/7 [00:01<00:00,  3.49it/s]
+Loading pipeline components...: 100%|██████████| 7/7 [00:01<00:00,  4.07it/s]
 /var/lib/ollama/venvs/video/lib/python3.12/site-packages/diffusers/pipelines/pipeline_utils.py:2273: FutureWarning: `enable_vae_slicing` is deprecated and will be removed in version 0.40.0. Calling `enable_vae_slicing()` on a `StableDiffusionXLControlNetInpaintPipeline` is deprecated and this method will be removed in a future version. Please use `pipe.vae.enable_slicing()`.
   deprecate(
-Loading weights:   0%|          | 0/287 [00:00<?, ?it/s]Loading weights:  41%|████      | 118/287 [00:00<00:00, 1178.87it/s]Loading weights: 100%|██████████| 287/287 [00:00<00:00, 2440.28it/s]
-готово к работе
-8marta     SSIM 0.800 | контур 0.557 | фон  47.4% | 10.7 с
-biznes     SSIM 0.952 | контур 0.884 | фон  83.2% | 7.2 с
-dostavka   SSIM 0.800 | контур 0.663 | фон  79.0% | 6.7 с
+
+Loading weights:   0%|          | 0/287 [00:00<?, ?it/s]
+Loading weights:  41%|████      | 118/287 [00:00<00:00, 1178.87it/s]
+Loading weights: 100%|██████████| 287/287 [00:00<00:00, 2440.28it/s]
+ru ru ru
+8marta     SSIM 0.800 | ru 0.557 | ru  47.4% | 10.7 ru
+biznes     SSIM 0.952 | ru 0.884 | ru  83.2% | 7.2 ru
+dostavka   SSIM 0.800 | ru 0.663 | ru  79.0% | 6.7 ru
 {
- "картинок": 3,
- "SSIM_товара": 0.851,
- "SSIM_контура": 0.701,
- "фон_изменён": 69.9,
- "секунд": 8.2,
- "VRAM_пик_МиБ": 5766
+ "ru": 3,
+ "SSIM_ru": 0.851,
+ "SSIM_ru": 0.701,
+ "ru_ru": 69.9,
+ "ru": 8.2,
+ "VRAM_ru_ru": 5766
 }
 

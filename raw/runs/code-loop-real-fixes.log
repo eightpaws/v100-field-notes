@@ -1,53 +1,53 @@
 === real_fixes.log ===
-коммитов с правкой кода и тестов: 146
+ru ru ru ru ru ru: 146
 {
- "задач": 10,
- "починено": 0,
- "процент": 0.0,
- "опасных_вставок": 0,
- "синтаксис_валиден": 0,
- "среднее_секунд": 0.0
+ "tasks": 10,
+ "ru": 0,
+ "ru": 0.0,
+ "ru_ru": 0,
+ "ru_ru": 0,
+ "ru_ru": 0.0
 }
 
 === real_fixes2.log ===
-коммитов с правкой кода и тестов: 146
-8efde605 не починено  fix(dependency-groups): report self-inclusion for unnorm
-ba8c80de не починено  test: skip GC freezing for property tests (#1514)
-7d0611d4 не починено  feat: allow set of extras (#1438)
-491af5d5 не починено  fix(markers): keep chained & and | markers flat (#1510)
-a03bde12 не починено  fix: Requirement pickle handle inner prereleases (#1462)
-8c37b047 не починено  fix(licenses): Reject non-ASCII LicenseRefs before norma
-b1c439b0 не починено  fix: inherited metadata class field validation and seria
-31b2d013 не починено  fix(dependency-groups): collect includes from malformed 
-bddb6903 не починено  fix(markers): reject strings for extras and dependency_g
-2d57ce2b не починено  refactor(dependency-groups): validate includes before re
+ru ru ru ru ru ru: 146
+8efde605 ru ru  fix(dependency-groups): report self-inclusion for unnorm
+ba8c80de ru ru  test: skip GC freezing for property tests (#1514)
+7d0611d4 ru ru  feat: allow set of extras (#1438)
+491af5d5 ru ru  fix(markers): keep chained & and | markers flat (#1510)
+a03bde12 ru ru  fix: Requirement pickle handle inner prereleases (#1462)
+8c37b047 ru ru  fix(licenses): Reject non-ASCII LicenseRefs before norma
+b1c439b0 ru ru  fix: inherited metadata class field validation and seria
+31b2d013 ru ru  fix(dependency-groups): collect includes from malformed 
+bddb6903 ru ru  fix(markers): reject strings for extras and dependency_g
+2d57ce2b ru ru  refactor(dependency-groups): validate includes before re
 {
- "задач": 10,
- "починено": 0,
- "процент": 0.0,
- "опасных_вставок": 0,
- "синтаксис_валиден": 8,
- "среднее_секунд": 18.5
+ "tasks": 10,
+ "ru": 0,
+ "ru": 0.0,
+ "ru_ru": 0,
+ "ru_ru": 8,
+ "ru_ru": 18.5
 }
 
 === real_fixes_ds.log ===
-коммитов с правкой кода и тестов: 146
-8efde605 не починено  fix(dependency-groups): report self-inclusion for unnorm
-ba8c80de не починено  test: skip GC freezing for property tests (#1514)
-7d0611d4 не починено  feat: allow set of extras (#1438)
-491af5d5 не починено  fix(markers): keep chained & and | markers flat (#1510)
-a03bde12 не починено  fix: Requirement pickle handle inner prereleases (#1462)
-8c37b047 не починено  fix(licenses): Reject non-ASCII LicenseRefs before norma
-b1c439b0 не починено  fix: inherited metadata class field validation and seria
-31b2d013 не починено  fix(dependency-groups): collect includes from malformed 
-bddb6903 не починено  fix(markers): reject strings for extras and dependency_g
-2d57ce2b не починено  refactor(dependency-groups): validate includes before re
+ru ru ru ru ru ru: 146
+8efde605 ru ru  fix(dependency-groups): report self-inclusion for unnorm
+ba8c80de ru ru  test: skip GC freezing for property tests (#1514)
+7d0611d4 ru ru  feat: allow set of extras (#1438)
+491af5d5 ru ru  fix(markers): keep chained & and | markers flat (#1510)
+a03bde12 ru ru  fix: Requirement pickle handle inner prereleases (#1462)
+8c37b047 ru ru  fix(licenses): Reject non-ASCII LicenseRefs before norma
+b1c439b0 ru ru  fix: inherited metadata class field validation and seria
+31b2d013 ru ru  fix(dependency-groups): collect includes from malformed 
+bddb6903 ru ru  fix(markers): reject strings for extras and dependency_g
+2d57ce2b ru ru  refactor(dependency-groups): validate includes before re
 {
- "задач": 10,
- "починено": 0,
- "процент": 0.0,
- "опасных_вставок": 0,
- "синтаксис_валиден": 4,
- "среднее_секунд": 21.0
+ "tasks": 10,
+ "ru": 0,
+ "ru": 0.0,
+ "ru_ru": 0,
+ "ru_ru": 4,
+ "ru_ru": 21.0
 }
 

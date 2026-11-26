@@ -1,17 +1,17 @@
 === whole_pkg4.log ===
-f91ea793 нет       файлов 0 fix: defer formatting parse exception messag
-0efe21aa нет       файлов 0 feat: expose syntax error details on Invalid
-5a7d3386 нет       файлов 0 fix(requirements): parse === followed by a s
-8efde605 нет       файлов 1 fix(dependency-groups): report self-inclusio
-20d631af нет       файлов 1 perf(parser): parse ordinary marker items in
+f91ea793 no       ru 0 fix: defer formatting parse exception messag
+0efe21aa no       ru 0 feat: expose syntax error details on Invalid
+5a7d3386 no       ru 0 fix(requirements): parse === followed by a s
+8efde605 no       ru 1 fix(dependency-groups): report self-inclusio
+20d631af no       ru 1 perf(parser): parse ordinary marker items in
 {
- "задач": 5,
- "починено": 0,
- "процент": 0.0,
- "среднее_файлов": 0.4,
- "отклонённых_файлов": 3,
- "опасных_вставок": 0,
- "секунд": 45.1
+ "tasks": 5,
+ "ru": 0,
+ "ru": 0.0,
+ "ru_ru": 0.4,
+ "ru_ru": 3,
+ "ru_ru": 0,
+ "ru": 45.1
 }
 
 === whole_answers.log ===
