@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **132** - 23 positive, 25 mixed, 27 negative, 57 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **132** - 24 positive, 25 mixed, 27 negative, 56 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -84,7 +84,7 @@ Read this before quoting a number.
 | [V100-50](results/V100-50.md) | Speculative decoding for code generation | **Negative.** Not reproducible. The first run on build 51831d4 showed +21% on a 7B target, but on master af5c583 with the same pair the gain is gone: base 105.5 / 111.9 / 113.0 tok/s versus 102.6 / 111.2 / 112.5 with the draft. A per-prompt check (one run each, seed 42) shows the draft is neutral on fresh code ... |
 | [V100-51](results/V100-51.md) | 32k context for a 30B MoE on 16 GB | **Mixed.** 32k is reachable only with compressed KV plus offloaded experts: -c 32768 -ctk q8_0 -ctv q8_0 -ncmoe 16 gives 25 tok/s. Without compression the same window needs 24+ CPU layers and drops to 16 tok/s. |
 | [V100-52](results/V100-52.md) | Local edit → test → fix loop | **Positive.** The loop closes locally in 15 seconds per iteration, which makes unattended refactoring and test-fixing practical. A dense 32B on the same card would run at 3 tok/s and be unusable for this. |
-| [V100-53](results/V100-53.md) | Cache prefix: equal comparison with equal prompt length | Cache prefix wins by 7.4× at 2k, 9.2× at 6k, and 11.0× at 12k, indicating that the gain increases with length and there's no artifact of different lengths (V100-11 compared 3368 and 5045 tokens). |
+| [V100-53](results/V100-53.md) | Cache prefix: equal comparison at equal prompt length | **Positive.** At equal prompt length the prefix cache wins 7.4x at 2k, 9.2x at 6k and 11.0x at 12k; the gain grows with context, so the earlier 8x was an understatement, not an artifact. |
 | [V100-54](results/V100-54.md) | Volt-forever: Honest native base with included cuDNN | **Mixed.** Partial: cuDNN-on is not available on our stack. |
 | [V100-55](results/V100-55.md) | Llama-Bench refuses to load more than 20 layers. | There is no limit of 20 layers. The matrix is based on Qwen3-Coder-30B (17.28 GiB), f16 KV, p128/n16: \| ncmoe \| prefill pp128 \| decode tg16 \| \|---\|---\|---\| \| 24 \| 179.2 \| 39.2 \| \| 32 \| 145.2 \| 34.6 \| Both configurations load and. |
 | [V100-56](results/V100-56.md) | 32kB Q8_0 and check Q4_0 at 64k | 32k and 64k are achievable, decoding is unaffected. Qwen2.5-Coder-7B Q4 (4.36 GiB), FA enabled: \| Context \| KV \| Prefill \| Decode \| \|---\|---\|---\|---\| \| 32,768 \| q8_0 \| 1860 tok/s \| 121.5 tok/s \| \| 65,536 \| q4_0 \| 1247 tok/s \|. |
@@ -186,7 +186,7 @@ Until then the caveat stands, and a table row is not a substitute for a measurem
 
 | Follow-up | Card it closes | What is being re-measured | Est. |
 |---|---|---|---|
-| V100-53 | V100-11 | repeat the prefix-cache comparison at equal prompt length | 1.5 h |
+
 | V100-54 | V100-27 | native baseline with cuDNN enabled | 1.5 h |
 | V100-55 | V100-37 | capture stderr to explain the ngl above 20 refusal | 1 h |
 | V100-56 | V100-02 | measure the 32k point and try q4_0 KV at 64k | 2 h |
