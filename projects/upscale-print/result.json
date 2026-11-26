@@ -1,22 +1,22 @@
 [
  {
-  "метод": "esrgan_x4plus",
-  "секунд": 0.9,
-  "VRAM_пик_МиБ": 2722,
-  "размер": "2560x2560",
-  "резкость": 5.5,
-  "dE_среднее": 3.9,
-  "dE_максимум": 5.6,
-  "резкость_исходника": 22.5
+  "method": "esrgan_x4plus",
+  "seconds": 0.9,
+  "vram_peak_mib": 2722,
+  "size": "2560x2560",
+  "sharpness": 5.5,
+  "delta_e_mean": 3.9,
+  "delta_e_max": 5.6,
+  "source_sharpness": 22.5
  },
  {
-  "метод": "4x_ultrasharp",
-  "секунд": 0.7,
-  "VRAM_пик_МиБ": 2722,
-  "размер": "2560x2560",
-  "резкость": 15.5,
-  "dE_среднее": 4.9,
-  "dE_максимум": 9.0,
-  "резкость_исходника": 22.5
+  "method": "4x_ultrasharp",
+  "seconds": 0.7,
+  "vram_peak_mib": 2722,
+  "size": "2560x2560",
+  "sharpness": 15.5,
+  "delta_e_mean": 4.9,
+  "delta_e_max": 9.0,
+  "source_sharpness": 22.5
  }
 ]

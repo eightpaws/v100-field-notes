@@ -386,8 +386,8 @@
  {
   "id": "V100-77",
   "title": "Raon-1-nano MTP: multi-token prediction without a draft model",
-  "result_type": "unstated",
-  "verdict": "The MTP head is dead weight in this engine: decode speed is identical to the plain file (93.28 vs 92.72 tok/s, within one sigma), the head is loaded but never executed, and no speculative counters appear in server responses. Use the plain Q4_K_M."
+  "result_type": "negative",
+  "verdict": "The MTP head is dead weight in this engine: it loads but is never executed, no speculative counters appear in server responses, and decode never improves. Two clean-card series: 93.28 vs 92.72 tok/s and 90.75 vs 86.67 tok/s. The MTP file is at best equal to the plain one and at worst 4.5 % slower ..."
  },
  {
   "id": "V100-78",
@@ -676,6 +676,12 @@
   "title": "Inkling 2 Mini: looped MoE, depth without weight growth",
   "result_type": "mixed",
   "verdict": "Mixed — the knob moves the token budget, not the speed: decode sits at 33 tok/s on all three levels, while high spends 51% more tokens per answer and is not better than medium (7/12 against 9/12). Loop depth is not a free quality dial on this card."
+ },
+ {
+  "id": "V100-145",
+  "title": "Gemma 4 26B-A4B at 4 bits: the 16 GB sweet spot arrives",
+  "result_type": "positive",
+  "verdict": "Positive. The review's 16 GB recommendation survives the move to Volta: a 25B MoE at 4 bits is the fastest thing measured on this card so far - 2,4x the Flash-Next MoE on decode and 3,5x on prefill - and its code quality is at least equal (0,575 against 0,51). The reason is structural, not a lucky ..."
  },
  {
   "id": "4060ti-capabilities-vs-v100",
