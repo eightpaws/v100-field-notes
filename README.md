@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **124** — 22 positive, 20 mixed,
+Closed experiments: **125** — 22 positive, 20 mixed,
 21 negative. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
@@ -115,6 +115,7 @@ Read this before quoting a number.
 | [V100-84](results/V100-84.md) | QWEN38-MTP flags from the recipe | The MTP flag is present in the build (--spec-type draft-mtp in build129), but there's nothing to test it on: the only Qwen3.8-27B on disk is a third-party quantum pxqn-onecard (13.57 GB), its tensor type 263 is outside the list of. |
 | [V100-85](results/V100-85.md) | Xing4.0-29B-A4B in IQ2_M | **Negative.** Negative. The 2-bit quant does what it promises on memory - a 29B MoE resident in 16 GB at 71 tok/s decode - but code quality lands at 0.425, below the card's 0.55 bar and below even a 7B model at Q8_0 (0.625) and a 7B in 4-bit AWQ (0.50). Worth keeping only as a fast drafter or summarizer, not as ... |
 | [V100-86](results/V100-86.md) | v100-llm-kit: prebuilt SM70 binaries vs our own build | **Mixed.** Mixed: prefill 16 % faster with the shipped sm_70 binaries, decode identical. Worth taking for long prompts (document analysis, repository context); not a reason to migrate a decode-bound workload. The vendor's agent wrapper (serve-qwen3.sh, Claude Code integration) and the claimed Gemma 4 26B-A4B ... |
+| [V100-89](results/V100-89.md) | colibri: a three-tier expert engine, slower than llama.cpp here | Negative on this card: the advertised ~144 tok/s assumes a card where most experts stay resident, while 16 GB forces the cold tier into play and the tiering costs more than llama.cpp's -ncmoe offload. colibri is worth another look on a card with 32 GB or more; on the V100 the record stands. |
 | [V100-91](results/V100-91.md) | Recheck sm70-attn with head_dim 256 | **Positive.** Positive for the narrow claim: the fork is faster on prefill at both measured lengths, and the margin at 16k (+11.2 %) is large enough to matter for long prompts. The numbers published in the fork's README (+34-48 %) do not reproduce at 8-16k: they belong to the 100-174k range, where the D256 ... |
 | [V100-92](results/V100-92.md) | PR #31802: fused quantised-KV dequant costs prefill on Volta | Negative for Volta: the fused path is slower here, most likely because the 25 % prefill headroom the PR recovers lives in the tensor-core MMA path, while sm_70 falls to the vector kernel where the extra fused branch just adds work. The card stays open upstream-wise - the PR may merge and change - ... |
 | [V100-93](results/V100-93.md) | Two-machine pipeline: V100 writes, 4060 Ti reviews | **Negative.** Negative for the criterion. The split mode is 4.1x slower, not 15 % faster, and the margin is far outside any noise. The mechanism is visible in the numbers: the writer in mode (b) gave up 8 layers to the CPU (-ngl 12, otherwise it does not fit beside a 30B reviewer), decode fell from ~9 to ~4 ... |
