@@ -254,8 +254,8 @@
  {
   "id": "V100-53",
   "title": "Cache prefix: equal comparison with equal prompt length",
-  "result_type": "unstated",
-  "verdict": "Cache prefix wins by 7.4× at 2k, 9.2× at 6k, and 11.0× at 12k, indicating that the gain increases with length and there's no artifact of different lengths (V100-11 compared 3368 and 5045 tokens)."
+  "result_type": "positive",
+  "verdict": "At equal prompt length the prefix cache wins 7.4x at 2k, 9.2x at 6k and 11.0x at 12k; the gain grows with context, so the earlier 8x was an understatement, not an artifact."
  },
  {
   "id": "V100-54",
