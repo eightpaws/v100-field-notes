@@ -1,0 +1,31 @@
+{
+ "card": "V100-74",
+ "model_file": "Olala-v1.0-mini-7A1B-q5_k_m.gguf",
+ "model_bytes": 5990551040,
+ "params_b": 6.78,
+ "engine": "OVHai-LLM/llama.cpp, branch olala-master, HEAD bd20ca9, built for sm_70 (CUDA 12.9)",
+ "llama_bench": {
+  "flags": "-p 256 -n 64 -r 3",
+  "pp256_tok_s": 783.66,
+  "pp256_sd": 5.1,
+  "tg64_tok_s": 43.52,
+  "tg64_sd": 0.18
+ },
+ "server_vram_mib": 6583,
+ "chat_behaviour": {
+  "default": "content empty, finish_reason=length, text lands in reasoning_content",
+  "enable_thinking_false": "content non-empty but still contains reasoning prose before the answer"
+ },
+ "mbpp": {
+  "40_tasks_max1600_default_template": {
+   "passed": 0,
+   "pass@1": 0.0,
+   "avg_sec": 0.96
+  },
+  "20_tasks_max1600_no_think": {
+   "passed": 0,
+   "pass@1": 0.0,
+   "note": "server died before the batch"
+  }
+ }
+}

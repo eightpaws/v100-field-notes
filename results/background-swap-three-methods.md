@@ -53,8 +53,27 @@ Same mask, no diffusion: the product is cut out with a 2 px soft edge and compos
 ## Reproduction
 
 ```
-ssh ai-gpu 'cd /srv/media/projects/depth-bg && HF_HOME=/srv/media/ai-cache/hf \
+ssh the GPU guest 'cd /srv/media/projects/depth-bg && HF_HOME=/srv/media/ai-cache/hf \
   /home/hermes/venvs/cu121/bin/python bg_white.py'
 ```
 
 Scripts: `bg_controlnet.py`, `bg_sweep.py`, `bg_mask.py`, `bg_prompts.py`, `bg_white.py`. Logs `/srv/media/night/bg_{cn,sweep,mask,prompts,white}.log`, output in `/srv/media/projects/depth-bg/{cn,mask,white,prompts}/`.
+
+**Does not show.** one run only - repeatability was not measured; the run log was not preserved, so the numbers cannot be re-checked from this repository; no second engine or model was measured on the same harness.
+
+**Raw.** Not preserved for this run.
+
+**Environment.** Tesla V100-SXM2-16GB (sm_70), driver 580, CUDA 12.9, guest VM on a home Proxmox host; engine and model as recorded in the run log.
+
+**Commands.** The command line was not recorded for this run.
+
+**Question.** See the card title: the premise is stated in the field notes and was not carried into this export.
+
+**Repeats.** Not recorded: repeatability was not documented for this run - treat the numbers as a single run unless the result says otherwise.
+
+**Verdict.** Positive for the catalogue path: the deterministic white background wins on untouchable
+product pixels and cost, while img2img and inpainting stay for interior scenes where a prompt cannot
+steer colour reliably. Three methods, three clear roles, no method pretending to do all three.
+
+**Result type.** Positive - the criterion (a repeatable white-background card without altering the
+product) was met by method 3.

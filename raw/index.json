@@ -355,9 +355,9 @@
  },
  {
   "id": "V100-74",
-  "title": "Olala-v1.0-mini-7A1B: MoE with 1B active on 16 GB",
+  "title": "Olala-v1.0-mini-7A1B: MoE with 1B active on a 16 GB card",
   "result_type": "unstated",
-  "verdict": "Blocked by engine (24.11). File downloaded and intact (5,990,551,040 bytes, exact size verified), but llama.cpp master from 24.11 (build 12.9, sm_70) responds with unknown model architecture: 'olala'."
+  "verdict": "Negative on the card's own criterion: 43.5 tok/s against a 140 tok/s bar, and no usable quality number. Keeping the model makes sense only if its chat template is rewritten so answers arrive without the think-aloud preamble; nothing else here justifies the extra fork in the stack."
  },
  {
   "id": "V100-75",
@@ -608,7 +608,7 @@
  {
   "id": "V100-130",
   "title": "Uncensored Flash-Next Q2_0 under Strata",
-  "result_type": "mixed",
+  "result_type": "unstated",
   "verdict": "The uncensored Q2_0 is a drop-in replacement for the censored coder: same code score within noise, slightly faster, tool calling works. It answers refused topics and therefore belongs to a personal loop - never behind a public endpoint, same rule as V100-129."
  },
  {
@@ -616,6 +616,12 @@
   "title": "Failure metric: 20 prompts, uncensored vs censored",
   "result_type": "unstated",
   "verdict": "Translation: 27B abliterated IQ3_S (model 2 of 3): class A 7/7 direct response, class B 9/9 direct (zero failures), class C 4/4 refusal."
+ },
+ {
+  "id": "background-swap-three-methods",
+  "title": "Background replacement: three methods, the deterministic one won",
+  "result_type": "positive",
+  "verdict": "Positive for the catalogue path: the deterministic white background wins on untouchable product pixels and cost, while img2img and inpainting stay for interior scenes where a prompt cannot steer colour reliably. Three methods, three clear roles, no method pretending to do all three."
  },
  {
   "id": "code-loop-agentic",
@@ -640,6 +646,12 @@
   "title": "A cuDNN 8 environment unblocked three tasks",
   "result_type": "positive",
   "verdict": "Switching to cuDNN 8 is the fix for fp16 convolutions on sm_70: all three tasks run, 480p video included; 720p still runs out of memory, so on this card the limit is memory, not the build."
+ },
+ {
+  "id": "gpu-unlock-baseline",
+  "title": "GPU Unlock: baseline measured, unlock not installed",
+  "result_type": "unstated",
+  "verdict": "Baseline only: the stock card was measured and the unlock was deliberately not installed, so this note answers \"what we have now\", not \"what the unlock gives\". No pass/fail is claimed."
  },
  {
   "id": "image-quality-checker",
@@ -676,5 +688,11 @@
   "title": "CogVideoX on V100 — blocked by the build, not by the model",
   "result_type": "negative",
   "verdict": "With cuDNN 9 video is blocked for a build reason, not a model limit: fp16 convolutions find no engine on sm_70, and without cuDNN the VAE asks 17.8 GiB. The fix is a cuDNN 8 environment, measured in V100-141, not a smaller clip."
+ },
+ {
+  "id": "vlm-card-controller-fails",
+  "title": "Card controller: Qwen2.5-VL-3B calls everything good",
+  "result_type": "negative",
+  "verdict": "Negative: the 3B VLM accepted every card it was shown, good and bad alike, so as a controller it carries no signal - a human or a mechanical check still has to do the deciding."
  }
 ]

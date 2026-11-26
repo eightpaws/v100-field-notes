@@ -48,7 +48,7 @@ As a card controller this model is worse than the heuristic: the heuristic at le
 ## Reproduction
 
 ```
-ssh ai-gpu 'cd /srv/media/projects/qa-vlm && HF_HOME=/srv/media/ai-cache/hf \
+ssh the GPU guest 'cd /srv/media/projects/qa-vlm && HF_HOME=/srv/media/ai-cache/hf \
   /home/hermes/venvs/cu121/bin/python qa_vlm_single.py'
 ```
 
@@ -65,3 +65,8 @@ Scripts: `qa_sheets.py`, `qa_vlm.py`, `qa_vlm_single.py`, `qa_vlm_strict.py`. Lo
 **Commands.** The command line was not recorded for this run.
 
 **Question.** See the card title: the premise is stated in the field notes and was not carried into this export.
+
+**Verdict.** Negative: the 3B VLM accepted every card it was shown, good and bad alike, so as a controller
+it carries no signal - a human or a mechanical check still has to do the deciding.
+
+**Result type.** Negative - the criterion (reject visibly broken cards) was not met.

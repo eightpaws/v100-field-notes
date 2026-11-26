@@ -65,3 +65,21 @@ The comparison baseline is already captured by this run; scripts `pc_baseline.py
 ## Verdict
 
 Baseline captured, unlock not installed: there is no official path on Windows, and the risk to production hardware is not justified. If it is ever enabled, do it on a separate Linux install where the rollback is deleting one boot parameter.
+
+**Does not show.** one run only - repeatability was not measured; the run log was not preserved, so the numbers cannot be re-checked from this repository.
+
+**Raw.** Not preserved for this run.
+
+**Commands.** The command line was not recorded for this run.
+
+**Question.** See the card title: the premise is stated in the field notes and was not carried into this export.
+
+**Verdict.** Baseline only: the stock card was measured and the unlock was deliberately not installed,
+so this note answers "what we have now", not "what the unlock gives". No pass/fail is claimed.
+
+**Result type.** Unstated - nothing was changed, so there is no intervention to judge.
+
+**Environment.** Windows 11, RTX 4060 Ti 16 GB (sm_89), driver 617.14, torch 2.11.0+cu128, 5950X, 64 GB RAM.
+
+**Repeats.** Each precision: 8 matmuls of 8192x8192 after one warmup, times averaged; the unlock itself
+was never installed, so there is no post-unlock measurement.
