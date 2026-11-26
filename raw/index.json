@@ -253,9 +253,9 @@
  },
  {
   "id": "V100-53",
-  "title": "Cache prefix: equal comparison with equal prompt length",
+  "title": "Cache prefix: equal comparison at equal prompt length",
   "result_type": "positive",
-  "verdict": "At equal prompt length the prefix cache wins 7.4x at 2k, 9.2x at 6k and 11.0x at 12k; the gain grows with context, so the earlier 8x was an understatement, not an artifact."
+  "verdict": "At equal prompt length the prefix cache still wins 7.4x at 2k, 9.2x at 6k and 11.0x at 12k, and the gain grows with context instead of shrinking. The \"8x\" reported in V100-11 was an understatement, not an artifact of the different prompt lengths."
  },
  {
   "id": "V100-54",
