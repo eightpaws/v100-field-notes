@@ -255,7 +255,7 @@
   "id": "V100-53",
   "title": "Cache prefix: equal comparison with equal prompt length",
   "result_type": "unstated",
-  "verdict": "Cache prefix is real and not an artifact of length. Control with equal prompt length (8737 tokens in all three requests), llama-server with --cache-reuse 256, 7B Q4: \\| Request \\| Prompt eval \\| Total \\| \\|---\\|---\\|---\\| \\| Cold \\| 4154.7 ms \\|."
+  "verdict": "Cache prefix wins by 7.4× at 2k, 9.2× at 6k, and 11.0× at 12k, indicating that the gain increases with length and there's no artifact of different lengths (V100-11 compared 3368 and 5045 tokens)."
  },
  {
   "id": "V100-54",
