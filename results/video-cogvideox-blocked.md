@@ -1,7 +1,18 @@
 <!-- curated: do not overwrite -->
 # CogVideoX on V100 — blocked by the build, not by the model
 
+> **Superseded on 26.11.2026.** The fix proposed here was built and measured in **V100-141**: with a cuDNN 8
+> environment (`venvs/cu121`, torch 2.3.1) CogVideoX runs on this card — 480x320x17 frames in 46 s, 11 119 MiB
+> peak. This card stays as the record of what cuDNN 9 does wrong, not as a statement about the hardware.
+
 _Testing video generation on the card: CogVideoX-5B is already on disk (17 GB). The goal was an actual clip plus frame checks, not just an exit code. No clip was produced, for the same reason on both paths._
+
+| Path | cuDNN | Outcome | Evidence |
+|---|---|---|---|
+| one | 9 (enabled) | no engine for fp16 convolution | `GET was unable to find an engine to execute this computation` |
+| two | 9 (disabled) | out of memory in VAE decode | `Tried to allocate 17.80 GiB`, 8.83 GiB free |
+| later | 8.9.2 (venv cu121) | clip produced, 480x320x17 in 46 s | V100-141 |
+
 
 **Question.** Can CogVideoX-5B produce a 480p and a 720p clip on a 16 GB V100 with cuDNN 9?
 
