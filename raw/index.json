@@ -636,6 +636,12 @@
   "verdict": "Translation: 27B abliterated IQ3_S (model 2 of 3): class A 7/7 direct response, class B 9/9 direct (zero failures), class C 4/4 refusal."
  },
  {
+  "id": "V100-141",
+  "title": "cuDNN 8 environment for graphics and video models",
+  "result_type": "unstated",
+  "verdict": "In a venv with cuDNN 8, all three tasks run without disabling cuDNN."
+ },
+ {
   "id": "4060ti-capabilities-vs-v100",
   "title": "What the 4060 Ti can do that the V100 cannot",
   "result_type": "unstated",
