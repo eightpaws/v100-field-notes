@@ -780,6 +780,12 @@
   "verdict": "Mixed: the ternary 27B does run here and holds 6.8 GB, but the throughput it reaches decides whether the trade is worth it for the shop - see the measurement above."
  },
  {
+  "id": "upscale-for-print",
+  "title": "Upscaling for print: ESRGAN vs UltraSharp, SUPIR blocked by network",
+  "result_type": "unstated",
+  "verdict": ""
+ },
+ {
   "id": "video-cogvideox-blocked",
   "title": "CogVideoX on V100 — blocked by the build, not by the model",
   "result_type": "negative",
