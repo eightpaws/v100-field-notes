@@ -41,3 +41,23 @@ Script `/srv/media/projects/depth-bg/bg_inpaint.py`, output `result.json`, log `
 - Three images, one background prompt.
 - SSIM is computed inside a crude product mask, so the figure is optimistic relative to what the eye sees.
 - ControlNet-depth is downloaded but was not used in this series: the first question was whether the card can inpaint at all.
+
+
+## Second pass - depth mask plus ControlNet-depth
+
+The first result (SSIM 0.833) used a colour mask and free regeneration. The second pass builds the background mask from a depth map (Depth-Anything-V2-Small) and generates through SDXL ControlNet-inpaint with depth conditioning, strength 0.80, conditioning scale 0.95.
+
+| Image | Product SSIM | Edge SSIM | Background changed | Time |
+|---|---|---|---|---|
+| 8marta | 0.800 | 0.557 | 47.4 % | 10.7 s |
+| biznes | 0.952 | 0.884 | 83.2 % | 7.2 s |
+| dostavka | 0.800 | 0.663 | 79.0 % | 6.7 s |
+| **average** | **0.851** | **0.701** | **69.9 %** | **8.2 s** |
+
+Peak VRAM 5 766 MiB.
+
+**What it bought:** product SSIM rose from 0.833 to 0.851, a small gain. The edge metric is the honest one and shows the core problem: product contours still move (0.70), and badly on the hardest image (0.56). Best case is biznes at 0.952 / 0.884.
+
+**Verdict:** ControlNet-depth helps but does not solve preservation of a specific plant. Product cards need a manual cutout composited over a generated background, or the admission that neural background replacement is for advertising material only.
+
+Script `/srv/media/projects/depth-bg/bg_depth.py`, results `result_controlnet.json`, log `/srv/media/night/bg_depth3.log`.
