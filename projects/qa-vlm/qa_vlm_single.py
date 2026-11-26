@@ -43,15 +43,15 @@ def main():
         verdict = bool(m and m.group(1) == "ДА")
         reason = (m.group(2) if m else ans)[:60]
         rows.append({"n": item["n"], "file": item["file"], "px": item["px"],
-                     "резкость": item["резкость"], "ответ": verdict,
-                     "причина": reason, "секунд": secs})
+                     "sharpness": item['sharpness'], "answer": verdict,
+                     "reason": reason, "seconds": secs})
         print(f"{item['n']:2} {'ДА ' if verdict else 'НЕТ'} {reason:45} {secs} с", flush=True)
 
-    summary = {"карточек": len(rows),
-               "секунд_всего": round(time.time() - t_all, 1),
-               "секунд_на_карточку": round(sum(r["секунд"] for r in rows) / len(rows), 1),
-               "годных": sum(1 for r in rows if r["ответ"]),
-               "VRAM_пик_МиБ": round(torch.cuda.max_memory_allocated() / 2 ** 20)}
+    summary = {"cards": len(rows),
+               "seconds_total": round(time.time() - t_all, 1),
+               "seconds_per_card": round(sum(r['seconds'] for r in rows) / len(rows), 1),
+               "accepted": sum(1 for r in rows if r['answer']),
+               "vram_peak_mib": round(torch.cuda.max_memory_allocated() / 2 ** 20)}
     print(json.dumps(summary, ensure_ascii=False, indent=1))
     json.dump({"summary": summary, "rows": rows},
               open(os.path.join(OUT, "vlm_single.json"), "w", encoding="utf-8"),

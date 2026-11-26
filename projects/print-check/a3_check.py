@@ -39,23 +39,23 @@ def main():
 
         rows.append({
             "file": os.path.basename(f),
-            "один_проход": sharp(a),
-            "два_прохода": sharp(b),
-            "размер": f"{TARGET}x{TARGET}",
+            "one_pass": sharp(a),
+            "two_passes": sharp(b),
+            "size": f"{TARGET}x{TARGET}",
         })
-        print(f"{os.path.basename(f)[:26]:28} один {rows[-1]['один_проход']:7} | "
-              f"два {rows[-1]['два_прохода']:7}", flush=True)
+        print(f"{os.path.basename(f)[:26]:28} один {rows[-1]['one_pass']:7} | "
+              f"два {rows[-1]['two_passes']:7}", flush=True)
         cv2.imwrite(os.path.join(OUT, "two_pass_" + os.path.basename(f)), b,
                     [cv2.IMWRITE_JPEG_QUALITY, 92])
 
     if rows:
-        a = round(sum(r["один_проход"] for r in rows) / len(rows), 2)
-        b = round(sum(r["два_прохода"] for r in rows) / len(rows), 2)
+        a = round(sum(r['one_pass'] for r in rows) / len(rows), 2)
+        b = round(sum(r['two_passes'] for r in rows) / len(rows), 2)
         summary = {
-            "карточек": len(rows),
-            "резкость_один_проход": a,
-            "резкость_два_прохода": b,
-            "прирост_процент": round(100.0 * (b - a) / a, 1) if a else 0,
+            "cards": len(rows),
+            "sharpness_one_pass": a,
+            "sharpness_two_passes": b,
+            "gain_percent": round(100.0 * (b - a) / a, 1) if a else 0,
             "dpi_A3": round(TARGET / (297 / 25.4)),
         }
         print(json.dumps(summary, ensure_ascii=False, indent=1))

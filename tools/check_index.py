@@ -80,6 +80,16 @@ for f in runs:
 if bad:
     errors.append("unparsable raw files: " + "; ".join(bad))
 
+# Тот же запрет, что в CI: репозиторий англоязычный. Проверяем локально, чтобы
+# провал не всплывал через шесть секунд после пуша и письмом на почту.
+cyrillic = []
+for p in sorted(RESULTS.glob("*.md")) + sorted((ROOT / "projects").rglob("*.json")):
+    text = p.read_text(encoding="utf-8", errors="replace")
+    if re.search(r"[\u0400-\u04FF]{4}", text):
+        cyrillic.append(str(p.relative_to(ROOT)).replace("\\", "/"))
+if cyrillic:
+    errors.append("Cyrillic in published files: " + ", ".join(cyrillic))
+
 # Ссылка на несуществующий файл замеров читается как обещание данных, которых нет.
 runs_dir = ROOT / "raw" / "runs"
 have_runs = {p.name for p in runs_dir.iterdir() if p.is_file()}

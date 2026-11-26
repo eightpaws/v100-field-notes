@@ -43,8 +43,8 @@ def run(name, weights, img):
     peak = round(torch.cuda.max_memory_allocated() / 2 ** 20)
     path = os.path.join(OUT, f"{name}.jpg")
     cv2.imwrite(path, out, [cv2.IMWRITE_JPEG_QUALITY, 95])
-    return out, {"метод": name, "секунд": secs, "VRAM_пик_МиБ": peak, "размер": f"{out.shape[1]}x{out.shape[0]}",
-                 "резкость": sharp(out)}
+    return out, {"method": name, "seconds": secs, "vram_peak_mib": peak, "size": f"{out.shape[1]}x{out.shape[0]}",
+                 "sharpness": sharp(out)}
 
 
 def main():
@@ -58,12 +58,12 @@ def main():
         out, meta = run(name, weights, img)
         back = cv2.resize(out, (w, h), interpolation=cv2.INTER_AREA)
         de = delta_e(img, back, pts_in)
-        meta["dE_среднее"] = round(sum(de) / len(de), 1)
-        meta["dE_максимум"] = max(de)
-        meta["резкость_исходника"] = sharp(img)
+        meta['delta_e_mean'] = round(sum(de) / len(de), 1)
+        meta['delta_e_max'] = max(de)
+        meta['source_sharpness'] = sharp(img)
         rows.append(meta)
-        print(f"{name:16} {meta['секунд']:5} с | VRAM {meta['VRAM_пик_МиБ']:5} МиБ | "
-              f"резкость {meta['резкость']:6} | ΔE {meta['dE_среднее']}", flush=True)
+        print(f"{name:16} {meta['seconds']:5} с | VRAM {meta['vram_peak_mib']:5} МиБ | "
+              f"резкость {meta['sharpness']:6} | ΔE {meta['delta_e_mean']}", flush=True)
 
     json.dump(rows, open(os.path.join(OUT, "result.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)

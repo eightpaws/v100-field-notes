@@ -36,7 +36,8 @@ Negative results are published on purpose. They cost the most time to discover a
 
 ## Code changes
 
-- Run the consistency gate before opening a pull request: `python3 tools/check_index.py`. It fails when a card exists on disk but is missing from `raw/index.json`, when the README table disagrees with the index, or when a raw JSON file does not parse.
+- Run the consistency gate before opening a pull request: `python3 tools/check_index.py`. It fails when a card exists on disk but is missing from `raw/index.json`, when the README table disagrees with the index, when a raw JSON file does not parse, when a card points at a `raw/runs` file that does not exist, or when Cyrillic appears in a published file - the same condition the CI job checks, so a failure shows up in a second instead of an email.
+- This clone runs that gate on every push: `git config core.hooksPath .githooks` is already set, and `.githooks/pre-push` refuses a push that would turn the build red.
 - Cards are English-only. Russian text lives outside this repository, in a private wiki.
 - No em dashes in `results/`: the repository uses a plain hyphen so copy-paste cannot turn a minus into a dash.
 - One card per file: `results/V100-NN.md`, with the number taken from the file name, never re-derived from the integer.

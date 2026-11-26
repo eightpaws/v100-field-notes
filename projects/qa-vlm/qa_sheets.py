@@ -38,7 +38,7 @@ for sheet in range(2):
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         meta.append({"n": i + 1 + sheet * 12, "file": os.path.basename(f),
                      "px": f"{w}x{h}",
-                     "резкость": round(float(np.std(cv2.Laplacian(gray, cv2.CV_32F))), 1)})
+                     "sharpness": round(float(np.std(cv2.Laplacian(gray, cv2.CV_32F))), 1)})
     path = os.path.join(OUT, f"sheet{sheet + 1}.jpg")
     cv2.imwrite(path, canvas, [cv2.IMWRITE_JPEG_QUALITY, 92])
     print("лист:", path)

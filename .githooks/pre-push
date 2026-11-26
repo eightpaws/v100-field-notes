@@ -1,0 +1,19 @@
+#!/bin/sh
+# Проверка перед пушем: то же, что делает CI, но за секунду и без письма на почту.
+# Пуш с кириллицей в опубликованных файлах блокируется здесь, а не в GitHub Actions.
+cd "$(git rev-parse --show-toplevel)" || exit 0
+if ! command -v python3 >/dev/null 2>&1 && ! command -v python >/dev/null 2>&1; then
+    echo "pre-push: python не найден, проверка пропущена" >&2
+    exit 0
+fi
+PY=python3
+command -v python3 >/dev/null 2>&1 || PY=python
+
+if ! out=$("$PY" tools/check_index.py 2>&1); then
+    echo "$out" >&2
+    echo "" >&2
+    echo "pre-push: пуш отменён, почини ошибки выше." >&2
+    echo "Кириллицу в json обычно пишет скрипт с русскими ключами: ищи в projects/*/*.py." >&2
+    exit 1
+fi
+echo "pre-push: карточки, индекс, README и язык сошлись"
