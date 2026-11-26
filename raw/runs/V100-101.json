@@ -1,0 +1,43 @@
+{
+  "card": "V100-101",
+  "note": "SDXL LoRA training on one synthetic product; CLIP similarity to a reference frame per checkpoint",
+  "entries": [
+    {
+      "phase": "config",
+      "base_model": "RealVisXL_V5.0_fp16.safetensors",
+      "resolution": 640,
+      "dataset_images": 24,
+      "reference_images": 1,
+      "lora_rank": 8,
+      "lora_alpha": 8,
+      "lr": 0.0001,
+      "lr_schedule": "cosine",
+      "batch": 1,
+      "optimizer": "AdamW",
+      "precision": "fp16 with GradScaler",
+      "gradient_checkpointing": true,
+      "cudnn": false
+    },
+    {"phase": "dataset", "seconds": 87, "images": 25, "steps": 28, "cfg": 5.0},
+    {"phase": "train", "steps": 800, "minutes": 16.1, "sec_per_step": 1.22, "peak_vram_gib": 7.7},
+    {"phase": "train", "steps": 2400, "minutes": 48.9, "sec_per_step": 1.22, "peak_vram_gib": 7.8},
+    {
+      "phase": "eval",
+      "clip_model": "openai/clip-vit-large-patch14",
+      "metric": "cosine similarity of CLIP image embedding to the reference frame",
+      "prompts": 10,
+      "seeds": "fixed, identical for base and LoRA",
+      "base": 0.6750,
+      "lora_200": 0.6756,
+      "lora_400": 0.6804,
+      "lora_800": 0.6898,
+      "lora_1600": 0.6943,
+      "lora_2400": 0.6788,
+      "paired_wins_lora_200": "5/10",
+      "paired_wins_lora_400": "5/10",
+      "paired_wins_lora_800": "6/10",
+      "paired_wins_lora_1600": "6/10",
+      "paired_wins_lora_2400": "5/10"
+    }
+  ]
+}
