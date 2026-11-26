@@ -1,0 +1,58 @@
+{
+ "card": "V100-145",
+ "model": {
+  "file": "gemma-4-26B_q4_0-it.gguf",
+  "bytes": 14439363584,
+  "params_b": 25.23,
+  "quant": "Q4_0 QAT (official google quant, tuned for 4 bits)",
+  "repo": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf"
+ },
+ "bench": {
+  "pp256_tok_s": 2696.26,
+  "pp256_sd": 94.74,
+  "tg64_tok_s": 124.09,
+  "tg64_sd": 0.53,
+  "repeats": 3
+ },
+ "server": {
+  "start_s": 5,
+  "vram_mib": 15331,
+  "ctx": 8192,
+  "ngl": 99
+ },
+ "decode_n3": [
+  {
+   "run": 1,
+   "tok_s": 105.1
+  },
+  {
+   "run": 2,
+   "tok_s": 107.5
+  },
+  {
+   "run": 3,
+   "tok_s": 107.3
+  }
+ ],
+ "quality": {
+  "tasks": 40,
+  "passed": 23,
+  "pass@1": 0.575,
+  "avg_sec": 0.9,
+  "tok_s": 100.4
+ },
+ "baseline": {
+  "card": "V100-130 Flash-Next Q2_0 with expert offload",
+  "tg_tok_s": 45.1,
+  "pass@1": 0.51,
+  "tasks": 200,
+  "vram_mib": 15661,
+  "start_s": 90
+ },
+ "note": "baseline MBPP ran 200 tasks, this card 40 - intervals overlap, treat as a tie in quality and a clear win in speed",
+ "download": {
+  "bytes_per_s": 29700000,
+  "seconds": 474,
+  "via": "direct, the proxy refused the transfer"
+ }
+}
