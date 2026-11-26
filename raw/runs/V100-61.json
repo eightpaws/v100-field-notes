@@ -1,0 +1,19 @@
+{
+ "card": "V100-61",
+ "parent": "V100-19 (kernel-level GQA to MHA expansion, x7.2 on one shape)",
+ "carrier_check": {
+  "diffusion_pipelines_on_disk": [
+   "SDXL",
+   "Flux.1-schnell",
+   "Wan2.2",
+   "LTX-video",
+   "SD3.5-large"
+  ],
+  "attention_type_in_those": "MHA - none of them uses grouped-query attention, so the K/V expansion has nothing to expand",
+  "qwen_vl": "not on disk",
+  "llama_cpp": "serves GQA models (Qwen3.8 27B) but exposes no switch to expand K/V to MHA",
+  "extension_from_v100_19": "a standalone CUDA kernel; nothing in llama.cpp or diffusers calls it"
+ },
+ "conclusion": "no end-to-end carrier exists in this stack, so the 1.3x criterion cannot be measured without building a pipeline around the extension",
+ "cost_estimate_h": "4-6"
+}
