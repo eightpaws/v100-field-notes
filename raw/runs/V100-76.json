@@ -1,0 +1,22 @@
+{
+ "card": "V100-76",
+ "model_file": "Ternary-Bonsai-2-27B-PTQ1_0.gguf",
+ "model_bytes": 5946648928,
+ "params_b": 26.9,
+ "engine": "xyznq1/xyz-llama (fork of llama.cpp), HEAD f095f4d, CUDA build for sm_70",
+ "gpu_attempt": {
+  "flags": "-ngl 99 -p 32 -n 8 -r 1",
+  "result": "abort",
+  "message": "ggml-cuda/mmvq.cu:1273: PTQ1_0 ILV16: no tensor-core path for this call (ids=0, ncols=1, cc=700)"
+ },
+ "cpu_attempt": {
+  "flags": "-ngl 0 -p 64 -n 16 -r 1",
+  "pp64_tok_s": 29.06,
+  "tg16_tok_s": 0.47,
+  "arch_reported": "qwen35 27B unknown, may not work"
+ },
+ "upstream": {
+  "plain_llama_cpp": "failed to read tensor info - tensor type 143 is not a known GGMLQuantizationType"
+ },
+ "server_build": "llama-server target failed only on the web UI assets download, not on CUDA"
+}
