@@ -1,0 +1,257 @@
+{
+ "card": "V100-144",
+ "note": "three reasoning_effort levels, 12 MBPP tasks each, llama-server port 18415",
+ "engine": "llama.cpp master build129, CUDA 12.9, -ngl 99 -c 8192 --jinja",
+ "model": "Inkling-2-Mini-UD-Q3_K_XL 13631779296 B",
+ "entries": [
+  {
+   "level": "none",
+   "tasks": 12,
+   "passed": 7,
+   "runs": 12,
+   "pass@1": 0.583,
+   "avg_sec": 18.34,
+   "tok_s": 34.1,
+   "per_task": [
+    {
+     "task": 1,
+     "ok": false,
+     "sec": 25.3,
+     "tok": 867
+    },
+    {
+     "task": 2,
+     "ok": false,
+     "sec": 13.72,
+     "tok": 468
+    },
+    {
+     "task": 3,
+     "ok": true,
+     "sec": 9.5,
+     "tok": 323
+    },
+    {
+     "task": 4,
+     "ok": true,
+     "sec": 11.27,
+     "tok": 384
+    },
+    {
+     "task": 5,
+     "ok": false,
+     "sec": 45.04,
+     "tok": 1536
+    },
+    {
+     "task": 6,
+     "ok": false,
+     "sec": 45.07,
+     "tok": 1536
+    },
+    {
+     "task": 7,
+     "ok": true,
+     "sec": 9.25,
+     "tok": 312
+    },
+    {
+     "task": 8,
+     "ok": true,
+     "sec": 4.19,
+     "tok": 138
+    },
+    {
+     "task": 9,
+     "ok": false,
+     "sec": 19.06,
+     "tok": 654
+    },
+    {
+     "task": 10,
+     "ok": true,
+     "sec": 12.89,
+     "tok": 440
+    },
+    {
+     "task": 11,
+     "ok": true,
+     "sec": 16.88,
+     "tok": 577
+    },
+    {
+     "task": 12,
+     "ok": true,
+     "sec": 7.93,
+     "tok": 267
+    }
+   ]
+  },
+  {
+   "level": "medium",
+   "tasks": 12,
+   "passed": 9,
+   "runs": 12,
+   "pass@1": 0.75,
+   "avg_sec": 18.24,
+   "tok_s": 34.1,
+   "per_task": [
+    {
+     "task": 1,
+     "ok": false,
+     "sec": 44.92,
+     "tok": 1536
+    },
+    {
+     "task": 2,
+     "ok": false,
+     "sec": 9.17,
+     "tok": 309
+    },
+    {
+     "task": 3,
+     "ok": true,
+     "sec": 19.95,
+     "tok": 686
+    },
+    {
+     "task": 4,
+     "ok": true,
+     "sec": 10.54,
+     "tok": 358
+    },
+    {
+     "task": 5,
+     "ok": false,
+     "sec": 44.9,
+     "tok": 1536
+    },
+    {
+     "task": 6,
+     "ok": true,
+     "sec": 5.28,
+     "tok": 174
+    },
+    {
+     "task": 7,
+     "ok": true,
+     "sec": 10.08,
+     "tok": 343
+    },
+    {
+     "task": 8,
+     "ok": true,
+     "sec": 4.05,
+     "tok": 133
+    },
+    {
+     "task": 9,
+     "ok": true,
+     "sec": 24.72,
+     "tok": 848
+    },
+    {
+     "task": 10,
+     "ok": true,
+     "sec": 9.24,
+     "tok": 313
+    },
+    {
+     "task": 11,
+     "ok": true,
+     "sec": 27.38,
+     "tok": 941
+    },
+    {
+     "task": 12,
+     "ok": true,
+     "sec": 8.7,
+     "tok": 293
+    }
+   ]
+  },
+  {
+   "level": "high",
+   "tasks": 12,
+   "passed": 7,
+   "runs": 12,
+   "pass@1": 0.583,
+   "avg_sec": 27.47,
+   "tok_s": 34.2,
+   "per_task": [
+    {
+     "task": 1,
+     "ok": false,
+     "sec": 44.91,
+     "tok": 1536
+    },
+    {
+     "task": 2,
+     "ok": false,
+     "sec": 28.47,
+     "tok": 976
+    },
+    {
+     "task": 3,
+     "ok": true,
+     "sec": 25.24,
+     "tok": 866
+    },
+    {
+     "task": 4,
+     "ok": false,
+     "sec": 14.98,
+     "tok": 512
+    },
+    {
+     "task": 5,
+     "ok": false,
+     "sec": 45.0,
+     "tok": 1536
+    },
+    {
+     "task": 6,
+     "ok": true,
+     "sec": 40.1,
+     "tok": 1372
+    },
+    {
+     "task": 7,
+     "ok": true,
+     "sec": 15.4,
+     "tok": 524
+    },
+    {
+     "task": 8,
+     "ok": true,
+     "sec": 3.95,
+     "tok": 129
+    },
+    {
+     "task": 9,
+     "ok": false,
+     "sec": 44.89,
+     "tok": 1536
+    },
+    {
+     "task": 10,
+     "ok": true,
+     "sec": 12.33,
+     "tok": 420
+    },
+    {
+     "task": 11,
+     "ok": true,
+     "sec": 43.0,
+     "tok": 1470
+    },
+    {
+     "task": 12,
+     "ok": true,
+     "sec": 11.42,
+     "tok": 388
+    }
+   ]
+  }
+ ]
+}
