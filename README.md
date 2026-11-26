@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **127** - 23 positive, 23 mixed, 26 negative, 55 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **128** - 23 positive, 23 mixed, 26 negative, 56 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -90,6 +90,7 @@ Read this before quoting a number.
 | [V100-57](results/V100-57.md) | Q8_0 KV: Confirm double decoding or attribute to noise | No double acceleration: compressed KV is slightly slower. Qwen2.5-Coder-7B Q4 (4,36 GiB), p512/n128, r=2: \| KV \| FA \| prefill pp512 \| decode tg128 \| \|---\|---\|---\|---\| \| f16 \| off \| 3265.8 ± 75.0 \| 123.95 ± 0.17 \| \| f16 \| on \| 3324.8 ±. |
 | [V100-58](results/V100-58.md) | Throughput, batching, quality | Under load, 1Cat-vLLM outperforms llama.cpp by six times. 7B GGUF, --max-model-len 4096, --gpu-memory-utilization 0.6, different prompts for all requests (otherwise prefix cache boosts the number): \| Mode \| Tokens \| Time \| Total. |
 | [V100-60](results/V100-60.md) | Gather all eight patches on their base commit. | No: all eight patches apply on 79e2e74 (HEAD 70782b2), but the claimed +34-45% does not reproduce - decode tg64 67.8 tok/s against 70.93 for the upstream build b1b770d (-4.4%), prefill 8192 +2.1% (1507.6 vs 1476.5), prefill 512 within. |
+| [V100-61](results/V100-61.md) | GQA to MHA: no pipeline in this stack carries the change | Unstated, and deliberately not a "no effect" claim: the honest statement is that the test has no carrier, not that the effect is absent. Measuring it means building a pipeline around the V100-19 extension - wiring its K/V expansion into a real model, then timing frames with it on and off. That is a ... |
 | [V100-62](results/V100-62.md) | 720p with VAE tiling: check the frames, not just the return code | **Mixed.** 720p with VAE tiling is viable — no tile seams at 1280×704 / 97 frames on 13.55 GiB. The weak point is not tiling but overall softness and blown highlights at 30 steps with the 5B model; go to 45 steps or downscale-and-upscale instead of blaming the tiler. |
 | [V100-63](results/V100-63.md) | Model loading is not the same number as harness start | **Mixed.** Any load-time number from this rig has to name the engine. For llama.cpp, 3.5-4.2 s for a 7B model is real. For vLLM on Volta the correct figure is about two minutes, paid once per server start rather than per request. Quoting "3 s" for both makes the vLLM card look 30x worse on throughput than it ... |
 | [V100-65](results/V100-65.md) | Recheck 8k and 16k and set num\_batch to 4096 | Prefill decays smoothly, but 30B can't handle 8k at ncmoe 8. Measurements llama-bench, n=0, r=1: \| Model \| pp2048 \| pp8192 \| pp16384 \| \|---\|---\|---\|---\| \| DeepSeek-Coder-V2-Lite 16B, fully on GPU \| 3462 \| 2713 \| 1976 \| \|. |
