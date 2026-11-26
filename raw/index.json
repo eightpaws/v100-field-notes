@@ -463,9 +463,9 @@
  },
  {
   "id": "V100-92",
-  "title": "PR #31802: fused quantised-KV dequant costs prefill on Volta",
-  "result_type": "unstated",
-  "verdict": "Negative for Volta: the fused path is slower here, most likely because the 25 % prefill headroom the PR recovers lives in the tensor-core MMA path, while sm_70 falls to the vector kernel where the extra fused branch just adds work. The card stays open upstream-wise - the PR may merge and change - ..."
+  "title": "Fused dequant of quantized KV",
+  "result_type": "negative",
+  "verdict": "A/B on one model (27B IQ3_S, 10.95 GiB, fits entirely) and the same flags (-p 8192 -n 8 -ctk q8_0 -ctv q8_0 -r 1): base build129 gives 799.82 TOPS prefilling, PR #31802 (HEAD 01eb64f, built under sm_70 with."
  },
  {
   "id": "V100-93",
@@ -667,9 +667,9 @@
  },
  {
   "id": "V100-144",
-  "title": "Inkling 2 Mini: Looped MoE, depth without weight growth",
+  "title": "Inkling 2 Mini: looped MoE, depth without weight growth",
   "result_type": "mixed",
-  "verdict": "The knob moves the token budget, not the speed: decode sits at 33 tok/s on all three levels, while high spends 51% more tokens per answer and is not better than medium (7/12 against 9/12). Loop depth is not a free quality dial on this card."
+  "verdict": "Mixed — the knob moves the token budget, not the speed: decode sits at 33 tok/s on all three levels, while high spends 51% more tokens per answer and is not better than medium (7/12 against 9/12). Loop depth is not a free quality dial on this card."
  },
  {
   "id": "4060ti-capabilities-vs-v100",
