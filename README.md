@@ -212,6 +212,21 @@ it costs a minute.
 Corrections are welcome: if a number does not reproduce on your card, open an issue with the command and the
 output. The card will be changed, not defended.
 
+## Related repositories
+
+| Repository | What it adds |
+|---|---|
+| [onprem-llm-closed-loop](https://github.com/eightpaws/onprem-llm-closed-loop) | the same 16 GB card in an air-gapped stand: isolation verified by a script, not by a promise |
+| [it-infra-audit-kit](https://github.com/eightpaws/it-infra-audit-kit) | read-only audit of Active Directory, Proxmox and backups, with risk levels |
+| [eightpaws](https://github.com/eightpaws) | profile: what else is published and where |
+
+This repository is the measurement layer: every number sits in a card with its command and its raw output.
+
 ## License
 
-Text and results: CC BY 4.0 — reuse with attribution.
+- Text, tables and measurement data: **CC BY 4.0** (`LICENSE`) — reuse with attribution.
+- Code in `tools/`, `projects/` and snippets inside cards: **MIT** (`LICENSE-CODE`).
+
+## Contributing
+
+A number that does not reproduce is a useful report. Open a [measurement correction](https://github.com/eightpaws/v100-field-notes/issues/new?template=measurement_correction.yml) with your command and raw output; the card will be changed, not defended. What a card must contain is described in [CONTRIBUTING.md](CONTRIBUTING.md).
