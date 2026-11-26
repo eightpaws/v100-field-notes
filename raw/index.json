@@ -367,9 +367,9 @@
  },
  {
   "id": "V100-76",
-  "title": "Ternary-Bonsai-2-27B: a 27B model in 5.95 GB, engine decides",
+  "title": "Ternary-Bonsai-2-27B: 27B in 6 GB on ternary scales",
   "result_type": "unstated",
-  "verdict": "Positive, with a correction. This card was closed once on the xyz-llama abort and claimed ternary weights refuse to run on Volta - that was wrong, and the mistake was generalising from one fork to the architecture. The PrismML build runs the same file at 67 tok/s and 0.55 pass@1, which clears both ..."
+  "verdict": "Blocked by format (24.11). File is valid (GGUF v3, 851 tensor, 5,946,648,928 bytes), but weights are compressed with type PTQ1_0, which llama.cpp does not support: the engine knows TQ1_0 and TQ2_0, not the P-variant, and fails."
  },
  {
   "id": "V100-77",
@@ -433,9 +433,9 @@
  },
  {
   "id": "V100-89",
-  "title": "colibri: a three-tier expert engine, slower than llama.cpp here",
+  "title": "Colibri: Experts GPU/RAM/NVMe",
   "result_type": "unstated",
-  "verdict": "Negative on this card: the advertised ~144 tok/s assumes a card where most experts stay resident, while 16 GB forces the cold tier into play and the tiering costs more than llama.cpp's -ncmoe offload. colibri is worth another look on a card with 32 GB or more; on the V100 the record stands."
+  "verdict": "Colibri on Qwen3-Coder-30B-A3B (int4 packed, ctx 65536) yields a decode speed of 16.6 tok/s best (5.8 / 16.2 / 16.6; average 12.9) compared to 75.5 with llama.cpp using -ncmoe - 4.5 times slower, criterion not met."
  },
  {
   "id": "V100-91",
