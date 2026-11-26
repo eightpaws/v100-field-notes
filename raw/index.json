@@ -369,7 +369,7 @@
   "id": "V100-76",
   "title": "Ternary-Bonsai-2-27B: a 27B model in 5.95 GB, engine decides",
   "result_type": "unstated",
-  "verdict": "Positive, with a correction. This card was closed once on the xyz-llama abort and claimed ternary weights refuse to run on Volta - that was wrong, and the mistake was generalising..."
+  "verdict": "Positive, with a correction. This card was closed once on the xyz-llama abort and claimed ternary weights refuse to run on Volta - that was wrong, and the mistake was generalising from one fork to the architecture. The PrismML build runs the same file at 67 tok/s and 0.55 pass@1, which clears both ..."
  },
  {
   "id": "V100-77",
@@ -435,7 +435,13 @@
   "id": "V100-89",
   "title": "colibri: a three-tier expert engine, slower than llama.cpp here",
   "result_type": "unstated",
-  "verdict": "Negative on this card: the advertised ~144 tok/s assumes a card where most experts stay resident, while 16 GB forces the cold tier into play and the tiering costs more than..."
+  "verdict": "Negative on this card: the advertised ~144 tok/s assumes a card where most experts stay resident, while 16 GB forces the cold tier into play and the tiering costs more than llama.cpp's -ncmoe offload. colibri is worth another look on a card with 32 GB or more; on the V100 the record stands."
+ },
+ {
+  "id": "V100-90",
+  "title": "FlashQLA legacy Gated DeltaNet kernel on Volta",
+  "result_type": "unstated",
+  "verdict": "Mixed, and the useful half is positive: the first V100-class validation the project asked for now exists - the SM70 kernel compiles, runs and matches the reference bit for bit. The card's own criterion (a 25 % end-to-end gain on a hybrid model) could not be tested, because neither llama.cpp nor ..."
  },
  {
   "id": "V100-91",
