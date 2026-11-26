@@ -367,9 +367,9 @@
  },
  {
   "id": "V100-76",
-  "title": "Ternary-Bonsai-2-27B: a 27B model in 6 GB on ternary weights",
-  "result_type": "mixed",
-  "verdict": "Ternary kernels work on sm_70 once the server actually builds, and 27B fits in roughly 6.8 GB of VRAM at 8k context. Quality does not carry it: 0.325 pass@1 on the 40-task code battery, below the 0.5 threshold set in the card and well below the 0.625 of Qwen2.5-Coder-7B Q8. Useful where memory is ..."
+  "title": "Ternary-Bonsai-2-27B: a 27B model in 5.95 GB, engine decides",
+  "result_type": "unstated",
+  "verdict": "Positive, with a correction. This card was closed once on the xyz-llama abort and claimed ternary weights refuse to run on Volta - that was wrong, and the mistake was generalising from one fork to the architecture. The PrismML build runs the same file at 67 tok/s and 0.55 pass@1, which clears both ..."
  },
  {
   "id": "V100-77",

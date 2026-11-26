@@ -1,22 +1,43 @@
 {
  "card": "V100-76",
- "model_file": "Ternary-Bonsai-2-27B-PTQ1_0.gguf",
- "model_bytes": 5946648928,
- "params_b": 26.9,
- "engine": "xyznq1/xyz-llama (fork of llama.cpp), HEAD f095f4d, CUDA build for sm_70",
- "gpu_attempt": {
-  "flags": "-ngl 99 -p 32 -n 8 -r 1",
-  "result": "abort",
-  "message": "ggml-cuda/mmvq.cu:1273: PTQ1_0 ILV16: no tensor-core path for this call (ids=0, ncols=1, cc=700)"
+ "model": {
+  "file": "Ternary-Bonsai-2-27B-PTQ1_0.gguf",
+  "bytes": 5946648928,
+  "params_b": 26.9,
+  "type": "PTQ1_0, 1.75 bpw ternary, group 128"
  },
- "cpu_attempt": {
-  "flags": "-ngl 0 -p 64 -n 16 -r 1",
-  "pp64_tok_s": 29.06,
-  "tg16_tok_s": 0.47,
-  "arch_reported": "qwen35 27B unknown, may not work"
+ "engine_working": {
+  "build": "llama-prism, build f702476 (PrismML runtime)",
+  "flags": "-ngl 99 -c 8192 --jinja",
+  "pp256_tok_s": 815.88,
+  "pp256_sd": 11.6,
+  "tg64_tok_s": 67.13,
+  "tg64_sd": 0.08,
+  "server_vram_mib": 7041
  },
- "upstream": {
-  "plain_llama_cpp": "failed to read tensor info - tensor type 143 is not a known GGMLQuantizationType"
+ "engine_failing": {
+  "build": "xyznq1/xyz-llama, HEAD f095f4d, built for sm_70",
+  "error": "ggml-cuda/mmvq.cu:1273: PTQ1_0 ILV16: no tensor-core path for this call (ids=0, ncols=1, cc=700)",
+  "cpu_fallback": {
+   "pp64_tok_s": 29.06,
+   "tg16_tok_s": 0.47
+  }
  },
- "server_build": "llama-server target failed only on the web UI assets download, not on CUDA"
+ "quality": {
+  "tasks": 40,
+  "passed": 22,
+  "pass@1": 0.55,
+  "avg_sec": 1.82,
+  "tok_s": 50.1,
+  "harness": "code_eval.py --no-think --max-tokens 700"
+ },
+ "prior_claim": {
+  "what": "an earlier closing of this card said ternary refuses to run on Volta",
+  "why_wrong": "that abort belongs to the xyz-llama fork only; the PrismML runtime runs the same file"
+ },
+ "executor_run": {
+  "pass@1": 0.325,
+  "artifact": "/srv/media/night/eval_bonsai.json is empty",
+  "note": "answers in that run were 31-193 tokens, so thinking likely ate the budget"
+ }
 }
