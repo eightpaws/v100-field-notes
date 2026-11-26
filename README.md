@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **138** - 24 positive, 77 mixed, 23 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **139** - 24 positive, 78 mixed, 23 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -125,6 +125,7 @@ Read this before quoting a number.
 | [V100-93](results/V100-93.md) | Two-machine pipeline: V100 writes, 4060 Ti reviews | **Negative.** Negative for the criterion. The split mode is 4.1x slower, not 15 % faster, and the margin is far outside any noise. The mechanism is visible in the numbers: the writer in mode (b) gave up 8 layers to the CPU (-ngl 12, otherwise it does not fit beside a 30B reviewer), decode fell from ~9 to ~4 ... |
 | [V100-99](results/V100-99.md) | Prompt-expander: LLM writes prompt for photographer | **Mixed.** The hypothesis was partially confirmed, and the solution depends on the prompt length. |
 | [V100-100](results/V100-100.md) | Style presets and immutable prompt part | **Positive.** Positive: three presets from one config file keep background and light within 4-9 RGB points across five seeds each, cost 10-11.5 s per frame on one 16 GB V100, and switch without code changes. The negative prompt does not protect against unwanted body parts - 1 frame in 15 had to be rejected. |
+| [V100-101](results/V100-101.md) | LoRA under the product and brand | **Mixed.** LoRA on 24 frames of a single product (640 px, rank 8, lr 1e-4): 800 steps in 16.1 min, 2400 steps in 48.9 min, peak VRAM 7.8 GiB. |
 | [V100-102](results/V100-102.md) | Image-to-image and depth: Save product, change background | **Mixed.** Confirmed partially. Diffusion (SDXL + ControlNet depth 1.0-small, strength 0.45, 25 steps) preserves the product but does not remove the background to white: background brightness is 145 out of 255, with halos around leaf edges. |
 | [V100-103](results/V100-103.md) | Batch savings: Batch vs individual loads | **Positive.** Group of four runs on one model: batch 23.9 s vs. |
 | [V100-104](results/V100-104.md) | GPU Unlock: Thawing cores 4060 Ti, +24% on 4060 | **Mixed.** Translation: "Measurement 'before' exists, unlock was not installed. |
