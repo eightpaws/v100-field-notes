@@ -23,7 +23,7 @@ Conclusion: never pick a variety on the customer's behalf when they did not name
 
 The system prompt now requires that, when the data holds several varieties of one name and no variety was given, the assistant lists the options with price and stock instead of choosing. A context hint was added too: the assistant detects that the retrieved hits share a base name and appends "the data holds several varieties of this product".
 
-Verification after the change: "is Primula belarina in stock?" answers "currently none of this variety is in stock", which is correct — all six Belarina varieties carry `В наличии: нет` in the data. "Is Adenium in stock?" answers that none of the varieties are available, also correct.
+Verification after the change: "is Primula belarina in stock?" answers "currently none of this variety is in stock", which is correct — all six Belarina varieties carry "in stock: no" in the data. "Is Adenium in stock?" answers that none of the varieties are available, also correct.
 
 ## How it was measured
 
