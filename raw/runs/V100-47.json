@@ -1,0 +1,99 @@
+{
+ "card": "V100-47",
+ "entries": [
+  {
+   "file": "v100_47_fa.log",
+   "bytes": 549,
+   "mtime": 1795493241.3941956
+  },
+  {
+   "log": "=== fa=0, ctx 4096, KV f16 ==="
+  },
+  {
+   "log": "error: invalid parameter for argument: -c"
+  },
+  {
+   "log": "error: invalid parameter for argument: -c"
+  },
+  {
+   "log": "=== fa=1, ctx 4096, KV f16 ==="
+  },
+  {
+   "log": "error: invalid parameter for argument: -c"
+  },
+  {
+   "log": "=== fa=1, ctx 2048, KV f16 ==="
+  },
+  {
+   "log": "error: invalid parameter for argument: -c"
+  },
+  {
+   "log": "=== fa=1, ctx 1024, KV f16 ==="
+  },
+  {
+   "log": "error: invalid parameter for argument: -c"
+  },
+  {
+   "log": "error: invalid parameter for argument: -c"
+  },
+  {
+   "log": "=== fa=1, ctx 4096, KV q8_0 ==="
+  },
+  {
+   "log": "error: invalid parameter for argument: -c"
+  },
+  {
+   "file": "v100_47_fa2.log",
+   "bytes": 1524,
+   "mtime": 1795493778.9960806
+  },
+  {
+   "log": "| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   0 |           pp256 |     2978.15 ± 207.72 |"
+  },
+  {
+   "log": "| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   0 |            tg64 |        187.12 ± 0.84 |"
+  },
+  {
+   "log": "=== fa=on,  p256/n64 ==="
+  },
+  {
+   "log": "| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   1 |           pp256 |     1013.38 ± 298.85 |"
+  },
+  {
+   "log": "| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   1 |            tg64 |         50.44 ± 1.83 |"
+  },
+  {
+   "log": "=== fa=on,  p2048/n64 ==="
+  },
+  {
+   "log": "| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   1 |          pp2048 |       694.04 ± 34.58 |"
+  },
+  {
+   "log": "| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   1 |            tg64 |         46.98 ± 5.43 |"
+  },
+  {
+   "log": "=== fa=off, p2048/n64 ==="
+  },
+  {
+   "log": "| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   0 |          pp2048 |      3489.62 ± 48.89 |"
+  },
+  {
+   "log": "| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   0 |            tg64 |        186.95 ± 0.81 |"
+  },
+  {
+   "log": "=== fa=on,  q8_0 KV, p256/n64 ==="
+  },
+  {
+   "log": "| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |           pp256 |      1113.18 ± 93.70 |"
+  },
+  {
+   "log": "| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            tg64 |         37.43 ± 3.28 |"
+  },
+  {
+   "log": "=== fa=off, q8_0 KV, p256/n64 ==="
+  },
+  {
+   "note": "5 lines omitted: non-English text stays on the rig"
+  }
+ ]
+}

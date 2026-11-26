@@ -1,0 +1,1647 @@
+{
+ "card": "V100-40",
+ "entries": [
+  {
+   "file": "v100_40_bench.log",
+   "bytes": 314,
+   "mtime": 1795461634.1142106
+  },
+  {
+   "log": "=== ik_llama fa=0 ==="
+  },
+  {
+   "log": "| qwen2 ?B Q4_K - Medium         |   8.37 GiB |    14.77 B | CPU        |      24 |  0 |         pp512 |     38.37 ± 0.03 |"
+  },
+  {
+   "log": "| qwen2 ?B Q4_K - Medium         |   8.37 GiB |    14.77 B | CPU        |      24 |  0 |         tg128 |      6.32 ± 0.12 |"
+  },
+  {
+   "log": "build: ac21694 (1)"
+  },
+  {
+   "log": "=== ik_llama fa=1 ==="
+  },
+  {
+   "file": "v100_40_build.log",
+   "bytes": 54888,
+   "mtime": 1795464705.0398917
+  },
+  {
+   "log": "-- The C compiler identification is GNU 13.3.0"
+  },
+  {
+   "log": "-- The CXX compiler identification is GNU 13.3.0"
+  },
+  {
+   "log": "-- Detecting C compiler ABI info"
+  },
+  {
+   "log": "-- Detecting C compiler ABI info - done"
+  },
+  {
+   "log": "-- Check for working C compiler: /usr/bin/cc - skipped"
+  },
+  {
+   "log": "-- Detecting C compile features"
+  },
+  {
+   "log": "-- Detecting C compile features - done"
+  },
+  {
+   "log": "-- Detecting CXX compiler ABI info"
+  },
+  {
+   "log": "-- Detecting CXX compiler ABI info - done"
+  },
+  {
+   "log": "-- Check for working CXX compiler: /usr/bin/c++ - skipped"
+  },
+  {
+   "log": "-- Detecting CXX compile features"
+  },
+  {
+   "log": "-- Detecting CXX compile features - done"
+  },
+  {
+   "log": "-- Found Git: /usr/bin/git (found version \"2.43.0\")"
+  },
+  {
+   "log": "-- Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+  },
+  {
+   "log": "-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success"
+  },
+  {
+   "log": "-- Found Threads: TRUE"
+  },
+  {
+   "log": "-- Found OpenMP_C: -fopenmp (found version \"4.5\")"
+  },
+  {
+   "log": "-- Found OpenMP_CXX: -fopenmp (found version \"4.5\")"
+  },
+  {
+   "log": "-- Found OpenMP: TRUE (found version \"4.5\")"
+  },
+  {
+   "log": "-- OpenMP found"
+  },
+  {
+   "log": "-- Using optimized iqk matrix multiplications"
+  },
+  {
+   "log": "-- Enabling IQK Flash Attention kernels"
+  },
+  {
+   "log": "-- Including all IQK FA kernels"
+  },
+  {
+   "log": "-- Found CUDAToolkit: /usr/lib/nvidia-cuda-toolkit/include (found version \"12.0.140\")"
+  },
+  {
+   "log": "-- CUDA found"
+  },
+  {
+   "log": "-- The CUDA compiler identification is NVIDIA 12.0.140 with host compiler GNU 12.4.0"
+  },
+  {
+   "log": "-- Detecting CUDA compiler ABI info"
+  },
+  {
+   "log": "-- Detecting CUDA compiler ABI info - done"
+  },
+  {
+   "log": "-- Check for working CUDA compiler: /usr/lib/nvidia-cuda-toolkit/bin/nvcc - skipped"
+  },
+  {
+   "log": "-- Detecting CUDA compile features"
+  },
+  {
+   "log": "-- Detecting CUDA compile features - done"
+  },
+  {
+   "log": "-- Using CUDA architectures: 70"
+  },
+  {
+   "log": "-- Could NOT find NCCL (missing: NCCL_INCLUDE_DIRS NCCL_LIBRARIES)"
+  },
+  {
+   "log": "==================== NCCL NOT found -> building without NCCL support"
+  },
+  {
+   "log": "-- CUDA Toolkit: 12.0.140"
+  },
+  {
+   "log": "-- CUDA host compiler is GNU 12.4.0"
+  },
+  {
+   "log": "-- Warning: ccache not found - consider installing it for faster compilation or disable this warning with GGML_CCACHE=OFF"
+  },
+  {
+   "log": "-- CMAKE_SYSTEM_PROCESSOR: x86_64"
+  },
+  {
+   "log": "-- x86 detected"
+  },
+  {
+   "log": "-- ARCH_FLAGS = -march=native"
+  },
+  {
+   "log": "TARGET_SRCS contains: /home/hermes/ikllama/examples/server/public/index.html.gz"
+  },
+  {
+   "log": "TARGET_SRCS contains: /home/hermes/ikllama/examples/server/public_llamacpp/index_llamacpp.html.gz"
+  },
+  {
+   "log": "TARGET_SRCS contains: /home/hermes/ikllama/examples/server/public_llamacpp/loading.html"
+  },
+  {
+   "log": "-- Configuring done (4.2s)"
+  },
+  {
+   "log": "-- Generating done (0.3s)"
+  },
+  {
+   "log": "-- Build files have been written to: /home/hermes/ikllama/build"
+  },
+  {
+   "log": "[  0%] Building CXX object common/CMakeFiles/build_info.dir/build-info.cpp.o"
+  },
+  {
+   "log": "[  0%] Building C object ggml/src/CMakeFiles/ggml.dir/ggml.c.o"
+  },
+  {
+   "log": "[  1%] Building C object ggml/src/CMakeFiles/ggml.dir/ggml-alloc.c.o"
+  },
+  {
+   "log": "[  1%] Building CXX object ggml/src/CMakeFiles/ggml.dir/ggml-moe-prefetch.cpp.o"
+  },
+  {
+   "log": "[  1%] Building CXX object ggml/src/CMakeFiles/ggml.dir/ggml-backend.cpp.o"
+  },
+  {
+   "log": "[  1%] Building C object ggml/src/CMakeFiles/ggml.dir/ggml-quants.c.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/acc.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/add-id.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/arange.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/argsort.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/argmax.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/binbcast.cu.o"
+  },
+  {
+   "log": "[  2%] Built target build_info"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/blend.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/clamp.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/concat.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/conv-transpose-1d.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/conv2d-dw.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/conv2d.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/convert.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/cpy.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/cumsum.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/delta-net.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/diag.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/diagmask.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/dmmv.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/ds4_comp.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/dsa_attn.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/f8.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/fattn-mma-f16.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/fattn-new-mma.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/fattn-tile-f16.cu.o"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/mm-f8-lt.cuh(9): error: function \"__bfloat1622float2\" has already been defined"
+  },
+  {
+   "log": "1 error detected in the compilation of \"/home/hermes/ikllama/ggml/src/ggml-cuda/f8.cu\"."
+  },
+  {
+   "log": "gmake[3]: *** [ggml/src/CMakeFiles/ggml.dir/build.make:443: ggml/src/CMakeFiles/ggml.dir/ggml-cuda/f8.cu.o] Error 2"
+  },
+  {
+   "log": "gmake[3]: *** Waiting for unfinished jobs...."
+  },
+  {
+   "log": "gmake[2]: *** [CMakeFiles/Makefile2:2074: ggml/src/CMakeFiles/ggml.dir/all] Error 2"
+  },
+  {
+   "log": "gmake[1]: *** [CMakeFiles/Makefile2:3524: examples/llama-bench/CMakeFiles/llama-bench.dir/rule] Error 2"
+  },
+  {
+   "log": "gmake: *** [Makefile:1089: llama-bench] Error 2"
+  },
+  {
+   "log": "BUILD_FAIL"
+  },
+  {
+   "log": "[  0%] Built target build_info"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/fattn-tile-f32.cu.o"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/f8.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/fma.cu.o"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/fattn-vec-f16.cu.o"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/fattn-vec-f32.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/fill.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/fattn.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/getrows.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/im2col.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/fattn-wmma-f16.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/fattn-tile-new.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/hadamard.cu.o"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/mm-f8-lt.cuh(94): error: identifier \"__bfloat1622float2\" is undefined"
+  },
+  {
+   "log": "1 error detected in the compilation of \"/home/hermes/ikllama/ggml/src/ggml-cuda/f8.cu\"."
+  },
+  {
+   "log": "gmake[3]: *** [ggml/src/CMakeFiles/ggml.dir/build.make:443: ggml/src/CMakeFiles/ggml.dir/ggml-cuda/f8.cu.o] Error 1"
+  },
+  {
+   "log": "gmake[3]: *** Waiting for unfinished jobs...."
+  },
+  {
+   "log": "gmake[2]: *** [CMakeFiles/Makefile2:2074: ggml/src/CMakeFiles/ggml.dir/all] Error 2"
+  },
+  {
+   "log": "gmake[1]: *** [CMakeFiles/Makefile2:3524: examples/llama-bench/CMakeFiles/llama-bench.dir/rule] Error 2"
+  },
+  {
+   "log": "gmake: *** [Makefile:1089: llama-bench] Error 2"
+  },
+  {
+   "log": "BUILD_FAIL2"
+  },
+  {
+   "log": "[  0%] Built target build_info"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/f8.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/inkling2.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/indexer_topk.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/kt-encoder.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/mmvq.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/ks-encoder.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/mmq.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/kda.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/latent_attn.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/mmq_id.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/multiadd.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/iqk_mmvq.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/norm.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/pad.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/nvfp4.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/pool1d.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/pool2d.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/quantize.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/quantize_id.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/reduce.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/rope.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/scale.cu.o"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/mm-f8.cuh: In function ‘void mul_mat_f8_tma(int, int, int, const char*, const char*, float*, nv_bfloat16*, uint8_t*, float*, int, f8_moe_routing, const char*, CUtensorMap, CUtensorMap, CUtensorMap, CUtensorMap, int, int, int, const float*) [with int RN = 4; bool UG = true; bool BLK = true; bool ADD = false]’:"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/mm-f8.cuh:655:1: note: the ABI for passing parameters with 64-byte alignment has changed in GCC 4.6"
+  },
+  {
+   "log": "  655 | static __global__ void __launch_bounds__(256, 1) mul_mat_f8_tma(int K, int M, int expert_rows,"
+  },
+  {
+   "log": "      | ^~~~~~~~~~~~~~"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/set-rows.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/sinkhorn.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/softcap.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/softmax.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/solve_tri.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/ssm-conv-m2.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/ssm-conv.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/ssm-scan.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/sumrows.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/topk-moe.cu.o"
+  },
+  {
+   "log": "[  8%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/tri.cu.o"
+  },
+  {
+   "log": "[  8%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/tsembd.cu.o"
+  },
+  {
+   "log": "[  8%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/unary.cu.o"
+  },
+  {
+   "log": "[  8%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/upscale.cu.o"
+  },
+  {
+   "log": "[  8%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda.cu.o"
+  },
+  {
+   "log": "[  8%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-wmma-f16-instance-kqfloat-cpb16.cu.o"
+  },
+  {
+   "log": "[  9%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-wmma-f16-instance-kqfloat-cpb32.cu.o"
+  },
+  {
+   "log": "[  9%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-wmma-f16-instance-kqhalf-cpb16.cu.o"
+  },
+  {
+   "log": "[  9%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-wmma-f16-instance-kqhalf-cpb32.cu.o"
+  },
+  {
+   "log": "[  9%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-wmma-f16-instance-kqhalf-cpb8.cu.o"
+  },
+  {
+   "log": "[  9%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_1-ncols2_8.cu.o"
+  },
+  {
+   "log": "[  9%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_16-ncols2_1.cu.o"
+  },
+  {
+   "log": "[ 10%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_16-ncols2_2.cu.o"
+  },
+  {
+   "log": "[ 10%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_16-ncols2_4.cu.o"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda.cu(3127): error: identifier \"__bfloat1622float2\" is undefined"
+  },
+  {
+   "log": "1 error detected in the compilation of \"/home/hermes/ikllama/ggml/src/ggml-cuda.cu\"."
+  },
+  {
+   "log": "[ 10%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_2-ncols2_4.cu.o"
+  },
+  {
+   "log": "gmake[3]: *** [ggml/src/CMakeFiles/ggml.dir/build.make:1143: ggml/src/CMakeFiles/ggml.dir/ggml-cuda.cu.o] Error 1"
+  },
+  {
+   "log": "gmake[3]: *** Waiting for unfinished jobs...."
+  },
+  {
+   "log": "gmake[2]: *** [CMakeFiles/Makefile2:2074: ggml/src/CMakeFiles/ggml.dir/all] Error 2"
+  },
+  {
+   "log": "gmake[1]: *** [CMakeFiles/Makefile2:3524: examples/llama-bench/CMakeFiles/llama-bench.dir/rule] Error 2"
+  },
+  {
+   "log": "gmake: *** [Makefile:1089: llama-bench] Error 2"
+  },
+  {
+   "log": "BUILD_FAIL3"
+  },
+  {
+   "log": "[  0%] Built target build_info"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/f8.cu.o"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_32-ncols2_2.cu.o"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda.cu.o"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_32-ncols2_1.cu.o"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_4-ncols2_4.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_4-ncols2_8.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_4-ncols2_2.cu.o"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_2-ncols2_8.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_64-ncols2_1.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_8-ncols2_4.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_8-ncols2_2.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_8-ncols2_1.cu.o"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda.cu(3127): error: identifier \"__bfloat1622float2\" is undefined"
+  },
+  {
+   "log": "1 error detected in the compilation of \"/home/hermes/ikllama/ggml/src/ggml-cuda.cu\"."
+  },
+  {
+   "log": "gmake[3]: *** [ggml/src/CMakeFiles/ggml.dir/build.make:1143: ggml/src/CMakeFiles/ggml.dir/ggml-cuda.cu.o] Error 1"
+  },
+  {
+   "log": "gmake[3]: *** Waiting for unfinished jobs...."
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/mm-f8.cuh: In function ‘void mul_mat_f8_tma(int, int, int, const char*, const char*, float*, nv_bfloat16*, uint8_t*, float*, int, f8_moe_routing, const char*, CUtensorMap, CUtensorMap, CUtensorMap, CUtensorMap, int, int, int, const float*) [with int RN = 4; bool UG = true; bool BLK = true; bool ADD = false]’:"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/mm-f8.cuh:655:1: note: the ABI for passing parameters with 64-byte alignment has changed in GCC 4.6"
+  },
+  {
+   "log": "  655 | static __global__ void __launch_bounds__(256, 1) mul_mat_f8_tma(int K, int M, int expert_rows,"
+  },
+  {
+   "log": "      | ^~~~~~~~~~~~~~"
+  },
+  {
+   "log": "gmake[2]: *** [CMakeFiles/Makefile2:2074: ggml/src/CMakeFiles/ggml.dir/all] Error 2"
+  },
+  {
+   "log": "gmake[1]: *** [CMakeFiles/Makefile2:3524: examples/llama-bench/CMakeFiles/llama-bench.dir/rule] Error 2"
+  },
+  {
+   "log": "gmake: *** [Makefile:1089: llama-bench] Error 2"
+  },
+  {
+   "log": "BUILD_FAIL4"
+  },
+  {
+   "log": "[  0%] Built target build_info"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda.cu.o"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq1_kt_id.cu.o"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-mma-f16-instance-ncols1_8-ncols2_8.cu.o"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq1_s.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq1_s_r4.cu.o"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq1_s_id.cu.o"
+  },
+  {
+   "log": "[  0%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq1_kt.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_kl.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_k_id.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_k.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_kl_id.cu.o"
+  },
+  {
+   "log": "[  1%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_k_r4.cu.o"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq.cuh(440): warning #177-D: variable \"shift\" was declared but never referenced"
+  },
+  {
+   "log": "          detected during:"
+  },
+  {
+   "log": "            instantiation of class \"mmq_type_traits<mmq_x, mmq_y, nwarps, need_check, GGML_TYPE_IQ1_S_R4> [with mmq_x=8, mmq_y=128, nwarps=8, need_check=false]\""
+  },
+  {
+   "log": "(4597): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_process_tile<type,mmq_x,nwarps,need_check,fixup,has_tail>(const char *, const char *, float *, float *, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, nwarps=8, need_check=false, fixup=false, has_tail=false]\""
+  },
+  {
+   "log": "(4753): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q<type,mmq_x,nwarps,need_check,has_tail>(const char *, const char *, float *, float *, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, nwarps=8, need_check=false, has_tail=false]\""
+  },
+  {
+   "log": "(4893): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_impl<type,mmq_x,has_tail>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, has_tail=false]\""
+  },
+  {
+   "log": "(4951): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q<type,mmq_x>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8]\""
+  },
+  {
+   "log": "(4988): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_case<type>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/mmq-instance-iq1_s_r4.cu(5): here"
+  },
+  {
+   "log": "Remark: The warnings can be suppressed with \"-diag-suppress <warning-number>\""
+  },
+  {
+   "log": "          detected during:"
+  },
+  {
+   "log": "            instantiation of class \"mmq_type_traits<mmq_x, mmq_y, nwarps, need_check, GGML_TYPE_IQ1_S_R4> [with mmq_x=8, mmq_y=128, nwarps=8, need_check=false]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq.cuh(4597): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_process_tile<type,mmq_x,nwarps,need_check,fixup,has_tail>(const char *, const char *, float *, float *, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, nwarps=8, need_check=false, fixup=false, has_tail=false]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq.cuh(4753): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q<type,mmq_x,nwarps,need_check,has_tail>(const char *, const char *, float *, float *, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, nwarps=8, need_check=false, has_tail=false]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq.cuh(4893): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_impl<type,mmq_x,has_tail>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, has_tail=false]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq.cuh(4951): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q<type,mmq_x>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq.cuh(4988): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_case<type>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/mmq-instance-iq1_s_r4.cu(5): here"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq.cuh(462): warning #177-D: variable \"ir\" was declared but never referenced"
+  },
+  {
+   "log": "          detected during:"
+  },
+  {
+   "log": "            instantiation of class \"mmq_type_traits<mmq_x, mmq_y, nwarps, need_check, GGML_TYPE_IQ1_S_R4> [with mmq_x=8, mmq_y=128, nwarps=8, need_check=false]\""
+  },
+  {
+   "log": "(4597): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_process_tile<type,mmq_x,nwarps,need_check,fixup,has_tail>(const char *, const char *, float *, float *, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, nwarps=8, need_check=false, fixup=false, has_tail=false]\""
+  },
+  {
+   "log": "(4753): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q<type,mmq_x,nwarps,need_check,has_tail>(const char *, const char *, float *, float *, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, nwarps=8, need_check=false, has_tail=false]\""
+  },
+  {
+   "log": "(4893): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_impl<type,mmq_x,has_tail>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, has_tail=false]\""
+  },
+  {
+   "log": "(4951): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q<type,mmq_x>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8]\""
+  },
+  {
+   "log": "(4988): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_case<type>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/mmq-instance-iq1_s_r4.cu(5): here"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq.cuh(465): warning #177-D: variable \"bxi\" was declared but never referenced"
+  },
+  {
+   "log": "          detected during:"
+  },
+  {
+   "log": "            instantiation of class \"mmq_type_traits<mmq_x, mmq_y, nwarps, need_check, GGML_TYPE_IQ1_S_R4> [with mmq_x=8, mmq_y=128, nwarps=8, need_check=false]\""
+  },
+  {
+   "log": "(4597): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_process_tile<type,mmq_x,nwarps,need_check,fixup,has_tail>(const char *, const char *, float *, float *, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, nwarps=8, need_check=false, fixup=false, has_tail=false]\""
+  },
+  {
+   "log": "(4753): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q<type,mmq_x,nwarps,need_check,has_tail>(const char *, const char *, float *, float *, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, nwarps=8, need_check=false, has_tail=false]\""
+  },
+  {
+   "log": "(4893): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_impl<type,mmq_x,has_tail>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, has_tail=false]\""
+  },
+  {
+   "log": "(4951): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q<type,mmq_x>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8]\""
+  },
+  {
+   "log": "(4988): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_case<type>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/mmq-instance-iq1_s_r4.cu(5): here"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq.cuh(417): warning #177-D: variable \"x_df\" was declared but never referenced"
+  },
+  {
+   "log": "          detected during:"
+  },
+  {
+   "log": "            instantiation of class \"mmq_type_traits<mmq_x, mmq_y, nwarps, need_check, GGML_TYPE_IQ1_S_R4> [with mmq_x=8, mmq_y=128, nwarps=8, need_check=false]\""
+  },
+  {
+   "log": "(4597): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_process_tile<type,mmq_x,nwarps,need_check,fixup,has_tail>(const char *, const char *, float *, float *, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, nwarps=8, need_check=false, fixup=false, has_tail=false]\""
+  },
+  {
+   "log": "(4753): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q<type,mmq_x,nwarps,need_check,has_tail>(const char *, const char *, float *, float *, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, nwarps=8, need_check=false, has_tail=false]\""
+  },
+  {
+   "log": "(4893): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_impl<type,mmq_x,has_tail>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, has_tail=false]\""
+  },
+  {
+   "log": "(4951): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q<type,mmq_x>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8]\""
+  },
+  {
+   "log": "(4988): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_case<type>(ggml_backend_cuda_context &, const mmq_args &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/mmq-instance-iq1_s_r4.cu(5): here"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq_id_common.cuh(3444): warning #177-D: variable \"shift\" was declared but never referenced"
+  },
+  {
+   "log": "          detected during:"
+  },
+  {
+   "log": "            instantiation of class \"mmq_type_traits_id<mmq_x, mmq_y, need_check, GGML_TYPE_IQ1_S_R4> [with mmq_x=8, mmq_y=128, need_check=false]\""
+  },
+  {
+   "log": "(3879): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_process_tile_id<type,mmq_x,need_check,fixup,has_tail>(const char *, const int *, const int *, float *, float *, int, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, need_check=false, fixup=false, has_tail=false]\""
+  },
+  {
+   "log": "(4152): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_id<type,mmq_x,need_check,has_tail>(const char *, const int *, const int32_t *, const int32_t *, float *, float *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, need_check=false, has_tail=false]\""
+  },
+  {
+   "log": "(4411): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_id_impl<type,mmq_x,has_tail>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, has_tail=false]\""
+  },
+  {
+   "log": "(4504): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_id<type,mmq_x>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8]\""
+  },
+  {
+   "log": "(4538): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_case_id<type>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/mmq-instance-iq1_s_id.cu(6): here"
+  },
+  {
+   "log": "Remark: The warnings can be suppressed with \"-diag-suppress <warning-number>\""
+  },
+  {
+   "log": "          detected during:"
+  },
+  {
+   "log": "            instantiation of class \"mmq_type_traits_id<mmq_x, mmq_y, need_check, GGML_TYPE_IQ1_S_R4> [with mmq_x=8, mmq_y=128, need_check=false]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq_id_common.cuh(3879): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_process_tile_id<type,mmq_x,need_check,fixup,has_tail>(const char *, const int *, const int *, float *, float *, int, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, need_check=false, fixup=false, has_tail=false]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq_id_common.cuh(4152): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_id<type,mmq_x,need_check,has_tail>(const char *, const int *, const int32_t *, const int32_t *, float *, float *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, need_check=false, has_tail=false]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq_id_common.cuh(4411): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_id_impl<type,mmq_x,has_tail>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, has_tail=false]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq_id_common.cuh(4504): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_id<type,mmq_x>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq_id_common.cuh(4538): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_case_id<type>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/mmq-instance-iq1_s_id.cu(6): here"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq_id_common.cuh(3466): warning #177-D: variable \"ir\" was declared but never referenced"
+  },
+  {
+   "log": "          detected during:"
+  },
+  {
+   "log": "            instantiation of class \"mmq_type_traits_id<mmq_x, mmq_y, need_check, GGML_TYPE_IQ1_S_R4> [with mmq_x=8, mmq_y=128, need_check=false]\""
+  },
+  {
+   "log": "(3879): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_process_tile_id<type,mmq_x,need_check,fixup,has_tail>(const char *, const int *, const int *, float *, float *, int, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, need_check=false, fixup=false, has_tail=false]\""
+  },
+  {
+   "log": "(4152): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_id<type,mmq_x,need_check,has_tail>(const char *, const int *, const int32_t *, const int32_t *, float *, float *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, need_check=false, has_tail=false]\""
+  },
+  {
+   "log": "(4411): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_id_impl<type,mmq_x,has_tail>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, has_tail=false]\""
+  },
+  {
+   "log": "(4504): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_id<type,mmq_x>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8]\""
+  },
+  {
+   "log": "(4538): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_case_id<type>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/mmq-instance-iq1_s_id.cu(6): here"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq_id_common.cuh(3469): warning #177-D: variable \"bxi\" was declared but never referenced"
+  },
+  {
+   "log": "          detected during:"
+  },
+  {
+   "log": "            instantiation of class \"mmq_type_traits_id<mmq_x, mmq_y, need_check, GGML_TYPE_IQ1_S_R4> [with mmq_x=8, mmq_y=128, need_check=false]\""
+  },
+  {
+   "log": "(3879): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_process_tile_id<type,mmq_x,need_check,fixup,has_tail>(const char *, const int *, const int *, float *, float *, int, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, need_check=false, fixup=false, has_tail=false]\""
+  },
+  {
+   "log": "(4152): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_id<type,mmq_x,need_check,has_tail>(const char *, const int *, const int32_t *, const int32_t *, float *, float *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, need_check=false, has_tail=false]\""
+  },
+  {
+   "log": "(4411): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_id_impl<type,mmq_x,has_tail>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, has_tail=false]\""
+  },
+  {
+   "log": "(4504): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_id<type,mmq_x>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8]\""
+  },
+  {
+   "log": "(4538): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_case_id<type>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/mmq-instance-iq1_s_id.cu(6): here"
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/../mmq_id_common.cuh(3421): warning #177-D: variable \"x_df\" was declared but never referenced"
+  },
+  {
+   "log": "          detected during:"
+  },
+  {
+   "log": "            instantiation of class \"mmq_type_traits_id<mmq_x, mmq_y, need_check, GGML_TYPE_IQ1_S_R4> [with mmq_x=8, mmq_y=128, need_check=false]\""
+  },
+  {
+   "log": "(3879): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_process_tile_id<type,mmq_x,need_check,fixup,has_tail>(const char *, const int *, const int *, float *, float *, int, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, need_check=false, fixup=false, has_tail=false]\""
+  },
+  {
+   "log": "(4152): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_id<type,mmq_x,need_check,has_tail>(const char *, const int *, const int32_t *, const int32_t *, float *, float *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, need_check=false, has_tail=false]\""
+  },
+  {
+   "log": "(4411): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_id_impl<type,mmq_x,has_tail>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8, has_tail=false]\""
+  },
+  {
+   "log": "(4504): here"
+  },
+  {
+   "log": "            instantiation of \"void launch_mul_mat_q_id<type,mmq_x>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4, mmq_x=8]\""
+  },
+  {
+   "log": "(4538): here"
+  },
+  {
+   "log": "            instantiation of \"void mul_mat_q_case_id<type>(ggml_backend_cuda_context &, const mmq_args_id &, cudaStream_t) [with type=GGML_TYPE_IQ1_S_R4]\""
+  },
+  {
+   "log": "/home/hermes/ikllama/ggml/src/ggml-cuda/template-instances/mmq-instance-iq1_s_id.cu(6): here"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_ks.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_ks_id.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_kt.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_kt_id.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_s.cu.o"
+  },
+  {
+   "log": "[  2%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_s_id.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_xs.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_xs_id.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_xxs.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq2_xxs_id.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq3_k.cu.o"
+  },
+  {
+   "log": "[  4%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq3_k_id.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq3_k_r4.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq3_ks.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq3_ks_id.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq3_ks_r16.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq3_kt.cu.o"
+  },
+  {
+   "log": "[  5%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq3_kt_id.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq3_s.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq3_s_id.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq3_xxs.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq3_xxs_id.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_k.cu.o"
+  },
+  {
+   "log": "[  6%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_k_id.cu.o"
+  },
+  {
+   "log": "[  8%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_k_r4.cu.o"
+  },
+  {
+   "log": "[  8%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_ks.cu.o"
+  },
+  {
+   "log": "[  8%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_ks_id.cu.o"
+  },
+  {
+   "log": "[  8%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_ks_r16.cu.o"
+  },
+  {
+   "log": "[  8%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_ks_r16_id.cu.o"
+  },
+  {
+   "log": "[  9%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_ks_r4.cu.o"
+  },
+  {
+   "log": "[  9%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_kss.cu.o"
+  },
+  {
+   "log": "[  9%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_kt.cu.o"
+  },
+  {
+   "log": "[  9%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_kt_id.cu.o"
+  },
+  {
+   "log": "[  9%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_nl.cu.o"
+  },
+  {
+   "log": "[  9%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_nl_id.cu.o"
+  },
+  {
+   "log": "[ 10%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_xs.cu.o"
+  },
+  {
+   "log": "[ 10%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq4_xs_id.cu.o"
+  },
+  {
+   "log": "[ 10%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq5_k.cu.o"
+  },
+  {
+   "log": "[ 10%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq5_k_id.cu.o"
+  },
+  {
+   "log": "[ 10%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq5_k_r4.cu.o"
+  },
+  {
+   "log": "[ 10%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq5_ks.cu.o"
+  },
+  {
+   "log": "[ 12%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq5_ks_id.cu.o"
+  },
+  {
+   "log": "[ 12%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq5_ks_r16.cu.o"
+  },
+  {
+   "log": "[ 12%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq5_ks_r16_id.cu.o"
+  },
+  {
+   "log": "[ 12%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq5_ks_r4.cu.o"
+  },
+  {
+   "log": "[ 12%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq6_k.cu.o"
+  },
+  {
+   "log": "[ 12%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-iq6_k_id.cu.o"
+  },
+  {
+   "log": "[ 13%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-nvfp4_ks.cu.o"
+  },
+  {
+   "log": "[ 13%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-nvfp4_ks_id.cu.o"
+  },
+  {
+   "log": "[ 13%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-pq2_0.cu.o"
+  },
+  {
+   "log": "[ 13%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q2_0.cu.o"
+  },
+  {
+   "log": "[ 13%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q2_0_id.cu.o"
+  },
+  {
+   "log": "[ 13%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q2_k.cu.o"
+  },
+  {
+   "log": "[ 15%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q2_k_id.cu.o"
+  },
+  {
+   "log": "[ 15%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q3_k.cu.o"
+  },
+  {
+   "log": "[ 15%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q3_k_id.cu.o"
+  },
+  {
+   "log": "[ 15%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q4_0.cu.o"
+  },
+  {
+   "log": "[ 15%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q4_0_id.cu.o"
+  },
+  {
+   "log": "[ 15%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q4_1.cu.o"
+  },
+  {
+   "log": "[ 16%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q4_1_id.cu.o"
+  },
+  {
+   "log": "[ 16%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q4_k.cu.o"
+  },
+  {
+   "log": "[ 16%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q4_k_id.cu.o"
+  },
+  {
+   "log": "[ 16%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q5_0.cu.o"
+  },
+  {
+   "log": "[ 16%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q5_0_id.cu.o"
+  },
+  {
+   "log": "[ 16%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q5_1.cu.o"
+  },
+  {
+   "log": "[ 17%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q5_1_id.cu.o"
+  },
+  {
+   "log": "[ 17%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q5_k.cu.o"
+  },
+  {
+   "log": "[ 17%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q5_k_id.cu.o"
+  },
+  {
+   "log": "[ 17%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q6_0.cu.o"
+  },
+  {
+   "log": "[ 17%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q6_0_id.cu.o"
+  },
+  {
+   "log": "[ 17%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q6_k.cu.o"
+  },
+  {
+   "log": "[ 19%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q6_k_id.cu.o"
+  },
+  {
+   "log": "[ 19%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q8_0.cu.o"
+  },
+  {
+   "log": "[ 19%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-q8_0_id.cu.o"
+  },
+  {
+   "log": "[ 19%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-tq2_t.cu.o"
+  },
+  {
+   "log": "[ 19%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-tq2_t_id.cu.o"
+  },
+  {
+   "log": "[ 19%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-tqk6.cu.o"
+  },
+  {
+   "log": "[ 20%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-tqk6_id.cu.o"
+  },
+  {
+   "log": "[ 20%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-tqk7.cu.o"
+  },
+  {
+   "log": "[ 20%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-tqk7_id.cu.o"
+  },
+  {
+   "log": "[ 20%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-tqp5.cu.o"
+  },
+  {
+   "log": "[ 20%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-tqp5_id.cu.o"
+  },
+  {
+   "log": "[ 20%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-tqp6.cu.o"
+  },
+  {
+   "log": "[ 21%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-tqp6_id.cu.o"
+  },
+  {
+   "log": "[ 21%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-tqp7.cu.o"
+  },
+  {
+   "log": "[ 21%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmq-instance-tqp7_id.cu.o"
+  },
+  {
+   "log": "[ 21%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq1_bn.cu.o"
+  },
+  {
+   "log": "[ 21%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq1_kt.cu.o"
+  },
+  {
+   "log": "[ 21%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq1_m.cu.o"
+  },
+  {
+   "log": "[ 23%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq1_m_r4.cu.o"
+  },
+  {
+   "log": "[ 23%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq1_s.cu.o"
+  },
+  {
+   "log": "[ 23%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq1_s_r4.cu.o"
+  },
+  {
+   "log": "[ 23%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq2_bn.cu.o"
+  },
+  {
+   "log": "[ 23%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq2_k.cu.o"
+  },
+  {
+   "log": "[ 23%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq2_k_r4.cu.o"
+  },
+  {
+   "log": "[ 24%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq2_kl.cu.o"
+  },
+  {
+   "log": "[ 24%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq2_ks.cu.o"
+  },
+  {
+   "log": "[ 24%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq2_kt.cu.o"
+  },
+  {
+   "log": "[ 24%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq2_s.cu.o"
+  },
+  {
+   "log": "[ 24%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq2_xs.cu.o"
+  },
+  {
+   "log": "[ 24%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq2_xxs.cu.o"
+  },
+  {
+   "log": "[ 26%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq3_k.cu.o"
+  },
+  {
+   "log": "[ 26%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq3_k_r4.cu.o"
+  },
+  {
+   "log": "[ 26%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq3_ks.cu.o"
+  },
+  {
+   "log": "[ 26%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq3_ks_r16.cu.o"
+  },
+  {
+   "log": "[ 26%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq3_kt.cu.o"
+  },
+  {
+   "log": "[ 26%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq3_s.cu.o"
+  },
+  {
+   "log": "[ 27%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq3_xxs.cu.o"
+  },
+  {
+   "log": "[ 27%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq4_k.cu.o"
+  },
+  {
+   "log": "[ 27%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq4_k_r4.cu.o"
+  },
+  {
+   "log": "[ 27%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq4_ks.cu.o"
+  },
+  {
+   "log": "[ 27%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq4_ks_r16.cu.o"
+  },
+  {
+   "log": "[ 28%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq4_ks_r4.cu.o"
+  },
+  {
+   "log": "[ 28%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq4_kss.cu.o"
+  },
+  {
+   "log": "[ 28%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq4_kt.cu.o"
+  },
+  {
+   "log": "[ 28%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq4_nl.cu.o"
+  },
+  {
+   "log": "[ 28%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq4_xs.cu.o"
+  },
+  {
+   "log": "[ 28%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq5_k.cu.o"
+  },
+  {
+   "log": "[ 30%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq5_k_r4.cu.o"
+  },
+  {
+   "log": "[ 30%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq5_ks.cu.o"
+  },
+  {
+   "log": "[ 30%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq5_ks_r16.cu.o"
+  },
+  {
+   "log": "[ 30%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq5_ks_r4.cu.o"
+  },
+  {
+   "log": "[ 30%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-iq6_k.cu.o"
+  },
+  {
+   "log": "[ 30%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-mxfp4.cu.o"
+  },
+  {
+   "log": "[ 31%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-nvfp4_ks.cu.o"
+  },
+  {
+   "log": "[ 31%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-q2_0.cu.o"
+  },
+  {
+   "log": "[ 31%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-q2_K.cu.o"
+  },
+  {
+   "log": "[ 31%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-q3_K.cu.o"
+  },
+  {
+   "log": "[ 31%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-q4_0.cu.o"
+  },
+  {
+   "log": "[ 31%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-q4_1.cu.o"
+  },
+  {
+   "log": "[ 32%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-q4_K.cu.o"
+  },
+  {
+   "log": "[ 32%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-q5_0.cu.o"
+  },
+  {
+   "log": "[ 32%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-q5_1.cu.o"
+  },
+  {
+   "log": "[ 32%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-q5_K.cu.o"
+  },
+  {
+   "log": "[ 32%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-q6_0.cu.o"
+  },
+  {
+   "log": "[ 32%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-q6_K.cu.o"
+  },
+  {
+   "log": "[ 34%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-q8_0.cu.o"
+  },
+  {
+   "log": "[ 34%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-tq2_t.cu.o"
+  },
+  {
+   "log": "[ 34%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-tqk6.cu.o"
+  },
+  {
+   "log": "[ 34%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-tqk7.cu.o"
+  },
+  {
+   "log": "[ 34%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-tqp5.cu.o"
+  },
+  {
+   "log": "[ 34%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-tqp6.cu.o"
+  },
+  {
+   "log": "[ 35%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/mmvq-instance-tqp7.cu.o"
+  },
+  {
+   "log": "[ 35%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f16-instance-hs128-q4_0-q4_0.cu.o"
+  },
+  {
+   "log": "[ 35%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f32-instance-hs128-q4_0-q4_0.cu.o"
+  },
+  {
+   "log": "[ 35%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f16-instance-hs128-q8_0-q8_0.cu.o"
+  },
+  {
+   "log": "[ 35%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f16-instance-hs192-q8_0-q8_0.cu.o"
+  },
+  {
+   "log": "[ 35%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f16-instance-hs256-q8_0-q8_0.cu.o"
+  },
+  {
+   "log": "[ 36%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f32-instance-hs192-q8_0-q8_0.cu.o"
+  },
+  {
+   "log": "[ 36%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f32-instance-hs128-q8_0-q8_0.cu.o"
+  },
+  {
+   "log": "[ 36%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f32-instance-hs256-q8_0-q8_0.cu.o"
+  },
+  {
+   "log": "[ 36%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f32-instance-hs576-q8_0-q8_0.cu.o"
+  },
+  {
+   "log": "[ 36%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f16-instance-hs128-f16-f16.cu.o"
+  },
+  {
+   "log": "[ 36%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f16-instance-hs192-f16-f16.cu.o"
+  },
+  {
+   "log": "[ 38%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f16-instance-hs256-f16-f16.cu.o"
+  },
+  {
+   "log": "[ 38%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f16-instance-hs64-f16-f16.cu.o"
+  },
+  {
+   "log": "[ 38%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f32-instance-hs128-f16-f16.cu.o"
+  },
+  {
+   "log": "[ 38%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f32-instance-hs192-f16-f16.cu.o"
+  },
+  {
+   "log": "[ 38%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f32-instance-hs256-f16-f16.cu.o"
+  },
+  {
+   "log": "[ 38%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f32-instance-hs576-f16-f16.cu.o"
+  },
+  {
+   "log": "[ 39%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f32-instance-hs64-f16-f16.cu.o"
+  },
+  {
+   "log": "[ 39%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f16-instance-hs128-q8_0-iq4_nl.cu.o"
+  },
+  {
+   "log": "[ 39%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f32-instance-hs128-q8_0-iq4_nl.cu.o"
+  },
+  {
+   "log": "[ 39%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f16-instance-hs128-iq4_nl-iq4_nl.cu.o"
+  },
+  {
+   "log": "[ 39%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f32-instance-hs128-iq4_nl-iq4_nl.cu.o"
+  },
+  {
+   "log": "[ 39%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f16-instance-hs128-q6_0-q5_0.cu.o"
+  },
+  {
+   "log": "[ 41%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f32-instance-hs128-q6_0-q5_0.cu.o"
+  },
+  {
+   "log": "[ 41%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f16-instance-hs128-q8_0-q6_0.cu.o"
+  },
+  {
+   "log": "[ 41%] Building CUDA object ggml/src/CMakeFiles/ggml.dir/ggml-cuda/template-instances/fattn-vec-f32-instance-hs128-q8_0-q6_0.cu.o"
+  },
+  {
+   "log": "[ 41%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/iqk_mul_mat.cpp.o"
+  },
+  {
+   "log": "[ 41%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/iqk_kda.cpp.o"
+  },
+  {
+   "log": "[ 41%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/iqk_flash_attn.cpp.o"
+  },
+  {
+   "log": "[ 42%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/fa/iqk_fa_576_512.cpp.o"
+  },
+  {
+   "log": "[ 42%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/fa/iqk_fa_512_512.cpp.o"
+  },
+  {
+   "log": "[ 42%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/fa/iqk_fa_320_256.cpp.o"
+  },
+  {
+   "log": "[ 42%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/fa/iqk_fa_192_128.cpp.o"
+  },
+  {
+   "log": "[ 42%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/fa/iqk_fa_192_192.cpp.o"
+  },
+  {
+   "log": "[ 42%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/fa/iqk_fa_256_256.cpp.o"
+  },
+  {
+   "log": "[ 43%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/fa/iqk_fa_128_128.cpp.o"
+  },
+  {
+   "log": "[ 43%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/fa/iqk_fa_96_96.cpp.o"
+  },
+  {
+   "log": "[ 43%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/fa/iqk_fa_64_64.cpp.o"
+  },
+  {
+   "log": "[ 43%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/iqk_gemm_floats.cpp.o"
+  },
+  {
+   "log": "[ 43%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/iqk_gemm_kquants.cpp.o"
+  },
+  {
+   "log": "[ 43%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/iqk_gemm_ktquants.cpp.o"
+  },
+  {
+   "log": "[ 45%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/iqk_gemm_iquants.cpp.o"
+  },
+  {
+   "log": "[ 45%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/iqk_gemm_iqk_quants.cpp.o"
+  },
+  {
+   "log": "[ 45%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/iqk_gemm_1bit.cpp.o"
+  },
+  {
+   "log": "[ 45%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/iqk_gemm_legacy_quants.cpp.o"
+  },
+  {
+   "log": "[ 45%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/iqk_quantize.cpp.o"
+  },
+  {
+   "log": "[ 45%] Building CXX object ggml/src/CMakeFiles/ggml.dir/iqk/iqk_cpu_ops.cpp.o"
+  },
+  {
+   "log": "gmake[3]: *** [ggml/src/CMakeFiles/ggml.dir/build.make:4083: ggml/src/CMakeFiles/ggml.dir/iqk/fa/iqk_fa_128_128.cpp.o] Terminated"
+  },
+  {
+   "log": "gmake[2]: *** [CMakeFiles/Makefile2:2074: ggml/src/CMakeFiles/ggml.dir/all] Error 2"
+  },
+  {
+   "log": "gmake[1]: *** [CMakeFiles/Makefile2:3524: examples/llama-bench/CMakeFiles/llama-bench.dir/rule] Error 2"
+  },
+  {
+   "log": "gmake: *** [Makefile:1089: llama-bench] Error 2"
+  }
+ ]
+}

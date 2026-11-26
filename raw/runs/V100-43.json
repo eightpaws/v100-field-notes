@@ -1,0 +1,166 @@
+{
+ "card": "V100-43",
+ "entries": [
+  {
+   "file": "v100_43_server.log",
+   "bytes": 5746,
+   "mtime": 1795470686.9429994
+  },
+  {
+   "log": "0.00.026.474 I srv  llama_server: initializing ..."
+  },
+  {
+   "log": "0.00.026.518 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)"
+  },
+  {
+   "log": "0.00.028.373 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)"
+  },
+  {
+   "log": "0.00.032.115 I srv    load_model: loading model '/srv/media/ai-cache/downloads/qwen2.5-coder-7b-instruct-q4_k_m.gguf'"
+  },
+  {
+   "log": "0.00.491.291 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden"
+  },
+  {
+   "log": "0.01.363.263 I cmn          init: llama threadpool init, n_threads = 24"
+  },
+  {
+   "log": "0.01.440.033 I srv    load_model: initializing, n_slots = 2, n_ctx_slot = 4096, kv_unified = 'false'"
+  },
+  {
+   "log": "0.01.445.580 I srv  server_run_i: model loaded"
+  },
+  {
+   "log": "0.01.446.026 I srv  server_on_li: listening on http://127.0.0.1:18082"
+  },
+  {
+   "log": "0.51.782.620 I slot       select: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1"
+  },
+  {
+   "log": "0.51.782.825 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0"
+  },
+  {
+   "log": "0.52.922.545 I slot print_timing: id  0 | task 0 | prompt eval time =     844.99 ms /  2067 tokens (    0.41 ms per token,  2446.19 tokens per second)"
+  },
+  {
+   "log": "0.52.922.571 I slot print_timing: id  0 | task 0 |        eval time =     294.64 ms /    32 tokens (    9.50 ms per token,   105.21 tokens per second)"
+  },
+  {
+   "log": "0.52.922.582 I slot print_timing: id  0 | task 0 |       total time =    1139.63 ms /  2099 tokens"
+  },
+  {
+   "log": "0.52.922.601 I slot print_timing: id  0 | task 0 |    graphs reused =         31"
+  },
+  {
+   "log": "0.52.922.610 I slot print_timing: id  0 | task 0 |   graph reallocs =          0    /     0        (same size) / (changed size)"
+  },
+  {
+   "log": "0.52.922.796 I slot      release: id  0 | task 0 | stop processing: n_tokens = 2098, truncated = 0"
+  },
+  {
+   "log": "0.52.933.307 I slot       select: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.996 (> 0.100 thold), f_keep = 0.982"
+  },
+  {
+   "log": "0.52.933.393 I slot launch_slot_: id  0 | task 34 | processing task, is_child = 0"
+  },
+  {
+   "log": "0.53.311.902 I slot print_timing: id  0 | task 34 | prompt eval time =      88.60 ms /     9 tokens (    9.84 ms per token,   101.58 tokens per second)"
+  },
+  {
+   "log": "0.53.311.927 I slot print_timing: id  0 | task 34 |        eval time =     289.86 ms /    32 tokens (    9.35 ms per token,   106.95 tokens per second)"
+  },
+  {
+   "log": "0.53.311.937 I slot print_timing: id  0 | task 34 |       total time =     378.45 ms /    41 tokens"
+  },
+  {
+   "log": "0.53.311.947 I slot print_timing: id  0 | task 34 |    graphs reused =         61"
+  },
+  {
+   "log": "0.53.311.956 I slot print_timing: id  0 | task 34 |   graph reallocs =          0    /     0        (same size) / (changed size)"
+  },
+  {
+   "log": "0.53.312.049 I slot      release: id  0 | task 34 | stop processing: n_tokens = 2100, truncated = 0"
+  },
+  {
+   "log": "0.53.325.686 I slot       select: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.995 (> 0.100 thold), f_keep = 0.978"
+  },
+  {
+   "log": "0.53.325.815 I slot launch_slot_: id  0 | task 67 | processing task, is_child = 0"
+  },
+  {
+   "log": "0.53.706.637 I slot print_timing: id  0 | task 67 | prompt eval time =      89.72 ms /    11 tokens (    8.16 ms per token,   122.60 tokens per second)"
+  },
+  {
+   "log": "0.53.706.665 I slot print_timing: id  0 | task 67 |        eval time =     291.03 ms /    32 tokens (    9.39 ms per token,   106.52 tokens per second)"
+  },
+  {
+   "log": "0.53.706.676 I slot print_timing: id  0 | task 67 |       total time =     380.75 ms /    43 tokens"
+  },
+  {
+   "log": "0.53.706.685 I slot print_timing: id  0 | task 67 |    graphs reused =         91"
+  },
+  {
+   "log": "0.53.706.694 I slot print_timing: id  0 | task 67 |   graph reallocs =          0    /     0        (same size) / (changed size)"
+  },
+  {
+   "log": "0.53.706.848 I slot      release: id  0 | task 67 | stop processing: n_tokens = 2096, truncated = 0"
+  },
+  {
+   "log": "2.37.439.622 I slot       select: id  1 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1"
+  },
+  {
+   "log": "2.37.439.866 I slot launch_slot_: id  1 | task 100 | processing task, is_child = 0"
+  },
+  {
+   "log": "2.38.422.523 I slot print_timing: id  1 | task 100 | prompt eval time =      50.48 ms /    52 tokens (    0.97 ms per token,  1030.11 tokens per second)"
+  },
+  {
+   "log": "2.38.422.549 I slot print_timing: id  1 | task 100 |        eval time =     851.92 ms /    96 tokens (    8.97 ms per token,   111.51 tokens per second)"
+  },
+  {
+   "log": "2.38.422.560 I slot print_timing: id  1 | task 100 |       total time =     902.40 ms /   148 tokens"
+  },
+  {
+   "log": "2.38.422.569 I slot print_timing: id  1 | task 100 |    graphs reused =        185"
+  },
+  {
+   "log": "2.38.422.578 I slot print_timing: id  1 | task 100 |   graph reallocs =          0    /     0        (same size) / (changed size)"
+  },
+  {
+   "log": "2.38.422.629 I slot      release: id  1 | task 100 | stop processing: n_tokens = 147, truncated = 0"
+  },
+  {
+   "log": "2.38.426.578 I slot       select: id  1 | task -1 | selected slot by LCP similarity, f_sim_best = 1.000 (> 0.100 thold), f_keep = 0.354"
+  },
+  {
+   "log": "2.38.438.105 I slot launch_slot_: id  1 | task 197 | processing task, is_child = 0"
+  },
+  {
+   "log": "2.38.438.381 W slot   operator(): id  1 | task 197 | need to evaluate at least 1 token for each active slot (n_past = 52, task.n_tokens() = 52)"
+  },
+  {
+   "log": "2.38.438.404 W slot   operator(): id  1 | task 197 | n_past was set to 51"
+  },
+  {
+   "log": "2.39.281.035 I slot print_timing: id  1 | task 197 | prompt eval time =      10.90 ms /     1 tokens (   10.90 ms per token,    91.75 tokens per second)"
+  },
+  {
+   "log": "2.39.281.060 I slot print_timing: id  1 | task 197 |        eval time =     831.75 ms /    96 tokens (    8.76 ms per token,   114.22 tokens per second)"
+  },
+  {
+   "log": "2.39.281.070 I slot print_timing: id  1 | task 197 |       total time =     842.64 ms /    97 tokens"
+  },
+  {
+   "log": "2.39.281.079 I slot print_timing: id  1 | task 197 |    graphs reused =        281"
+  },
+  {
+   "log": "2.39.281.088 I slot print_timing: id  1 | task 197 |   graph reallocs =          0    /     0        (same size) / (changed size)"
+  },
+  {
+   "log": "2.39.281.141 I slot      release: id  1 | task 197 | stop processing: n_tokens = 147, truncated = 0"
+  },
+  {
+   "log": "2.43.812.421 I srv    operator(): operator(): cleaning up before exit..."
+  }
+ ]
+}
