@@ -432,6 +432,12 @@
   "verdict": "Mixed: prefill 16 % faster with the shipped sm_70 binaries, decode identical. Worth taking for long prompts (document analysis, repository context); not a reason to migrate a decode-bound workload. The vendor's agent wrapper (serve-qwen3.sh, Claude Code integration) and the claimed Gemma 4 26B-A4B ..."
  },
  {
+  "id": "V100-89",
+  "title": "colibri: a three-tier expert engine, slower than llama.cpp here",
+  "result_type": "unstated",
+  "verdict": "Negative on this card: the advertised ~144 tok/s assumes a card where most experts stay resident, while 16 GB forces the cold tier into play and the tiering costs more than llama.cpp's -ncmoe offload. colibri is worth another look on a card with 32 GB or more; on the V100 the record stands."
+ },
+ {
   "id": "V100-91",
   "title": "Recheck sm70-attn with head_dim 256",
   "result_type": "positive",

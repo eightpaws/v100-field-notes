@@ -1,0 +1,39 @@
+{
+ "card": "V100-89",
+ "engine": {
+  "repo": "JustVugg/colibri",
+  "head": "e479104",
+  "build": "CUDA_ARCH=portable-pre-ampere NO_TC=1, ./c/coli build, exit 0",
+  "model": "qwen3-coder-30b (colibri catalog format, safetensors)",
+  "model_bytes_on_disk": 20830591385.6
+ },
+ "server": {
+  "vram_mib": 8529,
+  "resident_weights_load_s": 5.2
+ },
+ "decode": {
+  "runs": [
+   {
+    "tokens": 128,
+    "seconds": 7.9,
+    "tok_s": 16.2
+   },
+   {
+    "tokens": 128,
+    "seconds": 7.69,
+    "tok_s": 16.6
+   }
+  ],
+  "best_tok_s": 16.6,
+  "mean_tok_s": 12.9,
+  "note": "first of three runs was a cold start and is included in the mean only"
+ },
+ "target": {
+  "record_tok_s": 75.5,
+  "source": "best measured 30B-A3B decode in this project (V100-51 family)"
+ },
+ "blockers_seen": [
+  "the engine refuses GGUF checkpoints: needs config.json + safetensors",
+  "qwen2 model_type unsupported; catalog models (deepseek_v4, glm, lfm3, qwen3-moe) are the supported families"
+ ]
+}
