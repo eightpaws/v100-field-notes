@@ -451,9 +451,9 @@
  },
  {
   "id": "V100-90",
-  "title": "FlashQLA legacy Gated DeltaNet kernel on Volta",
-  "result_type": "unstated",
-  "verdict": "Mixed, and the useful half is positive: the first V100-class validation the project asked for now exists - the SM70 kernel compiles, runs and matches the reference bit for bit. The card's own criterion (a 25 % end-to-end gain on a hybrid model) could not be tested, because neither llama.cpp nor ..."
+  "title": "FlashQLA-SM70: Gated DeltaNet",
+  "result_type": "mixed",
+  "verdict": "The SM70 Gated DeltaNet kernel runs on the V100 and matches the reference loop exactly (max deviation 0.0, 0.5 ms against 575 ms for a Python loop). The card criterion - a 25 % end-to-end gain - could not be tested, because no engine calls this operator."
  },
  {
   "id": "V100-91",
@@ -658,6 +658,12 @@
   "title": "cuDNN 8 environment for graphics and video models",
   "result_type": "positive",
   "verdict": "Positive: cuDNN 8 restores the missing convolution path on sm_70, and all three pipelines run with cuDNN enabled. It removes the engine failure, not the memory ceiling - 720p video still runs out of VRAM after the model has loaded."
+ },
+ {
+  "id": "V100-143",
+  "title": "Raw archive: nine of thirteen missing logs recovered",
+  "result_type": "mixed",
+  "verdict": "Nine of the thirteen \"missing\" raw logs were on the rig all along under suffixed names and are now archived in raw/runs; four (V100-41, 42, 49, 52) are genuinely lost and stay queued for re-measurement."
  },
  {
   "id": "4060ti-capabilities-vs-v100",
