@@ -1,69 +1,65 @@
 <!-- curated: do not overwrite -->
-# Upscaling for print: ESRGAN vs UltraSharp, SUPIR blocked by network
+# V100-06 - Upscaling for print: ESRGAN vs UltraSharp, SUPIR blocked by the channel
 
-Card V100-06, priority P4. The question was whether a diffusion upscaler adds real texture that a GAN cannot, and whether it justifies minutes per frame. The answer came out partial: the GAN side is measured and inspected by eye, the diffusion side hit the network.
+_Measured on a Tesla V100-SXM2 16 GB (sm_70) in a VM: driver 580.178.04, CUDA 12.9, 24 vCPU, 94 GiB RAM._
 
-## Setup
+**Question.** Does a diffusion upscaler add real texture that a GAN cannot, and does that justify minutes
+per frame? One 640x640 frame from the library was upscaled 4x to 2560 with two GAN models and inspected at
+1:1; the diffusion path (SUPIR v0Q) was the second half of the test.
 
-One 640x640 frame from the library — dried flowers in kraft paper, fine texture, petals, hairs. Card protocol: 4x upscale to 2560, time and peak VRAM, colour by ΔE (5 points, back to 640 with area resampling), sharpness by Laplacian, plus a 1:1 crop for visual inspection.
+**Environment.** V100-SXM2-16GB (sm_70), driver 580.178.04. Two Python environments: `venvs/cu121`
+(torch 2.3.1+cu121) for the upscalers, and the SUPIR workspace with `sgm`, `pytorch_lightning`,
+`torchmetrics`, `k_diffusion`, `kornia 0.7.4`. Source frame: dried flowers in kraft paper - fine texture,
+petals, hairs. Protocol: 4x upscale, time and peak VRAM, colour by delta-E (5 points, back to 640 with area
+resampling), sharpness by Laplacian, plus a 1280 px 1:1 crop for visual inspection.
 
-## Numbers
+**Commands.**
+```
+python upscale_print.py            # Real-ESRGAN x4plus + 4x-UltraSharp, run dir /srv/media/projects/upscale-print
+python supir_check2.py             # SUPIR v0Q, 25 steps, run dir /srv/media/projects/supir (not reached)
+```
 
-| Method | Time | Peak VRAM | Sharpness at 2560 | ΔE mean | ΔE max |
+**Repeats.** single frame, single pass per method - the card asked for inspection, not for variance.
+
+**Result.**
+
+| Method | Time | Peak VRAM | Sharpness at 2560 | delta-E mean | delta-E max |
 |---|---|---|---|---|---|
-| LANCZOS (base) | 0.1 s | — | — | — | — |
-| Real-ESRGAN x4plus | **0.9 s** | 2 722 MiB | 5.5 | **3.9** | 6.1 |
-| 4x-UltraSharp | **0.7 s** | 2 722 MiB | **15.5** | 4.9 | 7.4 |
+| LANCZOS (base) | 0,1 s | - | - | - | - |
+| Real-ESRGAN x4plus | 0,9 s | 2 722 MiB | 5,5 | 3,9 | 6,1 |
+| 4x-UltraSharp | 0,7 s | 2 722 MiB | 15,5 | 4,9 | 7,4 |
 
-The source measured 22.5 on the same Laplacian — the numbers are only comparable within the "at 2560" row, because upscaling changes the noise scale.
+The source measured 22,5 on the same Laplacian; the sharpness values are comparable only within the "at
+2560" column, because upscaling changes the noise scale. The card's colour threshold was delta-E <= 3 and
+neither GAN passed (3,9 and 4,9), so even the mild upscaler cannot go to print without colour correction.
 
-The card's colour threshold was ΔE ≤ 3. Neither GAN passed: 3.9 and 4.9. Even "safe" upscaling shifts colour, so it cannot go to print without correction.
+What the 1:1 crop shows: LANCZOS keeps no hairs and smears petals into patches. Real-ESRGAN gains contrast
+and separates some petals, but leaves waxy regions, blotchiness and over-sharpened edges, and still does not
+recover individual hairs - it predicts plausible texture rather than returning the real one. 4x-UltraSharp
+is three times sharper, and that is exactly where generation traces appear: a blocky peach-and-white shape
+that does not exist in the scene, white specks, brush strokes in the brown areas, scales turned into smears.
 
-## What the eye sees (1:1 crop, 1280 px)
+SUPIR did not run: 1,75 GB of the checkpoint is missing (5 329 810 432 bytes expected, 3 580 401 865 on disk
 
-**LANCZOS**: no hairs, petals blur into patches, paper texture unreadable, soft edges, halos around contrasty stems. Detail is not restored, as expected.
+- a zip without a central directory, which torch refuses), and the channel could not deliver it. Hugging
+Face served 4-5 KB/s with four parallel streams totalling 19 KB/s, the local proxy answered
+`Network is unreachable`, and GitHub releases were throttled to 26 B/s, while Cloudflare on the same machine
+gave 25,4 MB/s.
 
-**Real-ESRGAN**: contours got contrastier, some petals separated, but waxy smooth regions, blotchiness and over-sharpened boundaries appeared. Individual hairs are still not recovered — the model predicts plausible texture rather than returning the real one.
+**Verdict.** Mixed. The GAN half is measured and inspected: Real-ESRGAN at 0,9 s per frame is acceptable for
+A4 after colour correction but adds no real texture, while 4x-UltraSharp in this form is unusable for product
+photos - the buyer would see details the product does not have. The diffusion half produced no number at all,
+so the original question ("is a diffusion upscaler worth minutes per frame") is still open.
 
-**4x-UltraSharp**: three times sharper, and that is exactly why generation traces show. In the centre-right of the crop there is a shapeless blocky peach-and-white shape that does not exist in the scene, plus a scatter of white specks and "brush strokes" in the brown areas; scales turned into smears. Halos around stems are obvious.
+**Result type.** Mixed.
 
-Verdict for this card: UltraSharp in this form is unusable for product photos — the buyer would see details the product does not have. Real-ESRGAN is milder and acceptable for A4 with colour correction, but it adds no real texture.
+**Does not show.** Nothing about SUPIR: no image, no timing, no sharpness, no delta-E. Nothing about whether
+0,7-0,9 s per frame holds for other frames, since tiling was off and the frame is small. Nothing about
+delta-E 3,9 being the limit of ESRGAN - no colour correction was applied, it is measured as-is. And one
+frame in one scene does not establish that UltraSharp always produces blocky artefacts.
 
-## SUPIR: not run, the channel
-
-The diffusion side did not reach a result. What was done:
-
-- repo cloned, environment built: torch 2.3.1+cu121 restored after a dependency install swapped in 2.15 and broke the import (`undefined symbol: ncclCommResume`);
-- sgm, pytorch_lightning, torchmetrics, k_diffusion with its dependency chain, kornia 0.7.4 installed;
-- CLIP encoders not downloaded at all: the bigG text encoder was extracted from the single-file SDXL checkpoint (695 M parameters, 1.39 GB), CLIP-L taken from the diffusers directory, and `sgm` patched to load it with `strict=False`;
-- SDXL base 6.94 GB and `SUPIR-v0Q.ckpt` downloaded.
-
-1.75 GB is missing: the full checkpoint is 5 329 810 432 bytes, on disk there are 3 580 401 865 — a zip without a central directory, which torch refuses (`PytorchStreamReader failed reading zip archive`).
-
-Channel: Cloudflare serves 25.4 MB/s while HF serves **4-5 KB/s**; four parallel streams to HF total 19 KB/s. The VPS proxy (137.22.151.13:8888) is dead — `Network is unreachable`. GitHub releases are throttled too: 26 B/s. At those numbers the remainder is a day, not minutes.
-
-What remains once the channel opens: one command, everything else is ready.
-
-```
-ssh ai-gpu 'cd /srv/media/projects/supir && \
-  /home/hermes/venvs/cu121/bin/python supir_check2.py'
-```
-
-The script runs 25 sampler steps, saves `supir_v0Q.png` and prints time, peak memory, sharpness and ΔE — the same metrics as the table above.
-
-## What these numbers do not prove
-
-- That SUPIR will draw real texture — no run happened.
-- That 0.7-0.9 s per frame holds for other frames: tiling was off and the frame is small.
-- That ΔE 3.9 is ESRGAN's limit: no colour correction was applied, measured as-is.
-- That UltraSharp always produces blocky artefacts: one frame, one scene.
-
-## Reproduction
-
-```
-python upscale_print.py     # ESRGAN x4plus + 4x-UltraSharp, /srv/media/projects/upscale-print
-```
-
-UltraSharp weights had to be repacked: the checkpoint uses the old key scheme (`model.0.*`, `model.1.sub.N.RDBj.convK.0`), while basicsr expects `conv_first.*`, `body.N.rdbj.convK.*`. `repack2.py` translates one into the other; without it the load fails with `RuntimeError: Missing key(s) in state_dict`.
-
-Raw numbers: `/srv/media/projects/upscale-print/result.json`. Crops: `crop_esr_1280.png`, `crop_us_1280.png`, `crop_lanczos_1280.png`. Logs: `/srv/media/night/upscale_print7.log`, `/srv/media/night/supir_run17.log`.
+**Raw.** `/srv/media/projects/upscale-print/result.json` (numbers), crops `crop_esr_1280.png`,
+`crop_us_1280.png`, `crop_lanczos_1280.png`, logs `/srv/media/night/upscale_print7.log` and
+`/srv/media/night/supir_run17.log`. The UltraSharp checkpoint had to be repacked first - it uses the old key
+scheme (`model.0.*`, `model.1.sub.N.RDBj.convK.0`) while basicsr expects `conv_first.*`,
+`body.N.rdbj.convK.*` - `repack2.py` translates one into the other.
