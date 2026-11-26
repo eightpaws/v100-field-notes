@@ -18,6 +18,12 @@
   "verdict": "- Environment Status (configuration, 23.11.2026 21:13). The llama.cpp build in ~/llama-new was killed by a VM reboot at 20:48, and was rebuilt on CUDA 12.9: BUILD_OK in 7 min 14 s (on the system's nvcc 12.0, the same build."
  },
  {
+  "id": "V100-04",
+  "title": "VLM as a card reject controller",
+  "result_type": "unstated",
+  "verdict": "Qwen2.5-VL-3B-Instruct (fp16, device_map=cuda) on 24 generated cards 640x640 produced 24 out of 24 \"good\", 1.8 sec per image (45.4 sec per batch), peak VRAM 7,634 MiB."
+ },
+ {
   "id": "V100-10",
   "title": "Prefill and batching: where a V100 actually loses throughput",
   "result_type": "positive",
