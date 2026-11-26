@@ -808,5 +808,11 @@
   "title": "Card controller: Qwen2.5-VL-3B calls everything good",
   "result_type": "negative",
   "verdict": "Negative: the 3B VLM accepted every card it was shown, good and bad alike, so as a controller it carries no signal - a human or a mechanical check still has to do the deciding."
+ },
+ {
+  "id": "inkling-2-mini-loop-cycles",
+  "title": "Inkling 2 Mini on the V100: the loop core's cycles do not buy quality",
+  "result_type": "negative",
+  "verdict": "Negative on the card's premise: three reasoning levels land inside the noise band on 40 MBPP tasks (0.500 / 0.525 / 0.475), decode stays at 34 tok/s across levels, and high costs twice the time per task - so extra loop passes buy length, not quality. The 26.4 B model does fit a 16 GB card at Q3_K_XL, using 15 033 MiB."
  }
 ]
