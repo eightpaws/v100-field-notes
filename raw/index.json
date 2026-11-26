@@ -601,9 +601,15 @@
  },
  {
   "id": "V100-129",
-  "title": "Uncensored 27B dense on one card",
+  "title": "Censored 27B on one card",
   "result_type": "unstated",
-  "verdict": "Speed and code both pass at 8k, 16k does not hold, and the model answers harmful prompts outright - it belongs in a personal loop only, never behind a public endpoint. Treat 8k as the working context for this quant on this card."
+  "verdict": "Dense 27B IQ3_S (10.95 GiB) fit entirely: decode 37.26 tok/s (tg64, n=3), prefill 837.69 on pp512 and 800.49 on pp8192, server with -c 16384 launched in 9s with 12,977 MiB VRAM, peak 13,193 MiB."
+ },
+ {
+  "id": "V100-130",
+  "title": "Uncensored Flash-Next Q2_0 under Strata",
+  "result_type": "mixed",
+  "verdict": "The uncensored Q2_0 is a drop-in replacement for the censored coder: same code score within noise, slightly faster, tool calling works. It answers refused topics and therefore belongs to a personal loop - never behind a public endpoint, same rule as V100-129."
  },
  {
   "id": "V100-131",
@@ -644,8 +650,8 @@
  {
   "id": "lora-monstera-no-benefit",
   "title": "LoRA on monstera: training succeeded, no visible benefit",
-  "result_type": "unstated",
-  "verdict": ""
+  "result_type": "negative",
+  "verdict": "Training ran to completion on 30 monstera images and changed nothing visible in the product shots, so this LoRA is not worth keeping; the same budget is better spent on reference images per SKU than on a brand-wide adapter."
  },
  {
   "id": "print-from-640-library",

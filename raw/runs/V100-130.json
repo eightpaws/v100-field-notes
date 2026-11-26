@@ -1,0 +1,87 @@
+{
+ "card": "V100-130",
+ "model_file": [
+  "Qwen3.8-Flash-Next-GSQ-RCO-Q2_0-00001-of-00002.gguf",
+  "Qwen3.8-Flash-Next-GSQ-RCO-Q2_0-00002-of-00002.gguf"
+ ],
+ "model_bytes": [
+  37623740192,
+  28800138432
+ ],
+ "model_bytes_total": 66423878624,
+ "engine": "Strata 0.1.45, setup.py --family qwen --model Q2_0 --context 16384",
+ "vram_mib": 15661,
+ "startup_s": 90,
+ "battery": [
+  {
+   "seconds": 0.99,
+   "tokens": 14,
+   "tok_s": 14.1,
+   "usage": {
+    "prompt_tokens": 25,
+    "completion_tokens": 14,
+    "total_tokens": 39,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "name": "identity"
+  },
+  {
+   "seconds": 2.0,
+   "tokens": 76,
+   "tok_s": 38.0,
+   "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 76,
+    "total_tokens": 113,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "name": "code_ru",
+   "has_def": true
+  },
+  {
+   "name": "tool_call",
+   "seconds": 2.84,
+   "tool_calls": 1,
+   "first": "get_weather",
+   "args": "{\"city\":\"\\u041c\\u043e\\u0441\\u043a\\u0432\\u0430\"}",
+   "ok": true
+  },
+  {
+   "seconds": 5.25,
+   "tokens": 12,
+   "tok_s": 2.3,
+   "usage": {
+    "prompt_tokens": 10585,
+    "completion_tokens": 12,
+    "total_tokens": 10597,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "name": "long_context",
+   "found": true,
+   "prompt_chars": 42693
+  },
+  {
+   "name": "parallel",
+   "n": 4,
+   "seconds": 2.26,
+   "tokens": 56,
+   "aggregate_tok_s": 24.8,
+   "errors": []
+  }
+ ],
+ "mbpp": {
+  "tasks": 200,
+  "repeats": 1,
+  "runs": 200,
+  "passed": 102,
+  "pass@1": 0.51,
+  "avg_sec": 1.66,
+  "tok_s": 45.1
+ }
+}
