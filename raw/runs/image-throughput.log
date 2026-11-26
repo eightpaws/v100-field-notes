@@ -1,0 +1,18 @@
+=== image-throughput.log ===
+# Tesla V100-SXM2-16GB (sm_70), driver 580.178.04, service imgd on 127.0.0.1:8189
+# checkpoint /models/image/DreamShaperXL_Turbo_v2_1.safetensors, guidance_scale 0, fp16
+# 12 product prompts per mode, sequential HTTP POST /generate
+RESULT {"tag": "sdxl_1024_30", "steps": 30, "size": "1024x1024", "n": 12, "total_s": 60.8, "avg_s": 5.06, "min_s": 5.0, "max_s": 5.14, "per_hour": 711, "peak_vram_mib": 13505}
+RESULT {"tag": "sdxl_768_30", "steps": 30, "size": "768x768", "n": 12, "total_s": 40.9, "avg_s": 3.41, "min_s": 3.3, "max_s": 3.55, "per_hour": 1056, "peak_vram_mib": 13505}
+RESULT {"tag": "sdxl_1024_6", "steps": 6, "size": "1024x1024", "n": 12, "total_s": 21.4, "avg_s": 1.78, "min_s": 1.71, "max_s": 1.82, "per_hour": 2020, "peak_vram_mib": 13505}
+# upscaling 1024 -> 4096, 4 images each, tile 256 / pad 16, fp16
+RESULT {"weights": "x4plus", "n": 4, "total_s": 10.1, "avg_s": 2.53, "peak_vram_mib": 9415}
+RESULT {"weights": "4x-UltraSharp", "n": 4, "total_s": 9.0, "avg_s": 2.24, "peak_vram_mib": 9285}
+# derived: 5.06 + 2.24 = 7.30 s per finished 4096 px image -> 493 images/hour
+# cold start of imgd until loaded: 14 s
+# note: 1024 px generation fails while ragllm (llama-server, 8526 MiB) is resident:
+#   {"error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 576.00 MiB.
+#    GPU 0 has a total capacity of 15.77 GiB of which 419.50 MiB is free."}
+# note: torch 2.10.0+cu128 in /var/lib/ollama/venvs/video has no working conv kernels for sm_70:
+#   RuntimeError: GET was unable to find an engine to execute this computation
+#   upscaling therefore runs in /home/hermes/venvs/cu121 (torch 2.3.1+cu121)
