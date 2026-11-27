@@ -181,9 +181,9 @@
  },
  {
   "id": "V100-31",
-  "title": "One model across V100 and 4060 Ti: the link kills it",
-  "result_type": "negative",
-  "verdict": "Heterogeneous tensor parallelism over 1 Gbit is latency-bound at roughly 11 tok/s for a 27B dense model, and even the bandwidth-only ceiling (45 tok/s) leaves no margin over the 24.5 tok/s that one V100 already gives on a 30B MoE that fits. A 32 GB pool built across two machines does not turn into ..."
+  "title": "One 27B model across V100 and 4060 Ti: pipeline split works, and costs 25-40 %",
+  "result_type": "mixed",
+  "verdict": "A layer split across two machines is possible on this hardware without vLLM: rebuild llama.cpp with GGML_RPC, run ggml-rpc-server on the Windows PC, and the guest's llama-server --rpc <ip>:50052 -ts ... spreads a 27B model over both cards. It costs 25-40 % of decode speed against one card, so for a ..."
  },
  {
   "id": "V100-32",
