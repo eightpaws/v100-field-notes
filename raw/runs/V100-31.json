@@ -1,55 +1,59 @@
 {
- "link": {
-  "throughput_bytes_s": 117439755,
-  "throughput_runs": 3,
-  "tcp_connect_ms": {
-   "mean": 0.34,
-   "median": 0.32,
-   "p90": 0.48,
-   "n": 30
-  }
- },
- "echo_rtt_ms": {
-  "10240": {
-   "n": 200,
-   "mean": 0.699,
-   "median": 0.688,
-   "p90": 0.816,
-   "min": 0.541,
-   "max": 1.18
-  },
-  "102400": {
-   "n": 200,
-   "mean": 2.535,
-   "median": 2.52,
-   "p90": 2.67,
-   "min": 2.22,
-   "max": 3.88
-  },
-  "1048576": {
-   "n": 200,
-   "mean": 21.676,
-   "median": 21.695,
-   "p90": 21.999,
-   "min": 21.128,
-   "max": 22.252
-  }
- },
- "assumed_bw_B_s": 117400000.0,
- "27B h=5120 L=64": {
-  "ops": 128,
-  "vol_mb": 2.62,
-  "bw_bound_tok_s": 44.8,
-  "lat_bound_tok_s": 11.4
- },
- "27B h=4608 L=62": {
-  "ops": 124,
-  "vol_mb": 2.29,
-  "bw_bound_tok_s": 51.4,
-  "lat_bound_tok_s": 11.7
- },
  "card": "V100-31",
- "measured_utc": "2026-11-27T10:53Z",
- "note": "PC<->ai-gpu link measurement, no GPU used (card was busy with another run)",
- "units": "throughput bytes/s, rtt milliseconds"
+ "note": "one 27B model split across V100 and RTX 4060 Ti over llama.cpp RPC; decode from the server timings, 256 tokens, n=3",
+ "entries": [
+  {
+   "config": "rpc_50_50",
+   "reps_server_tok_s": [
+    22.5,
+    22.9,
+    23.2
+   ],
+   "reps_wall_tok_s": [
+    19.6,
+    18.0,
+    20.0
+   ],
+   "mean_server_tok_s": 22.9
+  },
+  {
+   "config": "rpc_65_35",
+   "reps_server_tok_s": [
+    20.7,
+    21.6,
+    21.6
+   ],
+   "reps_wall_tok_s": [
+    18.3,
+    16.2,
+    18.1
+   ],
+   "mean_server_tok_s": 21.3
+  },
+  {
+   "config": "rpc_35_65",
+   "reps_server_tok_s": [
+    26.7,
+    26.1,
+    26.8
+   ],
+   "reps_wall_tok_s": [
+    24.2,
+    21.4,
+    23.6
+   ],
+   "mean_server_tok_s": 26.5
+  }
+ ],
+ "baseline": {
+  "config": "llama-bench all-on-V100",
+  "tg64_tok_s": 37.12,
+  "pp256_tok_s": 508.94,
+  "reps": 3
+ },
+ "rpc": {
+  "proto": "10.0",
+  "guest_build": "b1b770d + GGML_RPC",
+  "server_binary": "ggml-rpc-server b12816 win-cuda-12.4"
+ }
 }
