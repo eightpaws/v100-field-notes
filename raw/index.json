@@ -498,6 +498,12 @@
   "verdict": "Workspace assembled: BUILD_RC=0 in 3368 s (56 min), _C.abi3.so 509 MB and _moe_C.abi3.so 447 MB, loading on sm_70, torch.ops._C.marlin_gemm in place."
  },
  {
+  "id": "V100-88",
+  "title": "Flash-Attention-V100: FA2 for vLLM",
+  "result_type": "mixed",
+  "verdict": "All three arms gave the same figure because they rose on one backend."
+ },
+ {
   "id": "V100-89",
   "title": "colibri: a three-tier expert engine, slower than llama.cpp here",
   "result_type": "unstated",
