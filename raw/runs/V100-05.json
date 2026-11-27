@@ -1,0 +1,349 @@
+{
+ "card": "V100-05",
+ "model": "IC-Light v2 (iclight_sd15_fc.safetensors) on SD1.5 base",
+ "params": {
+  "size": "512x512",
+  "steps": 30,
+  "guidance": 2.0,
+  "mask": "rmbg"
+ },
+ "scenes_summary": {
+  "pairs": 30,
+  "delta_e_mean": 37.5,
+  "delta_e_max": 65.9,
+  "seconds_per_photo": 1.9,
+  "vram_peak_mib": 7132
+ },
+ "scenes": [
+  {
+   "file": "00_монстера_в_бе",
+   "scene": "теплый_интерьер",
+   "seconds": 2.4,
+   "delta_e_center": 29.9,
+   "delta_e_left": 32.4,
+   "delta_e_right": 43.6,
+   "delta_e_mean": 35.3
+  },
+  {
+   "file": "00_монстера_в_бе",
+   "scene": "cold studio",
+   "seconds": 1.9,
+   "delta_e_center": 21.6,
+   "delta_e_left": 44.6,
+   "delta_e_right": 46.8,
+   "delta_e_mean": 37.7
+  },
+  {
+   "file": "00_монстера_в_бе",
+   "scene": "sunny morning",
+   "seconds": 1.9,
+   "delta_e_center": 45.0,
+   "delta_e_left": 40.9,
+   "delta_e_right": 20.3,
+   "delta_e_mean": 35.4
+  },
+  {
+   "file": "01_фикус_в_плетё",
+   "scene": "теплый_интерьер",
+   "seconds": 1.9,
+   "delta_e_center": 37.1,
+   "delta_e_left": 63.2,
+   "delta_e_right": 33.1,
+   "delta_e_mean": 44.5
+  },
+  {
+   "file": "01_фикус_в_плетё",
+   "scene": "cold studio",
+   "seconds": 1.9,
+   "delta_e_center": 14.1,
+   "delta_e_left": 53.2,
+   "delta_e_right": 36.9,
+   "delta_e_mean": 34.7
+  },
+  {
+   "file": "01_фикус_в_плетё",
+   "scene": "sunny morning",
+   "seconds": 1.9,
+   "delta_e_center": 11.4,
+   "delta_e_left": 31.3,
+   "delta_e_right": 56.9,
+   "delta_e_mean": 33.2
+  },
+  {
+   "file": "02_суккулент_в_б",
+   "scene": "теплый_интерьер",
+   "seconds": 2.0,
+   "delta_e_center": 75.8,
+   "delta_e_left": 59.8,
+   "delta_e_right": 62.2,
+   "delta_e_mean": 65.9
+  },
+  {
+   "file": "02_суккулент_в_б",
+   "scene": "cold studio",
+   "seconds": 2.0,
+   "delta_e_center": 29.5,
+   "delta_e_left": 41.8,
+   "delta_e_right": 36.6,
+   "delta_e_mean": 36.0
+  },
+  {
+   "file": "02_суккулент_в_б",
+   "scene": "sunny morning",
+   "seconds": 1.9,
+   "delta_e_center": 39.4,
+   "delta_e_left": 35.7,
+   "delta_e_right": 20.5,
+   "delta_e_mean": 31.9
+  },
+  {
+   "file": "03_букет_сухоцве",
+   "scene": "теплый_интерьер",
+   "seconds": 1.9,
+   "delta_e_center": 64.6,
+   "delta_e_left": 49.6,
+   "delta_e_right": 71.3,
+   "delta_e_mean": 61.8
+  },
+  {
+   "file": "03_букет_сухоцве",
+   "scene": "cold studio",
+   "seconds": 1.9,
+   "delta_e_center": 32.7,
+   "delta_e_left": 28.4,
+   "delta_e_right": 36.8,
+   "delta_e_mean": 32.6
+  },
+  {
+   "file": "03_букет_сухоцве",
+   "scene": "sunny morning",
+   "seconds": 1.9,
+   "delta_e_center": 63.8,
+   "delta_e_left": 53.0,
+   "delta_e_right": 62.2,
+   "delta_e_mean": 59.7
+  },
+  {
+   "file": "04_орхидея_фален",
+   "scene": "теплый_интерьер",
+   "seconds": 1.9,
+   "delta_e_center": 45.0,
+   "delta_e_left": 30.0,
+   "delta_e_right": 33.2,
+   "delta_e_mean": 36.1
+  },
+  {
+   "file": "04_орхидея_фален",
+   "scene": "cold studio",
+   "seconds": 1.9,
+   "delta_e_center": 43.6,
+   "delta_e_left": 34.4,
+   "delta_e_right": 39.3,
+   "delta_e_mean": 39.1
+  },
+  {
+   "file": "04_орхидея_фален",
+   "scene": "sunny morning",
+   "seconds": 1.9,
+   "delta_e_center": 22.2,
+   "delta_e_left": 35.3,
+   "delta_e_right": 21.8,
+   "delta_e_mean": 26.4
+  },
+  {
+   "file": "05_кактус_в_терр",
+   "scene": "теплый_интерьер",
+   "seconds": 1.9,
+   "delta_e_center": 61.3,
+   "delta_e_left": 26.4,
+   "delta_e_right": 50.5,
+   "delta_e_mean": 46.1
+  },
+  {
+   "file": "05_кактус_в_терр",
+   "scene": "cold studio",
+   "seconds": 1.9,
+   "delta_e_center": 33.0,
+   "delta_e_left": 9.6,
+   "delta_e_right": 9.0,
+   "delta_e_mean": 17.2
+  },
+  {
+   "file": "05_кактус_в_терр",
+   "scene": "sunny morning",
+   "seconds": 1.9,
+   "delta_e_center": 48.0,
+   "delta_e_left": 19.2,
+   "delta_e_right": 25.2,
+   "delta_e_mean": 30.8
+  },
+  {
+   "file": "06_папоротник_в_",
+   "scene": "теплый_интерьер",
+   "seconds": 1.9,
+   "delta_e_center": 58.0,
+   "delta_e_left": 26.1,
+   "delta_e_right": 44.3,
+   "delta_e_mean": 42.8
+  },
+  {
+   "file": "06_папоротник_в_",
+   "scene": "cold studio",
+   "seconds": 1.9,
+   "delta_e_center": 28.7,
+   "delta_e_left": 16.4,
+   "delta_e_right": 27.9,
+   "delta_e_mean": 24.3
+  },
+  {
+   "file": "06_папоротник_в_",
+   "scene": "sunny morning",
+   "seconds": 2.0,
+   "delta_e_center": 40.3,
+   "delta_e_left": 47.3,
+   "delta_e_right": 36.9,
+   "delta_e_mean": 41.5
+  },
+  {
+   "file": "07_лавр_в_глинян",
+   "scene": "теплый_интерьер",
+   "seconds": 2.0,
+   "delta_e_center": 32.1,
+   "delta_e_left": 30.8,
+   "delta_e_right": 41.4,
+   "delta_e_mean": 34.8
+  },
+  {
+   "file": "07_лавр_в_глинян",
+   "scene": "cold studio",
+   "seconds": 1.9,
+   "delta_e_center": 20.8,
+   "delta_e_left": 19.7,
+   "delta_e_right": 22.3,
+   "delta_e_mean": 20.9
+  },
+  {
+   "file": "07_лавр_в_глинян",
+   "scene": "sunny morning",
+   "seconds": 1.9,
+   "delta_e_center": 48.8,
+   "delta_e_left": 43.4,
+   "delta_e_right": 53.5,
+   "delta_e_mean": 48.6
+  },
+  {
+   "file": "08_монстера_в_бе",
+   "scene": "теплый_интерьер",
+   "seconds": 1.9,
+   "delta_e_center": 32.7,
+   "delta_e_left": 35.6,
+   "delta_e_right": 55.5,
+   "delta_e_mean": 41.3
+  },
+  {
+   "file": "08_монстера_в_бе",
+   "scene": "cold studio",
+   "seconds": 1.9,
+   "delta_e_center": 35.6,
+   "delta_e_left": 40.4,
+   "delta_e_right": 46.3,
+   "delta_e_mean": 40.8
+  },
+  {
+   "file": "08_монстера_в_бе",
+   "scene": "sunny morning",
+   "seconds": 1.9,
+   "delta_e_center": 20.2,
+   "delta_e_left": 34.3,
+   "delta_e_right": 46.2,
+   "delta_e_mean": 33.6
+  },
+  {
+   "file": "09_фикус_в_плетё",
+   "scene": "теплый_интерьер",
+   "seconds": 2.0,
+   "delta_e_center": 43.3,
+   "delta_e_left": 35.3,
+   "delta_e_right": 42.3,
+   "delta_e_mean": 40.3
+  },
+  {
+   "file": "09_фикус_в_плетё",
+   "scene": "cold studio",
+   "seconds": 1.9,
+   "delta_e_center": 38.9,
+   "delta_e_left": 30.7,
+   "delta_e_right": 27.6,
+   "delta_e_mean": 32.4
+  },
+  {
+   "file": "09_фикус_в_плетё",
+   "scene": "sunny morning",
+   "seconds": 1.9,
+   "delta_e_center": 12.2,
+   "delta_e_left": 29.9,
+   "delta_e_right": 15.9,
+   "delta_e_mean": 19.3
+  }
+ ],
+ "neutral_summary": {
+  "pairs": 10,
+  "delta_e_mean": 24.1,
+  "delta_e_max": 41.5,
+  "seconds_per_photo": 2.0,
+  "vram_peak_mib": 7132
+ },
+ "neutral": [
+  {
+   "file": "00_монстера_в_бе",
+   "seconds": 2.3,
+   "delta_e_mean": 31.9
+  },
+  {
+   "file": "01_фикус_в_плетё",
+   "seconds": 1.9,
+   "delta_e_mean": 19.4
+  },
+  {
+   "file": "02_суккулент_в_б",
+   "seconds": 1.9,
+   "delta_e_mean": 16.0
+  },
+  {
+   "file": "03_букет_сухоцве",
+   "seconds": 1.9,
+   "delta_e_mean": 41.5
+  },
+  {
+   "file": "04_орхидея_фален",
+   "seconds": 1.9,
+   "delta_e_mean": 9.0
+  },
+  {
+   "file": "05_кактус_в_терр",
+   "seconds": 2.0,
+   "delta_e_mean": 25.1
+  },
+  {
+   "file": "06_папоротник_в_",
+   "seconds": 1.9,
+   "delta_e_mean": 25.9
+  },
+  {
+   "file": "07_лавр_в_глинян",
+   "seconds": 2.0,
+   "delta_e_mean": 29.2
+  },
+  {
+   "file": "08_монстера_в_бе",
+   "seconds": 1.9,
+   "delta_e_mean": 35.0
+  },
+  {
+   "file": "09_фикус_в_плетё",
+   "seconds": 1.9,
+   "delta_e_mean": 8.4
+  }
+ ],
+ "note": "Product titles are Russian and stay on the rig; only file prefixes and numbers are exported."
+}
