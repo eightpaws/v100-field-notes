@@ -57,7 +57,7 @@
   "id": "V100-09",
   "title": "360° Product: Photogrammetry or Splines",
   "result_type": "mixed",
-  "verdict": "3DGS kernels do compile and run on sm_70 (7.0 ms per iteration for 200k Gaussians at 480x640, 98 MiB VRAM), while GPU dense photogrammetry is not available from the pip wheel."
+  "verdict": "3DGS kernels do compile and run on sm_70 (7.0 ms/iteration for 200k Gaussians at 480x640, 98 MiB VRAM), while GPU dense photogrammetry is not available from the pip wheel."
  },
  {
   "id": "V100-10",
