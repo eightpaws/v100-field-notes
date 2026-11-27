@@ -156,6 +156,12 @@
   "verdict": "Rejected based on the card criterion: \"do we have a model with head_dim 256 and do we need context over 64k\"."
  },
  {
+  "id": "V100-31",
+  "title": "Heterogeneous Serv: V100 + 4060 Ti in one pool",
+  "result_type": "mixed",
+  "verdict": "Measured channel PК↔V100 without model (card was occupied by another run): TCP single thread 117.4 MB/s (939 Mbps, n=3); RTT TCP connect 0.32 ms median (n=30); echo exchange 10 KB 0.69 ms, 100 KB 2.52 ms, 1 MB 21.7 ms (n=200)."
+ },
+ {
   "id": "V100-32",
   "title": "Prepared sm_70-weights with Hugging Face",
   "result_type": "unstated",
