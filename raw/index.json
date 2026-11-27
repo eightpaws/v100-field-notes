@@ -498,6 +498,12 @@
   "verdict": "Negative for the criterion. The split mode is 4.1x slower, not 15 % faster, and the margin is far outside any noise. The mechanism is visible in the numbers: the writer in mode (b) gave up 8 layers to the CPU (-ngl 12, otherwise it does not fit beside a 30B reviewer), decode fell from ~9 to ~4 ..."
  },
  {
+  "id": "V100-94",
+  "title": "Images on 4060 Ti, code on V100",
+  "result_type": "mixed",
+  "verdict": "4060 Ti at the same checkpoint and number of prompts: 1024/30 steps - 6.93 ± 0.18 s per image (519 per hour), 768/30 - 4.40 s in steady state (818 per hour), 1024/6 steps - 1.91 ± 0.02 s (1885 per hour); peak VRAM 13,440 MiB at 1024/30 and."
+ },
+ {
   "id": "V100-97",
   "title": "Batch half-and-half: 20 tasks for both cards",
   "result_type": "mixed",
