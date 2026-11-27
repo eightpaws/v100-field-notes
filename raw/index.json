@@ -823,9 +823,9 @@
  },
  {
   "id": "V100-153",
-  "title": "Budget for 27B: what it provides",
-  "result_type": "mixed",
-  "verdict": "Thinking does not provide any task beyond: MBPP pass@1 0.600 (24/40) in all three modes."
+  "title": "Reasoning budget on 27B: what thinking buys",
+  "result_type": "negative",
+  "verdict": "Thinking does not pay on MBPP-sized tasks: the score is unchanged and the run costs 3.8x to 7.6x more wall time, so it stays off by default."
  },
  {
   "id": "4060ti-capabilities-vs-v100",
