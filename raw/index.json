@@ -49,9 +49,9 @@
  },
  {
   "id": "V100-08",
-  "title": "Stable Audio Open - SFX and Ambience for Videos**",
+  "title": "Text-to-SFX on a V100: Stable Audio Open vs the open alternative",
   "result_type": "mixed",
-  "verdict": "Stable Audio Open not downloaded: gated weights, HF and hf-mirror return 401 without token (model.safetensors 4.85 GB)."
+  "verdict": "Mixed: text-to-SFX on this card is real and cheap (one second of audio per 0.93 s, 2.9 GB VRAM, so a whole video's ambience layer costs seconds), but AudioLDM2 tops out at 16 kHz mono and is noise-heavy on ambience prompts, which fits background texture and short accents, not precise ..."
  },
  {
   "id": "V100-10",
