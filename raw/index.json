@@ -792,6 +792,12 @@
   "verdict": "CogVideoX-5B does not run on this build: with cuDNN enabled, it's GET was unable to find an engine on fp16-convolutions, and with disabled, the VAE decoder requests 17.8 GiB while only 8.8 is available."
  },
  {
+  "id": "V100-147",
+  "title": "Cache prefix: equal prompt lengths",
+  "result_type": "mixed",
+  "verdict": "With a prompt length of 4096 tokens, prefix cache provides an 8.25x speedup: without cache, 1179.8 ± 2.0 ms (full prefill of 4096 tokens, 3472 tok/s), repeating the same prefix 143.0 ± 1.2 ms (prompt_n=1, cache_n=4096)."
+ },
+ {
   "id": "4060ti-capabilities-vs-v100",
   "title": "What the 4060 Ti can do that the V100 cannot",
   "result_type": "unstated",
