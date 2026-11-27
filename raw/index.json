@@ -519,13 +519,19 @@
   "id": "V100-95",
   "title": "What a 4060 Ti can do that a V100 cannot",
   "result_type": "mixed",
-  "verdict": "the desktop card pre-fills faster at mid context and equals the V100 at 8.5k tokens, but decodes 1.9x slower, so no tested task finishes sooner on it. Inference stays on the V100;…"
+  "verdict": "Mixed: the desktop card pre-fills faster at mid context and equals the V100 at 8.5k tokens, but decodes 1.9x slower, so no tested task finishes sooner on it. Inference stays on the V100; the desktop card is useful only where Volta lacks the hardware - and that is a diffusion/bf16 question, not a ..."
  },
  {
   "id": "V100-97",
   "title": "Batch half-and-half: 20 tasks for both cards",
   "result_type": "mixed",
   "verdict": "Criterion 1.5x passed only on 14B: distributing 12 tasks on V100 and 8 on PC yields 1.53x compared to one V100 (20.46 → 13.38 s, n=3), on 7B it's 1.43x (10.62 → 7.43 s, n=2)."
+ },
+ {
+  "id": "V100-98",
+  "title": "Llama.cpp RPC: one model on two cards",
+  "result_type": "mixed",
+  "verdict": "27.11.2026, llama.cpp b12811 (00d5c142c, ready binaries ubuntu-cuda-12.8), Qwen3-30B-A3B Q4_K_M 17.28 GB (does not fit in 16 GB of one card)."
  },
  {
   "id": "V100-99",
