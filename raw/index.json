@@ -852,6 +852,12 @@
   "verdict": "Long context costs speed, not accuracy here: pass@1 held at 0.575 from a 57-token prompt to 5,948 tokens, while end-to-end throughput fell 1.8x."
  },
  {
+  "id": "V100-156",
+  "title": "How many clients does 27B hold and where does TTFT fail?",
+  "result_type": "mixed",
+  "verdict": "One PXA slot handles approximately 100 tok/s of aggregate at any number of clients, so only the queue grows."
+ },
+ {
   "id": "V100-157",
   "title": "Gemma 4 26B-A4B: 32k context and quality on long prompt",
   "result_type": "mixed",
