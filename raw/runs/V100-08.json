@@ -1,0 +1,140 @@
+{
+ "card": "V100-08",
+ "fp16": {
+  "model": "cvssp/audioldm2",
+  "steps": 100,
+  "dtype": "float16",
+  "cudnn": false,
+  "gpu": "Tesla V100-SXM2-16GB",
+  "torch": "2.10.0+cu128",
+  "load_s": 3.1,
+  "clips": [
+   {
+    "sr": 16000,
+    "ch": 1,
+    "dur_s": 10.0,
+    "rms_dbfs": -16.3,
+    "peak_dbfs": -4.8,
+    "clip_frac": 0.0,
+    "silence_frac": 0.005,
+    "centroid_hz": 5220,
+    "flatness": 0.5336,
+    "nan": false,
+    "prompt": "leaves rustling in the wind, close up",
+    "synth_s": 9.7,
+    "rtf": 0.97,
+    "vram_gb": 2.86,
+    "wav": "/srv/media/night/v100_08/sfx_01.wav"
+   },
+   {
+    "sr": 16000,
+    "ch": 1,
+    "dur_s": 10.0,
+    "rms_dbfs": -21.3,
+    "peak_dbfs": -1.8,
+    "clip_frac": 0.0,
+    "silence_frac": 0.63,
+    "centroid_hz": 5536,
+    "flatness": 0.5425,
+    "nan": false,
+    "prompt": "pruning shears cutting a flower stem, sharp snip",
+    "synth_s": 9.2,
+    "rtf": 0.92,
+    "vram_gb": 2.86,
+    "wav": "/srv/media/night/v100_08/sfx_02.wav"
+   },
+   {
+    "sr": 16000,
+    "ch": 1,
+    "dur_s": 10.0,
+    "rms_dbfs": -26.2,
+    "peak_dbfs": -2.0,
+    "clip_frac": 0.0,
+    "silence_frac": 0.158,
+    "centroid_hz": 4734,
+    "flatness": 0.6664,
+    "nan": false,
+    "prompt": "tissue paper wrapping rustling",
+    "synth_s": 9.3,
+    "rtf": 0.93,
+    "vram_gb": 2.86,
+    "wav": "/srv/media/night/v100_08/sfx_03.wav"
+   },
+   {
+    "sr": 16000,
+    "ch": 1,
+    "dur_s": 10.0,
+    "rms_dbfs": -27.8,
+    "peak_dbfs": -5.7,
+    "clip_frac": 0.0,
+    "silence_frac": 0.109,
+    "centroid_hz": 5035,
+    "flatness": 0.5783,
+    "nan": false,
+    "prompt": "water pouring into a glass vase",
+    "synth_s": 9.2,
+    "rtf": 0.92,
+    "vram_gb": 2.86,
+    "wav": "/srv/media/night/v100_08/sfx_04.wav"
+   },
+   {
+    "sr": 16000,
+    "ch": 1,
+    "dur_s": 10.0,
+    "rms_dbfs": -27.1,
+    "peak_dbfs": -0.8,
+    "clip_frac": 0.0,
+    "silence_frac": 0.459,
+    "centroid_hz": 3486,
+    "flatness": 0.6297,
+    "nan": false,
+    "prompt": "footsteps on gravel outdoors",
+    "synth_s": 9.2,
+    "rtf": 0.92,
+    "vram_gb": 2.86,
+    "wav": "/srv/media/night/v100_08/sfx_05.wav"
+   }
+  ],
+  "summary": {
+   "n": 5,
+   "mean_s": 9.3,
+   "stdev_s": 0.22,
+   "min_s": 9.2,
+   "max_s": 9.7,
+   "mean_rtf": 0.93,
+   "vram_peak_gb": 2.86
+  }
+ },
+ "fp32_control": {
+  "model": "cvssp/audioldm2",
+  "steps": 100,
+  "clips": [
+   {
+    "rms_dbfs": -14.4,
+    "peak_dbfs": -3.0,
+    "centroid_hz": 5322,
+    "flatness": 0.5201,
+    "nan": false,
+    "dtype": "float32",
+    "prompt": "leaves rustling in the wind, close up",
+    "synth_s": 10.0,
+    "rtf": 1.0,
+    "vram_gb": 5.39,
+    "wav": "/srv/media/night/v100_08/sfx_fp32_01.wav"
+   },
+   {
+    "rms_dbfs": -29.8,
+    "peak_dbfs": -8.0,
+    "centroid_hz": 4970,
+    "flatness": 0.5157,
+    "nan": false,
+    "dtype": "float32",
+    "prompt": "water pouring into a glass vase",
+    "synth_s": 9.5,
+    "rtf": 0.95,
+    "vram_gb": 5.39,
+    "wav": "/srv/media/night/v100_08/sfx_fp32_02.wav"
+   }
+  ]
+ }
+}
