@@ -1,0 +1,153 @@
+{
+ "card": "V100-94",
+ "note": "RTX 4060 Ti 16GB image throughput, same checkpoint and modes as V100-73 baseline",
+ "entries": [
+  {
+   "tag": "1024_30",
+   "rep": 0,
+   "avg_s": 6.79,
+   "per_hour": 530
+  },
+  {
+   "tag": "1024_30",
+   "rep": 1,
+   "avg_s": 6.88,
+   "per_hour": 523
+  },
+  {
+   "tag": "1024_30",
+   "rep": 2,
+   "avg_s": 7.13,
+   "per_hour": 505
+  },
+  {
+   "RESULT": {
+    "size": "1024x1024",
+    "steps": 30,
+    "reps": [
+     {
+      "avg_s": 6.79,
+      "min_s": 6.73,
+      "max_s": 6.83,
+      "per_hour": 530
+     },
+     {
+      "avg_s": 6.88,
+      "min_s": 6.84,
+      "max_s": 6.96,
+      "per_hour": 523
+     },
+     {
+      "avg_s": 7.13,
+      "min_s": 6.99,
+      "max_s": 7.25,
+      "per_hour": 505
+     }
+    ],
+    "mean_s": 6.93,
+    "stdev_s": 0.18,
+    "per_hour_mean": 519,
+    "peak_vram_smi_mib": 13440,
+    "peak_vram_torch_mib": 11592
+   }
+  },
+  {
+   "tag": "768_30",
+   "rep": 0,
+   "avg_s": 10.01,
+   "per_hour": 360
+  },
+  {
+   "tag": "768_30",
+   "rep": 1,
+   "avg_s": 4.41,
+   "per_hour": 816
+  },
+  {
+   "tag": "768_30",
+   "rep": 2,
+   "avg_s": 4.39,
+   "per_hour": 820
+  },
+  {
+   "RESULT": {
+    "size": "768x768",
+    "steps": 30,
+    "reps": [
+     {
+      "avg_s": 10.01,
+      "min_s": 4.12,
+      "max_s": 16.0,
+      "per_hour": 360
+     },
+     {
+      "avg_s": 4.41,
+      "min_s": 4.17,
+      "max_s": 4.89,
+      "per_hour": 816
+     },
+     {
+      "avg_s": 4.39,
+      "min_s": 4.23,
+      "max_s": 4.63,
+      "per_hour": 820
+     }
+    ],
+    "mean_s": 6.27,
+    "stdev_s": 3.24,
+    "per_hour_mean": 574,
+    "peak_vram_smi_mib": 15998,
+    "peak_vram_torch_mib": 11592
+   }
+  },
+  {
+   "tag": "1024_6",
+   "rep": 0,
+   "avg_s": 1.89,
+   "per_hour": 1901
+  },
+  {
+   "tag": "1024_6",
+   "rep": 1,
+   "avg_s": 1.92,
+   "per_hour": 1873
+  },
+  {
+   "tag": "1024_6",
+   "rep": 2,
+   "avg_s": 1.92,
+   "per_hour": 1878
+  },
+  {
+   "RESULT": {
+    "size": "1024x1024",
+    "steps": 6,
+    "reps": [
+     {
+      "avg_s": 1.89,
+      "min_s": 1.88,
+      "max_s": 1.92,
+      "per_hour": 1901
+     },
+     {
+      "avg_s": 1.92,
+      "min_s": 1.9,
+      "max_s": 1.96,
+      "per_hour": 1873
+     },
+     {
+      "avg_s": 1.92,
+      "min_s": 1.89,
+      "max_s": 1.95,
+      "per_hour": 1878
+     }
+    ],
+    "mean_s": 1.91,
+    "stdev_s": 0.02,
+    "per_hour_mean": 1885,
+    "peak_vram_smi_mib": 15947,
+    "peak_vram_torch_mib": 11592
+   }
+  }
+ ]
+}
