@@ -350,7 +350,7 @@
  {
   "id": "V100-64",
   "title": "Snapshot of stack: offline installation on clean VM",
-  "result_type": "understood",
+  "result_type": "negative",
   "verdict": "No: snapshot does not raise the stack without a network."
  },
  {
@@ -536,13 +536,13 @@
  {
   "id": "V100-97",
   "title": "Batch half-and-half: 20 tasks for both cards",
-  "result_type": "verdict",
+  "result_type": "mixed",
   "verdict": "Criterion 1.5x passed only on 14B: distributing 12 tasks on V100 and 8 on PC yields 1.53x compared to one V100 (20.46 → 13.38 s, n=3), on 7B it's 1.43x (10.62 → 7.43 s, n=2)."
  },
  {
   "id": "V100-98",
   "title": "Llama.cpp RPC: one model on two cards",
-  "result_type": "the",
+  "result_type": "mixed",
   "verdict": "27.11.2026, llama.cpp b12811 (00d5c142c, ready binaries ubuntu-cuda-12.8), Qwen3-30B-A3B Q4_K_M 17.28 GB (does not fit in 16 GB of one card)."
  },
  {
@@ -800,7 +800,7 @@
  {
   "id": "V100-148",
   "title": "PXA: Second checkpoint and quality 27B",
-  "result_type": "source",
+  "result_type": "positive",
   "verdict": "Second checkpoint PXQN yielded the same quality: MBPP pass@1 0.625 (25/40) compared to 0.60 (24/40) at V100-29 checkpoint, indicating a difference of one task - noise from a single run, not degradation."
  },
  {
