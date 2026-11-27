@@ -499,9 +499,9 @@
  },
  {
   "id": "V100-88",
-  "title": "Flash-Attention-V100: FA2 for vLLM",
-  "result_type": "mixed",
-  "verdict": "All three arms gave the same figure because they rose on one backend."
+  "title": "Flash-Attention-V100: FA2 fork for vLLM cannot be selected on sm_70",
+  "result_type": "negative",
+  "verdict": "Negative: the FA2 fork builds and imports on sm_70 but cannot be selected in this engine, so the claimed +580% over Triton is untestable here; the stock Volta backend gives 1 091 tok/s at 8k and 623 tok/s at 16k."
  },
  {
   "id": "V100-89",

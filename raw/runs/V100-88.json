@@ -1,0 +1,122 @@
+{
+ "card": "V100-88",
+ "engine": "vLLM 1.5.4 (1Cat build)",
+ "model": "Qwen2.5-7B-Instruct GGUF",
+ "note": "All three arms were served by FLASH_ATTN_V100: VLLM_ATTENTION_BACKEND works as an allow-list on sm_70, the FA2 fork is not among the platform backends.",
+ "entries": [
+  {
+   "label": "TRITON_ATTN",
+   "requested": 8192,
+   "prompt_tokens": 8190,
+   "prompt_tokens_all": [
+    8190,
+    8190,
+    8190
+   ],
+   "ttft_ms": [
+    8553.831338882446,
+    7508.777379989624,
+    7505.402326583862
+   ],
+   "warm_mean_ms": 7507.089853286743,
+   "prefill_tok_s_warm": 1090.9686922708493,
+   "reps": 3,
+   "rotated_prompts": true
+  },
+  {
+   "label": "TRITON_ATTN",
+   "requested": 16384,
+   "prompt_tokens": 16384,
+   "prompt_tokens_all": [
+    16384,
+    16384,
+    16384
+   ],
+   "ttft_ms": [
+    26285.09759902954,
+    26284.284114837646,
+    26280.269622802734
+   ],
+   "warm_mean_ms": 26282.27686882019,
+   "prefill_tok_s_warm": 623.3858688033628,
+   "reps": 3,
+   "rotated_prompts": true
+  },
+  {
+   "label": "FLASH_ATTN_V100",
+   "requested": 8192,
+   "prompt_tokens": 8190,
+   "prompt_tokens_all": [
+    8190,
+    8190,
+    8190
+   ],
+   "ttft_ms": [
+    7559.403419494629,
+    7507.909059524536,
+    7507.7807903289795
+   ],
+   "warm_mean_ms": 7507.844924926758,
+   "prefill_tok_s_warm": 1090.8589724340766,
+   "reps": 3,
+   "rotated_prompts": true
+  },
+  {
+   "label": "FLASH_ATTN_V100",
+   "requested": 16384,
+   "prompt_tokens": 16384,
+   "prompt_tokens_all": [
+    16384,
+    16384,
+    16384
+   ],
+   "ttft_ms": [
+    26287.34016418457,
+    26283.103466033936,
+    26281.354188919067
+   ],
+   "warm_mean_ms": 26282.2288274765,
+   "prefill_tok_s_warm": 623.387008291759,
+   "reps": 3,
+   "rotated_prompts": true
+  },
+  {
+   "label": "FLASH_ATTN",
+   "requested": 8192,
+   "prompt_tokens": 8190,
+   "prompt_tokens_all": [
+    8190,
+    8190,
+    8190
+   ],
+   "ttft_ms": [
+    8563.745260238647,
+    7506.733179092407,
+    7505.75852394104
+   ],
+   "warm_mean_ms": 7506.245851516724,
+   "prefill_tok_s_warm": 1091.0913607159719,
+   "reps": 3,
+   "rotated_prompts": true
+  },
+  {
+   "label": "FLASH_ATTN",
+   "requested": 16384,
+   "prompt_tokens": 16384,
+   "prompt_tokens_all": [
+    16384,
+    16384,
+    16384
+   ],
+   "ttft_ms": [
+    26280.072450637817,
+    26282.331943511963,
+    26279.962301254272
+   ],
+   "warm_mean_ms": 26281.147122383118,
+   "prefill_tok_s_warm": 623.4126662624282,
+   "reps": 3,
+   "rotated_prompts": true
+  }
+ ]
+}
