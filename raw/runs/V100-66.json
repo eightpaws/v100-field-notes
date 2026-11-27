@@ -1,0 +1,2233 @@
+{
+ "card": "V100-66",
+ "harness": "/root/code_eval.py (MBPP pass@1 against an OpenAI-compatible endpoint; tests run locally in subprocess)",
+ "dataset": "/srv/media/ai-cache/eval/mbpp.jsonl (MBPP sanitized)",
+ "note": "Per-task rows keep task id, pass/fail, seconds and completion tokens; error text dropped",
+ "runs": [
+  {
+   "config": "deepseek16c",
+   "model_file": "deepseek-coder-v2-lite-q4_k_m.gguf",
+   "note": "thinking n/a, ctx 4096",
+   "tasks": 40,
+   "passed": 22,
+   "pass_at_1": 0.55,
+   "avg_sec": 0.5,
+   "tok_s": null,
+   "source": "/srv/media/night/v100_66_deepseek16c.json",
+   "per_task": [
+    {
+     "task": 1,
+     "ok": false,
+     "sec": 1.4,
+     "tok": 208
+    },
+    {
+     "task": 2,
+     "ok": true,
+     "sec": 0.4,
+     "tok": 48
+    },
+    {
+     "task": 3,
+     "ok": true,
+     "sec": 0.8,
+     "tok": 114
+    },
+    {
+     "task": 4,
+     "ok": true,
+     "sec": 0.3,
+     "tok": 38
+    },
+    {
+     "task": 5,
+     "ok": true,
+     "sec": 0.9,
+     "tok": 127
+    },
+    {
+     "task": 6,
+     "ok": false,
+     "sec": 0.4,
+     "tok": 46
+    },
+    {
+     "task": 7,
+     "ok": true,
+     "sec": 0.3,
+     "tok": 41
+    },
+    {
+     "task": 8,
+     "ok": true,
+     "sec": 0.3,
+     "tok": 32
+    },
+    {
+     "task": 9,
+     "ok": false,
+     "sec": 0.4,
+     "tok": 58
+    },
+    {
+     "task": 10,
+     "ok": true,
+     "sec": 0.2,
+     "tok": 26
+    },
+    {
+     "task": 11,
+     "ok": true,
+     "sec": 0.6,
+     "tok": 88
+    },
+    {
+     "task": 12,
+     "ok": true,
+     "sec": 0.3,
+     "tok": 30
+    },
+    {
+     "task": 13,
+     "ok": false,
+     "sec": 0.4,
+     "tok": 50
+    },
+    {
+     "task": 14,
+     "ok": false,
+     "sec": 0.2,
+     "tok": 25
+    },
+    {
+     "task": 15,
+     "ok": false,
+     "sec": 0.6,
+     "tok": 89
+    },
+    {
+     "task": 16,
+     "ok": false,
+     "sec": 0.4,
+     "tok": 48
+    },
+    {
+     "task": 17,
+     "ok": true,
+     "sec": 0.2,
+     "tok": 21
+    },
+    {
+     "task": 18,
+     "ok": true,
+     "sec": 0.3,
+     "tok": 39
+    },
+    {
+     "task": 19,
+     "ok": true,
+     "sec": 0.3,
+     "tok": 31
+    },
+    {
+     "task": 20,
+     "ok": false,
+     "sec": 0.4,
+     "tok": 63
+    },
+    {
+     "task": 21,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 36
+    },
+    {
+     "task": 22,
+     "ok": true,
+     "sec": 0.5,
+     "tok": 73
+    },
+    {
+     "task": 23,
+     "ok": true,
+     "sec": 0.2,
+     "tok": 27
+    },
+    {
+     "task": 24,
+     "ok": false,
+     "sec": 0.4,
+     "tok": 63
+    },
+    {
+     "task": 25,
+     "ok": false,
+     "sec": 0.4,
+     "tok": 48
+    },
+    {
+     "task": 26,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 38
+    },
+    {
+     "task": 27,
+     "ok": true,
+     "sec": 0.3,
+     "tok": 36
+    },
+    {
+     "task": 28,
+     "ok": true,
+     "sec": 0.5,
+     "tok": 75
+    },
+    {
+     "task": 29,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 41
+    },
+    {
+     "task": 30,
+     "ok": true,
+     "sec": 0.6,
+     "tok": 87
+    },
+    {
+     "task": 31,
+     "ok": false,
+     "sec": 0.4,
+     "tok": 55
+    },
+    {
+     "task": 32,
+     "ok": true,
+     "sec": 0.8,
+     "tok": 118
+    },
+    {
+     "task": 33,
+     "ok": true,
+     "sec": 0.6,
+     "tok": 85
+    },
+    {
+     "task": 34,
+     "ok": false,
+     "sec": 0.4,
+     "tok": 55
+    },
+    {
+     "task": 35,
+     "ok": true,
+     "sec": 0.2,
+     "tok": 26
+    },
+    {
+     "task": 36,
+     "ok": false,
+     "sec": 0.7,
+     "tok": 110
+    },
+    {
+     "task": 37,
+     "ok": true,
+     "sec": 0.3,
+     "tok": 37
+    },
+    {
+     "task": 38,
+     "ok": false,
+     "sec": 0.7,
+     "tok": 108
+    },
+    {
+     "task": 39,
+     "ok": false,
+     "sec": 0.6,
+     "tok": 86
+    },
+    {
+     "task": 40,
+     "ok": true,
+     "sec": 0.4,
+     "tok": 49
+    }
+   ]
+  },
+  {
+   "config": "deepseek16_pre_fix",
+   "model_file": "deepseek-coder-v2-lite-q4_k_m.gguf",
+   "note": "harness bug, before fix",
+   "tasks": 40,
+   "passed": 4,
+   "pass_at_1": 0.1,
+   "avg_sec": 0.4,
+   "tok_s": null,
+   "source": "/srv/media/night/v100_66_deepseek16.json",
+   "per_task": [
+    {
+     "task": 1,
+     "ok": false,
+     "sec": 0.8,
+     "tok": 100
+    },
+    {
+     "task": 2,
+     "ok": false,
+     "sec": 0.4,
+     "tok": 48
+    },
+    {
+     "task": 3,
+     "ok": false,
+     "sec": 0.7,
+     "tok": 114
+    },
+    {
+     "task": 4,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 37
+    },
+    {
+     "task": 5,
+     "ok": true,
+     "sec": 0.8,
+     "tok": 127
+    },
+    {
+     "task": 6,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 36
+    },
+    {
+     "task": 7,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 41
+    },
+    {
+     "task": 8,
+     "ok": false,
+     "sec": 0.2,
+     "tok": 29
+    },
+    {
+     "task": 9,
+     "ok": false,
+     "sec": 0.4,
+     "tok": 62
+    },
+    {
+     "task": 10,
+     "ok": false,
+     "sec": 0.2,
+     "tok": 28
+    },
+    {
+     "task": 11,
+     "ok": false,
+     "sec": 0.6,
+     "tok": 88
+    },
+    {
+     "task": 12,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 35
+    },
+    {
+     "task": 13,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 46
+    },
+    {
+     "task": 14,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 43
+    },
+    {
+     "task": 15,
+     "ok": false,
+     "sec": 0.6,
+     "tok": 92
+    },
+    {
+     "task": 16,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 40
+    },
+    {
+     "task": 17,
+     "ok": false,
+     "sec": 0.2,
+     "tok": 22
+    },
+    {
+     "task": 18,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 37
+    },
+    {
+     "task": 19,
+     "ok": false,
+     "sec": 0.2,
+     "tok": 30
+    },
+    {
+     "task": 20,
+     "ok": true,
+     "sec": 0.5,
+     "tok": 66
+    },
+    {
+     "task": 21,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 36
+    },
+    {
+     "task": 22,
+     "ok": true,
+     "sec": 0.5,
+     "tok": 73
+    },
+    {
+     "task": 23,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 29
+    },
+    {
+     "task": 24,
+     "ok": false,
+     "sec": 0.5,
+     "tok": 63
+    },
+    {
+     "task": 25,
+     "ok": false,
+     "sec": 0.5,
+     "tok": 64
+    },
+    {
+     "task": 26,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 44
+    },
+    {
+     "task": 27,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 38
+    },
+    {
+     "task": 28,
+     "ok": false,
+     "sec": 0.5,
+     "tok": 75
+    },
+    {
+     "task": 29,
+     "ok": false,
+     "sec": 0.6,
+     "tok": 89
+    },
+    {
+     "task": 30,
+     "ok": false,
+     "sec": 0.6,
+     "tok": 92
+    },
+    {
+     "task": 31,
+     "ok": false,
+     "sec": 0.5,
+     "tok": 70
+    },
+    {
+     "task": 32,
+     "ok": false,
+     "sec": 0.6,
+     "tok": 90
+    },
+    {
+     "task": 33,
+     "ok": false,
+     "sec": 0.2,
+     "tok": 24
+    },
+    {
+     "task": 34,
+     "ok": false,
+     "sec": 0.3,
+     "tok": 48
+    },
+    {
+     "task": 35,
+     "ok": false,
+     "sec": 0.2,
+     "tok": 27
+    },
+    {
+     "task": 36,
+     "ok": false,
+     "sec": 0.4,
+     "tok": 60
+    },
+    {
+     "task": 37,
+     "ok": true,
+     "sec": 0.3,
+     "tok": 41
+    },
+    {
+     "task": 38,
+     "ok": false,
+     "sec": 0.6,
+     "tok": 85
+    },
+    {
+     "task": 39,
+     "ok": false,
+     "sec": 0.6,
+     "tok": 77
+    },
+    {
+     "task": 40,
+     "ok": false,
+     "sec": 0.4,
+     "tok": 50
+    }
+   ]
+  },
+  {
+   "config": "qwen3_30b_think",
+   "model_file": "qwen3-30b-a3b.gguf",
+   "note": "reasoning on, max_tokens 700",
+   "tasks": 40,
+   "passed": 9,
+   "pass_at_1": 0.225,
+   "avg_sec": 7.97,
+   "tok_s": 78.4,
+   "source": "/srv/media/night/strata/baseline-qwen3-30b-mbpp.json",
+   "per_task": [
+    {
+     "task": 1,
+     "ok": false,
+     "sec": 9.33,
+     "tok": 700
+    },
+    {
+     "task": 2,
+     "ok": false,
+     "sec": 9.19,
+     "tok": 700
+    },
+    {
+     "task": 3,
+     "ok": false,
+     "sec": 9.04,
+     "tok": 700
+    },
+    {
+     "task": 4,
+     "ok": false,
+     "sec": 8.85,
+     "tok": 700
+    },
+    {
+     "task": 5,
+     "ok": false,
+     "sec": 8.92,
+     "tok": 700
+    },
+    {
+     "task": 6,
+     "ok": true,
+     "sec": 7.11,
+     "tok": 556
+    },
+    {
+     "task": 7,
+     "ok": false,
+     "sec": 8.95,
+     "tok": 700
+    },
+    {
+     "task": 8,
+     "ok": true,
+     "sec": 3.6,
+     "tok": 276
+    },
+    {
+     "task": 9,
+     "ok": false,
+     "sec": 8.82,
+     "tok": 700
+    },
+    {
+     "task": 10,
+     "ok": false,
+     "sec": 8.91,
+     "tok": 700
+    },
+    {
+     "task": 11,
+     "ok": false,
+     "sec": 8.96,
+     "tok": 700
+    },
+    {
+     "task": 12,
+     "ok": true,
+     "sec": 5.7,
+     "tok": 443
+    },
+    {
+     "task": 13,
+     "ok": false,
+     "sec": 8.97,
+     "tok": 700
+    },
+    {
+     "task": 14,
+     "ok": true,
+     "sec": 4.08,
+     "tok": 315
+    },
+    {
+     "task": 15,
+     "ok": false,
+     "sec": 9.0,
+     "tok": 700
+    },
+    {
+     "task": 16,
+     "ok": false,
+     "sec": 8.82,
+     "tok": 700
+    },
+    {
+     "task": 17,
+     "ok": true,
+     "sec": 3.83,
+     "tok": 284
+    },
+    {
+     "task": 18,
+     "ok": false,
+     "sec": 8.92,
+     "tok": 700
+    },
+    {
+     "task": 19,
+     "ok": true,
+     "sec": 5.36,
+     "tok": 423
+    },
+    {
+     "task": 20,
+     "ok": false,
+     "sec": 8.74,
+     "tok": 700
+    },
+    {
+     "task": 21,
+     "ok": false,
+     "sec": 8.24,
+     "tok": 638
+    },
+    {
+     "task": 22,
+     "ok": false,
+     "sec": 8.66,
+     "tok": 693
+    },
+    {
+     "task": 23,
+     "ok": false,
+     "sec": 8.78,
+     "tok": 700
+    },
+    {
+     "task": 24,
+     "ok": false,
+     "sec": 9.06,
+     "tok": 700
+    },
+    {
+     "task": 25,
+     "ok": false,
+     "sec": 9.27,
+     "tok": 700
+    },
+    {
+     "task": 26,
+     "ok": false,
+     "sec": 9.61,
+     "tok": 700
+    },
+    {
+     "task": 27,
+     "ok": true,
+     "sec": 5.92,
+     "tok": 466
+    },
+    {
+     "task": 28,
+     "ok": false,
+     "sec": 8.76,
+     "tok": 700
+    },
+    {
+     "task": 29,
+     "ok": false,
+     "sec": 5.8,
+     "tok": 455
+    },
+    {
+     "task": 30,
+     "ok": false,
+     "sec": 8.86,
+     "tok": 700
+    },
+    {
+     "task": 31,
+     "ok": false,
+     "sec": 9.02,
+     "tok": 700
+    },
+    {
+     "task": 32,
+     "ok": false,
+     "sec": 8.72,
+     "tok": 700
+    },
+    {
+     "task": 33,
+     "ok": false,
+     "sec": 6.69,
+     "tok": 534
+    },
+    {
+     "task": 34,
+     "ok": false,
+     "sec": 8.7,
+     "tok": 700
+    },
+    {
+     "task": 35,
+     "ok": true,
+     "sec": 4.37,
+     "tok": 342
+    },
+    {
+     "task": 36,
+     "ok": false,
+     "sec": 8.68,
+     "tok": 700
+    },
+    {
+     "task": 37,
+     "ok": false,
+     "sec": 8.7,
+     "tok": 700
+    },
+    {
+     "task": 38,
+     "ok": false,
+     "sec": 8.74,
+     "tok": 700
+    },
+    {
+     "task": 39,
+     "ok": false,
+     "sec": 8.75,
+     "tok": 700
+    },
+    {
+     "task": 40,
+     "ok": true,
+     "sec": 8.31,
+     "tok": 666
+    }
+   ]
+  },
+  {
+   "config": "qwen3_30b_nothink",
+   "model_file": "qwen3-30b-a3b.gguf",
+   "note": "reasoning off",
+   "tasks": 40,
+   "passed": 24,
+   "pass_at_1": 0.6,
+   "avg_sec": 0.89,
+   "tok_s": 59.7,
+   "source": "/srv/media/night/strata/baseline-qwen3-30b-nothink-mbpp.json",
+   "per_task": [
+    {
+     "task": 1,
+     "ok": true,
+     "sec": 2.65,
+     "tok": 189
+    },
+    {
+     "task": 2,
+     "ok": true,
+     "sec": 0.54,
+     "tok": 26
+    },
+    {
+     "task": 3,
+     "ok": true,
+     "sec": 0.92,
+     "tok": 58
+    },
+    {
+     "task": 4,
+     "ok": true,
+     "sec": 0.57,
+     "tok": 27
+    },
+    {
+     "task": 5,
+     "ok": false,
+     "sec": 1.82,
+     "tok": 126
+    },
+    {
+     "task": 6,
+     "ok": false,
+     "sec": 0.68,
+     "tok": 36
+    },
+    {
+     "task": 7,
+     "ok": true,
+     "sec": 0.62,
+     "tok": 31
+    },
+    {
+     "task": 8,
+     "ok": false,
+     "sec": 0.62,
+     "tok": 32
+    },
+    {
+     "task": 9,
+     "ok": true,
+     "sec": 0.85,
+     "tok": 48
+    },
+    {
+     "task": 10,
+     "ok": true,
+     "sec": 0.47,
+     "tok": 20
+    },
+    {
+     "task": 11,
+     "ok": true,
+     "sec": 1.15,
+     "tok": 76
+    },
+    {
+     "task": 12,
+     "ok": true,
+     "sec": 0.49,
+     "tok": 22
+    },
+    {
+     "task": 13,
+     "ok": false,
+     "sec": 0.58,
+     "tok": 30
+    },
+    {
+     "task": 14,
+     "ok": true,
+     "sec": 0.58,
+     "tok": 28
+    },
+    {
+     "task": 15,
+     "ok": false,
+     "sec": 1.06,
+     "tok": 70
+    },
+    {
+     "task": 16,
+     "ok": false,
+     "sec": 0.72,
+     "tok": 41
+    },
+    {
+     "task": 17,
+     "ok": true,
+     "sec": 0.44,
+     "tok": 18
+    },
+    {
+     "task": 18,
+     "ok": true,
+     "sec": 0.62,
+     "tok": 32
+    },
+    {
+     "task": 19,
+     "ok": true,
+     "sec": 0.47,
+     "tok": 20
+    },
+    {
+     "task": 20,
+     "ok": true,
+     "sec": 1.15,
+     "tok": 75
+    },
+    {
+     "task": 21,
+     "ok": false,
+     "sec": 0.62,
+     "tok": 31
+    },
+    {
+     "task": 22,
+     "ok": false,
+     "sec": 0.88,
+     "tok": 41
+    },
+    {
+     "task": 23,
+     "ok": true,
+     "sec": 0.58,
+     "tok": 26
+    },
+    {
+     "task": 24,
+     "ok": false,
+     "sec": 0.46,
+     "tok": 19
+    },
+    {
+     "task": 25,
+     "ok": false,
+     "sec": 0.86,
+     "tok": 52
+    },
+    {
+     "task": 26,
+     "ok": false,
+     "sec": 0.56,
+     "tok": 27
+    },
+    {
+     "task": 27,
+     "ok": true,
+     "sec": 0.57,
+     "tok": 29
+    },
+    {
+     "task": 28,
+     "ok": true,
+     "sec": 1.31,
+     "tok": 90
+    },
+    {
+     "task": 29,
+     "ok": false,
+     "sec": 0.66,
+     "tok": 35
+    },
+    {
+     "task": 30,
+     "ok": true,
+     "sec": 1.12,
+     "tok": 73
+    },
+    {
+     "task": 31,
+     "ok": false,
+     "sec": 1.4,
+     "tok": 97
+    },
+    {
+     "task": 32,
+     "ok": true,
+     "sec": 1.16,
+     "tok": 78
+    },
+    {
+     "task": 33,
+     "ok": false,
+     "sec": 0.45,
+     "tok": 19
+    },
+    {
+     "task": 34,
+     "ok": false,
+     "sec": 0.78,
+     "tok": 47
+    },
+    {
+     "task": 35,
+     "ok": true,
+     "sec": 0.48,
+     "tok": 21
+    },
+    {
+     "task": 36,
+     "ok": false,
+     "sec": 1.6,
+     "tok": 113
+    },
+    {
+     "task": 37,
+     "ok": true,
+     "sec": 0.92,
+     "tok": 54
+    },
+    {
+     "task": 38,
+     "ok": true,
+     "sec": 1.65,
+     "tok": 100
+    },
+    {
+     "task": 39,
+     "ok": true,
+     "sec": 2.0,
+     "tok": 142
+    },
+    {
+     "task": 40,
+     "ok": true,
+     "sec": 0.61,
+     "tok": 32
+    }
+   ]
+  },
+  {
+   "config": "qwen3_30b_nothink_200",
+   "model_file": "qwen3-30b-a3b.gguf",
+   "note": "reasoning off, 200 tasks",
+   "tasks": 200,
+   "passed": 100,
+   "pass_at_1": 0.5,
+   "avg_sec": 0.92,
+   "tok_s": 59.3,
+   "source": "/srv/media/night/strata/baseline-qwen3-30b-nothink-mbpp-200.json",
+   "per_task": [
+    {
+     "task": 1,
+     "ok": true,
+     "sec": 2.93,
+     "tok": 189
+    },
+    {
+     "task": 2,
+     "ok": true,
+     "sec": 0.55,
+     "tok": 26
+    },
+    {
+     "task": 3,
+     "ok": true,
+     "sec": 0.93,
+     "tok": 58
+    },
+    {
+     "task": 4,
+     "ok": true,
+     "sec": 0.56,
+     "tok": 27
+    },
+    {
+     "task": 5,
+     "ok": false,
+     "sec": 1.8,
+     "tok": 126
+    },
+    {
+     "task": 6,
+     "ok": false,
+     "sec": 0.68,
+     "tok": 36
+    },
+    {
+     "task": 7,
+     "ok": true,
+     "sec": 0.64,
+     "tok": 31
+    },
+    {
+     "task": 8,
+     "ok": false,
+     "sec": 0.61,
+     "tok": 32
+    },
+    {
+     "task": 9,
+     "ok": true,
+     "sec": 0.83,
+     "tok": 48
+    },
+    {
+     "task": 10,
+     "ok": true,
+     "sec": 0.48,
+     "tok": 20
+    },
+    {
+     "task": 11,
+     "ok": true,
+     "sec": 1.18,
+     "tok": 76
+    },
+    {
+     "task": 12,
+     "ok": true,
+     "sec": 0.51,
+     "tok": 22
+    },
+    {
+     "task": 13,
+     "ok": false,
+     "sec": 0.6,
+     "tok": 30
+    },
+    {
+     "task": 14,
+     "ok": true,
+     "sec": 0.58,
+     "tok": 28
+    },
+    {
+     "task": 15,
+     "ok": false,
+     "sec": 1.08,
+     "tok": 70
+    },
+    {
+     "task": 16,
+     "ok": false,
+     "sec": 0.71,
+     "tok": 41
+    },
+    {
+     "task": 17,
+     "ok": true,
+     "sec": 0.44,
+     "tok": 18
+    },
+    {
+     "task": 18,
+     "ok": true,
+     "sec": 0.61,
+     "tok": 32
+    },
+    {
+     "task": 19,
+     "ok": true,
+     "sec": 0.46,
+     "tok": 20
+    },
+    {
+     "task": 20,
+     "ok": true,
+     "sec": 1.12,
+     "tok": 75
+    },
+    {
+     "task": 21,
+     "ok": false,
+     "sec": 0.59,
+     "tok": 31
+    },
+    {
+     "task": 22,
+     "ok": false,
+     "sec": 0.72,
+     "tok": 41
+    },
+    {
+     "task": 23,
+     "ok": true,
+     "sec": 0.55,
+     "tok": 26
+    },
+    {
+     "task": 24,
+     "ok": false,
+     "sec": 0.45,
+     "tok": 19
+    },
+    {
+     "task": 25,
+     "ok": false,
+     "sec": 0.84,
+     "tok": 52
+    },
+    {
+     "task": 26,
+     "ok": false,
+     "sec": 0.54,
+     "tok": 27
+    },
+    {
+     "task": 27,
+     "ok": true,
+     "sec": 0.56,
+     "tok": 29
+    },
+    {
+     "task": 28,
+     "ok": true,
+     "sec": 1.35,
+     "tok": 90
+    },
+    {
+     "task": 29,
+     "ok": false,
+     "sec": 0.65,
+     "tok": 35
+    },
+    {
+     "task": 30,
+     "ok": true,
+     "sec": 1.12,
+     "tok": 73
+    },
+    {
+     "task": 31,
+     "ok": false,
+     "sec": 1.42,
+     "tok": 97
+    },
+    {
+     "task": 32,
+     "ok": true,
+     "sec": 1.16,
+     "tok": 78
+    },
+    {
+     "task": 33,
+     "ok": false,
+     "sec": 0.46,
+     "tok": 19
+    },
+    {
+     "task": 34,
+     "ok": false,
+     "sec": 0.8,
+     "tok": 47
+    },
+    {
+     "task": 35,
+     "ok": true,
+     "sec": 0.49,
+     "tok": 21
+    },
+    {
+     "task": 36,
+     "ok": false,
+     "sec": 1.63,
+     "tok": 113
+    },
+    {
+     "task": 37,
+     "ok": true,
+     "sec": 0.95,
+     "tok": 54
+    },
+    {
+     "task": 38,
+     "ok": true,
+     "sec": 1.47,
+     "tok": 100
+    },
+    {
+     "task": 39,
+     "ok": true,
+     "sec": 2.0,
+     "tok": 142
+    },
+    {
+     "task": 40,
+     "ok": true,
+     "sec": 0.61,
+     "tok": 32
+    },
+    {
+     "task": 41,
+     "ok": true,
+     "sec": 0.56,
+     "tok": 28
+    },
+    {
+     "task": 42,
+     "ok": false,
+     "sec": 0.73,
+     "tok": 41
+    },
+    {
+     "task": 43,
+     "ok": false,
+     "sec": 0.69,
+     "tok": 39
+    },
+    {
+     "task": 44,
+     "ok": false,
+     "sec": 0.65,
+     "tok": 35
+    },
+    {
+     "task": 45,
+     "ok": true,
+     "sec": 1.03,
+     "tok": 65
+    },
+    {
+     "task": 46,
+     "ok": true,
+     "sec": 0.49,
+     "tok": 21
+    },
+    {
+     "task": 47,
+     "ok": true,
+     "sec": 1.02,
+     "tok": 63
+    },
+    {
+     "task": 48,
+     "ok": false,
+     "sec": 0.74,
+     "tok": 42
+    },
+    {
+     "task": 49,
+     "ok": true,
+     "sec": 0.52,
+     "tok": 25
+    },
+    {
+     "task": 50,
+     "ok": false,
+     "sec": 0.46,
+     "tok": 19
+    },
+    {
+     "task": 51,
+     "ok": false,
+     "sec": 0.76,
+     "tok": 45
+    },
+    {
+     "task": 52,
+     "ok": true,
+     "sec": 0.47,
+     "tok": 20
+    },
+    {
+     "task": 53,
+     "ok": false,
+     "sec": 0.55,
+     "tok": 27
+    },
+    {
+     "task": 54,
+     "ok": true,
+     "sec": 1.24,
+     "tok": 85
+    },
+    {
+     "task": 55,
+     "ok": false,
+     "sec": 0.56,
+     "tok": 27
+    },
+    {
+     "task": 56,
+     "ok": true,
+     "sec": 0.61,
+     "tok": 31
+    },
+    {
+     "task": 57,
+     "ok": false,
+     "sec": 0.57,
+     "tok": 28
+    },
+    {
+     "task": 58,
+     "ok": true,
+     "sec": 0.53,
+     "tok": 25
+    },
+    {
+     "task": 59,
+     "ok": true,
+     "sec": 0.5,
+     "tok": 23
+    },
+    {
+     "task": 60,
+     "ok": false,
+     "sec": 1.29,
+     "tok": 88
+    },
+    {
+     "task": 61,
+     "ok": false,
+     "sec": 1.13,
+     "tok": 73
+    },
+    {
+     "task": 62,
+     "ok": true,
+     "sec": 0.39,
+     "tok": 15
+    },
+    {
+     "task": 63,
+     "ok": true,
+     "sec": 0.88,
+     "tok": 55
+    },
+    {
+     "task": 64,
+     "ok": true,
+     "sec": 0.51,
+     "tok": 23
+    },
+    {
+     "task": 65,
+     "ok": false,
+     "sec": 0.69,
+     "tok": 35
+    },
+    {
+     "task": 66,
+     "ok": true,
+     "sec": 0.53,
+     "tok": 25
+    },
+    {
+     "task": 67,
+     "ok": true,
+     "sec": 1.59,
+     "tok": 112
+    },
+    {
+     "task": 68,
+     "ok": true,
+     "sec": 0.88,
+     "tok": 54
+    },
+    {
+     "task": 69,
+     "ok": true,
+     "sec": 1.03,
+     "tok": 66
+    },
+    {
+     "task": 70,
+     "ok": false,
+     "sec": 0.75,
+     "tok": 44
+    },
+    {
+     "task": 71,
+     "ok": true,
+     "sec": 1.65,
+     "tok": 117
+    },
+    {
+     "task": 72,
+     "ok": true,
+     "sec": 0.94,
+     "tok": 55
+    },
+    {
+     "task": 73,
+     "ok": false,
+     "sec": 0.68,
+     "tok": 37
+    },
+    {
+     "task": 74,
+     "ok": true,
+     "sec": 1.65,
+     "tok": 116
+    },
+    {
+     "task": 75,
+     "ok": false,
+     "sec": 0.68,
+     "tok": 36
+    },
+    {
+     "task": 76,
+     "ok": false,
+     "sec": 0.67,
+     "tok": 36
+    },
+    {
+     "task": 77,
+     "ok": false,
+     "sec": 1.11,
+     "tok": 72
+    },
+    {
+     "task": 78,
+     "ok": false,
+     "sec": 0.57,
+     "tok": 28
+    },
+    {
+     "task": 79,
+     "ok": true,
+     "sec": 0.49,
+     "tok": 22
+    },
+    {
+     "task": 80,
+     "ok": true,
+     "sec": 0.67,
+     "tok": 33
+    },
+    {
+     "task": 81,
+     "ok": false,
+     "sec": 0.52,
+     "tok": 24
+    },
+    {
+     "task": 82,
+     "ok": false,
+     "sec": 0.65,
+     "tok": 33
+    },
+    {
+     "task": 83,
+     "ok": false,
+     "sec": 0.54,
+     "tok": 22
+    },
+    {
+     "task": 84,
+     "ok": true,
+     "sec": 0.84,
+     "tok": 45
+    },
+    {
+     "task": 85,
+     "ok": true,
+     "sec": 0.59,
+     "tok": 28
+    },
+    {
+     "task": 86,
+     "ok": true,
+     "sec": 0.62,
+     "tok": 29
+    },
+    {
+     "task": 87,
+     "ok": false,
+     "sec": 0.71,
+     "tok": 34
+    },
+    {
+     "task": 88,
+     "ok": true,
+     "sec": 0.76,
+     "tok": 40
+    },
+    {
+     "task": 89,
+     "ok": true,
+     "sec": 0.45,
+     "tok": 17
+    },
+    {
+     "task": 90,
+     "ok": true,
+     "sec": 0.5,
+     "tok": 21
+    },
+    {
+     "task": 91,
+     "ok": false,
+     "sec": 0.56,
+     "tok": 26
+    },
+    {
+     "task": 92,
+     "ok": true,
+     "sec": 1.23,
+     "tok": 77
+    },
+    {
+     "task": 93,
+     "ok": true,
+     "sec": 0.44,
+     "tok": 17
+    },
+    {
+     "task": 94,
+     "ok": false,
+     "sec": 0.54,
+     "tok": 25
+    },
+    {
+     "task": 95,
+     "ok": true,
+     "sec": 0.53,
+     "tok": 25
+    },
+    {
+     "task": 96,
+     "ok": true,
+     "sec": 0.8,
+     "tok": 47
+    },
+    {
+     "task": 97,
+     "ok": false,
+     "sec": 0.62,
+     "tok": 32
+    },
+    {
+     "task": 98,
+     "ok": true,
+     "sec": 0.77,
+     "tok": 44
+    },
+    {
+     "task": 99,
+     "ok": true,
+     "sec": 0.44,
+     "tok": 18
+    },
+    {
+     "task": 100,
+     "ok": false,
+     "sec": 2.48,
+     "tok": 184
+    },
+    {
+     "task": 101,
+     "ok": false,
+     "sec": 0.44,
+     "tok": 18
+    },
+    {
+     "task": 102,
+     "ok": true,
+     "sec": 0.58,
+     "tok": 29
+    },
+    {
+     "task": 103,
+     "ok": false,
+     "sec": 1.3,
+     "tok": 88
+    },
+    {
+     "task": 104,
+     "ok": true,
+     "sec": 0.62,
+     "tok": 33
+    },
+    {
+     "task": 105,
+     "ok": true,
+     "sec": 0.49,
+     "tok": 23
+    },
+    {
+     "task": 106,
+     "ok": false,
+     "sec": 0.63,
+     "tok": 32
+    },
+    {
+     "task": 107,
+     "ok": false,
+     "sec": 0.97,
+     "tok": 58
+    },
+    {
+     "task": 108,
+     "ok": false,
+     "sec": 0.52,
+     "tok": 24
+    },
+    {
+     "task": 109,
+     "ok": false,
+     "sec": 1.06,
+     "tok": 68
+    },
+    {
+     "task": 110,
+     "ok": false,
+     "sec": 1.13,
+     "tok": 75
+    },
+    {
+     "task": 111,
+     "ok": true,
+     "sec": 0.87,
+     "tok": 53
+    },
+    {
+     "task": 112,
+     "ok": true,
+     "sec": 0.47,
+     "tok": 21
+    },
+    {
+     "task": 113,
+     "ok": true,
+     "sec": 0.57,
+     "tok": 29
+    },
+    {
+     "task": 114,
+     "ok": false,
+     "sec": 0.71,
+     "tok": 38
+    },
+    {
+     "task": 115,
+     "ok": true,
+     "sec": 0.51,
+     "tok": 23
+    },
+    {
+     "task": 116,
+     "ok": true,
+     "sec": 0.5,
+     "tok": 22
+    },
+    {
+     "task": 117,
+     "ok": false,
+     "sec": 0.69,
+     "tok": 35
+    },
+    {
+     "task": 118,
+     "ok": false,
+     "sec": 0.42,
+     "tok": 16
+    },
+    {
+     "task": 119,
+     "ok": false,
+     "sec": 1.5,
+     "tok": 104
+    },
+    {
+     "task": 120,
+     "ok": true,
+     "sec": 0.95,
+     "tok": 58
+    },
+    {
+     "task": 121,
+     "ok": false,
+     "sec": 1.23,
+     "tok": 80
+    },
+    {
+     "task": 122,
+     "ok": false,
+     "sec": 1.75,
+     "tok": 124
+    },
+    {
+     "task": 123,
+     "ok": true,
+     "sec": 2.15,
+     "tok": 157
+    },
+    {
+     "task": 124,
+     "ok": false,
+     "sec": 0.5,
+     "tok": 21
+    },
+    {
+     "task": 125,
+     "ok": false,
+     "sec": 1.07,
+     "tok": 66
+    },
+    {
+     "task": 126,
+     "ok": false,
+     "sec": 1.27,
+     "tok": 85
+    },
+    {
+     "task": 127,
+     "ok": true,
+     "sec": 0.75,
+     "tok": 43
+    },
+    {
+     "task": 128,
+     "ok": false,
+     "sec": 0.56,
+     "tok": 27
+    },
+    {
+     "task": 129,
+     "ok": false,
+     "sec": 2.34,
+     "tok": 176
+    },
+    {
+     "task": 130,
+     "ok": false,
+     "sec": 1.25,
+     "tok": 83
+    },
+    {
+     "task": 131,
+     "ok": true,
+     "sec": 1.96,
+     "tok": 142
+    },
+    {
+     "task": 132,
+     "ok": true,
+     "sec": 0.44,
+     "tok": 19
+    },
+    {
+     "task": 133,
+     "ok": true,
+     "sec": 0.56,
+     "tok": 26
+    },
+    {
+     "task": 134,
+     "ok": false,
+     "sec": 1.19,
+     "tok": 78
+    },
+    {
+     "task": 135,
+     "ok": true,
+     "sec": 0.5,
+     "tok": 23
+    },
+    {
+     "task": 136,
+     "ok": false,
+     "sec": 2.28,
+     "tok": 162
+    },
+    {
+     "task": 137,
+     "ok": false,
+     "sec": 0.65,
+     "tok": 32
+    },
+    {
+     "task": 138,
+     "ok": false,
+     "sec": 0.65,
+     "tok": 31
+    },
+    {
+     "task": 139,
+     "ok": false,
+     "sec": 0.58,
+     "tok": 27
+    },
+    {
+     "task": 140,
+     "ok": false,
+     "sec": 0.94,
+     "tok": 54
+    },
+    {
+     "task": 141,
+     "ok": true,
+     "sec": 1.55,
+     "tok": 101
+    },
+    {
+     "task": 142,
+     "ok": false,
+     "sec": 1.01,
+     "tok": 63
+    },
+    {
+     "task": 143,
+     "ok": false,
+     "sec": 0.59,
+     "tok": 27
+    },
+    {
+     "task": 144,
+     "ok": false,
+     "sec": 0.98,
+     "tok": 57
+    },
+    {
+     "task": 145,
+     "ok": false,
+     "sec": 0.87,
+     "tok": 49
+    },
+    {
+     "task": 146,
+     "ok": false,
+     "sec": 0.51,
+     "tok": 22
+    },
+    {
+     "task": 147,
+     "ok": false,
+     "sec": 1.17,
+     "tok": 72
+    },
+    {
+     "task": 148,
+     "ok": false,
+     "sec": 1.61,
+     "tok": 105
+    },
+    {
+     "task": 149,
+     "ok": false,
+     "sec": 1.4,
+     "tok": 88
+    },
+    {
+     "task": 150,
+     "ok": false,
+     "sec": 0.5,
+     "tok": 21
+    },
+    {
+     "task": 151,
+     "ok": true,
+     "sec": 0.88,
+     "tok": 51
+    },
+    {
+     "task": 152,
+     "ok": false,
+     "sec": 2.5,
+     "tok": 175
+    },
+    {
+     "task": 153,
+     "ok": true,
+     "sec": 0.92,
+     "tok": 49
+    },
+    {
+     "task": 154,
+     "ok": false,
+     "sec": 0.57,
+     "tok": 37
+    },
+    {
+     "task": 155,
+     "ok": false,
+     "sec": 0.82,
+     "tok": 41
+    },
+    {
+     "task": 156,
+     "ok": false,
+     "sec": 0.56,
+     "tok": 22
+    },
+    {
+     "task": 157,
+     "ok": false,
+     "sec": 1.36,
+     "tok": 89
+    },
+    {
+     "task": 158,
+     "ok": false,
+     "sec": 0.78,
+     "tok": 43
+    },
+    {
+     "task": 159,
+     "ok": false,
+     "sec": 2.36,
+     "tok": 165
+    },
+    {
+     "task": 160,
+     "ok": false,
+     "sec": 1.04,
+     "tok": 63
+    },
+    {
+     "task": 161,
+     "ok": true,
+     "sec": 0.62,
+     "tok": 30
+    },
+    {
+     "task": 162,
+     "ok": true,
+     "sec": 0.68,
+     "tok": 33
+    },
+    {
+     "task": 163,
+     "ok": true,
+     "sec": 0.72,
+     "tok": 38
+    },
+    {
+     "task": 164,
+     "ok": false,
+     "sec": 1.04,
+     "tok": 59
+    },
+    {
+     "task": 165,
+     "ok": true,
+     "sec": 1.21,
+     "tok": 75
+    },
+    {
+     "task": 166,
+     "ok": false,
+     "sec": 1.3,
+     "tok": 84
+    },
+    {
+     "task": 167,
+     "ok": true,
+     "sec": 0.87,
+     "tok": 48
+    },
+    {
+     "task": 168,
+     "ok": true,
+     "sec": 0.43,
+     "tok": 17
+    },
+    {
+     "task": 169,
+     "ok": true,
+     "sec": 1.65,
+     "tok": 112
+    },
+    {
+     "task": 170,
+     "ok": true,
+     "sec": 0.55,
+     "tok": 24
+    },
+    {
+     "task": 171,
+     "ok": true,
+     "sec": 0.52,
+     "tok": 21
+    },
+    {
+     "task": 172,
+     "ok": true,
+     "sec": 0.55,
+     "tok": 19
+    },
+    {
+     "task": 173,
+     "ok": true,
+     "sec": 0.58,
+     "tok": 26
+    },
+    {
+     "task": 174,
+     "ok": true,
+     "sec": 0.85,
+     "tok": 48
+    },
+    {
+     "task": 175,
+     "ok": false,
+     "sec": 1.3,
+     "tok": 83
+    },
+    {
+     "task": 176,
+     "ok": true,
+     "sec": 0.51,
+     "tok": 22
+    },
+    {
+     "task": 177,
+     "ok": false,
+     "sec": 1.47,
+     "tok": 96
+    },
+    {
+     "task": 178,
+     "ok": false,
+     "sec": 0.77,
+     "tok": 43
+    },
+    {
+     "task": 179,
+     "ok": true,
+     "sec": 1.42,
+     "tok": 86
+    },
+    {
+     "task": 180,
+     "ok": false,
+     "sec": 2.29,
+     "tok": 150
+    },
+    {
+     "task": 181,
+     "ok": false,
+     "sec": 0.98,
+     "tok": 59
+    },
+    {
+     "task": 182,
+     "ok": false,
+     "sec": 1.5,
+     "tok": 95
+    },
+    {
+     "task": 183,
+     "ok": false,
+     "sec": 0.88,
+     "tok": 51
+    },
+    {
+     "task": 184,
+     "ok": false,
+     "sec": 0.57,
+     "tok": 26
+    },
+    {
+     "task": 185,
+     "ok": true,
+     "sec": 1.02,
+     "tok": 59
+    },
+    {
+     "task": 186,
+     "ok": false,
+     "sec": 0.72,
+     "tok": 38
+    },
+    {
+     "task": 187,
+     "ok": false,
+     "sec": 3.94,
+     "tok": 285
+    },
+    {
+     "task": 188,
+     "ok": false,
+     "sec": 1.32,
+     "tok": 82
+    },
+    {
+     "task": 189,
+     "ok": false,
+     "sec": 1.65,
+     "tok": 108
+    },
+    {
+     "task": 190,
+     "ok": true,
+     "sec": 1.57,
+     "tok": 104
+    },
+    {
+     "task": 191,
+     "ok": true,
+     "sec": 0.72,
+     "tok": 38
+    },
+    {
+     "task": 192,
+     "ok": true,
+     "sec": 0.85,
+     "tok": 45
+    },
+    {
+     "task": 193,
+     "ok": true,
+     "sec": 0.45,
+     "tok": 16
+    },
+    {
+     "task": 194,
+     "ok": true,
+     "sec": 1.2,
+     "tok": 76
+    },
+    {
+     "task": 195,
+     "ok": false,
+     "sec": 1.6,
+     "tok": 103
+    },
+    {
+     "task": 196,
+     "ok": true,
+     "sec": 0.63,
+     "tok": 27
+    },
+    {
+     "task": 197,
+     "ok": true,
+     "sec": 0.65,
+     "tok": 30
+    },
+    {
+     "task": 198,
+     "ok": false,
+     "sec": 0.86,
+     "tok": 42
+    },
+    {
+     "task": 199,
+     "ok": true,
+     "sec": 0.83,
+     "tok": 39
+    },
+    {
+     "task": 200,
+     "ok": true,
+     "sec": 0.69,
+     "tok": 35
+    }
+   ]
+  }
+ ]
+}
