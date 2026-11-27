@@ -499,9 +499,9 @@
  },
  {
   "id": "V100-88",
-  "title": "Flash-Attention-V100: FA2 fork for vLLM cannot be selected on sm_70",
+  "title": "Volta flash-attention path is 5% slower than Triton in vLLM on sm_70",
   "result_type": "negative",
-  "verdict": "Negative for the claim as stated: the FA2 fork builds and imports on sm_70 but cannot be selected in this engine, so the promised +580% over Triton is untestable here without patching backend selection in the platform; the stock Volta backend gives 1 091 tok/s at 8k and 623 tok/s at 16k."
+  "verdict": "Negative: with backend selection done explicitly, Triton beats the Volta flash-attention path at every length measured, so the fork has nothing to offer on a single 16 GB V100 even before its own kernels run."
  },
  {
   "id": "V100-89",
