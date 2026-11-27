@@ -828,6 +828,12 @@
   "verdict": "The default Q4_K_M of the same Qwen3.8-27B model fully loads onto the card using the stock llama.cpp and achieves a MBPP pass@1 score of 0.650 (26/40) compared to 0.600-0.625 (24-25/40) of two PXQN checkpoints, which is one to two."
  },
  {
+  "id": "V100-152",
+  "title": "200 tasks instead of 40: does the difference between checkpoints hold?",
+  "result_type": "mixed",
+  "verdict": "On 200 tasks of MBPP, the difference between checkpoints is insignificant: 0.470 (94/200) for the baseline and 0.495 (99/200) for Swift-1.5, meaning five tasks out of two hundred with overlapping confidence intervals (0.402-0.539."
+ },
+ {
   "id": "V100-153",
   "title": "Reasoning budget on 27B: what thinking buys",
   "result_type": "negative",
