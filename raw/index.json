@@ -495,7 +495,7 @@
   "id": "V100-97",
   "title": "Batch half-and-half: 20 tasks for both cards",
   "result_type": "mixed",
-  "verdict": "20 MBPP tasks on two machines give a 1.53x speedup on 14B Q4 (20.46 → 13.38 s, n=3) and a 1.43x speedup on 7B Q4 (10.62 → 7.43 s, n=2)."
+  "verdict": "\\| Configuration \\| Tasks V100/PC \\| Batch Time, s \\| Speedup \\| Accepted \\| \\|---\\|---\\|---\\|---\\|---\\| \\| 14B, one V100 (baseline) \\| 20 / 0 \\| 20.46 ± 0.64 \\| 1.00 \\| 11/20 \\| \\| 14B, 12 on V100 + 8 on PC \\| 12 / 8 \\| 13.38 ± 0.19 \\| 1.53 \\| 11/20 \\| \\| 14B, 13."
  },
  {
   "id": "V100-99",
