@@ -66,3 +66,5 @@ Raw data: `/srv/media/night/v144_{none,medium,high}_40.json`, summary `v144_summ
 **Commands.** The command line was not recorded for this run.
 
 **Question.** See the card title: the premise is stated in the field notes and was not carried into this export.
+
+**Result type.** Unstated
