@@ -39,7 +39,7 @@
   "id": "V100-07",
   "title": "Chatterbox Multilingual on a V100: expressiveness for free, 40-second ceiling",
   "result_type": "mixed",
-  "verdict": "Mixed: Russian is intelligible (WER 2-11 % on a 92-word paragraph, 0 % on a short phrase) and the voice clones on 3.5 GB, but synthesis runs at about real time (RTF 1.03-1.12 against 2.05 for Silero) and one call stops at 40.0 seconds - a minute-long ad needs sentence chunking, which works at 60 s in 53.5 s, WER 7.7 %."
+  "verdict": "Mixed: Chatterbox Multilingual speaks Russian intelligibly (WER 2-11 % on a 92-word paragraph, 0 % on a short phrase), carries emotion through exaggeration, and clones the reference voice on a 3.5 GB footprint, but it runs at about real time (RTF 1.03-1.12) versus 2.05 for Silero, and it cannot ..."
  },
  {
   "id": "V100-10",
@@ -514,6 +514,12 @@
   "title": "Images on 4060 Ti, code on V100",
   "result_type": "mixed",
   "verdict": "Mixed: the 4060 Ti reaches 1885 images per hour on the turbo preset and 519 at 30 steps, but it is slower than the V100 in all three modes, so moving the factory would not speed generation up. Its real value is different - it produces 519-1885 images per hour without occupying the V100, which is ..."
+ },
+ {
+  "id": "V100-95",
+  "title": "The 4060 Ti can: 3D modeling, ray tracing, video editing, machine learning inference.",
+  "result_type": "mixed",
+  "verdict": "The hypothesis was partially confirmed. On the same scales (qwen2.5-coder:7b Q4_K_M, digest dae161e27b0e on both machines), V100 decodes 103.1 ± 0.0 tok/s, 4060 Ti - 54.0 ± 0.25 tok/s, making the PC 1.9 times slower: 900 GB/s vs 288 GB/s."
  },
  {
   "id": "V100-97",
