@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **158** - 27 positive, 88 mixed, 29 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **159** - 27 positive, 89 mixed, 29 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -178,6 +178,7 @@ Read this before quoting a number.
 | [V100-148](results/V100-148.md) | PXA: Second checkpoint and quality 27B | **Positive.** Second checkpoint PXQN yielded the same quality: MBPP pass@1 0.625 (25/40) compared to 0.60 (24/40) at V100-29 checkpoint, indicating a difference of one task - noise from a single run, not degradation. |
 | [V100-149](results/V100-149.md) | llama-server throughput with ten concurrent clients | **Mixed.** Mixed: the cache does not collapse under ten different prompts — on the second pass every client is served with prompt_n = 1 — but extra slots do not make the card faster: total throughput moves from 111 to 104-124 tok/s (+7-12 %) while decode per client falls from 111 to 52-66 tok/s, and the first ... |
 | [V100-150](results/V100-150.md) | 27B PXQN: 8k context and two clients on one 16 GB card | **Mixed.** Mixed. The 8k context per slot fits and a second client does not steal throughput: with -c 8192 --np 1 each of two clients decodes at 161.4 tok/s, which is 2.3x the single-client decode, and with -c 16384 --np 2 they still get 84-96 tok/s each. Read end to end on 128-token answers the gain is only ... |
+| [V100-151](results/V100-151.md) | PXQN vs standard Q4_K_M on a single 27B | **Mixed.** The default Q4_K_M of the same Qwen3.8-27B model fully loads onto the card using the stock llama.cpp and achieves a MBPP pass@1 score of 0.650 (26/40) compared to 0.600-0.625 (24-25/40) of two PXQN checkpoints, which is one to two. |
 | [V100-153](results/V100-153.md) | Reasoning budget on 27B: what thinking buys | **Negative.** Thinking does not pay on MBPP-sized tasks: the score is unchanged and the run costs 3.8x to 7.6x more wall time, so it stays off by default. |
 | [upscale-for-print](results/upscale-for-print.md) | Upscaling for print: ESRGAN vs UltraSharp, SUPIR blocked by the channel | **Mixed.** Mixed. The GAN half is measured and inspected: Real-ESRGAN at 0,9 s per frame is acceptable for A4 after colour correction but adds no real texture, while 4x-UltraSharp in this form is unusable for product photos - the buyer would see details the product does not have. The diffusion half produced ... |
 | [4060ti-capabilities-vs-v100](results/4060ti-capabilities-vs-v100.md) | What the 4060 Ti can do that the V100 cannot | The split is clean and measured: the 4060 Ti is the card that can train QLoRA at 398 tok/s (3B) and run bf16 paths, while the V100 is the card that serves inference with 900 GB/s and answers prefill-bound requests; routing training to the 4060 Ti and serving to the V100 is the rule these numbers ... |
