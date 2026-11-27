@@ -350,7 +350,7 @@
  {
   "id": "V100-64",
   "title": "Snapshot of stack: offline installation on clean VM",
-  "result_type": "mixed",
+  "result_type": "understood",
   "verdict": "No: snapshot does not raise the stack without a network."
  },
  {
@@ -404,7 +404,7 @@
  {
   "id": "V100-73",
   "title": "Goods cards per hour: image generation throughput",
-  "result_type": "unstated",
+  "result_type": "positive",
   "verdict": ""
  },
  {
@@ -536,13 +536,13 @@
  {
   "id": "V100-97",
   "title": "Batch half-and-half: 20 tasks for both cards",
-  "result_type": "mixed",
+  "result_type": "verdict",
   "verdict": "Criterion 1.5x passed only on 14B: distributing 12 tasks on V100 and 8 on PC yields 1.53x compared to one V100 (20.46 → 13.38 s, n=3), on 7B it's 1.43x (10.62 → 7.43 s, n=2)."
  },
  {
   "id": "V100-98",
   "title": "Llama.cpp RPC: one model on two cards",
-  "result_type": "mixed",
+  "result_type": "the",
   "verdict": "27.11.2026, llama.cpp b12811 (00d5c142c, ready binaries ubuntu-cuda-12.8), Qwen3-30B-A3B Q4_K_M 17.28 GB (does not fit in 16 GB of one card)."
  },
  {
@@ -746,13 +746,13 @@
  {
   "id": "V100-139",
   "title": "Coded contour: entire package in context",
-  "result_type": "mixed",
+  "result_type": "negative",
   "verdict": "The entire pypa/packaging package (20 files, 12,638 lines) in the context of 65,536 tokens, prompt truncated to 80KB (around 19 thousand tokens)."
  },
  {
   "id": "V100-140",
   "title": "Q4_0 KV disrupts generation",
-  "result_type": "mixed",
+  "result_type": "negative",
   "verdict": "On Qwen2.5-Coder-7B server with -ctk q4_0 -ctv q4_0, it produced incoherent text even for a 45 token prompt: def add,,b):, with fragments of quotes and arrows."
  },
  {
@@ -800,7 +800,7 @@
  {
   "id": "V100-148",
   "title": "PXA: Second checkpoint and quality 27B",
-  "result_type": "mixed",
+  "result_type": "source",
   "verdict": "Second checkpoint PXQN yielded the same quality: MBPP pass@1 0.625 (25/40) compared to 0.60 (24/40) at V100-29 checkpoint, indicating a difference of one task - noise from a single run, not degradation."
  },
  {

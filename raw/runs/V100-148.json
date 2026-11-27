@@ -1,0 +1,85 @@
+{
+ "card": "V100-148",
+ "note": "Two PXQN checkpoints on one 16 GB card: MBPP pass@1 (40 tasks, --no-think) and decode speed at 256 tokens; the second MBPP run per checkpoint is an independent repeat with the same flags",
+ "engine": "PXA 4.0.4 / pxa-launch, llama engine, ctx 4096, --jinja, temp 0",
+ "entries": [
+  {
+   "checkpoint": "Qwen3.8-27B-PXQN-OneCard",
+   "mbpp": [
+    {
+     "run": 1,
+     "passed": 24,
+     "of": 40,
+     "pass_at_1": 0.6,
+     "avg_sec": 1.61,
+     "harness_tok_s": 75.5
+    },
+    {
+     "run": 2,
+     "passed": 24,
+     "of": 40,
+     "pass_at_1": 0.6,
+     "avg_sec": 1.56,
+     "harness_tok_s": 77.9
+    }
+   ],
+   "task_verdicts_identical_across_runs": true,
+   "decode_256_tokens": {
+    "reps": 3,
+    "server_tok_s": [
+     106.6,
+     162.1,
+     163.0
+    ],
+    "wall_tok_s": [
+     95.4,
+     134.7,
+     135.6
+    ],
+    "mean_server_tok_s_warm": 162.6
+   },
+   "vram_peak_mib": 14583
+  },
+  {
+   "checkpoint": "Swift-1.5-Qwen3.8-27B-PXQN-OneCard",
+   "mbpp": [
+    {
+     "run": 1,
+     "passed": 25,
+     "of": 40,
+     "pass_at_1": 0.625,
+     "avg_sec": 1.47,
+     "harness_tok_s": 76.7
+    },
+    {
+     "run": 2,
+     "passed": 25,
+     "of": 40,
+     "pass_at_1": 0.625,
+     "avg_sec": 1.47,
+     "harness_tok_s": 76.4
+    }
+   ],
+   "task_verdicts_identical_across_runs": true,
+   "decode_256_tokens": {
+    "reps": 3,
+    "server_tok_s": [
+     105.5,
+     162.1,
+     162.8
+    ],
+    "wall_tok_s": [
+     94.7,
+     134.8,
+     135.6
+    ],
+    "mean_server_tok_s_warm": 162.4
+   },
+   "vram_peak_mib": 14583
+  }
+ ],
+ "tasks_swift_passes_base_fails": [
+  9
+ ],
+ "tasks_base_passes_swift_fails": []
+}
