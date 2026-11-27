@@ -1,0 +1,125 @@
+{
+ "card": "V100-88",
+ "note": "Second series: backend forced with --attention-backend. Triton arm also sets VLLM_SM70_FLASH_ATTN_V100=0, otherwise the platform SM70 baseline overrides the explicit choice. Every repeat uses a unique prompt prefix, so prefix caching cannot answer. Prompt length is the server-reported usage.prompt_tokens.",
+ "engine": "vLLM 1.5.4 (1Cat build), torch 2.10.0+cu128",
+ "gpu": "Tesla V100-SXM2-16GB, sm_70, driver 580.178.04, CUDA 12.9",
+ "model": "Qwen2.5-7B-Instruct GGUF, load_format=gguf, KV int8_per_token_head, --max-model-len 17408",
+ "selector_lines": {
+  "TRITON_ATTN": "AttentionBackendEnum.TRITON_ATTN backend",
+  "FLASH_ATTN_V100": "AttentionBackendEnum.FLASH_ATTN_V100 backend"
+ },
+ "entries": [
+  {
+   "label": "TRITON_ATTN",
+   "requested": 8192,
+   "prompt_tokens": 7888,
+   "rows": [
+    {
+     "rep": 0,
+     "wall_s": 7.623,
+     "client_tokens": 7888,
+     "server_prompt_tokens": 7888
+    },
+    {
+     "rep": 1,
+     "wall_s": 6.699,
+     "client_tokens": 7888,
+     "server_prompt_tokens": 7888
+    },
+    {
+     "rep": 2,
+     "wall_s": 6.699,
+     "client_tokens": 7888,
+     "server_prompt_tokens": 7888
+    }
+   ],
+   "warm_mean_s": 6.699,
+   "prefill_tok_s_warm": 1177.5,
+   "vram_peak_mib": null
+  },
+  {
+   "label": "TRITON_ATTN",
+   "requested": 16384,
+   "prompt_tokens": 15763,
+   "rows": [
+    {
+     "rep": 0,
+     "wall_s": 23.154,
+     "client_tokens": 15763,
+     "server_prompt_tokens": 15763
+    },
+    {
+     "rep": 1,
+     "wall_s": 23.16,
+     "client_tokens": 15763,
+     "server_prompt_tokens": 15763
+    },
+    {
+     "rep": 2,
+     "wall_s": 23.15,
+     "client_tokens": 15763,
+     "server_prompt_tokens": 15763
+    }
+   ],
+   "warm_mean_s": 23.155,
+   "prefill_tok_s_warm": 680.8,
+   "vram_peak_mib": null
+  },
+  {
+   "label": "FLASH_ATTN_V100",
+   "requested": 8192,
+   "prompt_tokens": 7888,
+   "rows": [
+    {
+     "rep": 0,
+     "wall_s": 8.045,
+     "client_tokens": 7888,
+     "server_prompt_tokens": 7888
+    },
+    {
+     "rep": 1,
+     "wall_s": 7.035,
+     "client_tokens": 7888,
+     "server_prompt_tokens": 7888
+    },
+    {
+     "rep": 2,
+     "wall_s": 7.034,
+     "client_tokens": 7888,
+     "server_prompt_tokens": 7888
+    }
+   ],
+   "warm_mean_s": 7.034,
+   "prefill_tok_s_warm": 1121.3,
+   "vram_peak_mib": null
+  },
+  {
+   "label": "FLASH_ATTN_V100",
+   "requested": 16384,
+   "prompt_tokens": 15763,
+   "rows": [
+    {
+     "rep": 0,
+     "wall_s": 24.477,
+     "client_tokens": 15763,
+     "server_prompt_tokens": 15763
+    },
+    {
+     "rep": 1,
+     "wall_s": 24.479,
+     "client_tokens": 15763,
+     "server_prompt_tokens": 15763
+    },
+    {
+     "rep": 2,
+     "wall_s": 24.481,
+     "client_tokens": 15763,
+     "server_prompt_tokens": 15763
+    }
+   ],
+   "warm_mean_s": 24.48,
+   "prefill_tok_s_warm": 643.9,
+   "vram_peak_mib": null
+  }
+ ]
+}
