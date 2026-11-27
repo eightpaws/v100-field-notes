@@ -13,9 +13,9 @@
  },
  {
   "id": "V100-03",
-  "title": "Q4_K for Russian corpus",
+  "title": "Importance matrix for Q4_K on a Russian corpus",
   "result_type": "mixed",
-  "verdict": "On its Russian corpus (1,67 million signs after cleaning, 400 chunks of 512 tokens) imatrix achieves −0.61% perplexity on three held-out splits: 17.4644 → 17.3529, 19.1058 → 18.9971, 16.6994 → 16.5973 (delta −0.107 ± 0.005), with the."
+  "verdict": "0.61 % lower held-out perplexity at an identical file size, but no measurable change in cloze accuracy: cheap to produce, not a quality lever for Russian answers."
  },
  {
   "id": "V100-04",
