@@ -25,9 +25,9 @@
  },
  {
   "id": "V100-05",
-  "title": "IC-Light - underside product scan",
-  "result_type": "mixed",
-  "verdict": "IC-Light v2 on 10 items: 30 pairs with three colored scenes resulted in an average ΔE of 37.5 with a maximum of 65.9, the same item under neutral light - ΔE of 24.1 with a maximum of 41.5."
+  "title": "IC-Light relighting: the product colour moves by 24-37 dE",
+  "result_type": "negative",
+  "verdict": "Not usable for a product card: the product itself changes colour 8 to 22 times beyond tolerance under any light, so the only honest use is repainting the scene behind a masked, untouched product."
  },
  {
   "id": "upscale-for-print",
@@ -745,9 +745,9 @@
  },
  {
   "id": "V100-142",
-  "title": "VLM-Card Controller",
+  "title": "VLM card controller: blind to framing",
   "result_type": "mixed",
-  "verdict": "Qwen2.5-VL-7B-Instruct on 80 frames (40 clean cards and 5 defect classes of 8 each): accuracy 0.85, recall 0.70, false rejects on clean 0 out of 40."
+  "verdict": "Usable as a filter for blur, darkness and pixelisation (24 of 24, zero false rejects), unusable as the only controller: framing crops are missed entirely, and framing is exactly where the heuristic failed."
  },
  {
   "id": "V100-143",
