@@ -849,7 +849,7 @@
   "id": "V100-155",
   "title": "PXA 27B: Quality on 8k context",
   "result_type": "positive",
-  "verdict": "The quality on long prompts did not drop: MBPP pass@1 0.575 (23/40) and on short prompts (57 tokens), and when padded to 4,863 and to 5,948 tokens - exactly 23 out of 40 in all three measurements, criterion 0.55 met."
+  "verdict": "Long context costs speed, not accuracy here: pass@1 held at 0.575 from a 57-token prompt to 5,948 tokens, while end-to-end throughput fell 1.8x."
  },
  {
   "id": "4060ti-capabilities-vs-v100",
