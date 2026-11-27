@@ -16,7 +16,7 @@
  },
  "scenes": [
   {
-   "file": "00_монстера_в_бе",
+   "file": "item01",
    "scene": "теплый_интерьер",
    "seconds": 2.4,
    "delta_e_center": 29.9,
@@ -25,7 +25,7 @@
    "delta_e_mean": 35.3
   },
   {
-   "file": "00_монстера_в_бе",
+   "file": "item01",
    "scene": "cold studio",
    "seconds": 1.9,
    "delta_e_center": 21.6,
@@ -34,7 +34,7 @@
    "delta_e_mean": 37.7
   },
   {
-   "file": "00_монстера_в_бе",
+   "file": "item01",
    "scene": "sunny morning",
    "seconds": 1.9,
    "delta_e_center": 45.0,
@@ -43,7 +43,7 @@
    "delta_e_mean": 35.4
   },
   {
-   "file": "01_фикус_в_плетё",
+   "file": "item02",
    "scene": "теплый_интерьер",
    "seconds": 1.9,
    "delta_e_center": 37.1,
@@ -52,7 +52,7 @@
    "delta_e_mean": 44.5
   },
   {
-   "file": "01_фикус_в_плетё",
+   "file": "item02",
    "scene": "cold studio",
    "seconds": 1.9,
    "delta_e_center": 14.1,
@@ -61,7 +61,7 @@
    "delta_e_mean": 34.7
   },
   {
-   "file": "01_фикус_в_плетё",
+   "file": "item02",
    "scene": "sunny morning",
    "seconds": 1.9,
    "delta_e_center": 11.4,
@@ -70,7 +70,7 @@
    "delta_e_mean": 33.2
   },
   {
-   "file": "02_суккулент_в_б",
+   "file": "item03",
    "scene": "теплый_интерьер",
    "seconds": 2.0,
    "delta_e_center": 75.8,
@@ -79,7 +79,7 @@
    "delta_e_mean": 65.9
   },
   {
-   "file": "02_суккулент_в_б",
+   "file": "item03",
    "scene": "cold studio",
    "seconds": 2.0,
    "delta_e_center": 29.5,
@@ -88,7 +88,7 @@
    "delta_e_mean": 36.0
   },
   {
-   "file": "02_суккулент_в_б",
+   "file": "item03",
    "scene": "sunny morning",
    "seconds": 1.9,
    "delta_e_center": 39.4,
@@ -97,7 +97,7 @@
    "delta_e_mean": 31.9
   },
   {
-   "file": "03_букет_сухоцве",
+   "file": "item04",
    "scene": "теплый_интерьер",
    "seconds": 1.9,
    "delta_e_center": 64.6,
@@ -106,7 +106,7 @@
    "delta_e_mean": 61.8
   },
   {
-   "file": "03_букет_сухоцве",
+   "file": "item04",
    "scene": "cold studio",
    "seconds": 1.9,
    "delta_e_center": 32.7,
@@ -115,7 +115,7 @@
    "delta_e_mean": 32.6
   },
   {
-   "file": "03_букет_сухоцве",
+   "file": "item04",
    "scene": "sunny morning",
    "seconds": 1.9,
    "delta_e_center": 63.8,
@@ -124,7 +124,7 @@
    "delta_e_mean": 59.7
   },
   {
-   "file": "04_орхидея_фален",
+   "file": "item05",
    "scene": "теплый_интерьер",
    "seconds": 1.9,
    "delta_e_center": 45.0,
@@ -133,7 +133,7 @@
    "delta_e_mean": 36.1
   },
   {
-   "file": "04_орхидея_фален",
+   "file": "item05",
    "scene": "cold studio",
    "seconds": 1.9,
    "delta_e_center": 43.6,
@@ -142,7 +142,7 @@
    "delta_e_mean": 39.1
   },
   {
-   "file": "04_орхидея_фален",
+   "file": "item05",
    "scene": "sunny morning",
    "seconds": 1.9,
    "delta_e_center": 22.2,
@@ -151,7 +151,7 @@
    "delta_e_mean": 26.4
   },
   {
-   "file": "05_кактус_в_терр",
+   "file": "item06",
    "scene": "теплый_интерьер",
    "seconds": 1.9,
    "delta_e_center": 61.3,
@@ -160,7 +160,7 @@
    "delta_e_mean": 46.1
   },
   {
-   "file": "05_кактус_в_терр",
+   "file": "item06",
    "scene": "cold studio",
    "seconds": 1.9,
    "delta_e_center": 33.0,
@@ -169,7 +169,7 @@
    "delta_e_mean": 17.2
   },
   {
-   "file": "05_кактус_в_терр",
+   "file": "item06",
    "scene": "sunny morning",
    "seconds": 1.9,
    "delta_e_center": 48.0,
@@ -178,7 +178,7 @@
    "delta_e_mean": 30.8
   },
   {
-   "file": "06_папоротник_в_",
+   "file": "item07",
    "scene": "теплый_интерьер",
    "seconds": 1.9,
    "delta_e_center": 58.0,
@@ -187,7 +187,7 @@
    "delta_e_mean": 42.8
   },
   {
-   "file": "06_папоротник_в_",
+   "file": "item07",
    "scene": "cold studio",
    "seconds": 1.9,
    "delta_e_center": 28.7,
@@ -196,7 +196,7 @@
    "delta_e_mean": 24.3
   },
   {
-   "file": "06_папоротник_в_",
+   "file": "item07",
    "scene": "sunny morning",
    "seconds": 2.0,
    "delta_e_center": 40.3,
@@ -205,7 +205,7 @@
    "delta_e_mean": 41.5
   },
   {
-   "file": "07_лавр_в_глинян",
+   "file": "item08",
    "scene": "теплый_интерьер",
    "seconds": 2.0,
    "delta_e_center": 32.1,
@@ -214,7 +214,7 @@
    "delta_e_mean": 34.8
   },
   {
-   "file": "07_лавр_в_глинян",
+   "file": "item08",
    "scene": "cold studio",
    "seconds": 1.9,
    "delta_e_center": 20.8,
@@ -223,7 +223,7 @@
    "delta_e_mean": 20.9
   },
   {
-   "file": "07_лавр_в_глинян",
+   "file": "item08",
    "scene": "sunny morning",
    "seconds": 1.9,
    "delta_e_center": 48.8,
@@ -232,7 +232,7 @@
    "delta_e_mean": 48.6
   },
   {
-   "file": "08_монстера_в_бе",
+   "file": "item09",
    "scene": "теплый_интерьер",
    "seconds": 1.9,
    "delta_e_center": 32.7,
@@ -241,7 +241,7 @@
    "delta_e_mean": 41.3
   },
   {
-   "file": "08_монстера_в_бе",
+   "file": "item09",
    "scene": "cold studio",
    "seconds": 1.9,
    "delta_e_center": 35.6,
@@ -250,7 +250,7 @@
    "delta_e_mean": 40.8
   },
   {
-   "file": "08_монстера_в_бе",
+   "file": "item09",
    "scene": "sunny morning",
    "seconds": 1.9,
    "delta_e_center": 20.2,
@@ -259,7 +259,7 @@
    "delta_e_mean": 33.6
   },
   {
-   "file": "09_фикус_в_плетё",
+   "file": "item10",
    "scene": "теплый_интерьер",
    "seconds": 2.0,
    "delta_e_center": 43.3,
@@ -268,7 +268,7 @@
    "delta_e_mean": 40.3
   },
   {
-   "file": "09_фикус_в_плетё",
+   "file": "item10",
    "scene": "cold studio",
    "seconds": 1.9,
    "delta_e_center": 38.9,
@@ -277,7 +277,7 @@
    "delta_e_mean": 32.4
   },
   {
-   "file": "09_фикус_в_плетё",
+   "file": "item10",
    "scene": "sunny morning",
    "seconds": 1.9,
    "delta_e_center": 12.2,
@@ -295,55 +295,67 @@
  },
  "neutral": [
   {
-   "file": "00_монстера_в_бе",
+   "file": "item01",
    "seconds": 2.3,
    "delta_e_mean": 31.9
   },
   {
-   "file": "01_фикус_в_плетё",
+   "file": "item02",
    "seconds": 1.9,
    "delta_e_mean": 19.4
   },
   {
-   "file": "02_суккулент_в_б",
+   "file": "item03",
    "seconds": 1.9,
    "delta_e_mean": 16.0
   },
   {
-   "file": "03_букет_сухоцве",
+   "file": "item04",
    "seconds": 1.9,
    "delta_e_mean": 41.5
   },
   {
-   "file": "04_орхидея_фален",
+   "file": "item05",
    "seconds": 1.9,
    "delta_e_mean": 9.0
   },
   {
-   "file": "05_кактус_в_терр",
+   "file": "item06",
    "seconds": 2.0,
    "delta_e_mean": 25.1
   },
   {
-   "file": "06_папоротник_в_",
+   "file": "item07",
    "seconds": 1.9,
    "delta_e_mean": 25.9
   },
   {
-   "file": "07_лавр_в_глинян",
+   "file": "item08",
    "seconds": 2.0,
    "delta_e_mean": 29.2
   },
   {
-   "file": "08_монстера_в_бе",
+   "file": "item09",
    "seconds": 1.9,
    "delta_e_mean": 35.0
   },
   {
-   "file": "09_фикус_в_плетё",
+   "file": "item10",
    "seconds": 1.9,
    "delta_e_mean": 8.4
   }
  ],
- "note": "Product titles are Russian and stay on the rig; only file prefixes and numbers are exported."
+ "note": "Product file prefixes were transliterated to item01..item10; the original catalogue names are Russian and stay on the rig. Numbers are unchanged.",
+ "file_map": {
+  "00_монстера_в_бе": "item01",
+  "01_фикус_в_плетё": "item02",
+  "02_суккулент_в_б": "item03",
+  "03_букет_сухоцве": "item04",
+  "04_орхидея_фален": "item05",
+  "05_кактус_в_терр": "item06",
+  "06_папоротник_в_": "item07",
+  "07_лавр_в_глинян": "item08",
+  "08_монстера_в_бе": "item09",
+  "09_фикус_в_плетё": "item10"
+ }
 }
