@@ -331,9 +331,9 @@
  },
  {
   "id": "V100-61",
-  "title": "GQA→MHA: Throughput measurement of pipeline, not core.",
-  "result_type": "mixed",
-  "verdict": "Carrier not present, see Result."
+  "title": "GQA to MHA expansion: nothing in the pipeline can carry it",
+  "result_type": "unstated",
+  "verdict": "No carrier: every pipeline on the rig uses MHA, Qwen-VL is not on disk, the kernel is not called by any engine."
  },
  {
   "id": "V100-62",
@@ -434,8 +434,8 @@
  {
   "id": "V100-78",
   "title": "Rapid Averages: Nemotron-Bolt-E4B and SenseNova-Loop-9B",
-  "result_type": "mixed",
-  "verdict": "- ## Queue P1v - New Ideas Following Review (24.11.2026) \\| # \\| Idea \\| Stage \\| Resources \\| Status \\| Outcome \\| Ready \\| \\|---\\|---\\|---\\|---\\|---\\|---\\|---\\| \\| V100-66 \\| Code Quality: MBPP on Three Models \\| P0 \\| 40 Tasks \\| Done \\| Code 0.55 / RAG 2/2."
+  "result_type": "positive",
+  "verdict": "Nemotron-Bolt-E4B: 109.56 tok/s decode, 4 GB VRAM, format 5/5, volume 2/2, RAG 3/3, honesty 3/3 - usable for shop texts. SenseNova-Loop-9B: same quality, half the speed, runs only on an ik_llama.cpp fork."
  },
  {
   "id": "V100-79",
@@ -735,7 +735,7 @@
   "id": "V100-131",
   "title": "Failure metric: 20 prompts, uncensored vs censored",
   "result_type": "mixed",
-  "verdict": "Translation: 27B abliterated IQ3_S (model 2 of 3): class A 7/7 direct response, class B 9/9 direct (zero failures), class C 4/4 refusal."
+  "verdict": "Stock 7B refuses 4 of 7 harmless prompts and 1 of 9 grey ones; 27B abliterated refuses none, but keeps refusing on bare harm markers (4/4). Coding pass@1 0.70 on 10 MBPP tasks at 105.6 tok/s. Third model and 27B coding block were not run."
  },
  {
   "id": "V100-132",
