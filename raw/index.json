@@ -501,7 +501,7 @@
   "id": "V100-94",
   "title": "Images on 4060 Ti, code on V100",
   "result_type": "mixed",
-  "verdict": "4060 Ti at the same checkpoint and number of prompts: 1024/30 steps - 6.93 ± 0.18 s per image (519 per hour), 768/30 - 4.40 s in steady state (818 per hour), 1024/6 steps - 1.91 ± 0.02 s (1885 per hour); peak VRAM 13,440 MiB at 1024/30 and."
+  "verdict": "Mixed: the 4060 Ti reaches 1885 images per hour on the turbo preset and 519 at 30 steps, but it is slower than the V100 in all three modes, so moving the factory would not speed generation up. Its real value is different - it produces 519-1885 images per hour without occupying the V100, which is ..."
  },
  {
   "id": "V100-97",
