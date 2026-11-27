@@ -1,0 +1,235 @@
+{
+ "experiment": "V100-105 polyglot",
+ "langs": [
+  "python",
+  "javascript",
+  "php",
+  "ruby",
+  "go",
+  "java"
+ ],
+ "tasks_per_language": 21,
+ "note": "21 assertions per language across the 10 required functions",
+ "models": {
+  "Qwen2.5-Coder-7B-Instruct-Q8_0": {
+   "boot_s": 2.0,
+   "syntax_valid": 6,
+   "pass_at_1": 6,
+   "languages": 6,
+   "per_language": {
+    "python": {
+     "syntax_ok": true,
+     "passes": true
+    },
+    "javascript": {
+     "syntax_ok": true,
+     "passes": true
+    },
+    "php": {
+     "syntax_ok": true,
+     "passes": true
+    },
+    "ruby": {
+     "syntax_ok": true,
+     "passes": true
+    },
+    "go": {
+     "syntax_ok": true,
+     "passes": true
+    },
+    "java": {
+     "syntax_ok": true,
+     "passes": true
+    }
+   }
+  },
+  "DeepSeek-Coder-V2-Lite-16B-Q4_K_M": {
+   "boot_s": 30.0,
+   "syntax_valid": 6,
+   "pass_at_1": 6,
+   "languages": 6,
+   "per_language": {
+    "python": {
+     "syntax_ok": true,
+     "passes": true
+    },
+    "javascript": {
+     "syntax_ok": true,
+     "passes": true
+    },
+    "php": {
+     "syntax_ok": true,
+     "passes": true
+    },
+    "ruby": {
+     "syntax_ok": true,
+     "passes": true
+    },
+    "go": {
+     "syntax_ok": true,
+     "passes": true
+    },
+    "java": {
+     "syntax_ok": true,
+     "passes": true
+    }
+   }
+  },
+  "Qwen3-Coder-30B-A3B-Q4_K_M": {
+   "boot_s": 50.1,
+   "syntax_valid": 5,
+   "pass_at_1": 5,
+   "languages": 6,
+   "per_language": {
+    "python": {
+     "syntax_ok": true,
+     "passes": true
+    },
+    "javascript": {
+     "syntax_ok": true,
+     "passes": true
+    },
+    "php": {
+     "syntax_ok": false,
+     "passes": false
+    },
+    "ruby": {
+     "syntax_ok": true,
+     "passes": true
+    },
+    "go": {
+     "syntax_ok": true,
+     "passes": true
+    },
+    "java": {
+     "syntax_ok": true,
+     "passes": true
+    }
+   }
+  }
+ },
+ "raw": {
+  "Qwen2.5-Coder-7B-Instruct-Q8_0": {
+   "boot_s": 2.0,
+   "languages": {
+    "python": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 696
+    },
+    "javascript": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 946
+    },
+    "php": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 820
+    },
+    "ruby": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 491
+    },
+    "go": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 1502
+    },
+    "java": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 1953
+    }
+   }
+  },
+  "DeepSeek-Coder-V2-Lite-16B-Q4_K_M": {
+   "boot_s": 30.0,
+   "languages": {
+    "python": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 713
+    },
+    "javascript": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 1020
+    },
+    "php": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 940
+    },
+    "ruby": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 498
+    },
+    "go": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 1185
+    },
+    "java": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 2146
+    }
+   }
+  },
+  "Qwen3-Coder-30B-A3B-Q4_K_M": {
+   "boot_s": 50.1,
+   "languages": {
+    "python": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 696
+    },
+    "javascript": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 1475
+    },
+    "php": {
+     "syntax_ok": false,
+     "passes": false,
+     "detail": "no code block"
+    },
+    "ruby": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 617
+    },
+    "go": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 1525
+    },
+    "java": {
+     "syntax_ok": true,
+     "passes": true,
+     "detail": "FAILS 0 ",
+     "code_len": 2293
+    }
+   }
+  }
+ }
+}
