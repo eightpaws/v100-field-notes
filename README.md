@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **146** - 24 positive, 85 mixed, 23 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **147** - 24 positive, 86 mixed, 23 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -164,6 +164,7 @@ Read this before quoting a number.
 | [V100-131](results/V100-131.md) | Failure metric: 20 prompts, uncensored vs censored | **Mixed.** Translation: 27B abliterated IQ3_S (model 2 of 3): class A 7/7 direct response, class B 9/9 direct (zero failures), class C 4/4 refusal. |
 | [V100-132](results/V100-132.md) | Captcha: Local VLM vs Service | **Mixed.** 26.11.2026, V100 16 GB, Qwen2.5-VL-7B-Instruct Q4_K_M + mmproj-F16, 200 synthetic CAPTCHAs: distorted text 88/100 (88%), arithmetic 50/50 (100%), "how many figures" grid 15/50 (30%); total 153/200 (76.5%), average 0.11s per CAPTCHA (p95. |
 | [V100-141](results/V100-141.md) | cuDNN 8 environment for graphics and video models | **Positive.** Positive: cuDNN 8 restores the missing convolution path on sm_70, and all three pipelines run with cuDNN enabled. It removes the engine failure, not the memory ceiling - 720p video still runs out of VRAM after the model has loaded. |
+| [V100-142](results/V100-142.md) | VLM-Card Controller | **Mixed.** Qwen2.5-VL-7B-Instruct on 80 frames (40 clean cards and 5 defect classes of 8 each): accuracy 0.85, recall 0.70, false rejects on clean 0 out of 40. |
 | [V100-143](results/V100-143.md) | Raw archive: nine of thirteen missing logs recovered | **Mixed.** Mixed, and the useful half is positive: for nine cards the "missing raw" was a naming and search problem, not a lost run. For four it is a genuine loss and the caveat stands until they are re-measured. |
 | [V100-144](results/V100-144.md) | Inkling 2 Mini: looped MoE, depth without weight growth | **Mixed.** Mixed — the knob moves the token budget, not the speed: decode sits at 33 tok/s on all three levels, while high spends 51% more tokens per answer and is not better than medium (7/12 against 9/12). Loop depth is not a free quality dial on this card. |
 | [V100-145](results/V100-145.md) | Gemini 4 26B-A4B in 4 bits: 16-GB sweet spot on Volta | **Mixed.** Fits entirely and fastest among those measured on this map: prefill 2696.3 ± 94.7 tok/s on pp256, decode 124.09 ± 0.53 tok/s on tg64, peak VRAM 15331 MiB at 8k context, server ready in 5s. |
