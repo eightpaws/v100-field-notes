@@ -13,9 +13,9 @@
  },
  {
   "id": "V100-03",
-  "title": "imatrix Q4_K under Russian chassis",
+  "title": "Q4_K for Russian corpus",
   "result_type": "mixed",
-  "verdict": "- Environment Status (configuration, 23.11.2026 21:13). The llama.cpp build in ~/llama-new was killed by a VM reboot at 20:48, and was rebuilt on CUDA 12.9: BUILD_OK in 7 min 14 s (on the system's nvcc 12.0, the same build."
+  "verdict": "On its Russian corpus (1,67 million signs after cleaning, 400 chunks of 512 tokens) imatrix achieves −0.61% perplexity on three held-out splits: 17.4644 → 17.3529, 19.1058 → 18.9971, 16.6994 → 16.5973 (delta −0.107 ± 0.005), with the."
  },
  {
   "id": "V100-04",
