@@ -48,6 +48,12 @@
   "verdict": "Mixed: Chatterbox Multilingual speaks Russian intelligibly (WER 2-11 % on a 92-word paragraph, 0 % on a short phrase), carries emotion through exaggeration, and clones the reference voice on a 3.5 GB footprint, but it runs at about real time (RTF 1.03-1.12) versus 2.05 for Silero, and it cannot ..."
  },
  {
+  "id": "V100-08",
+  "title": "Stable Audio Open - SFX and Ambience for Videos**",
+  "result_type": "mixed",
+  "verdict": "Stable Audio Open not downloaded: gated weights, HF and hf-mirror return 401 without token (model.safetensors 4.85 GB)."
+ },
+ {
   "id": "V100-10",
   "title": "Prefill and batching: where a V100 actually loses throughput",
   "result_type": "positive",
