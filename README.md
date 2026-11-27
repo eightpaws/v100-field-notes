@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **152** - 25 positive, 88 mixed, 24 negative, 15 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **152** - 25 positive, 87 mixed, 25 negative
 
 ## Test rig
 
@@ -100,7 +100,7 @@ Read this before quoting a number.
 | [V100-62](results/V100-62.md) | 720p with VAE tiling: check the frames, not just the return code | **Mixed.** 720p with VAE tiling is viable — no tile seams at 1280×704 / 97 frames on 13.55 GiB. The weak point is not tiling but overall softness and blown highlights at 30 steps with the 5B model; go to 45 steps or downscale-and-upscale instead of blaming the tiler. |
 | [V100-63](results/V100-63.md) | Model loading is not the same number as harness start | **Mixed.** Any load-time number from this rig has to name the engine. For llama.cpp, 3.5-4.2 s for a 7B model is real. For vLLM on Volta the correct figure is about two minutes, paid once per server start rather than per request. Quoting "3 s" for both makes the vLLM card look 30x worse on throughput than it ... |
 | [V100-64](results/V100-64.md) | Snapshot of stack: offline installation on clean VM | **Mixed.** No: snapshot does not raise the stack without a network. |
-| [V100-65](results/V100-65.md) | Recheck 8k and 16k and set num\_batch to 4096 | **Mixed.** Prefill decays smoothly, but 30B can't handle 8k at ncmoe 8. Measurements llama-bench, n=0, r=1: \| Model \| pp2048 \| pp8192 \| pp16384 \| \|---\|---\|---\|---\| \| DeepSeek-Coder-V2-Lite 16B, fully on GPU \| 3462 \| 2713 \| 1976 \| \|. |
+| [V100-65](results/V100-65.md) | Batch size does not change prefill at 8k or 16k | **Negative.** n_batch between 512 and 4096 changes nothing measurable: prefill stays at 2649 tok/s at 8k and 1898 at 16k, and 4096 is safe at 15.4 GiB peak. The hold-2048 rule belongs to. |
 | [V100-66](results/V100-66.md) | Quality over speed: MBPP pass@1 on 16 GB models | **Mixed.** Reasoning mode costs 6x the time and 37 points of pass@1 unless it is disabled; with thinking off the 30B MoE reaches 0.60 on 40 tasks but 0.50 on 200, level with the 16B dense model at 0.55. |
 | [V100-67](results/V100-67.md) | 16 GB: Q4_K_M - 128 bits, Q5_K_M - 160 bits, Q6_K - 256 bits, Q8 - 320 bits | **Mixed.** Q5_K_M outperforms Q4_K_M in quality with a slight speed loss. \| Quant \| Size \| VRAM \| Prefill pp128 \| Decode tg32 \| MBPP pass@1 \| \|---\|---\|---\|---\|---\|---\| \| Q4_K_M \| 4.68 GB \| ~5 GB \| 3304 (pp512 in V100-66) \| 132.2 \| 0.60 (24/40). |
 | [V100-68](results/V100-68.md) | Speculation on 30B MoE: Draft 0.5B vs Qwen3-Coder |  |
