@@ -333,7 +333,7 @@
   "id": "V100-64",
   "title": "Snapshot of stack: offline installation on clean VM",
   "result_type": "mixed",
-  "verdict": "No: snapshot does not raise stack without network."
+  "verdict": "No: snapshot does not raise the stack without a network."
  },
  {
   "id": "V100-65",
