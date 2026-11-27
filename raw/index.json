@@ -330,6 +330,12 @@
   "verdict": "Any load-time number from this rig has to name the engine. For llama.cpp, 3.5-4.2 s for a 7B model is real. For vLLM on Volta the correct figure is about two minutes, paid once per server start rather than per request. Quoting \"3 s\" for both makes the vLLM card look 30x worse on throughput than it ..."
  },
  {
+  "id": "V100-64",
+  "title": "Snapshot of stack: offline installation on clean VM",
+  "result_type": "mixed",
+  "verdict": "No: snapshot does not raise the stack without network. In cache, 12 wheels for 2.3 GB cover 8 out of 302 lines in full freeze (2.6%) and 15 out of 45 in acestep/requirements.txt (33%)."
+ },
+ {
   "id": "V100-65",
   "title": "Recheck 8k and 16k and set num\\_batch to 4096",
   "result_type": "mixed",
