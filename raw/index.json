@@ -738,6 +738,12 @@
   "verdict": "Positive: cuDNN 8 restores the missing convolution path on sm_70, and all three pipelines run with cuDNN enabled. It removes the engine failure, not the memory ceiling - 720p video still runs out of VRAM after the model has loaded."
  },
  {
+  "id": "V100-142",
+  "title": "VLM-Card Controller",
+  "result_type": "mixed",
+  "verdict": "Qwen2.5-VL-7B-Instruct on 80 frames (40 clean cards and 5 defect classes of 8 each): accuracy 0.85, recall 0.70, false rejects on clean 0 out of 40."
+ },
+ {
   "id": "V100-143",
   "title": "Raw archive: nine of thirteen missing logs recovered",
   "result_type": "mixed",
