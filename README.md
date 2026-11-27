@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **155** - 27 positive, 86 mixed, 28 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **156** - 27 positive, 87 mixed, 28 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -176,6 +176,7 @@ Read this before quoting a number.
 | [V100-146](results/V100-146.md) | CogVideoX-5B: does not launch on this stack | **Mixed.** CogVideoX-5B does not run on this build: with cuDNN enabled, it's GET was unable to find an engine on fp16-convolutions, and with disabled, the VAE decoder requests 17.8 GiB while only 8.8 is available. |
 | [V100-147](results/V100-147.md) | Cache prefix: equal prompt lengths | **Mixed.** With a prompt length of 4096 tokens, prefix cache provides an 8.25x speedup: without cache, 1179.8 ± 2.0 ms (full prefill of 4096 tokens, 3472 tok/s), repeating the same prefix 143.0 ± 1.2 ms (prompt_n=1, cache_n=4096). |
 | [V100-148](results/V100-148.md) | PXA: Second checkpoint and quality 27B | **Positive.** Second checkpoint PXQN yielded the same quality: MBPP pass@1 0.625 (25/40) compared to 0.60 (24/40) at V100-29 checkpoint, indicating a difference of one task - noise from a single run, not degradation. |
+| [V100-149](results/V100-149.md) | The throughput of llama-server with multiple clients | **Mixed.** 10 clients with different prefixes of 1400 tokens each, response of 24 tokens, Qwen2.5-7B Q4_K_M on V100 16GB, 3 waves per configuration. |
 | [upscale-for-print](results/upscale-for-print.md) | Upscaling for print: ESRGAN vs UltraSharp, SUPIR blocked by the channel | **Mixed.** Mixed. The GAN half is measured and inspected: Real-ESRGAN at 0,9 s per frame is acceptable for A4 after colour correction but adds no real texture, while 4x-UltraSharp in this form is unusable for product photos - the buyer would see details the product does not have. The diffusion half produced ... |
 | [4060ti-capabilities-vs-v100](results/4060ti-capabilities-vs-v100.md) | What the 4060 Ti can do that the V100 cannot | The split is clean and measured: the 4060 Ti is the card that can train QLoRA at 398 tok/s (3B) and run bf16 paths, while the V100 is the card that serves inference with 900 GB/s and answers prefill-bound requests; routing training to the 4060 Ti and serving to the V100 is the rule these numbers ... |
 | [background-swap-three-methods](results/background-swap-three-methods.md) | Background replacement: three methods, the deterministic one won | **Positive.** Positive for the catalogue path: the deterministic white background wins on untouchable product pixels and cost, while img2img and inpainting stay for interior scenes where a prompt cannot steer colour reliably. Three methods, three clear roles, no method pretending to do all three. |
