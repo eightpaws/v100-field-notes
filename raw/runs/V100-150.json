@@ -1,0 +1,345 @@
+{
+ "card": "V100-150",
+ "engine": "PXA 4.0.4, pxa-launch --engine llama",
+ "model": "poisonxa/Qwen3.8-27B-PXQN-OneCard, 12.625 GiB, 3.969 bits per weight",
+ "gpu": "Tesla V100-SXM2 16 GB, sm_70",
+ "peak_vram_mib": {
+  "c8192_np1": 14850,
+  "c8192_np2": null,
+  "c16384_np2": 15529
+ },
+ "context_per_slot": {
+  "c8192_np1": 8192,
+  "c8192_np2": 4096,
+  "c16384_np2": 8192
+ },
+ "configs": [
+  {
+   "tag": "8k_np2",
+   "model_id": "/srv/media/ai-cache/downloads/qwen38-27b-pxqn-onecard.gguf",
+   "n_tokens": 128,
+   "single": [
+    {
+     "n": 128,
+     "ms": 1337.0,
+     "wall_s": 1.62,
+     "server_tok_s": 95.7,
+     "wall_tok_s": 79.1,
+     "prompt_n": 33
+    },
+    {
+     "n": 128,
+     "ms": 1129.6,
+     "wall_s": 1.44,
+     "server_tok_s": 113.3,
+     "wall_tok_s": 88.8,
+     "prompt_n": 33
+    },
+    {
+     "n": 128,
+     "ms": 1079.4,
+     "wall_s": 1.41,
+     "server_tok_s": 118.6,
+     "wall_tok_s": 91.1,
+     "prompt_n": 33
+    }
+   ],
+   "single_tok_s": 109.2,
+   "two_clients_agg_tok_s": 91.4,
+   "scale_vs_single": 0.84,
+   "pairs": [
+    {
+     "wall_s": 2.82,
+     "ok": 2,
+     "rows": [
+      {
+       "n": 128,
+       "ms": 1196.7,
+       "wall_s": 1.69,
+       "server_tok_s": 107.0,
+       "wall_tok_s": 75.8,
+       "prompt_n": 33
+      },
+      {
+       "n": 128,
+       "ms": 1270.2,
+       "wall_s": 2.81,
+       "server_tok_s": 100.8,
+       "wall_tok_s": 45.5,
+       "prompt_n": 33
+      }
+     ],
+     "total_n": 256,
+     "agg_tok_s": 90.9
+    },
+    {
+     "wall_s": 2.8,
+     "ok": 2,
+     "rows": [
+      {
+       "n": 128,
+       "ms": 1079.3,
+       "wall_s": 2.79,
+       "server_tok_s": 118.6,
+       "wall_tok_s": 45.8,
+       "prompt_n": 33
+      },
+      {
+       "n": 128,
+       "ms": 1261.9,
+       "wall_s": 1.58,
+       "server_tok_s": 101.4,
+       "wall_tok_s": 80.8,
+       "prompt_n": 33
+      }
+     ],
+     "total_n": 256,
+     "agg_tok_s": 91.6
+    },
+    {
+     "wall_s": 2.79,
+     "ok": 2,
+     "rows": [
+      {
+       "n": 128,
+       "ms": 1262.6,
+       "wall_s": 1.58,
+       "server_tok_s": 101.4,
+       "wall_tok_s": 81.0,
+       "prompt_n": 33
+      },
+      {
+       "n": 128,
+       "ms": 1076.5,
+       "wall_s": 2.79,
+       "server_tok_s": 118.9,
+       "wall_tok_s": 45.9,
+       "prompt_n": 33
+      }
+     ],
+     "total_n": 256,
+     "agg_tok_s": 91.8
+    }
+   ],
+   "note": "single_tok_s comes from the engine timings (predicted_n / predicted_ms); two_clients_agg_tok_s is 2x128 tokens over the wall clock of the slower client"
+  },
+  {
+   "tag": "8k_np1",
+   "model_id": "/srv/media/ai-cache/downloads/qwen38-27b-pxqn-onecard.gguf",
+   "n_tokens": 128,
+   "single": [
+    {
+     "n": 128,
+     "ms": 1318.7,
+     "wall_s": 1.6,
+     "server_tok_s": 97.1,
+     "wall_tok_s": 80.0,
+     "prompt_n": 33
+    },
+    {
+     "n": 128,
+     "ms": 801.5,
+     "wall_s": 1.12,
+     "server_tok_s": 159.7,
+     "wall_tok_s": 114.3,
+     "prompt_n": 33
+    },
+    {
+     "n": 128,
+     "ms": 797.0,
+     "wall_s": 1.11,
+     "server_tok_s": 160.6,
+     "wall_tok_s": 114.9,
+     "prompt_n": 33
+    }
+   ],
+   "single_tok_s": 139.1,
+   "two_clients_agg_tok_s": 115.3,
+   "scale_vs_single": 0.83,
+   "pairs": [
+    {
+     "wall_s": 2.22,
+     "ok": 2,
+     "rows": [
+      {
+       "n": 128,
+       "ms": 793.5,
+       "wall_s": 1.11,
+       "server_tok_s": 161.3,
+       "wall_tok_s": 115.4,
+       "prompt_n": 33
+      },
+      {
+       "n": 128,
+       "ms": 792.8,
+       "wall_s": 2.22,
+       "server_tok_s": 161.5,
+       "wall_tok_s": 57.7,
+       "prompt_n": 33
+      }
+     ],
+     "total_n": 256,
+     "agg_tok_s": 115.3
+    },
+    {
+     "wall_s": 2.22,
+     "ok": 2,
+     "rows": [
+      {
+       "n": 128,
+       "ms": 793.9,
+       "wall_s": 1.11,
+       "server_tok_s": 161.2,
+       "wall_tok_s": 115.5,
+       "prompt_n": 33
+      },
+      {
+       "n": 128,
+       "ms": 792.0,
+       "wall_s": 2.22,
+       "server_tok_s": 161.6,
+       "wall_tok_s": 57.7,
+       "prompt_n": 33
+      }
+     ],
+     "total_n": 256,
+     "agg_tok_s": 115.4
+    },
+    {
+     "wall_s": 2.22,
+     "ok": 2,
+     "rows": [
+      {
+       "n": 128,
+       "ms": 794.8,
+       "wall_s": 1.11,
+       "server_tok_s": 161.0,
+       "wall_tok_s": 115.5,
+       "prompt_n": 33
+      },
+      {
+       "n": 128,
+       "ms": 792.8,
+       "wall_s": 2.22,
+       "server_tok_s": 161.5,
+       "wall_tok_s": 57.7,
+       "prompt_n": 33
+      }
+     ],
+     "total_n": 256,
+     "agg_tok_s": 115.3
+    }
+   ],
+   "note": "single_tok_s comes from the engine timings (predicted_n / predicted_ms); two_clients_agg_tok_s is 2x128 tokens over the wall clock of the slower client"
+  },
+  {
+   "tag": "16k_np2",
+   "model_id": "/srv/media/ai-cache/downloads/qwen38-27b-pxqn-onecard.gguf",
+   "n_tokens": 128,
+   "single": [
+    {
+     "n": 128,
+     "ms": 1280.5,
+     "wall_s": 1.56,
+     "server_tok_s": 100.0,
+     "wall_tok_s": 82.1,
+     "prompt_n": 33
+    },
+    {
+     "n": 128,
+     "ms": 1255.6,
+     "wall_s": 1.57,
+     "server_tok_s": 101.9,
+     "wall_tok_s": 81.7,
+     "prompt_n": 33
+    },
+    {
+     "n": 128,
+     "ms": 1243.6,
+     "wall_s": 1.57,
+     "server_tok_s": 102.9,
+     "wall_tok_s": 81.6,
+     "prompt_n": 33
+    }
+   ],
+   "single_tok_s": 101.6,
+   "two_clients_agg_tok_s": 81.7,
+   "scale_vs_single": 0.8,
+   "pairs": [
+    {
+     "wall_s": 3.12,
+     "ok": 2,
+     "rows": [
+      {
+       "n": 128,
+       "ms": 1494.1,
+       "wall_s": 1.98,
+       "server_tok_s": 85.7,
+       "wall_tok_s": 64.5,
+       "prompt_n": 33
+      },
+      {
+       "n": 128,
+       "ms": 1568.9,
+       "wall_s": 3.12,
+       "server_tok_s": 81.6,
+       "wall_tok_s": 41.1,
+       "prompt_n": 33
+      }
+     ],
+     "total_n": 256,
+     "agg_tok_s": 82.1
+    },
+    {
+     "wall_s": 3.14,
+     "ok": 2,
+     "rows": [
+      {
+       "n": 128,
+       "ms": 1439.2,
+       "wall_s": 1.76,
+       "server_tok_s": 88.9,
+       "wall_tok_s": 72.8,
+       "prompt_n": 33
+      },
+      {
+       "n": 128,
+       "ms": 1251.6,
+       "wall_s": 3.14,
+       "server_tok_s": 102.3,
+       "wall_tok_s": 40.7,
+       "prompt_n": 33
+      }
+     ],
+     "total_n": 256,
+     "agg_tok_s": 81.4
+    },
+    {
+     "wall_s": 3.14,
+     "ok": 2,
+     "rows": [
+      {
+       "n": 128,
+       "ms": 1246.3,
+       "wall_s": 3.13,
+       "server_tok_s": 102.7,
+       "wall_tok_s": 40.8,
+       "prompt_n": 33
+      },
+      {
+       "n": 128,
+       "ms": 1441.7,
+       "wall_s": 1.76,
+       "server_tok_s": 88.8,
+       "wall_tok_s": 72.7,
+       "prompt_n": 33
+      }
+     ],
+     "total_n": 256,
+     "agg_tok_s": 81.6
+    }
+   ],
+   "note": "single_tok_s comes from the engine timings (predicted_n / predicted_ms); two_clients_agg_tok_s is 2x128 tokens over the wall clock of the slower client"
+  }
+ ]
+}
