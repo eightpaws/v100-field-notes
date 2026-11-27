@@ -54,6 +54,12 @@
   "verdict": "Mixed: text-to-SFX on this card is real and cheap (one second of audio per 0.93 s, 2.9 GB VRAM, so a whole video's ambience layer costs seconds), but AudioLDM2 tops out at 16 kHz mono and is noise-heavy on ambience prompts, which fits background texture and short accents, not precise ..."
  },
  {
+  "id": "V100-09",
+  "title": "360° Product: Photogrammetry or Splines",
+  "result_type": "mixed",
+  "verdict": "According to splines, not using the ready-made photogrammetry wheel: 3DGS-core gsplat 1.5.3 was compiled under sm_70 (JIT 118 sc) and calculates - 200 thousand gaußians 480x640 with backward 7.0 ms/iteration (143 it/s, VRAM 98 MiB), 500."
+ },
+ {
   "id": "V100-10",
   "title": "Prefill and batching: where a V100 actually loses throughput",
   "result_type": "positive",
