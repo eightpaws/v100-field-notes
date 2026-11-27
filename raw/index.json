@@ -357,7 +357,7 @@
   "id": "V100-65",
   "title": "Batch size does not change prefill at 8k or 16k",
   "result_type": "negative",
-  "verdict": "n_batch between 512 and 4096 changes nothing measurable: prefill stays at 2649 tok/s at 8k and 1898 at 16k, and 4096 is safe at 15.4 GiB peak. The hold-2048 rule belongs to Ollama, not llama.cpp."
+  "verdict": "On this card, in llama.cpp, n_batch between 512 and 4096 changes nothing measurable at 8k or 16k: prefill sits at 2649 tok/s at 8k and 1898 tok/s at 16k across the whole range, and 4096 is safe (peak 15.4 GiB). Keep the default; the \"hold 2048\" rule belongs to Ollama."
  },
  {
   "id": "V100-66",
