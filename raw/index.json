@@ -818,8 +818,8 @@
  {
   "id": "V100-150",
   "title": "27B PXQN: 8k context and two clients on one 16 GB card",
-  "result_type": "negative",
-  "verdict": "Negative: a 27B at 3.97 bits already saturates this card, so a second client costs 16-20 % of the throughput instead of adding the 1.6× the card would need, while the 8k context itself does fit (14 850 MiB peak at one slot, 15 529 MiB with two 8k slots)."
+  "result_type": "mixed",
+  "verdict": "Mixed. The 8k context per slot fits and a second client does not steal throughput: with -c 8192 --np 1 each of two clients decodes at 161.4 tok/s, which is 2.3x the single-client decode, and with -c 16384 --np 2 they still get 84-96 tok/s each. Read end to end on 128-token answers the gain is only ..."
  },
  {
   "id": "V100-153",
