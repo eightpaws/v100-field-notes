@@ -333,7 +333,7 @@
   "id": "V100-64",
   "title": "Snapshot of stack: offline installation on clean VM",
   "result_type": "mixed",
-  "verdict": "No: snapshot does not raise the stack without network. In cache, 12 wheels for 2.3 GB cover 8 out of 302 lines in full freeze (2.6%) and 15 out of 45 in acestep/requirements.txt (33%)."
+  "verdict": "No: snapshot does not raise stack without network."
  },
  {
   "id": "V100-65",

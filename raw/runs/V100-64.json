@@ -1,0 +1,42 @@
+{
+  "card": "V100-64",
+  "question": "Does the wheel snapshot install the video/music/TTS stack with no network access?",
+  "method": "network namespace isolation (unshare -n, loopback only), pip --no-index --find-links",
+  "rig": {
+    "gpu": "Tesla V100-SXM2-16GB (sm_70), unused during this test",
+    "vm": "guest ai-gpu on the home stand, 24 vCPU, 94 GiB RAM",
+    "os": "Ubuntu 24.04, kernel 6.8.0-151-generic",
+    "python": "3.12.3",
+    "driver": "580.178.04",
+    "nvcc": "12.9 (/home/hermes/cuda-12.9)"
+  },
+  "wheel_cache": {
+    "path": "/srv/media/ai-cache/wheels",
+    "files": 12,
+    "bytes_total": 2340000000,
+    "names": ["accelerate", "diffusers", "numpy", "safetensors", "torch", "torchaudio", "torchvision", "transformers"]
+  },
+  "coverage": [
+    {"requirements": "requirements-video.txt", "lines": 302, "covered_by_cache": 8, "percent": 2.6,
+     "uninstallable_offline": 1, "reason": "editable git dependency ace-step"},
+    {"requirements": "acestep/requirements.txt", "lines": 45, "covered_by_cache": 15, "percent": 33.3,
+     "uninstallable_offline": 1, "reason": "flash-attn wheel behind an https URL"}
+  ],
+  "attempts": [
+    {"what": "full freeze, pip install --dry-run --no-index", "result": "failed",
+     "error": "git clone https://github.com/ace-step/ACE-Step-1.5.git -> could not resolve host github.com"},
+    {"what": "positive control torch==2.10.0+cu128 + torchvision + torchaudio + diffusers + transformers + accelerate + safetensors",
+     "result": "failed", "error": "No matching distribution found for filelock"},
+    {"what": "first positive control with torch==2.10.0 (no local label)", "result": "failed",
+     "error": "ResolutionImpossible: two torch files in the cache (2.10.0 and 2.10.0+cu128)"}
+  ],
+  "missing": {
+    "nvidia_packages_in_freeze": 42,
+    "nvidia_packages_in_cache": 0,
+    "transitive_deps_seen": ["filelock", "fsspec", "networkx", "setuptools", "sympy"]
+  },
+  "live_env_sizes_gb": {"acestep15/.venv": 8.4, "ollama/venvs/video": 14.0, "tts-venv": 1.0, "total": 23.4},
+  "metrics": {"run_seconds": 15, "gpu_vram_mib": 0, "disk_root_free_gb": 63, "disk_root_total_gb": 193},
+  "verdict": "negative: the snapshot cannot rebuild the stack offline; a full pip download (~23 GB) and a built wheel for the ace-step git dependency are required",
+  "note": "logs kept on the VM at /root/runs/V100-64/; this file holds the numbers extracted from them"
+}
