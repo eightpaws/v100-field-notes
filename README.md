@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **163** - 28 positive, 93 mixed, 28 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **164** - 28 positive, 94 mixed, 28 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -183,6 +183,7 @@ Read this before quoting a number.
 | [V100-152](results/V100-152.md) | 200 tasks instead of 40: does the difference between checkpoints hold? | **Mixed.** On 200 tasks of MBPP, the difference between checkpoints is insignificant: 0.470 (94/200) for the baseline and 0.495 (99/200) for Swift-1.5, meaning five tasks out of two hundred with overlapping confidence intervals (0.402-0.539. |
 | [V100-153](results/V100-153.md) | Reasoning budget on 27B: what thinking buys | **Negative.** Thinking does not pay on MBPP-sized tasks: the score is unchanged and the run costs 3.8x to 7.6x more wall time, so it stays off by default. |
 | [V100-155](results/V100-155.md) | PXA 27B: Quality on 8k context | **Positive.** Long context costs speed, not accuracy here: pass@1 held at 0.575 from a 57-token prompt to 5,948 tokens, while end-to-end throughput fell 1.8x. |
+| [V100-156](results/V100-156.md) | How many clients does 27B hold and where does TTFT fail? | **Mixed.** One PXA slot handles approximately 100 tok/s of aggregate at any number of clients, so only the queue grows. |
 | [V100-157](results/V100-157.md) | Gemma 4 26B-A4B: 32k context and quality on long prompt | **Mixed.** 32k context with q8_0 KV fits: rise 34s, peak VRAM 15,217 MiB of 16,144 (reserve 927 MiB). |
 | [upscale-for-print](results/upscale-for-print.md) | Upscaling for print: ESRGAN vs UltraSharp, SUPIR blocked by the channel | **Mixed.** Mixed. The GAN half is measured and inspected: Real-ESRGAN at 0,9 s per frame is acceptable for A4 after colour correction but adds no real texture, while 4x-UltraSharp in this form is unusable for product photos - the buyer would see details the product does not have. The diffusion half produced ... |
 | [4060ti-capabilities-vs-v100](results/4060ti-capabilities-vs-v100.md) | What the 4060 Ti can do that the V100 cannot | The split is clean and measured: the 4060 Ti is the card that can train QLoRA at 398 tok/s (3B) and run bf16 paths, while the V100 is the card that serves inference with 900 GB/s and answers prefill-bound requests; routing training to the 4060 Ti and serving to the V100 is the rule these numbers ... |
