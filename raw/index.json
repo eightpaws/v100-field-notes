@@ -355,9 +355,9 @@
  },
  {
   "id": "V100-65",
-  "title": "Recheck 8k and 16k and set num\\_batch to 4096",
-  "result_type": "mixed",
-  "verdict": "Prefill decays smoothly, but 30B can't handle 8k at ncmoe 8. Measurements llama-bench, n=0, r=1: \\| Model \\| pp2048 \\| pp8192 \\| pp16384 \\| \\|---\\|---\\|---\\|---\\| \\| DeepSeek-Coder-V2-Lite 16B, fully on GPU \\| 3462 \\| 2713 \\| 1976 \\| \\|."
+  "title": "Batch size does not change prefill at 8k or 16k",
+  "result_type": "negative",
+  "verdict": "n_batch between 512 and 4096 changes nothing measurable: prefill stays at 2649 tok/s at 8k and 1898 at 16k, and 4096 is safe at 15.4 GiB peak. The hold-2048 rule belongs to Ollama, not llama.cpp."
  },
  {
   "id": "V100-66",
