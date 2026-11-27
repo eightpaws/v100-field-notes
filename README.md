@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **147** - 24 positive, 86 mixed, 23 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **148** - 24 positive, 87 mixed, 23 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -46,6 +46,7 @@ Read this before quoting a number.
 | [V100-02](results/V100-02.md) | q8_0 KV cache: how much context a 14B model gets in 16 GB | **Mixed.** Keep q8_0 KV with FlashAttention on, and treat 32k as the practical ceiling for a 14B model on a 16 GB card. 64k does not fit at any KV precision, so the "64k on a V100" advice is worth ignoring rather than retrying. |
 | [V100-03](results/V100-03.md) | imatrix Q4_K under Russian chassis | **Mixed.** - Environment Status (configuration, 23.11.2026 21:13). The llama.cpp build in ~/llama-new was killed by a VM reboot at 20:48, and was rebuilt on CUDA 12.9: BUILD_OK in 7 min 14 s (on the system's nvcc 12.0, the same build. |
 | [V100-04](results/V100-04.md) | VLM as a card reject controller | **Mixed.** Qwen2.5-VL-3B-Instruct (fp16, device_map=cuda) on 24 generated cards 640x640 produced 24 out of 24 "good", 1.8 sec per image (45.4 sec per batch), peak VRAM 7,634 MiB. |
+| [V100-05](results/V100-05.md) | IC-Light - underside product scan | **Mixed.** IC-Light v2 on 10 items: 30 pairs with three colored scenes resulted in an average ΔE of 37.5 with a maximum of 65.9, the same item under neutral light - ΔE of 24.1 with a maximum of 41.5. |
 | [V100-06](results/V100-06.md) | SUPIR vs Real-ESRGAN in print | **Mixed.** Real part measured, diffusion stuck in channel. |
 | [V100-07](results/V100-07.md) | Chatterbox Multilingual on a V100: expressiveness for free, 40-second ceiling | **Mixed.** Mixed: Chatterbox Multilingual speaks Russian intelligibly (WER 2-11 % on a 92-word paragraph, 0 % on a short phrase), carries emotion through exaggeration, and clones the reference voice on a 3.5 GB footprint, but it runs at about real time (RTF 1.03-1.12) versus 2.05 for Silero, and it cannot ... |
 | [V100-10](results/V100-10.md) | Prefill and batching: where a V100 actually loses throughput | **Positive.** Set num_batch=2048 explicitly on a V100 — it is ×3 over 128 and +31 % over the Ollama default, and the default is the main reason the card looks slow in off-the-shelf setups. The penalty for long prompts is real but small: −19 % at 16 440 tokens. |

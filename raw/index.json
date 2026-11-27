@@ -24,6 +24,12 @@
   "verdict": "Qwen2.5-VL-3B-Instruct (fp16, device_map=cuda) on 24 generated cards 640x640 produced 24 out of 24 \"good\", 1.8 sec per image (45.4 sec per batch), peak VRAM 7,634 MiB."
  },
  {
+  "id": "V100-05",
+  "title": "IC-Light - underside product scan",
+  "result_type": "mixed",
+  "verdict": "IC-Light v2 on 10 items: 30 pairs with three colored scenes resulted in an average ΔE of 37.5 with a maximum of 65.9, the same item under neutral light - ΔE of 24.1 with a maximum of 41.5."
+ },
+ {
   "id": "upscale-for-print",
   "title": "Upscaling for print: ESRGAN vs UltraSharp, SUPIR blocked by the channel",
   "result_type": "mixed",
