@@ -852,6 +852,12 @@
   "verdict": "Long context costs speed, not accuracy here: pass@1 held at 0.575 from a 57-token prompt to 5,948 tokens, while end-to-end throughput fell 1.8x."
  },
  {
+  "id": "V100-157",
+  "title": "Gemma 4 26B-A4B: 32k context and quality on long prompt",
+  "result_type": "mixed",
+  "verdict": "32k context with q8_0 KV fits: rise 34s, peak VRAM 15,217 MiB of 16,144 (reserve 927 MiB)."
+ },
+ {
   "id": "4060ti-capabilities-vs-v100",
   "title": "What the 4060 Ti can do that the V100 cannot",
   "result_type": "unstated",
