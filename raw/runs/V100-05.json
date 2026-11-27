@@ -17,7 +17,7 @@
  "scenes": [
   {
    "file": "item01",
-   "scene": "теплый_интерьер",
+   "scene": "warm interior",
    "seconds": 2.4,
    "delta_e_center": 29.9,
    "delta_e_left": 32.4,
@@ -44,7 +44,7 @@
   },
   {
    "file": "item02",
-   "scene": "теплый_интерьер",
+   "scene": "warm interior",
    "seconds": 1.9,
    "delta_e_center": 37.1,
    "delta_e_left": 63.2,
@@ -71,7 +71,7 @@
   },
   {
    "file": "item03",
-   "scene": "теплый_интерьер",
+   "scene": "warm interior",
    "seconds": 2.0,
    "delta_e_center": 75.8,
    "delta_e_left": 59.8,
@@ -98,7 +98,7 @@
   },
   {
    "file": "item04",
-   "scene": "теплый_интерьер",
+   "scene": "warm interior",
    "seconds": 1.9,
    "delta_e_center": 64.6,
    "delta_e_left": 49.6,
@@ -125,7 +125,7 @@
   },
   {
    "file": "item05",
-   "scene": "теплый_интерьер",
+   "scene": "warm interior",
    "seconds": 1.9,
    "delta_e_center": 45.0,
    "delta_e_left": 30.0,
@@ -152,7 +152,7 @@
   },
   {
    "file": "item06",
-   "scene": "теплый_интерьер",
+   "scene": "warm interior",
    "seconds": 1.9,
    "delta_e_center": 61.3,
    "delta_e_left": 26.4,
@@ -179,7 +179,7 @@
   },
   {
    "file": "item07",
-   "scene": "теплый_интерьер",
+   "scene": "warm interior",
    "seconds": 1.9,
    "delta_e_center": 58.0,
    "delta_e_left": 26.1,
@@ -206,7 +206,7 @@
   },
   {
    "file": "item08",
-   "scene": "теплый_интерьер",
+   "scene": "warm interior",
    "seconds": 2.0,
    "delta_e_center": 32.1,
    "delta_e_left": 30.8,
@@ -233,7 +233,7 @@
   },
   {
    "file": "item09",
-   "scene": "теплый_интерьер",
+   "scene": "warm interior",
    "seconds": 1.9,
    "delta_e_center": 32.7,
    "delta_e_left": 35.6,
@@ -260,7 +260,7 @@
   },
   {
    "file": "item10",
-   "scene": "теплый_интерьер",
+   "scene": "warm interior",
    "seconds": 2.0,
    "delta_e_center": 43.3,
    "delta_e_left": 35.3,
