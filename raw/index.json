@@ -517,9 +517,9 @@
  },
  {
   "id": "V100-95",
-  "title": "The 4060 Ti can: 3D modeling, ray tracing, video editing, machine learning inference.",
+  "title": "What a 4060 Ti can do that a V100 cannot",
   "result_type": "mixed",
-  "verdict": "The hypothesis was partially confirmed. On the same scales (qwen2.5-coder:7b Q4_K_M, digest dae161e27b0e on both machines), V100 decodes 103.1 ± 0.0 tok/s, 4060 Ti - 54.0 ± 0.25 tok/s, making the PC 1.9 times slower: 900 GB/s vs 288 GB/s."
+  "verdict": "the desktop card pre-fills faster at mid context and equals the V100 at 8.5k tokens, but decodes 1.9x slower, so no tested task finishes sooner on it. Inference stays on the V100;…"
  },
  {
   "id": "V100-97",
