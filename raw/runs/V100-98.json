@@ -1,0 +1,115 @@
+{
+ "card": "V100-98",
+ "title": "llama.cpp RPC: one model across two GPUs",
+ "note": "Baseline: single V100 with -ncmoe 8. Split: V100 + remote card over RPC, -dev CUDA0/RPC0 -ts 0.50/0.50.",
+ "entries": [
+  {
+   "config": "baseline-single-card",
+   "log": "=== host: ai-gpu date: 2026-11-27T12:49:03+00:00"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "=== nvidia-smi:"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "Tesla V100-SXM2-16GB, 0 MiB"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "=== A: V100 only, 30B-A3B, -ncmoe 8"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "| ------------------------------ | ---------: | ---------: | ---------- | --: | ---------: | ------------ | --------------: | -------------------: |"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "| qwen3moe 30B.A3B Q4_K - Medium |  17.28 GiB |    30.53 B | CUDA       |  99 |          8 | CUDA0        |           pp512 |      1181.05 ± 35.70 |"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "| qwen3moe 30B.A3B Q4_K - Medium |  17.28 GiB |    30.53 B | CUDA       |  99 |          8 | CUDA0        |           tg128 |        77.88 ± 12.57 |"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "build: 00d5c142c (12811)"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "=== B: V100 + 4060Ti over RPC (ts 0.5/0.5)"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "load_backend: loaded CPU backend from /srv/media/apps/llamarpc/llama-b12811/libggml-cpu-haswell.so"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "ggml_backend_cuda_buffer_type_alloc_buffer: allocating 17524.43 MiB on device 0: cudaMalloc failed: out of memory"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "ggml_backend_buft_alloc_buffer_n_default: failed to allocate CUDA0 buffer of size 18375698432"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "llama_model_load: error loading model: unable to allocate CUDA0 buffer"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "llama_model_load_from_file_impl: failed to load model"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "llama_bench: error: failed to load model '/models/qwen3-30b-a3b.gguf'"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "| model                          |       size |     params | backend    | ngl | dev          | ts           |            test |                  t/s |"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "| ------------------------------ | ---------: | ---------: | ---------- | --: | ------------ | ------------ | --------------: | -------------------: |"
+  },
+  {
+   "config": "baseline-single-card",
+   "log": "=== DONE 2026-11-27T12:51:16+00:00"
+  },
+  {
+   "config": "split-rpc",
+   "log": "=== B2: V100 + 4060Ti over RPC, -dev CUDA0/RPC0 -ts 0.5/0.5  2026-11-27T12:51:56+00:00"
+  },
+  {
+   "config": "split-rpc",
+   "log": "load_backend: loaded RPC backend from /srv/media/apps/llamarpc/llama-b12811/libggml-rpc.so"
+  },
+  {
+   "config": "split-rpc",
+   "log": "load_backend: loaded CPU backend from /srv/media/apps/llamarpc/llama-b12811/libggml-cpu-haswell.so"
+  },
+  {
+   "config": "split-rpc",
+   "log": "| model                          |       size |     params | backend    | ngl | dev          | ts           |            test |                  t/s |"
+  },
+  {
+   "config": "split-rpc",
+   "log": "| ------------------------------ | ---------: | ---------: | ---------- | --: | ------------ | ------------ | --------------: | -------------------: |"
+  },
+  {
+   "config": "split-rpc",
+   "log": "| qwen3moe 30B.A3B Q4_K - Medium |  17.28 GiB |    30.53 B | CUDA,RPC   |  99 | CUDA0/RPC0   | 0.50/0.50    |           pp512 |     2405.38 ± 135.70 |"
+  },
+  {
+   "config": "split-rpc",
+   "log": "| qwen3moe 30B.A3B Q4_K - Medium |  17.28 GiB |    30.53 B | CUDA,RPC   |  99 | CUDA0/RPC0   | 0.50/0.50    |           tg128 |         54.93 ± 3.65 |"
+  },
+  {
+   "config": "split-rpc",
+   "log": "build: 00d5c142c (12811)"
+  },
+  {
+   "config": "split-rpc",
+   "log": "=== DONE 2026-11-27T12:53:47+00:00"
+  }
+ ]
+}
