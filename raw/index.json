@@ -30,6 +30,12 @@
   "verdict": "Not usable for a product card: the product itself changes colour 8 to 22 times beyond tolerance under any light, so the only honest use is repainting the scene behind a masked, untouched product."
  },
  {
+  "id": "upscale-for-print",
+  "title": "Upscaling for print: ESRGAN vs UltraSharp, SUPIR blocked by the channel",
+  "result_type": "mixed",
+  "verdict": "Mixed. The GAN half is measured and inspected: Real-ESRGAN at 0,9 s per frame is acceptable for A4 after colour correction but adds no real texture, while 4x-UltraSharp in this form is unusable for product photos - the buyer would see details the product does not have. The diffusion half produced ..."
+ },
+ {
   "id": "V100-06",
   "title": "SUPIR vs Real-ESRGAN in print",
   "result_type": "mixed",
@@ -805,15 +811,15 @@
  },
  {
   "id": "V100-149",
-  "title": "The throughput of llama-server with multiple clients",
+  "title": "llama-server throughput with ten concurrent clients",
   "result_type": "mixed",
-  "verdict": "The cache does not collapse under ten different prompts, on the second pass every client is served with `prompt_n = 1`, but extra slots do not make the card faster: total throughput moves from 111 to 104-124 tok/s (+7-12 %) while decode per client falls from 111 to 52-66 tok/s, and the first burst after a server start costs 6.3-6.5× the single-client TTFT."
+  "verdict": "Mixed: the cache does not collapse under ten different prompts — on the second pass every client is served with prompt_n = 1 — but extra slots do not make the card faster: total throughput moves from 111 to 104-124 tok/s (+7-12 %) while decode per client falls from 111 to 52-66 tok/s, and the first ..."
  },
  {
   "id": "V100-150",
   "title": "27B PXQN: 8k context and two clients on one 16 GB card",
   "result_type": "negative",
-  "verdict": "A 27B at 3.97 bits already saturates this card, so a second client costs 16-20 % of the throughput instead of adding the 1.6× the card would need, while the 8k context itself does fit (14 850 MiB peak at one slot, 15 529 MiB with two 8k slots)."
+  "verdict": "Negative: a 27B at 3.97 bits already saturates this card, so a second client costs 16-20 % of the throughput instead of adding the 1.6× the card would need, while the 8k context itself does fit (14 850 MiB peak at one slot, 15 529 MiB with two 8k slots)."
  },
  {
   "id": "4060ti-capabilities-vs-v100",
@@ -922,12 +928,6 @@
   "title": "Ternary-Bonsai-2-27B on the V100: 27B in 6.8 GB at 67 tok/s",
   "result_type": "unstated",
   "verdict": "Mixed: the ternary 27B does run here and holds 6.8 GB, but the throughput it reaches decides whether the trade is worth it for the shop - see the measurement above."
- },
- {
-  "id": "upscale-for-print",
-  "title": "Upscaling for print: ESRGAN vs UltraSharp, SUPIR blocked by the channel",
-  "result_type": "mixed",
-  "verdict": "Mixed. The GAN half is measured and inspected: Real-ESRGAN at 0,9 s per frame is acceptable for A4 after colour correction but adds no real texture, while 4x-UltraSharp in this form is unusable for product photos - the buyer would see details the product does not have. The diffusion half produced ..."
  },
  {
   "id": "video-cogvideox-blocked",
