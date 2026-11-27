@@ -492,6 +492,12 @@
   "verdict": "Negative for the criterion. The split mode is 4.1x slower, not 15 % faster, and the margin is far outside any noise. The mechanism is visible in the numbers: the writer in mode (b) gave up 8 layers to the CPU (-ngl 12, otherwise it does not fit beside a 30B reviewer), decode fell from ~9 to ~4 ..."
  },
  {
+  "id": "V100-97",
+  "title": "Batch half-and-half: 20 tasks for both cards",
+  "result_type": "mixed",
+  "verdict": "20 MBPP tasks on two machines give a 1.53x speedup on 14B Q4 (20.46 → 13.38 s, n=3) and a 1.43x speedup on 7B Q4 (10.62 → 7.43 s, n=2)."
+ },
+ {
   "id": "V100-99",
   "title": "Prompt-expander: LLM writes prompt for photographer",
   "result_type": "mixed",
@@ -507,7 +513,7 @@
   "id": "V100-101",
   "title": "LoRA under the product and brand",
   "result_type": "mixed",
-  "verdict": "LoRA on 24 frames of a single product (640 px, rank 8, lr 1e-4): 800 steps in 16.1 min, 2400 steps in 48.9 min, peak VRAM 7.8 GiB."
+  "verdict": "Mixed: LoRA moves generations toward the target product (CLIP similarity to the reference frame 0.6750 base → 0.6943 at 1600 steps) and the packaging is recognizable in 4-5 of 10 frames against 2-3 for the base, but the 8-of-10 criterion is not reached. 24 frames at 640 px are too few for stable ..."
  },
  {
   "id": "V100-102",
