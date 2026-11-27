@@ -822,6 +822,12 @@
   "verdict": "Negative: a 27B at 3.97 bits already saturates this card, so a second client costs 16-20 % of the throughput instead of adding the 1.6× the card would need, while the 8k context itself does fit (14 850 MiB peak at one slot, 15 529 MiB with two 8k slots)."
  },
  {
+  "id": "V100-153",
+  "title": "Budget for 27B: what it provides",
+  "result_type": "mixed",
+  "verdict": "Thinking does not provide any task beyond: MBPP pass@1 0.600 (24/40) in all three modes."
+ },
+ {
   "id": "4060ti-capabilities-vs-v100",
   "title": "What the 4060 Ti can do that the V100 cannot",
   "result_type": "unstated",
