@@ -798,6 +798,12 @@
   "verdict": "With a prompt length of 4096 tokens, prefix cache provides an 8.25x speedup: without cache, 1179.8 ± 2.0 ms (full prefill of 4096 tokens, 3472 tok/s), repeating the same prefix 143.0 ± 1.2 ms (prompt_n=1, cache_n=4096)."
  },
  {
+  "id": "V100-148",
+  "title": "PXA: Second checkpoint and quality 27B",
+  "result_type": "mixed",
+  "verdict": "Second checkpoint PXQN yielded the same quality: MBPP pass@1 0.625 (25/40) compared to 0.60 (24/40) at V100-29 checkpoint, indicating a difference of one task - noise from a single run, not degradation."
+ },
+ {
   "id": "4060ti-capabilities-vs-v100",
   "title": "What the 4060 Ti can do that the V100 cannot",
   "result_type": "unstated",
