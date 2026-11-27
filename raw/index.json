@@ -157,9 +157,9 @@
  },
  {
   "id": "V100-31",
-  "title": "Heterogeneous Serv: V100 + 4060 Ti in one pool",
-  "result_type": "mixed",
-  "verdict": "Measured channel PК↔V100 without model (card was occupied by another run): TCP single thread 117.4 MB/s (939 Mbps, n=3); RTT TCP connect 0.32 ms median (n=30); echo exchange 10 KB 0.69 ms, 100 KB 2.52 ms, 1 MB 21.7 ms (n=200)."
+  "title": "One model across V100 and 4060 Ti: the link kills it",
+  "result_type": "negative",
+  "verdict": "Heterogeneous tensor parallelism over 1 Gbit is latency-bound at roughly 11 tok/s for a 27B dense model, and even the bandwidth-only ceiling (45 tok/s) leaves no margin over the 24.5 tok/s that one V100 already gives on a 30B MoE that fits. A 32 GB pool built across two machines does not turn into ..."
  },
  {
   "id": "V100-32",
