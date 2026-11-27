@@ -36,6 +36,12 @@
   "verdict": "Real part measured, diffusion stuck in channel."
  },
  {
+  "id": "V100-07",
+  "title": "Chatterbox Multilingual on a V100: expressiveness for free, 40-second ceiling",
+  "result_type": "mixed",
+  "verdict": "Mixed: Russian is intelligible (WER 2-11 % on a 92-word paragraph, 0 % on a short phrase) and the voice clones on 3.5 GB, but synthesis runs at about real time (RTF 1.03-1.12 against 2.05 for Silero) and one call stops at 40.0 seconds - a minute-long ad needs sentence chunking, which works at 60 s in 53.5 s, WER 7.7 %."
+ },
+ {
   "id": "V100-10",
   "title": "Prefill and batching: where a V100 actually loses throughput",
   "result_type": "positive",

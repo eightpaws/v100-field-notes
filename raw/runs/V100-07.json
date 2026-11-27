@@ -1,0 +1,29 @@
+{
+  "card": "V100-07",
+  "harness": "bench_cb.py, bench_cb_long.py, asr_wer07.py (guest /root)",
+  "engine": "chatterbox-tts 0.1.7, multilingual weights t3_mtl23ls_v2.safetensors (2143989752 B) + s3gen.pt (1057165844 B) + ve.pt + conds.pt",
+  "asr": "faster-whisper large-v3 (Systran snapshot), ctranslate2 float16",
+  "runs": [
+    {"tag": "medium", "chars": 75, "run": 1, "audio_s": 4.88, "synth_s": 21.41, "rtf": 0.23, "vram_peak_mib": 3753},
+    {"tag": "medium", "chars": 75, "run": 2, "audio_s": 5.24, "synth_s": 5.10, "rtf": 1.03, "vram_peak_mib": 3837},
+    {"tag": "medium", "chars": 75, "run": 3, "audio_s": 4.84, "synth_s": 4.44, "rtf": 1.09, "vram_peak_mib": 3837},
+    {"tag": "short", "chars": 30, "run": 1, "audio_s": 4.88, "synth_s": 4.71, "rtf": 1.04, "vram_peak_mib": 3837},
+    {"tag": "long", "chars": 567, "exaggeration": 0.25, "audio_s": 28.0, "synth_s": 25.54, "rtf": 1.10, "vram_peak_mib": 6313},
+    {"tag": "long", "chars": 567, "exaggeration": 0.5, "audio_s": 30.08, "synth_s": 27.40, "rtf": 1.10, "vram_peak_mib": 6819},
+    {"tag": "long", "chars": 567, "exaggeration": 0.9, "audio_s": 30.0, "synth_s": 27.71, "rtf": 1.08, "vram_peak_mib": 6819}
+  ],
+  "load_s": 14.8,
+  "vram_after_load_mib": 3467,
+  "long_forms": [
+    {"mode": "single_call", "chars": 1142, "max_new_tokens": 1000, "audio_s": 40.0, "synth_s": 37.91, "rtf": 1.06, "vram_peak_mib": 10619, "wer": 0.88, "ref_words": 183, "out_words": 83},
+    {"mode": "chunked", "chars": 1142, "chunks": 5, "chunk_chars": [246, 213, 255, 278, 146], "audio_s": 60.12, "synth_s": 53.54, "rtf": 1.12, "vram_peak_mib": 10619, "wer": 0.077, "ref_words": 183, "out_words": 181}
+  ],
+  "wer": [
+    {"wav": "short", "dur_s": 4.88, "wer": 0.0, "ref_words": 5, "out_words": 5},
+    {"wav": "medium", "dur_s": 5.24, "wer": 0.25, "ref_words": 12, "out_words": 13},
+    {"wav": "long_exag_0.25", "dur_s": 28.0, "wer": 0.109, "ref_words": 92, "out_words": 99},
+    {"wav": "long_exag_0.5", "dur_s": 30.08, "wer": 0.033, "ref_words": 92, "out_words": 94},
+    {"wav": "long_exag_0.9", "dur_s": 30.0, "wer": 0.022, "ref_words": 92, "out_words": 91}
+  ],
+  "note": "Transcribed hypotheses (Russian speech-to-text of the generated audio) are kept on the rig; this file carries the numbers only. Word error rate is computed after lowercasing and stripping punctuation, against the exact source text that was synthesized."
+}
