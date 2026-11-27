@@ -15,7 +15,7 @@
   "id": "V100-03",
   "title": "Importance matrix for Q4_K on a Russian corpus",
   "result_type": "mixed",
-  "verdict": "0.61 % lower held-out perplexity at an identical file size, but no measurable change in cloze accuracy: cheap to produce, not a quality lever for Russian answers."
+  "verdict": "Mixed: 0.61 % lower held-out perplexity at an identical file size, but no measurable change in cloze accuracy — cheap to produce, not a quality lever for Russian answers."
  },
  {
   "id": "V100-04",
@@ -598,6 +598,12 @@
   "title": "Linters as acceptance: how much code passes on the first try",
   "result_type": "mixed",
   "verdict": "(25.11.2026) 40 tasks MBPP, Qwen2.5-Coder-7B-Instruct Q8_0."
+ },
+ {
+  "id": "V100-107",
+  "title": "Safety: semgrep, bandit, gosec on generated code",
+  "result_type": "mixed",
+  "verdict": "The \"secure by default\" prompt barely helps: 8 bandit findings in normal mode versus 7 in secure mode (MEDIUM 3 against 2, HIGH none in either), clean files 6 out of 10 versus 7."
  },
  {
   "id": "V100-108",

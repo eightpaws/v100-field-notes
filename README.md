@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **160** - 27 positive, 90 mixed, 29 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **161** - 27 positive, 91 mixed, 29 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -44,7 +44,7 @@ Read this before quoting a number.
 |---|---|---|
 | [V100-01](results/V100-01.md) | Speculative decoding in llama.cpp | **Mixed.** Speculative decoding was tested on two targets, and the result depends on the model pair: it accelerates on 7B, but slows down almost twofold on 14B. |
 | [V100-02](results/V100-02.md) | q8_0 KV cache: how much context a 14B model gets in 16 GB | **Mixed.** Keep q8_0 KV with FlashAttention on, and treat 32k as the practical ceiling for a 14B model on a 16 GB card. 64k does not fit at any KV precision, so the "64k on a V100" advice is worth ignoring rather than retrying. |
-| [V100-03](results/V100-03.md) | Importance matrix for Q4_K on a Russian corpus | **Mixed.** 0.61 % lower held-out perplexity at an identical file size, but no measurable change in cloze accuracy: cheap to produce, not a quality lever for Russian answers. |
+| [V100-03](results/V100-03.md) | Importance matrix for Q4_K on a Russian corpus | **Mixed.** Mixed: 0.61 % lower held-out perplexity at an identical file size, but no measurable change in cloze accuracy — cheap to produce, not a quality lever for Russian answers. |
 | [V100-04](results/V100-04.md) | VLM as a card reject controller | **Mixed.** Qwen2.5-VL-3B-Instruct (fp16, device_map=cuda) on 24 generated cards 640x640 produced 24 out of 24 "good", 1.8 sec per image (45.4 sec per batch), peak VRAM 7,634 MiB. |
 | [V100-05](results/V100-05.md) | IC-Light relighting: the product colour moves by 24-37 dE | **Negative.** Not usable for a product card: the product itself changes colour 8 to 22 times beyond tolerance under any light, so the only honest use is repainting the scene behind a masked, untouched product. |
 | [V100-06](results/V100-06.md) | SUPIR vs Real-ESRGAN in print | **Mixed.** Real part measured, diffusion stuck in channel. |
@@ -141,6 +141,7 @@ Read this before quoting a number.
 | [V100-104](results/V100-104.md) | GPU Unlock: Thawing cores 4060 Ti, +24% on 4060 | **Mixed.** Translation: "Measurement 'before' exists, unlock was not installed. |
 | [V100-105](results/V100-105.md) | Polyglot: eight languages on one harness | **Mixed.** 6 languages (Python, JavaScript, PHP, Ruby, Go, Java) x 10 functions x 21 statements per language, three models, temperature 0, one run 3m 4s. |
 | [V100-106](results/V100-106.md) | Linters as acceptance: how much code passes on the first try | **Mixed.** (25.11.2026) 40 tasks MBPP, Qwen2.5-Coder-7B-Instruct Q8_0. |
+| [V100-107](results/V100-107.md) | Safety: semgrep, bandit, gosec on generated code | **Mixed.** The "secure by default" prompt barely helps: 8 bandit findings in normal mode versus 7 in secure mode (MEDIUM 3 against 2, HIGH none in either), clean files 6 out of 10 versus 7. |
 | [V100-108](results/V100-108.md) | Tests that catch: mutation testing of generated tests | **Mixed.** Three branches, Qwen2.5-Coder-7B Q8, temp 0.2. |
 | [V100-109](results/V100-109.md) | Medium-sized project from scratch: FastAPI, Postgres, authorization, tests, Docker | **Mixed.** The project has been assembled but does not launch. |
 | [V100-110](results/V100-110.md) | Red test cycle → repair on four languages | **Mixed.** 20 tasks (5 each in Python, JavaScript, C, Perl), Qwen2.5-Coder-7B-Instruct Q8_0, llama-server build129, temperature 0; total set - 25s, server up in 2s. |
