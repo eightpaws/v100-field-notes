@@ -445,9 +445,9 @@
  },
  {
   "id": "V100-79",
-  "title": "llama.cpp v1.0.0 vs our build 51831d4",
+  "title": "llama.cpp v1.0.0 vs build 51831d47: MoE prefill regression, dense unchanged",
   "result_type": "mixed",
-  "verdict": "Regression on sm_70 has occurred, but only for MoE."
+  "verdict": "Build 51831d47 stays as the default: the card criterion (\"upgrade only if prefill does not drop more than 10 %\") fails on MoE by a wide margin, and there is nothing to gain on dense models."
  },
  {
   "id": "V100-80",
@@ -501,7 +501,7 @@
   "id": "V100-88",
   "title": "Flash-Attention-V100: FA2 fork for vLLM cannot be selected on sm_70",
   "result_type": "negative",
-  "verdict": "Negative: the FA2 fork builds and imports on sm_70 but cannot be selected in this engine, so the claimed +580% over Triton is untestable here; the stock Volta backend gives 1 091 tok/s at 8k and 623 tok/s at 16k."
+  "verdict": "Negative for the claim as stated: the FA2 fork builds and imports on sm_70 but cannot be selected in this engine, so the promised +580% over Triton is untestable here without patching backend selection in the platform; the stock Volta backend gives 1 091 tok/s at 8k and 623 tok/s at 16k."
  },
  {
   "id": "V100-89",
