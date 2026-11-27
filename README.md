@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **161** - 27 positive, 91 mixed, 29 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **161** - 27 positive, 92 mixed, 28 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -71,7 +71,7 @@ Read this before quoting a number.
 | [V100-28](results/V100-28.md) | V100-LLM: ready presets for 16 GB | **Mixed.** Rejected: the release does not include the engine. |
 | [V100-29](results/V100-29.md) | PXA 4.0 engine: a 27B model on a 16 GB card | **Positive.** The first configuration that puts a 27B dense model fully on the card and still decodes faster than the 30B MoE with CPU offload. Stock llama.cpp cannot read the PXQN4 file — the PXA engine is mandatory. |
 | [V100-30](results/V100-30.md) | sm70-attn: FA2-D256 in llama.cpp | **Mixed.** Rejected based on the card criterion: "do we have a model with head_dim 256 and do we need context over 64k". |
-| [V100-31](results/V100-31.md) | One model across V100 and 4060 Ti: the link kills it | **Negative.** Heterogeneous tensor parallelism over 1 Gbit is latency-bound at roughly 11 tok/s for a 27B dense model, and even the bandwidth-only ceiling (45 tok/s) leaves no margin over the 24.5 tok/s that one V100 already gives on a 30B MoE that fits. A 32 GB pool built across two machines does not turn into ... |
+| [V100-31](results/V100-31.md) | One 27B model across V100 and 4060 Ti: pipeline split works, and costs 25-40 % | **Mixed.** A layer split across two machines is possible on this hardware without vLLM: rebuild llama.cpp with GGML_RPC, run ggml-rpc-server on the Windows PC, and the guest's llama-server --rpc <ip>:50052 -ts ... spreads a 27B model over both cards. It costs 25-40 % of decode speed against one card, so for a ... |
 | [V100-32](results/V100-32.md) | Prepared sm_70-weights with Hugging Face |  |
 | [V100-36](results/V100-36.md) | Video without the RAM ceiling: clip length and 720p | **Mixed.** RAM was never the ceiling: process RSS sat at 41.6 GB across every clip length while VRAM moved 12.7→13.0 GB. The wall is the 16 GB card. Without tricks: 12 s at 480p, or 6 s at 720p with VAE tiling — and tiling costs ~50 % more time (594 s vs 394 s) plus a decode warning that the returned frames ... |
 | [V100-37](results/V100-37.md) | 32B dense vs 30B MoE: decode re-measured with 96 GB RAM | **Negative.** The ceiling is the 16 GB card, not system RAM: 96 GB does not let a dense 32B model run at a usable speed (3.0 tok/s at 20 layers, refuses to load above that). Among large models only MoE is viable here — the same 20 layers give 24.5 tok/s, eight times the dense model. Practical rule: on 16 GB ... |
