@@ -333,7 +333,7 @@
   "id": "V100-61",
   "title": "GQA to MHA expansion: nothing in the pipeline can carry it",
   "result_type": "unstated",
-  "verdict": "No carrier: every pipeline on the rig uses MHA, Qwen-VL is not on disk, the kernel is not called by any engine."
+  "verdict": "Unstated is the honest label here: the check had no carrier, which is not the same as \"the effect does not exist\". The kernel-level 7.2x from V100-19 stands and is untouched by this card."
  },
  {
   "id": "V100-62",
@@ -361,9 +361,9 @@
  },
  {
   "id": "V100-66",
-  "title": "Quality over speed: MBPP on three models",
+  "title": "Quality over speed: MBPP pass@1 on 16 GB models",
   "result_type": "mixed",
-  "verdict": "Harness run of model_eval.py, one server ascent, 40 MBPP tasks + 8 blocks."
+  "verdict": "Reasoning mode costs 6x the time and 37 points of pass@1 unless it is disabled; with thinking off the 30B MoE reaches 0.60 on 40 tasks but 0.50 on 200, level with the 16B dense model at 0.55."
  },
  {
   "id": "V100-67",
@@ -434,8 +434,8 @@
  {
   "id": "V100-78",
   "title": "Rapid Averages: Nemotron-Bolt-E4B and SenseNova-Loop-9B",
-  "result_type": "positive",
-  "verdict": "Nemotron-Bolt-E4B: 109.56 tok/s decode, 4 GB VRAM, format 5/5, volume 2/2, RAG 3/3, honesty 3/3 - usable for shop texts. SenseNova-Loop-9B: same quality, half the speed, runs only on an ik_llama.cpp fork."
+  "result_type": "mixed",
+  "verdict": "- ## Queue P1v - New Ideas Following Review (24.11.2026) \\| # \\| Idea \\| Stage \\| Resources \\| Status \\| Outcome \\| Ready \\| \\|---\\|---\\|---\\|---\\|---\\|---\\|---\\| \\| V100-66 \\| Code Quality: MBPP on Three Models \\| P0 \\| 40 Tasks \\| Done \\| Code 0.55 / RAG 2/2."
  },
  {
   "id": "V100-79",
@@ -735,13 +735,25 @@
   "id": "V100-131",
   "title": "Failure metric: 20 prompts, uncensored vs censored",
   "result_type": "mixed",
-  "verdict": "Stock 7B refuses 4 of 7 harmless prompts and 1 of 9 grey ones; 27B abliterated refuses none, but keeps refusing on bare harm markers (4/4). Coding pass@1 0.70 on 10 MBPP tasks at 105.6 tok/s. Third model and 27B coding block were not run."
+  "verdict": "Translation: 27B abliterated IQ3_S (model 2 of 3): class A 7/7 direct response, class B 9/9 direct (zero failures), class C 4/4 refusal."
  },
  {
   "id": "V100-132",
   "title": "Captcha: Local VLM vs Service",
   "result_type": "mixed",
   "verdict": "26.11.2026, V100 16 GB, Qwen2.5-VL-7B-Instruct Q4_K_M + mmproj-F16, 200 synthetic CAPTCHAs: distorted text 88/100 (88%), arithmetic 50/50 (100%), \"how many figures\" grid 15/50 (30%); total 153/200 (76.5%), average 0.11s per CAPTCHA (p95."
+ },
+ {
+  "id": "V100-139",
+  "title": "Coded contour: entire package in context",
+  "result_type": "mixed",
+  "verdict": "The entire pypa/packaging package (20 files, 12,638 lines) in the context of 65,536 tokens, prompt truncated to 80KB (around 19 thousand tokens)."
+ },
+ {
+  "id": "V100-140",
+  "title": "Q4_0 KV disrupts generation",
+  "result_type": "mixed",
+  "verdict": "On Qwen2.5-Coder-7B server with -ctk q4_0 -ctv q4_0, it produced incoherent text even for a 45 token prompt: def add,,b):, with fragments of quotes and arrows."
  },
  {
   "id": "V100-141",
