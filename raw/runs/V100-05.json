@@ -345,17 +345,5 @@
    "delta_e_mean": 8.4
   }
  ],
- "note": "Product file prefixes were transliterated to item01..item10; the original catalogue names are Russian and stay on the rig. Numbers are unchanged.",
- "file_map": {
-  "00_монстера_в_бе": "item01",
-  "01_фикус_в_плетё": "item02",
-  "02_суккулент_в_б": "item03",
-  "03_букет_сухоцве": "item04",
-  "04_орхидея_фален": "item05",
-  "05_кактус_в_терр": "item06",
-  "06_папоротник_в_": "item07",
-  "07_лавр_в_глинян": "item08",
-  "08_монстера_в_бе": "item09",
-  "09_фикус_в_плетё": "item10"
- }
+ "note": "Product file prefixes were transliterated to item01..item10; the original catalogue names are Russian and stay on the rig. Numbers are unchanged."
 }
