@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **152** - 24 positive, 89 mixed, 24 negative, 15 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **152** - 25 positive, 88 mixed, 24 negative, 15 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -92,7 +92,7 @@ Read this before quoting a number.
 | [V100-53](results/V100-53.md) | Cache prefix: equal comparison at equal prompt length | **Positive.** At equal prompt length the prefix cache still wins 7.4x at 2k, 9.2x at 6k and 11.0x at 12k, and the gain grows with context instead of shrinking. The "8x" reported in V100-11 was an understatement, not an artifact of the different prompt lengths. |
 | [V100-54](results/V100-54.md) | Volt-forever: Honest native base with included cuDNN | **Mixed.** Partial: cuDNN-on is not available on our stack. |
 | [V100-55](results/V100-55.md) | Llama-Bench refuses to load more than 20 layers. | **Mixed.** There is no limit of 20 layers. The matrix is based on Qwen3-Coder-30B (17.28 GiB), f16 KV, p128/n16: \| ncmoe \| prefill pp128 \| decode tg16 \| \|---\|---\|---\| \| 24 \| 179.2 \| 39.2 \| \| 32 \| 145.2 \| 34.6 \| Both configurations load and. |
-| [V100-56](results/V100-56.md) | 32kB Q8_0 and check Q4_0 at 64k | **Mixed.** 32k and 64k are achievable, decoding is unaffected. Qwen2.5-Coder-7B Q4 (4.36 GiB), FA enabled: \| Context \| KV \| Prefill \| Decode \| \|---\|---\|---\|---\| \| 32,768 \| q8_0 \| 1860 tok/s \| 121.5 tok/s \| \| 65,536 \| q4_0 \| 1247 tok/s \|. |
+| [V100-56](results/V100-56.md) | 32k with q8_0 KV and 64k with q4_0 KV on a 7B model | **Positive.** Both settings work: 32k with q8_0 and 64k with q4_0 KV fit on one 16 GB card, and decode stays at 126 tok/s at either context length. Compressed KV is what makes 64k possible at all; the price is prefill, which drops by a third from 32k to 64k. |
 | [V100-57](results/V100-57.md) | Q8_0 KV: Confirm double decoding or attribute to noise |  |
 | [V100-58](results/V100-58.md) | Throughput, batching, quality | **Mixed.** Under load, 1Cat-vLLM outperforms llama.cpp by six times. 7B GGUF, --max-model-len 4096, --gpu-memory-utilization 0.6, different prompts for all requests (otherwise prefix cache boosts the number): \| Mode \| Tokens \| Time \| Total. |
 | [V100-60](results/V100-60.md) | Gather all eight patches on their base commit. | **Mixed.** No: all eight patches apply on 79e2e74 (HEAD 70782b2), but the claimed +34-45% does not reproduce - decode tg64 67.8 tok/s against 70.93 for the upstream build b1b770d (-4.4%), prefill 8192 +2.1% (1507.6 vs 1476.5), prefill 512 within. |

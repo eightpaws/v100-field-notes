@@ -307,9 +307,9 @@
  },
  {
   "id": "V100-56",
-  "title": "32kB Q8_0 and check Q4_0 at 64k",
-  "result_type": "mixed",
-  "verdict": "32k and 64k are achievable, decoding is unaffected. Qwen2.5-Coder-7B Q4 (4.36 GiB), FA enabled: \\| Context \\| KV \\| Prefill \\| Decode \\| \\|---\\|---\\|---\\|---\\| \\| 32,768 \\| q8_0 \\| 1860 tok/s \\| 121.5 tok/s \\| \\| 65,536 \\| q4_0 \\| 1247 tok/s \\|."
+  "title": "32k with q8_0 KV and 64k with q4_0 KV on a 7B model",
+  "result_type": "positive",
+  "verdict": "Both settings work: 32k with q8_0 and 64k with q4_0 KV fit on one 16 GB card, and decode stays at 126 tok/s at either context length. Compressed KV is what makes 64k possible at all; the price is prefill, which drops by a third from 32k to 64k."
  },
  {
   "id": "V100-57",
