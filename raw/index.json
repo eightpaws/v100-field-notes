@@ -482,7 +482,7 @@
  {
   "id": "V100-92",
   "title": "Fused dequant of quantized KV",
-  "result_type": "negative",
+  "result_type": "mixed",
   "verdict": "A/B on one model (27B IQ3_S, 10.95 GiB, fits entirely) and the same flags (-p 8192 -n 8 -ctk q8_0 -ctv q8_0 -r 1): base build129 gives 799.82 TOPS prefilling, PR #31802 (HEAD 01eb64f, built under sm_70 with."
  },
  {
