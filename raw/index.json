@@ -786,6 +786,12 @@
   "verdict": "Fits entirely and fastest among those measured on this map: prefill 2696.3 ± 94.7 tok/s on pp256, decode 124.09 ± 0.53 tok/s on tg64, peak VRAM 15331 MiB at 8k context, server ready in 5s."
  },
  {
+  "id": "V100-146",
+  "title": "CogVideoX-5B: does not launch on this stack",
+  "result_type": "mixed",
+  "verdict": "CogVideoX-5B does not run on this build: with cuDNN enabled, it's GET was unable to find an engine on fp16-convolutions, and with disabled, the VAE decoder requests 17.8 GiB while only 8.8 is available."
+ },
+ {
   "id": "4060ti-capabilities-vs-v100",
   "title": "What the 4060 Ti can do that the V100 cannot",
   "result_type": "unstated",
