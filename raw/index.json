@@ -810,6 +810,12 @@
   "verdict": "Second checkpoint PXQN yielded the same quality: MBPP pass@1 0.625 (25/40) compared to 0.60 (24/40) at V100-29 checkpoint, indicating a difference of one task - noise from a single run, not degradation."
  },
  {
+  "id": "V100-149",
+  "title": "The throughput of llama-server with multiple clients",
+  "result_type": "mixed",
+  "verdict": "10 clients with different prefixes of 1400 tokens each, response of 24 tokens, Qwen2.5-7B Q4_K_M on V100 16GB, 3 waves per configuration."
+ },
+ {
   "id": "4060ti-capabilities-vs-v100",
   "title": "What the 4060 Ti can do that the V100 cannot",
   "result_type": "unstated",
