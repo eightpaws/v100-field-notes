@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **141** - 24 positive, 80 mixed, 23 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **142** - 24 positive, 81 mixed, 23 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -124,6 +124,7 @@ Read this before quoting a number.
 | [V100-91](results/V100-91.md) | Recheck sm70-attn with head_dim 256 | **Positive.** Positive for the narrow claim: the fork is faster on prefill at both measured lengths, and the margin at 16k (+11.2 %) is large enough to matter for long prompts. The numbers published in the fork's README (+34-48 %) do not reproduce at 8-16k: they belong to the 100-174k range, where the D256 ... |
 | [V100-92](results/V100-92.md) | Fused dequant of quantized KV | **Mixed.** A/B on one model (27B IQ3_S, 10.95 GiB, fits entirely) and the same flags (-p 8192 -n 8 -ctk q8_0 -ctv q8_0 -r 1): base build129 gives 799.82 TOPS prefilling, PR #31802 (HEAD 01eb64f, built under sm_70 with. |
 | [V100-93](results/V100-93.md) | Two-machine pipeline: V100 writes, 4060 Ti reviews | **Negative.** Negative for the criterion. The split mode is 4.1x slower, not 15 % faster, and the margin is far outside any noise. The mechanism is visible in the numbers: the writer in mode (b) gave up 8 layers to the CPU (-ngl 12, otherwise it does not fit beside a 30B reviewer), decode fell from ~9 to ~4 ... |
+| [V100-94](results/V100-94.md) | Images on 4060 Ti, code on V100 | **Mixed.** 4060 Ti at the same checkpoint and number of prompts: 1024/30 steps - 6.93 ± 0.18 s per image (519 per hour), 768/30 - 4.40 s in steady state (818 per hour), 1024/6 steps - 1.91 ± 0.02 s (1885 per hour); peak VRAM 13,440 MiB at 1024/30 and. |
 | [V100-97](results/V100-97.md) | Batch half-and-half: 20 tasks for both cards | **Mixed.** Criterion 1.5x passed only on 14B: distributing 12 tasks on V100 and 8 on PC yields 1.53x compared to one V100 (20.46 → 13.38 s, n=3), on 7B it's 1.43x (10.62 → 7.43 s, n=2). |
 | [V100-99](results/V100-99.md) | Prompt-expander: LLM writes prompt for photographer | **Mixed.** The hypothesis was partially confirmed, and the solution depends on the prompt length. |
 | [V100-100](results/V100-100.md) | Style presets and immutable prompt part | **Positive.** Positive: three presets from one config file keep background and light within 4-9 RGB points across five seeds each, cost 10-11.5 s per frame on one 16 GB V100, and switch without code changes. The negative prompt does not protect against unwanted body parts - 1 frame in 15 had to be rejected. |
