@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **141** - 24 positive, 81 mixed, 22 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **141** - 24 positive, 80 mixed, 23 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -67,7 +67,7 @@ Read this before quoting a number.
 | [V100-28](results/V100-28.md) | V100-LLM: ready presets for 16 GB | **Mixed.** Rejected: the release does not include the engine. |
 | [V100-29](results/V100-29.md) | PXA 4.0 engine: a 27B model on a 16 GB card | **Positive.** The first configuration that puts a 27B dense model fully on the card and still decodes faster than the 30B MoE with CPU offload. Stock llama.cpp cannot read the PXQN4 file — the PXA engine is mandatory. |
 | [V100-30](results/V100-30.md) | sm70-attn: FA2-D256 in llama.cpp | **Mixed.** Rejected based on the card criterion: "do we have a model with head_dim 256 and do we need context over 64k". |
-| [V100-31](results/V100-31.md) | Heterogeneous Serv: V100 + 4060 Ti in one pool | **Mixed.** Measured channel PК↔V100 without model (card was occupied by another run): TCP single thread 117.4 MB/s (939 Mbps, n=3); RTT TCP connect 0.32 ms median (n=30); echo exchange 10 KB 0.69 ms, 100 KB 2.52 ms, 1 MB 21.7 ms (n=200). |
+| [V100-31](results/V100-31.md) | One model across V100 and 4060 Ti: the link kills it | **Negative.** Heterogeneous tensor parallelism over 1 Gbit is latency-bound at roughly 11 tok/s for a 27B dense model, and even the bandwidth-only ceiling (45 tok/s) leaves no margin over the 24.5 tok/s that one V100 already gives on a 30B MoE that fits. A 32 GB pool built across two machines does not turn into ... |
 | [V100-32](results/V100-32.md) | Prepared sm_70-weights with Hugging Face |  |
 | [V100-36](results/V100-36.md) | Video without the RAM ceiling: clip length and 720p | **Mixed.** RAM was never the ceiling: process RSS sat at 41.6 GB across every clip length while VRAM moved 12.7→13.0 GB. The wall is the 16 GB card. Without tricks: 12 s at 480p, or 6 s at 720p with VAE tiling — and tiling costs ~50 % more time (594 s vs 394 s) plus a decode warning that the returned frames ... |
 | [V100-37](results/V100-37.md) | 32B dense vs 30B MoE: decode re-measured with 96 GB RAM | **Negative.** The ceiling is the 16 GB card, not system RAM: 96 GB does not let a dense 32B model run at a usable speed (3.0 tok/s at 20 layers, refuses to load above that). Among large models only MoE is viable here — the same 20 layers give 24.5 tok/s, eight times the dense model. Practical rule: on 16 GB ... |
