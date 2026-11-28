@@ -9,7 +9,7 @@
   "id": "V100-02",
   "title": "q8_0 KV cache: how much context a 14B model gets in 16 GB",
   "result_type": "mixed",
-  "verdict": "Keep q8_0 KV with FlashAttention on, and treat 32k as the practical ceiling for a 14B model on a 16 GB card. 64k does not fit at any KV precision, so the \"64k on a V100\" advice is worth ignoring rather than retrying."
+  "verdict": "Quantizing the KV cache to q8_0 buys 2.75 GiB at 32k context - 12.16 GiB used instead of 14.97 - for about 2.5 % prefill and 4.3 % decode, so 32k is reachable for a 14B model on a 16 GB card; take the quantization for memory, not for speed, and 64k does not fit at any KV precision."
  },
  {
   "id": "V100-03",
