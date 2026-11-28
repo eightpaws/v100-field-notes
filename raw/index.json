@@ -855,7 +855,7 @@
   "id": "V100-154",
   "title": "Does RPC pay off when it doesn't fit into one card?",
   "result_type": "mixed",
-  "verdict": "A single 16 GB V100 cannot hold this quantization: 48 of 65 layers at 7.4 tok/s, against 35.3 tok/s for IQ3_S; the two-machine pool was not measured."
+  "verdict": "One 16 GB V100 cannot hold this quantization: the ceiling is 48 of 65 layers at 7.4 tok/s against 35.3 tok/s for IQ3_S on the same card, so the two-machine pool remains the only way to avoid offloading to RAM, and its gain was not measured here."
  },
  {
   "id": "V100-155",
