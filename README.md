@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **165** - 28 positive, 94 mixed, 29 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **166** - 28 positive, 95 mixed, 29 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -183,6 +183,7 @@ Read this before quoting a number.
 | [V100-151](results/V100-151.md) | PXQN vs standard Q4_K_M on a single 27B | **Mixed.** The default Q4_K_M of the same Qwen3.8-27B model fully loads onto the card using the stock llama.cpp and achieves a MBPP pass@1 score of 0.650 (26/40) compared to 0.600-0.625 (24-25/40) of two PXQN checkpoints, which is one to two. |
 | [V100-152](results/V100-152.md) | 200 tasks instead of 40: does the difference between checkpoints hold? | **Mixed.** On 200 tasks of MBPP, the difference between checkpoints is insignificant: 0.470 (94/200) for the baseline and 0.495 (99/200) for Swift-1.5, meaning five tasks out of two hundred with overlapping confidence intervals (0.402-0.539. |
 | [V100-153](results/V100-153.md) | Reasoning budget on 27B: what thinking buys | **Negative.** Thinking does not pay on MBPP-sized tasks: the score is unchanged and the run costs 3.8x to 7.6x more wall time, so it stays off by default. |
+| [V100-154](results/V100-154.md) | Does RPC pay off when it doesn't fit into one card? | **Mixed.** A single V100 16GB cannot fit: -ngl 99 fails on allocations of 17,923 MiB (cudaMalloc: out of memory), and 56 layers out of 65 load (peak 15,563 MiB), but there's no more space for compute buffers. |
 | [V100-155](results/V100-155.md) | PXA 27B: Quality on 8k context | **Positive.** Long context costs speed, not accuracy here: pass@1 held at 0.575 from a 57-token prompt to 5,948 tokens, while end-to-end throughput fell 1.8x. |
 | [V100-156](results/V100-156.md) | How many clients does 27B hold and where does TTFT fail? | **Mixed.** One PXA slot handles approximately 100 tok/s of aggregate at any number of clients, so only the queue grows. |
 | [V100-157](results/V100-157.md) | Gemma 4 26B-A4B: 32k context and quality on long prompt | **Mixed.** 32k context with q8_0 KV fits: rise 34s, peak VRAM 15,217 MiB of 16,144 (reserve 927 MiB). |
