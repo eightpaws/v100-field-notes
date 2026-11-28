@@ -876,6 +876,12 @@
   "verdict": "32k context with q8_0 KV fits: rise 34s, peak VRAM 15,217 MiB of 16,144 (reserve 927 MiB)."
  },
  {
+  "id": "V100-158",
+  "title": "Abatement and code quality: two assemblies of one model of one size",
+  "result_type": "mixed",
+  "verdict": "MBPP 40 tasks: Standard Qwen3.8-27B IQ3_S - 25/40 (pass@1 0.625, 32.2 tok/s), abliterated of the same precision and size - 27/40 (0.675, 33.1 tok/s)."
+ },
+ {
   "id": "4060ti-capabilities-vs-v100",
   "title": "What the 4060 Ti can do that the V100 cannot",
   "result_type": "unstated",
