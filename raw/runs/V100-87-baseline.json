@@ -1,0 +1,56 @@
+[
+ {
+  "M": 1,
+  "K": 512,
+  "N": 256,
+  "fp16_us": 17.4,
+  "fp16_tflops": 0.02,
+  "dequant_mm_us": 147.9,
+  "dequant_mm_tflops": 0.0
+ },
+ {
+  "M": 512,
+  "K": 512,
+  "N": 256,
+  "fp16_us": 18.3,
+  "fp16_tflops": 7.33,
+  "dequant_mm_us": 147.7,
+  "dequant_mm_tflops": 0.91
+ },
+ {
+  "M": 4096,
+  "K": 512,
+  "N": 256,
+  "fp16_us": 25.9,
+  "fp16_tflops": 41.53,
+  "dequant_mm_us": 148.2,
+  "dequant_mm_tflops": 7.24
+ },
+ {
+  "M": 5120,
+  "K": 512,
+  "N": 256,
+  "fp16_us": 27.5,
+  "fp16_tflops": 48.84,
+  "dequant_mm_us": 148.2,
+  "dequant_mm_tflops": 9.06
+ },
+ {
+  "M": 1,
+  "K": 4096,
+  "N": 4096,
+  "fp16_us": 47.0,
+  "fp16_tflops": 0.71,
+  "dequant_mm_us": 326.6,
+  "dequant_mm_tflops": 0.1
+ },
+ {
+  "M": 32,
+  "K": 4096,
+  "N": 4096,
+  "fp16_us": 55.5,
+  "fp16_tflops": 19.36,
+  "dequant_mm_us": 338.6,
+  "dequant_mm_tflops": 3.17
+ }
+]

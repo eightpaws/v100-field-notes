@@ -1,0 +1,17 @@
+Fetching 17 files:   0%|          | 0/17 [00:00<?, ?it/s]Fetching 17 files: 100%|██████████| 17/17 [00:00<00:00, 893.28it/s]
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00, 18.67it/s]Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00,  7.80it/s]There are modules in UNet2DConditionModel that should be kept in float32: []. Casting directly with `to()` can lead to inconsistent results; set `torch_dtype` in `from_pretrained()` instead to keep these modules in float32.
+Loading pipeline components...:  86%|████████▌ | 6/7 [00:01<00:00,  3.80it/s]There are modules in AutoencoderKL that should be kept in float32: []. Casting directly with `to()` can lead to inconsistent results; set `torch_dtype` in `from_pretrained()` instead to keep these modules in float32.
+Loading pipeline components...: 100%|██████████| 7/7 [00:01<00:00,  5.12it/s]
+/var/lib/ollama/venvs/video/lib/python3.12/site-packages/diffusers/pipelines/pipeline_utils.py:2273: FutureWarning: `enable_vae_slicing` is deprecated and will be removed in version 0.40.0. Calling `enable_vae_slicing()` on a `StableDiffusionXLPipeline` is deprecated and this method will be removed in a future version. Please use `pipe.vae.enable_slicing()`.
+  deprecate(
+/var/lib/ollama/venvs/video/lib/python3.12/site-packages/diffusers/pipelines/pipeline_utils.py:2300: FutureWarning: `enable_vae_tiling` is deprecated and will be removed in version 0.40.0. Calling `enable_vae_tiling()` on a `StableDiffusionXLPipeline` is deprecated and this method will be removed in a future version. Please use `pipe.vae.enable_tiling()`.
+  deprecate(
+/var/lib/ollama/venvs/video/lib/python3.12/site-packages/diffusers/pipelines/stable_diffusion_xl/pipeline_stable_diffusion_xl.py:748: FutureWarning: `upcast_vae` is deprecated and will be removed in version 1.0.0. `upcast_vae` is deprecated. Please use `pipe.vae.to(torch.float32)`. For more details, please refer to: https://github.com/huggingface/diffusers/pull/12619#issue-3606633695.
+  deprecate(
+There are modules in AutoencoderKL that should be kept in float32: []. Casting directly with `to()` can lead to inconsistent results; set `torch_dtype` in `from_pretrained()` instead to keep these modules in float32.
+There are modules in AutoencoderKL that should be kept in float32: []. Casting directly with `to()` can lead to inconsistent results; set `torch_dtype` in `from_pretrained()` instead to keep these modules in float32.
+{"load_sec": 3.5, "512px_sec": 1.1, "512px_per_hour": 3273, "512px_vram_mib": 9905}
+There are modules in AutoencoderKL that should be kept in float32: []. Casting directly with `to()` can lead to inconsistent results; set `torch_dtype` in `from_pretrained()` instead to keep these modules in float32.
+There are modules in AutoencoderKL that should be kept in float32: []. Casting directly with `to()` can lead to inconsistent results; set `torch_dtype` in `from_pretrained()` instead to keep these modules in float32.
+{"load_sec": 3.5, "512px_sec": 1.1, "512px_per_hour": 3273, "512px_vram_mib": 9905, "768px_sec": 1.7, "768px_per_hour": 2118, "768px_vram_mib": 13667}
+{"load_sec": 3.5, "512px_sec": 1.1, "512px_per_hour": 3273, "512px_vram_mib": 9905, "768px_sec": 1.7, "768px_per_hour": 2118, "768px_vram_mib": 13667}

@@ -1,0 +1,114 @@
+{
+ "harness": "v108 arm C: model-written tests (one wrong assert removed) vs mutants of reference module",
+ "baseline_green": true,
+ "dropped_asserts": [
+  "assert total(1000, 100, 2000) == 1000"
+ ],
+ "test_funcs": 6,
+ "coverage_pct": 88.0,
+ "mutants": 20,
+ "killed": 14,
+ "kill_pct": 70.0,
+ "rows": [
+  {
+   "mutant": "m00",
+   "kind": "const:0",
+   "killed": false
+  },
+  {
+   "mutant": "m01",
+   "kind": "cmp:LtE->Lt",
+   "killed": false
+  },
+  {
+   "mutant": "m02",
+   "kind": "const:2",
+   "killed": true
+  },
+  {
+   "mutant": "m03",
+   "kind": "binop:Mult->FloorDiv",
+   "killed": true
+  },
+  {
+   "mutant": "m04",
+   "kind": "binop:Add->Sub",
+   "killed": true
+  },
+  {
+   "mutant": "m05",
+   "kind": "const:2",
+   "killed": true
+  },
+  {
+   "mutant": "m06",
+   "kind": "binop:Mult->FloorDiv",
+   "killed": true
+  },
+  {
+   "mutant": "m07",
+   "kind": "binop:FloorDiv->Mult",
+   "killed": true
+  },
+  {
+   "mutant": "m08",
+   "kind": "const:0",
+   "killed": true
+  },
+  {
+   "mutant": "m09",
+   "kind": "const:0",
+   "killed": true
+  },
+  {
+   "mutant": "m10",
+   "kind": "cmp:Lt->LtE",
+   "killed": true
+  },
+  {
+   "mutant": "m11",
+   "kind": "const:0",
+   "killed": false
+  },
+  {
+   "mutant": "m12",
+   "kind": "cmp:Lt->LtE",
+   "killed": false
+  },
+  {
+   "mutant": "m13",
+   "kind": "binop:Mult->FloorDiv",
+   "killed": true
+  },
+  {
+   "mutant": "m14",
+   "kind": "const:0",
+   "killed": false
+  },
+  {
+   "mutant": "m15",
+   "kind": "cmp:Lt->LtE",
+   "killed": false
+  },
+  {
+   "mutant": "m16",
+   "kind": "const:0",
+   "killed": true
+  },
+  {
+   "mutant": "m17",
+   "kind": "cmp:Lt->LtE",
+   "killed": true
+  },
+  {
+   "mutant": "m18",
+   "kind": "const:100",
+   "killed": true
+  },
+  {
+   "mutant": "m19",
+   "kind": "cmp:Gt->GtE",
+   "killed": true
+  }
+ ]
+}

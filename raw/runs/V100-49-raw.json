@@ -1,0 +1,1208 @@
+{
+ "card": "V100-49",
+ "corpus": {
+  "root": "Strata C/C++ sources (src/)",
+  "files": 257,
+  "chunks": 6990,
+  "chunk_chars": 1400,
+  "overlap": 200,
+  "avg_file_chars": 32237
+ },
+ "embedder": {
+  "binary": "llama-server",
+  "model": "bge-m3.gguf",
+  "pooling": "cls",
+  "ngl": 99,
+  "ctx": 1024
+ },
+ "index_seconds": 133.7,
+ "chunks_per_second": 52.3,
+ "server_load_seconds": 2.0,
+ "questions": 30,
+ "recall_at_5_file": 0.767,
+ "hit_at_1_file": 0.567,
+ "mean_rank_file": 1.43,
+ "context_chars_top5": 7000,
+ "context_chars_ten_files": 322370,
+ "total_seconds": 136.8,
+ "results": [
+  {
+   "question": "Where is the CheckpointPool function implemented?",
+   "expected_file": "program/generate.cpp",
+   "top5_chunks": [
+    {
+     "file": "program/generate.cpp",
+     "start": 128400,
+     "score": 0.6058
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 660000,
+     "score": 0.5947
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 724800,
+     "score": 0.5543
+    },
+    {
+     "file": "core/conversation_disk.cpp",
+     "start": 174000,
+     "score": 0.5489
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 129600,
+     "score": 0.5423
+    }
+   ],
+   "top5_files": [
+    "program/generate.cpp",
+    "core/conversation_disk.cpp"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the argmax_rows function implemented?",
+   "expected_file": "kernels/cuda/verify_kernels.cu",
+   "top5_chunks": [
+    {
+     "file": "program/generate.cpp",
+     "start": 62400,
+     "score": 0.5971
+    },
+    {
+     "file": "kernels/cuda/verify_kernels.cu",
+     "start": 43200,
+     "score": 0.5848
+    },
+    {
+     "file": "kernels/verify_parity.cpp",
+     "start": 3600,
+     "score": 0.5765
+    },
+    {
+     "file": "qwen35/q36_engine.cu",
+     "start": 135600,
+     "score": 0.5717
+    },
+    {
+     "file": "kernels/verify_parity.cpp",
+     "start": 1200,
+     "score": 0.5667
+    }
+   ],
+   "top5_files": [
+    "program/generate.cpp",
+    "kernels/cuda/verify_kernels.cu",
+    "kernels/verify_parity.cpp",
+    "qwen35/q36_engine.cu"
+   ],
+   "hit5_file": true,
+   "rank_file": 2,
+   "hit1_file": false
+  },
+  {
+   "question": "Where is the block_layer_post function implemented?",
+   "expected_file": "core/layer.cpp",
+   "top5_chunks": [
+    {
+     "file": "core/layer.cpp",
+     "start": 122400,
+     "score": 0.5497
+    },
+    {
+     "file": "core/layer.cpp",
+     "start": 121200,
+     "score": 0.5373
+    },
+    {
+     "file": "core/layer.cpp",
+     "start": 120000,
+     "score": 0.5224
+    },
+    {
+     "file": "core/expert_cache.cpp",
+     "start": 24000,
+     "score": 0.5057
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 1260000,
+     "score": 0.505
+    }
+   ],
+   "top5_files": [
+    "core/layer.cpp",
+    "core/expert_cache.cpp",
+    "program/generate.cpp"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the check_runtime_prefill_use function implemented?",
+   "expected_file": "prefill/vram_plan.cpp",
+   "top5_chunks": [
+    {
+     "file": "prefill/vram_plan.cpp",
+     "start": 31200,
+     "score": 0.6399
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 1226400,
+     "score": 0.6089
+    },
+    {
+     "file": "prefill/prefill.cpp",
+     "start": 172800,
+     "score": 0.6052
+    },
+    {
+     "file": "prefill/prefill.cpp",
+     "start": 0,
+     "score": 0.5858
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 610800,
+     "score": 0.5822
+    }
+   ],
+   "top5_files": [
+    "prefill/vram_plan.cpp",
+    "program/generate.cpp",
+    "prefill/prefill.cpp"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the conversation_snapshot_restore function implemented?",
+   "expected_file": "core/conversation_state.cpp",
+   "top5_chunks": [
+    {
+     "file": "core/conversation_state.cpp",
+     "start": 36000,
+     "score": 0.6945
+    },
+    {
+     "file": "core/conversation_state.cpp",
+     "start": 34800,
+     "score": 0.663
+    },
+    {
+     "file": "core/conversation_snapshot.cpp",
+     "start": 21600,
+     "score": 0.6493
+    },
+    {
+     "file": "core/conversation_snapshot_test.cpp",
+     "start": 12000,
+     "score": 0.6423
+    },
+    {
+     "file": "core/conversation_state.cpp",
+     "start": 18000,
+     "score": 0.637
+    }
+   ],
+   "top5_files": [
+    "core/conversation_state.cpp",
+    "core/conversation_snapshot.cpp",
+    "core/conversation_snapshot_test.cpp"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the cpu_order_swiglu_kernel function implemented?",
+   "expected_file": "kernels/cuda/s2_expert_grouped.cu",
+   "top5_chunks": [
+    {
+     "file": "prefill/kernels.cu",
+     "start": 114000,
+     "score": 0.6247
+    },
+    {
+     "file": "kernels/cuda/s2_expert_grouped.cu",
+     "start": 67200,
+     "score": 0.6179
+    },
+    {
+     "file": "kernels/cuda/s2_expert_grouped.cu",
+     "start": 26400,
+     "score": 0.6145
+    },
+    {
+     "file": "kernels/cuda/shared_expert.cu",
+     "start": 2400,
+     "score": 0.5992
+    },
+    {
+     "file": "kernels/cuda/s_gemv_pair.cu",
+     "start": 0,
+     "score": 0.5981
+    }
+   ],
+   "top5_files": [
+    "prefill/kernels.cu",
+    "kernels/cuda/s2_expert_grouped.cu",
+    "kernels/cuda/shared_expert.cu",
+    "kernels/cuda/s_gemv_pair.cu"
+   ],
+   "hit5_file": true,
+   "rank_file": 2,
+   "hit1_file": false
+  },
+  {
+   "question": "Where is the device_slot function implemented?",
+   "expected_file": "core/expert_cache.cpp",
+   "top5_chunks": [
+    {
+     "file": "kernels/kv_tq_parity.cpp",
+     "start": 27600,
+     "score": 0.5821
+    },
+    {
+     "file": "prefill/prefill.cpp",
+     "start": 334800,
+     "score": 0.5654
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 858000,
+     "score": 0.5577
+    },
+    {
+     "file": "core/peer_experts.cpp",
+     "start": 7200,
+     "score": 0.5574
+    },
+    {
+     "file": "core/expert_cache.cpp",
+     "start": 34800,
+     "score": 0.5563
+    }
+   ],
+   "top5_files": [
+    "kernels/kv_tq_parity.cpp",
+    "prefill/prefill.cpp",
+    "program/generate.cpp",
+    "core/peer_experts.cpp",
+    "core/expert_cache.cpp"
+   ],
+   "hit5_file": true,
+   "rank_file": 5,
+   "hit1_file": false
+  },
+  {
+   "question": "Where is the expdec_down_ok function implemented?",
+   "expected_file": "kernels/cuda/iq_kernels.cu",
+   "top5_chunks": [
+    {
+     "file": "kernels/cuda/iq_kernels.cu",
+     "start": 286800,
+     "score": 0.6005
+    },
+    {
+     "file": "kernels/cuda/iq_kernels.cu",
+     "start": 224400,
+     "score": 0.5984
+    },
+    {
+     "file": "kernels/cuda/iq_kernels.cu",
+     "start": 223200,
+     "score": 0.59
+    },
+    {
+     "file": "kernels/cuda/iq_kernels.cu",
+     "start": 226800,
+     "score": 0.5855
+    },
+    {
+     "file": "kernels/cuda/iq_kernels.cu",
+     "start": 230400,
+     "score": 0.5815
+    }
+   ],
+   "top5_files": [
+    "kernels/cuda/iq_kernels.cu"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the fp16_all_codes function implemented?",
+   "expected_file": "kernels/nvfp4_expert_gpu_parity.cpp",
+   "top5_chunks": [
+    {
+     "file": "prefill/gemm.cu",
+     "start": 1200,
+     "score": 0.5545
+    },
+    {
+     "file": "prefill/prefill.cpp",
+     "start": 88800,
+     "score": 0.546
+    },
+    {
+     "file": "prefill/moe_fp16tc.cu",
+     "start": 0,
+     "score": 0.5446
+    },
+    {
+     "file": "kernels/bf16_gemv_parity.cpp",
+     "start": 0,
+     "score": 0.5438
+    },
+    {
+     "file": "prefill/kernels.cu",
+     "start": 3600,
+     "score": 0.5436
+    }
+   ],
+   "top5_files": [
+    "prefill/gemm.cu",
+    "prefill/prefill.cpp",
+    "prefill/moe_fp16tc.cu",
+    "kernels/bf16_gemv_parity.cpp",
+    "prefill/kernels.cu"
+   ],
+   "hit5_file": false,
+   "rank_file": null,
+   "hit1_file": false
+  },
+  {
+   "question": "Where is the gdn_commit_layers function implemented?",
+   "expected_file": "kernels/cuda/verify_kernels.cu",
+   "top5_chunks": [
+    {
+     "file": "kernels/cuda/verify_kernels.cu",
+     "start": 54000,
+     "score": 0.6597
+    },
+    {
+     "file": "kernels/gdn_parity.cpp",
+     "start": 30000,
+     "score": 0.6565
+    },
+    {
+     "file": "kernels/cuda/verify_kernels.cu",
+     "start": 52800,
+     "score": 0.6319
+    },
+    {
+     "file": "kernels/cuda/verify_kernels.cu",
+     "start": 9600,
+     "score": 0.6076
+    },
+    {
+     "file": "kernels/cuda/verify_kernels.cu",
+     "start": 51600,
+     "score": 0.6035
+    }
+   ],
+   "top5_files": [
+    "kernels/cuda/verify_kernels.cu",
+    "kernels/gdn_parity.cpp"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the gr_native_mmvf_enabled function implemented?",
+   "expected_file": "kernels/cuda/gr.cu",
+   "top5_chunks": [
+    {
+     "file": "kernels/cuda/gr.cu",
+     "start": 20400,
+     "score": 0.5864
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 58800,
+     "score": 0.573
+    },
+    {
+     "file": "kernels/cuda/native_bf16.cu",
+     "start": 0,
+     "score": 0.5385
+    },
+    {
+     "file": "prefill/prefill.cpp",
+     "start": 217200,
+     "score": 0.5376
+    },
+    {
+     "file": "kernels/cuda/iq_kernels.cu",
+     "start": 106800,
+     "score": 0.5356
+    }
+   ],
+   "top5_files": [
+    "kernels/cuda/gr.cu",
+    "program/generate.cpp",
+    "kernels/cuda/native_bf16.cu",
+    "prefill/prefill.cpp",
+    "kernels/cuda/iq_kernels.cu"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the hip_wmma_auto_pick function implemented?",
+   "expected_file": "kernels/cuda/qsa_prompt_attn.cu",
+   "top5_chunks": [
+    {
+     "file": "prefill/wmma_gemm.cu",
+     "start": 1200,
+     "score": 0.6018
+    },
+    {
+     "file": "kernels/cuda/qsa_prompt_attn.cu",
+     "start": 118800,
+     "score": 0.5813
+    },
+    {
+     "file": "prefill/gemm.cu",
+     "start": 57600,
+     "score": 0.5812
+    },
+    {
+     "file": "prefill/wmma_gemm.cu",
+     "start": 2400,
+     "score": 0.5629
+    },
+    {
+     "file": "core/vmm.cpp",
+     "start": 7200,
+     "score": 0.5578
+    }
+   ],
+   "top5_files": [
+    "prefill/wmma_gemm.cu",
+    "kernels/cuda/qsa_prompt_attn.cu",
+    "prefill/gemm.cu",
+    "core/vmm.cpp"
+   ],
+   "hit5_file": true,
+   "rank_file": 2,
+   "hit1_file": false
+  },
+  {
+   "question": "Where is the iq_dequant_f32 function implemented?",
+   "expected_file": "kernels/cuda/iq_kernels.cu",
+   "top5_chunks": [
+    {
+     "file": "kernels/cuda/iq_kernels.cu",
+     "start": 243600,
+     "score": 0.6172
+    },
+    {
+     "file": "prefill/gemm.cu",
+     "start": 63600,
+     "score": 0.6056
+    },
+    {
+     "file": "kernels/dequant_wide_parity.cpp",
+     "start": 0,
+     "score": 0.5946
+    },
+    {
+     "file": "kernels/dequant_bf16_test.cpp",
+     "start": 0,
+     "score": 0.5921
+    },
+    {
+     "file": "prefill/prefill.cpp",
+     "start": 355200,
+     "score": 0.5859
+    }
+   ],
+   "top5_files": [
+    "kernels/cuda/iq_kernels.cu",
+    "prefill/gemm.cu",
+    "kernels/dequant_wide_parity.cpp",
+    "kernels/dequant_bf16_test.cpp",
+    "prefill/prefill.cpp"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the kv_prefix_equal function implemented?",
+   "expected_file": "core/conversation_disk.cpp",
+   "top5_chunks": [
+    {
+     "file": "core/conversation_snapshot_test.cpp",
+     "start": 31200,
+     "score": 0.5915
+    },
+    {
+     "file": "kernels/kv_window_parity.cpp",
+     "start": 0,
+     "score": 0.5744
+    },
+    {
+     "file": "prefill/prefill.cpp",
+     "start": 175200,
+     "score": 0.5614
+    },
+    {
+     "file": "kernels/kv_q8_parity.cpp",
+     "start": 0,
+     "score": 0.5596
+    },
+    {
+     "file": "prefill/prefill.cpp",
+     "start": 190800,
+     "score": 0.5591
+    }
+   ],
+   "top5_files": [
+    "core/conversation_snapshot_test.cpp",
+    "kernels/kv_window_parity.cpp",
+    "prefill/prefill.cpp",
+    "kernels/kv_q8_parity.cpp"
+   ],
+   "hit5_file": false,
+   "rank_file": null,
+   "hit1_file": false
+  },
+  {
+   "question": "Where is the make_buffer function implemented?",
+   "expected_file": "core/conversation_disk_test.cpp",
+   "top5_chunks": [
+    {
+     "file": "core/expert_source.cpp",
+     "start": 37200,
+     "score": 0.5314
+    },
+    {
+     "file": "prefill/prefill.cpp",
+     "start": 160800,
+     "score": 0.5288
+    },
+    {
+     "file": "core/expert_source.cpp",
+     "start": 180000,
+     "score": 0.525
+    },
+    {
+     "file": "core/expert_source.cpp",
+     "start": 43200,
+     "score": 0.5245
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 1015200,
+     "score": 0.5208
+    }
+   ],
+   "top5_files": [
+    "core/expert_source.cpp",
+    "prefill/prefill.cpp",
+    "program/generate.cpp"
+   ],
+   "hit5_file": false,
+   "rank_file": null,
+   "hit1_file": false
+  },
+  {
+   "question": "Where is the mul_add_plain function implemented?",
+   "expected_file": "kernels/qsa_parity.cpp",
+   "top5_chunks": [
+    {
+     "file": "prefill/moe_mmq_tab.hpp",
+     "start": 0,
+     "score": 0.5065
+    },
+    {
+     "file": "core/expert_source.cpp",
+     "start": 54000,
+     "score": 0.5002
+    },
+    {
+     "file": "prefill/moe_mmq_tab.hpp",
+     "start": 1200,
+     "score": 0.497
+    },
+    {
+     "file": "kernels/ple_parity.cpp",
+     "start": 57600,
+     "score": 0.493
+    },
+    {
+     "file": "kernels/cuda/ple.cu",
+     "start": 0,
+     "score": 0.4922
+    }
+   ],
+   "top5_files": [
+    "prefill/moe_mmq_tab.hpp",
+    "core/expert_source.cpp",
+    "kernels/ple_parity.cpp",
+    "kernels/cuda/ple.cu"
+   ],
+   "hit5_file": false,
+   "rank_file": null,
+   "hit1_file": false
+  },
+  {
+   "question": "Where is the native_q2_0_mmvq function implemented?",
+   "expected_file": "kernels/cuda/native_mmvq.cu",
+   "top5_chunks": [
+    {
+     "file": "kernels/cuda/native_mmvq.cu",
+     "start": 123600,
+     "score": 0.5824
+    },
+    {
+     "file": "kernels/mmvq_graph_bench.cpp",
+     "start": 0,
+     "score": 0.5803
+    },
+    {
+     "file": "kernels/cuda/native_mmvq.cu",
+     "start": 12000,
+     "score": 0.574
+    },
+    {
+     "file": "kernels/mmvq_il_parity.cpp",
+     "start": 0,
+     "score": 0.5718
+    },
+    {
+     "file": "kernels/cuda/native_mmvq.cu",
+     "start": 122400,
+     "score": 0.5687
+    }
+   ],
+   "top5_files": [
+    "kernels/cuda/native_mmvq.cu",
+    "kernels/mmvq_graph_bench.cpp",
+    "kernels/mmvq_il_parity.cpp"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the native_swiglu_quantize_q8_1_kernel function implemented?",
+   "expected_file": "kernels/cuda/native_mmvq.cu",
+   "top5_chunks": [
+    {
+     "file": "kernels/cuda/shared_expert.cu",
+     "start": 24000,
+     "score": 0.6464
+    },
+    {
+     "file": "kernels/cuda/shared_expert.cu",
+     "start": 20400,
+     "score": 0.6454
+    },
+    {
+     "file": "kernels/cuda/s2_expert_grouped.cu",
+     "start": 64800,
+     "score": 0.6418
+    },
+    {
+     "file": "kernels/cuda/s2_expert_grouped.cu",
+     "start": 63600,
+     "score": 0.6307
+    },
+    {
+     "file": "kernels/cuda/quantize_act.cu",
+     "start": 16800,
+     "score": 0.6289
+    }
+   ],
+   "top5_files": [
+    "kernels/cuda/shared_expert.cu",
+    "kernels/cuda/s2_expert_grouped.cu",
+    "kernels/cuda/quantize_act.cu"
+   ],
+   "hit5_file": false,
+   "rank_file": null,
+   "hit1_file": false
+  },
+  {
+   "question": "Where is the percentile function implemented?",
+   "expected_file": "ngram/ple_reader.cpp",
+   "top5_chunks": [
+    {
+     "file": "kernels/hc_persist_parity.cpp",
+     "start": 6000,
+     "score": 0.4734
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 753600,
+     "score": 0.4686
+    },
+    {
+     "file": "core/expert_source.cpp",
+     "start": 130800,
+     "score": 0.4661
+    },
+    {
+     "file": "kernels/shared_expert_parity.cpp",
+     "start": 18000,
+     "score": 0.463
+    },
+    {
+     "file": "kernels/cuda/qsa_prompt_attn.cu",
+     "start": 78000,
+     "score": 0.4618
+    }
+   ],
+   "top5_files": [
+    "kernels/hc_persist_parity.cpp",
+    "program/generate.cpp",
+    "core/expert_source.cpp",
+    "kernels/shared_expert_parity.cpp",
+    "kernels/cuda/qsa_prompt_attn.cu"
+   ],
+   "hit5_file": false,
+   "rank_file": null,
+   "hit1_file": false
+  },
+  {
+   "question": "Where is the prefetch_rows function implemented?",
+   "expected_file": "kernels/ngram.cpp",
+   "top5_chunks": [
+    {
+     "file": "kernels/ngram.cpp",
+     "start": 21600,
+     "score": 0.5851
+    },
+    {
+     "file": "kernels/ngram.cpp",
+     "start": 28800,
+     "score": 0.5807
+    },
+    {
+     "file": "kernels/ngram.cpp",
+     "start": 33600,
+     "score": 0.5754
+    },
+    {
+     "file": "kernels/cpu_pool_quant_rows_test.cpp",
+     "start": 8400,
+     "score": 0.5316
+    },
+    {
+     "file": "ngram/ple_reader_test.cpp",
+     "start": 12000,
+     "score": 0.5315
+    }
+   ],
+   "top5_files": [
+    "kernels/ngram.cpp",
+    "kernels/cpu_pool_quant_rows_test.cpp",
+    "ngram/ple_reader_test.cpp"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the qsa_attend function implemented?",
+   "expected_file": "kernels/cuda/qsa.cu",
+   "top5_chunks": [
+    {
+     "file": "kernels/cuda/qsa.cu",
+     "start": 25200,
+     "score": 0.6323
+    },
+    {
+     "file": "kernels/cuda/qsa.cu",
+     "start": 39600,
+     "score": 0.6053
+    },
+    {
+     "file": "kernels/cuda/qsa.cu",
+     "start": 44400,
+     "score": 0.5989
+    },
+    {
+     "file": "prefill/prefill.cpp",
+     "start": 190800,
+     "score": 0.5669
+    },
+    {
+     "file": "kernels/cuda/qsa_prompt_attn.cu",
+     "start": 121200,
+     "score": 0.5547
+    }
+   ],
+   "top5_files": [
+    "kernels/cuda/qsa.cu",
+    "prefill/prefill.cpp",
+    "kernels/cuda/qsa_prompt_attn.cu"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the quantize_q8_1_kernel function implemented?",
+   "expected_file": "kernels/cuda/iq_kernels.cu",
+   "top5_chunks": [
+    {
+     "file": "kernels/cuda/quantize_act.cu",
+     "start": 16800,
+     "score": 0.6456
+    },
+    {
+     "file": "kernels/cuda/quantize_act.cu",
+     "start": 13200,
+     "score": 0.638
+    },
+    {
+     "file": "kernels/cuda/quantize_act.cu",
+     "start": 7200,
+     "score": 0.6356
+    },
+    {
+     "file": "kernels/cuda/kv_q8.cu",
+     "start": 0,
+     "score": 0.6352
+    },
+    {
+     "file": "kernels/cuda/quantize_act.cu",
+     "start": 20400,
+     "score": 0.6258
+    }
+   ],
+   "top5_files": [
+    "kernels/cuda/quantize_act.cu",
+    "kernels/cuda/kv_q8.cu"
+   ],
+   "hit5_file": false,
+   "rank_file": null,
+   "hit1_file": false
+  },
+  {
+   "question": "Where is the request_locked function implemented?",
+   "expected_file": "core/expert_source.cpp",
+   "top5_chunks": [
+    {
+     "file": "core/expert_source.cpp",
+     "start": 166800,
+     "score": 0.5637
+    },
+    {
+     "file": "core/pinned.cu",
+     "start": 30000,
+     "score": 0.5516
+    },
+    {
+     "file": "core/pinned.cu",
+     "start": 31200,
+     "score": 0.5466
+    },
+    {
+     "file": "core/expert_source.cpp",
+     "start": 168000,
+     "score": 0.5444
+    },
+    {
+     "file": "qwen35/q36_engine.cu",
+     "start": 130800,
+     "score": 0.5436
+    }
+   ],
+   "top5_files": [
+    "core/expert_source.cpp",
+    "core/pinned.cu",
+    "qwen35/q36_engine.cu"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the row_dot_80_sub16 function implemented?",
+   "expected_file": "kernels/cuda/iq_kernels.cu",
+   "top5_chunks": [
+    {
+     "file": "kernels/cuda/iq_kernels.cu",
+     "start": 109200,
+     "score": 0.6234
+    },
+    {
+     "file": "kernels/cuda/iq_kernels.cu",
+     "start": 91200,
+     "score": 0.5795
+    },
+    {
+     "file": "kernels/cuda/iq_kernels.cu",
+     "start": 94800,
+     "score": 0.5665
+    },
+    {
+     "file": "kernels/cuda/iq_kernels.cu",
+     "start": 158400,
+     "score": 0.5629
+    },
+    {
+     "file": "kernels/cuda/s2_expert_grouped.cu",
+     "start": 2400,
+     "score": 0.5409
+    }
+   ],
+   "top5_files": [
+    "kernels/cuda/iq_kernels.cu",
+    "kernels/cuda/s2_expert_grouped.cu"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the sampler_kernel function implemented?",
+   "expected_file": "kernels/cuda/sampler.cu",
+   "top5_chunks": [
+    {
+     "file": "kernels/cuda/sampler.cu",
+     "start": 0,
+     "score": 0.5658
+    },
+    {
+     "file": "kernels/cuda/sampler.cu",
+     "start": 70800,
+     "score": 0.5577
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 1242000,
+     "score": 0.5555
+    },
+    {
+     "file": "kernels/elementwise_parity.cpp",
+     "start": 9600,
+     "score": 0.5484
+    },
+    {
+     "file": "kernels/s_gemv_parity.cpp",
+     "start": 19200,
+     "score": 0.5461
+    }
+   ],
+   "top5_files": [
+    "kernels/cuda/sampler.cu",
+    "program/generate.cpp",
+    "kernels/elementwise_parity.cpp",
+    "kernels/s_gemv_parity.cpp"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the set_draft_sampling function implemented?",
+   "expected_file": "core/mtp.cpp",
+   "top5_chunks": [
+    {
+     "file": "program/generate.cpp",
+     "start": 1194000,
+     "score": 0.5803
+    },
+    {
+     "file": "core/verify.cpp",
+     "start": 183600,
+     "score": 0.5778
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 1070400,
+     "score": 0.5602
+    },
+    {
+     "file": "core/mtp.cpp",
+     "start": 27600,
+     "score": 0.5569
+    },
+    {
+     "file": "kernels/cuda/sampler.cu",
+     "start": 43200,
+     "score": 0.5568
+    }
+   ],
+   "top5_files": [
+    "program/generate.cpp",
+    "core/verify.cpp",
+    "core/mtp.cpp",
+    "kernels/cuda/sampler.cu"
+   ],
+   "hit5_file": true,
+   "rank_file": 3,
+   "hit1_file": false
+  },
+  {
+   "question": "Where is the stage_exchange function implemented?",
+   "expected_file": "core/expert_source.cpp",
+   "top5_chunks": [
+    {
+     "file": "program/generate.cpp",
+     "start": 795600,
+     "score": 0.5839
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 1112400,
+     "score": 0.5681
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 778800,
+     "score": 0.56
+    },
+    {
+     "file": "core/expert_source.cpp",
+     "start": 194400,
+     "score": 0.5586
+    },
+    {
+     "file": "program/generate.cpp",
+     "start": 692400,
+     "score": 0.5549
+    }
+   ],
+   "top5_files": [
+    "program/generate.cpp",
+    "core/expert_source.cpp"
+   ],
+   "hit5_file": true,
+   "rank_file": 2,
+   "hit1_file": false
+  },
+  {
+   "question": "Where is the swilu_quantize_q8_0_launch function implemented?",
+   "expected_file": "kernels/cuda/quantize_act.cu",
+   "top5_chunks": [
+    {
+     "file": "kernels/cuda/quantize_act.cu",
+     "start": 12000,
+     "score": 0.6455
+    },
+    {
+     "file": "kernels/cuda/quantize_act.cu",
+     "start": 14400,
+     "score": 0.6202
+    },
+    {
+     "file": "kernels/cuda/s2_expert_grouped.cu",
+     "start": 63600,
+     "score": 0.6196
+    },
+    {
+     "file": "kernels/cuda/quantize_act.cu",
+     "start": 16800,
+     "score": 0.6103
+    },
+    {
+     "file": "kernels/cuda/quantize_act.cu",
+     "start": 8400,
+     "score": 0.5979
+    }
+   ],
+   "top5_files": [
+    "kernels/cuda/quantize_act.cu",
+    "kernels/cuda/s2_expert_grouped.cu"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the tq_rows_avx512 function implemented?",
+   "expected_file": "kernels/cpu/tq_avx512.cpp",
+   "top5_chunks": [
+    {
+     "file": "kernels/cpu/tq_avx512.cpp",
+     "start": 4800,
+     "score": 0.642
+    },
+    {
+     "file": "kernels/cpu/tq_cpu_parity.cpp",
+     "start": 20400,
+     "score": 0.635
+    },
+    {
+     "file": "kernels/cpu/tq_avx512.cpp",
+     "start": 3600,
+     "score": 0.6124
+    },
+    {
+     "file": "kernels/cpu/tq_avx512.cpp",
+     "start": 0,
+     "score": 0.6083
+    },
+    {
+     "file": "kernels/cpu/expert.cpp",
+     "start": 13200,
+     "score": 0.5854
+    }
+   ],
+   "top5_files": [
+    "kernels/cpu/tq_avx512.cpp",
+    "kernels/cpu/tq_cpu_parity.cpp",
+    "kernels/cpu/expert.cpp"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  },
+  {
+   "question": "Where is the vec_dot_q6_K_q8_1_impl_mmvq function implemented?",
+   "expected_file": "kernels/cuda/iq_kernels.cu",
+   "top5_chunks": [
+    {
+     "file": "kernels/cuda/iq_kernels.cu",
+     "start": 30000,
+     "score": 0.5861
+    },
+    {
+     "file": "kernels/cuda/native_mmvq.cu",
+     "start": 27600,
+     "score": 0.5769
+    },
+    {
+     "file": "kernels/cuda/iq_kernels.cu",
+     "start": 48000,
+     "score": 0.5672
+    },
+    {
+     "file": "kernels/cuda/native_mmvq.cu",
+     "start": 34800,
+     "score": 0.5633
+    },
+    {
+     "file": "kernels/cuda/iq_kernels.cu",
+     "start": 46800,
+     "score": 0.5578
+    }
+   ],
+   "top5_files": [
+    "kernels/cuda/iq_kernels.cu",
+    "kernels/cuda/native_mmvq.cu"
+   ],
+   "hit5_file": true,
+   "rank_file": 1,
+   "hit1_file": true
+  }
+ ]
+}

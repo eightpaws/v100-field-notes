@@ -1,0 +1,2032 @@
+{
+ "card": "V100-132",
+ "model": "qwen25vl",
+ "base_url": "http://127.0.0.1:18478",
+ "n": 200,
+ "acc_all": 0.26,
+ "summary": {
+  "text": {
+   "n": 100,
+   "acc": 0.52,
+   "sec_mean": 0.59,
+   "sec_p50": 0.86,
+   "errors": 32
+  },
+  "math": {
+   "n": 50,
+   "acc": 0.0,
+   "sec_mean": 0.0,
+   "sec_p50": 0.0,
+   "errors": 50
+  },
+  "grid": {
+   "n": 50,
+   "acc": 0.0,
+   "sec_mean": 0.0,
+   "sec_p50": 0.0,
+   "errors": 50
+  }
+ },
+ "rows": [
+  {
+   "file": "text_000.png",
+   "type": "text",
+   "answer": "6J6FY2",
+   "pred": "6J6FY2",
+   "ok": true,
+   "sec": 1.0,
+   "tok": 6,
+   "error": ""
+  },
+  {
+   "file": "text_001.png",
+   "type": "text",
+   "answer": "WN4UDY",
+   "pred": "WN4UDY",
+   "ok": true,
+   "sec": 0.88,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_002.png",
+   "type": "text",
+   "answer": "WNJ2",
+   "pred": "WNJ2",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_003.png",
+   "type": "text",
+   "answer": "V92P",
+   "pred": "v92p",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_004.png",
+   "type": "text",
+   "answer": "KS9G6",
+   "pred": "Ks9G6",
+   "ok": true,
+   "sec": 0.88,
+   "tok": 6,
+   "error": ""
+  },
+  {
+   "file": "text_005.png",
+   "type": "text",
+   "answer": "CJDZ4",
+   "pred": "CJDZ4",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_006.png",
+   "type": "text",
+   "answer": "XEYY5",
+   "pred": "XY5",
+   "ok": false,
+   "sec": 0.85,
+   "tok": 3,
+   "error": ""
+  },
+  {
+   "file": "text_007.png",
+   "type": "text",
+   "answer": "FWW2A6",
+   "pred": "FW2A6",
+   "ok": false,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_008.png",
+   "type": "text",
+   "answer": "4HP87",
+   "pred": "4HP8>",
+   "ok": false,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_009.png",
+   "type": "text",
+   "answer": "TQN8J4",
+   "pred": "TQNY4",
+   "ok": false,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_010.png",
+   "type": "text",
+   "answer": "JBHQS",
+   "pred": "JBHQS",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_011.png",
+   "type": "text",
+   "answer": "3C9J",
+   "pred": "3C9J",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_012.png",
+   "type": "text",
+   "answer": "H6B6",
+   "pred": "H6B6",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_013.png",
+   "type": "text",
+   "answer": "KE77",
+   "pred": "KE77",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_014.png",
+   "type": "text",
+   "answer": "D49FM",
+   "pred": "D49FM",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_015.png",
+   "type": "text",
+   "answer": "CHRX55",
+   "pred": "CHR55",
+   "ok": false,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_016.png",
+   "type": "text",
+   "answer": "5CGZ8",
+   "pred": "5cGZ8",
+   "ok": true,
+   "sec": 0.88,
+   "tok": 6,
+   "error": ""
+  },
+  {
+   "file": "text_017.png",
+   "type": "text",
+   "answer": "RTLPR",
+   "pred": "RTRLPR",
+   "ok": false,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_018.png",
+   "type": "text",
+   "answer": "P4MH",
+   "pred": "\u0420\u0414\u041c\u041d",
+   "ok": false,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_019.png",
+   "type": "text",
+   "answer": "MDMBV",
+   "pred": "NDMBV",
+   "ok": false,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_020.png",
+   "type": "text",
+   "answer": "JGM63",
+   "pred": "JGM63",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_021.png",
+   "type": "text",
+   "answer": "3DGXDX",
+   "pred": "3DGXD",
+   "ok": false,
+   "sec": 0.88,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_022.png",
+   "type": "text",
+   "answer": "UF9A4Y",
+   "pred": "UF9A4Y",
+   "ok": true,
+   "sec": 0.88,
+   "tok": 6,
+   "error": ""
+  },
+  {
+   "file": "text_023.png",
+   "type": "text",
+   "answer": "C6Y2",
+   "pred": "C6Y2",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_024.png",
+   "type": "text",
+   "answer": "557V2",
+   "pred": "557\u221a2",
+   "ok": false,
+   "sec": 0.88,
+   "tok": 6,
+   "error": ""
+  },
+  {
+   "file": "text_025.png",
+   "type": "text",
+   "answer": "GAW4N",
+   "pred": "GAWN",
+   "ok": false,
+   "sec": 0.85,
+   "tok": 3,
+   "error": ""
+  },
+  {
+   "file": "text_026.png",
+   "type": "text",
+   "answer": "N6JGUE",
+   "pred": "N6JGUE",
+   "ok": true,
+   "sec": 0.88,
+   "tok": 6,
+   "error": ""
+  },
+  {
+   "file": "text_027.png",
+   "type": "text",
+   "answer": "CSU9",
+   "pred": "CSU9",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_028.png",
+   "type": "text",
+   "answer": "EWQH2",
+   "pred": "EwQH2",
+   "ok": true,
+   "sec": 0.88,
+   "tok": 6,
+   "error": ""
+  },
+  {
+   "file": "text_029.png",
+   "type": "text",
+   "answer": "AE63Y",
+   "pred": "AE63Y",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_030.png",
+   "type": "text",
+   "answer": "YT7D",
+   "pred": "yT7D",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_031.png",
+   "type": "text",
+   "answer": "4F2P6",
+   "pred": "4F2P6",
+   "ok": true,
+   "sec": 0.88,
+   "tok": 6,
+   "error": ""
+  },
+  {
+   "file": "text_032.png",
+   "type": "text",
+   "answer": "4C82",
+   "pred": "4c82",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_033.png",
+   "type": "text",
+   "answer": "3KVA",
+   "pred": "3KVA",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_034.png",
+   "type": "text",
+   "answer": "GLPQRN",
+   "pred": "GLPRN",
+   "ok": false,
+   "sec": 0.85,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_035.png",
+   "type": "text",
+   "answer": "UY52BX",
+   "pred": "UY52BX",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_036.png",
+   "type": "text",
+   "answer": "T6PY2E",
+   "pred": "T6PY2E",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 6,
+   "error": ""
+  },
+  {
+   "file": "text_037.png",
+   "type": "text",
+   "answer": "VZSZK3",
+   "pred": "vzszk3",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 6,
+   "error": ""
+  },
+  {
+   "file": "text_038.png",
+   "type": "text",
+   "answer": "9UCZ6",
+   "pred": "9uCz6",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 6,
+   "error": ""
+  },
+  {
+   "file": "text_039.png",
+   "type": "text",
+   "answer": "5HKN",
+   "pred": "5HKN",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_040.png",
+   "type": "text",
+   "answer": "FMCWGZ",
+   "pred": "FMCGZ",
+   "ok": false,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_041.png",
+   "type": "text",
+   "answer": "GADCE",
+   "pred": "GADCED",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_042.png",
+   "type": "text",
+   "answer": "LNELF",
+   "pred": "LNELF",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_043.png",
+   "type": "text",
+   "answer": "S8TL",
+   "pred": "S8TL",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_044.png",
+   "type": "text",
+   "answer": "Y6XMUH",
+   "pred": "Y6xMUH",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 6,
+   "error": ""
+  },
+  {
+   "file": "text_045.png",
+   "type": "text",
+   "answer": "M335E",
+   "pred": "M335E",
+   "ok": true,
+   "sec": 0.88,
+   "tok": 6,
+   "error": ""
+  },
+  {
+   "file": "text_046.png",
+   "type": "text",
+   "answer": "NCEJ",
+   "pred": "NCEJ",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_047.png",
+   "type": "text",
+   "answer": "DDCDD",
+   "pred": "DDCD",
+   "ok": false,
+   "sec": 0.84,
+   "tok": 3,
+   "error": ""
+  },
+  {
+   "file": "text_048.png",
+   "type": "text",
+   "answer": "2VJDJ",
+   "pred": "2vJDj",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_049.png",
+   "type": "text",
+   "answer": "LXQZB",
+   "pred": "LXQZB",
+   "ok": true,
+   "sec": 0.88,
+   "tok": 6,
+   "error": ""
+  },
+  {
+   "file": "text_050.png",
+   "type": "text",
+   "answer": "BJYE",
+   "pred": "BJYE",
+   "ok": true,
+   "sec": 0.85,
+   "tok": 3,
+   "error": ""
+  },
+  {
+   "file": "text_051.png",
+   "type": "text",
+   "answer": "BUJ245",
+   "pred": "BU245",
+   "ok": false,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_052.png",
+   "type": "text",
+   "answer": "4A6Q2R",
+   "pred": "4A6Q2R",
+   "ok": true,
+   "sec": 0.88,
+   "tok": 7,
+   "error": ""
+  },
+  {
+   "file": "text_053.png",
+   "type": "text",
+   "answer": "65EN",
+   "pred": "65EN",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_054.png",
+   "type": "text",
+   "answer": "ZH6W",
+   "pred": "ZH6W",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_055.png",
+   "type": "text",
+   "answer": "RXWCMJ",
+   "pred": "RXWCMJ",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_056.png",
+   "type": "text",
+   "answer": "5GC8G",
+   "pred": "5GC8G",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_057.png",
+   "type": "text",
+   "answer": "STJE6P",
+   "pred": "STEP",
+   "ok": false,
+   "sec": 0.84,
+   "tok": 2,
+   "error": ""
+  },
+  {
+   "file": "text_058.png",
+   "type": "text",
+   "answer": "URNW",
+   "pred": "URNW",
+   "ok": true,
+   "sec": 0.85,
+   "tok": 3,
+   "error": ""
+  },
+  {
+   "file": "text_059.png",
+   "type": "text",
+   "answer": "YE6DVU",
+   "pred": "YE6DVU",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_060.png",
+   "type": "text",
+   "answer": "V425",
+   "pred": "V425",
+   "ok": true,
+   "sec": 0.88,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_061.png",
+   "type": "text",
+   "answer": "XL7G",
+   "pred": "XL7G",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_062.png",
+   "type": "text",
+   "answer": "2VBBY",
+   "pred": "2VBBY",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_063.png",
+   "type": "text",
+   "answer": "72XRN",
+   "pred": "72xRN",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_064.png",
+   "type": "text",
+   "answer": "29S5E2",
+   "pred": "29S5E2",
+   "ok": true,
+   "sec": 0.88,
+   "tok": 7,
+   "error": ""
+  },
+  {
+   "file": "text_065.png",
+   "type": "text",
+   "answer": "AV5J",
+   "pred": "AV5J",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_066.png",
+   "type": "text",
+   "answer": "74FGW",
+   "pred": "74FGW",
+   "ok": true,
+   "sec": 0.87,
+   "tok": 5,
+   "error": ""
+  },
+  {
+   "file": "text_067.png",
+   "type": "text",
+   "answer": "ZFE9",
+   "pred": "ZFE9",
+   "ok": true,
+   "sec": 0.86,
+   "tok": 4,
+   "error": ""
+  },
+  {
+   "file": "text_068.png",
+   "type": "text",
+   "answer": "HSHU",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "RemoteDisconnected('Remote end closed connection without response')"
+  },
+  {
+   "file": "text_069.png",
+   "type": "text",
+   "answer": "SR2D",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_070.png",
+   "type": "text",
+   "answer": "R3P4D",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_071.png",
+   "type": "text",
+   "answer": "4AVK5",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_072.png",
+   "type": "text",
+   "answer": "HMP2",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_073.png",
+   "type": "text",
+   "answer": "YN8HX",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_074.png",
+   "type": "text",
+   "answer": "Q3U4E3",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_075.png",
+   "type": "text",
+   "answer": "Y3KA7",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_076.png",
+   "type": "text",
+   "answer": "C8GKQB",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_077.png",
+   "type": "text",
+   "answer": "X9YM",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_078.png",
+   "type": "text",
+   "answer": "P4E3",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_079.png",
+   "type": "text",
+   "answer": "2MCM76",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_080.png",
+   "type": "text",
+   "answer": "C5KP2W",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_081.png",
+   "type": "text",
+   "answer": "USZULP",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_082.png",
+   "type": "text",
+   "answer": "MVS5",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_083.png",
+   "type": "text",
+   "answer": "GUHTKN",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_084.png",
+   "type": "text",
+   "answer": "LA2ZUX",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_085.png",
+   "type": "text",
+   "answer": "PF5D87",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_086.png",
+   "type": "text",
+   "answer": "YS8W",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_087.png",
+   "type": "text",
+   "answer": "FYFJ",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_088.png",
+   "type": "text",
+   "answer": "Q3DNBH",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_089.png",
+   "type": "text",
+   "answer": "BKUKDS",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_090.png",
+   "type": "text",
+   "answer": "8YUL7D",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_091.png",
+   "type": "text",
+   "answer": "NSG4YP",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_092.png",
+   "type": "text",
+   "answer": "3P85TV",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_093.png",
+   "type": "text",
+   "answer": "VGNM",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_094.png",
+   "type": "text",
+   "answer": "US4P",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_095.png",
+   "type": "text",
+   "answer": "N59Z4",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_096.png",
+   "type": "text",
+   "answer": "ZTJQD",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_097.png",
+   "type": "text",
+   "answer": "4KYRU",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_098.png",
+   "type": "text",
+   "answer": "KHPA7",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "text_099.png",
+   "type": "text",
+   "answer": "AH6P",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_000.png",
+   "type": "math",
+   "answer": "2",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_001.png",
+   "type": "math",
+   "answer": "7",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_002.png",
+   "type": "math",
+   "answer": "12",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_003.png",
+   "type": "math",
+   "answer": "3",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_004.png",
+   "type": "math",
+   "answer": "18",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_005.png",
+   "type": "math",
+   "answer": "8",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_006.png",
+   "type": "math",
+   "answer": "6",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_007.png",
+   "type": "math",
+   "answer": "8",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_008.png",
+   "type": "math",
+   "answer": "8",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_009.png",
+   "type": "math",
+   "answer": "26",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_010.png",
+   "type": "math",
+   "answer": "78",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_011.png",
+   "type": "math",
+   "answer": "13",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_012.png",
+   "type": "math",
+   "answer": "9",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_013.png",
+   "type": "math",
+   "answer": "39",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_014.png",
+   "type": "math",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_015.png",
+   "type": "math",
+   "answer": "17",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_016.png",
+   "type": "math",
+   "answer": "14",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_017.png",
+   "type": "math",
+   "answer": "23",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_018.png",
+   "type": "math",
+   "answer": "18",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_019.png",
+   "type": "math",
+   "answer": "18",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_020.png",
+   "type": "math",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_021.png",
+   "type": "math",
+   "answer": "45",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_022.png",
+   "type": "math",
+   "answer": "5",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_023.png",
+   "type": "math",
+   "answer": "28",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_024.png",
+   "type": "math",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_025.png",
+   "type": "math",
+   "answer": "16",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_026.png",
+   "type": "math",
+   "answer": "57",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_027.png",
+   "type": "math",
+   "answer": "3",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_028.png",
+   "type": "math",
+   "answer": "18",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_029.png",
+   "type": "math",
+   "answer": "9",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_030.png",
+   "type": "math",
+   "answer": "16",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_031.png",
+   "type": "math",
+   "answer": "9",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_032.png",
+   "type": "math",
+   "answer": "14",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_033.png",
+   "type": "math",
+   "answer": "20",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_034.png",
+   "type": "math",
+   "answer": "8",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_035.png",
+   "type": "math",
+   "answer": "32",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_036.png",
+   "type": "math",
+   "answer": "19",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_037.png",
+   "type": "math",
+   "answer": "8",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_038.png",
+   "type": "math",
+   "answer": "9",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_039.png",
+   "type": "math",
+   "answer": "7",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_040.png",
+   "type": "math",
+   "answer": "23",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_041.png",
+   "type": "math",
+   "answer": "5",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_042.png",
+   "type": "math",
+   "answer": "9",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_043.png",
+   "type": "math",
+   "answer": "9",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_044.png",
+   "type": "math",
+   "answer": "54",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_045.png",
+   "type": "math",
+   "answer": "4",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_046.png",
+   "type": "math",
+   "answer": "15",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_047.png",
+   "type": "math",
+   "answer": "6",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_048.png",
+   "type": "math",
+   "answer": "23",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "math_049.png",
+   "type": "math",
+   "answer": "13",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_000.png",
+   "type": "grid",
+   "answer": "2",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_001.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_002.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_003.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_004.png",
+   "type": "grid",
+   "answer": "2",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_005.png",
+   "type": "grid",
+   "answer": "3",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_006.png",
+   "type": "grid",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_007.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_008.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_009.png",
+   "type": "grid",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_010.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_011.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_012.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_013.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_014.png",
+   "type": "grid",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_015.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_016.png",
+   "type": "grid",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_017.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_018.png",
+   "type": "grid",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_019.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_020.png",
+   "type": "grid",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_021.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_022.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_023.png",
+   "type": "grid",
+   "answer": "2",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_024.png",
+   "type": "grid",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_025.png",
+   "type": "grid",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_026.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_027.png",
+   "type": "grid",
+   "answer": "3",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_028.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_029.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_030.png",
+   "type": "grid",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_031.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_032.png",
+   "type": "grid",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_033.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_034.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_035.png",
+   "type": "grid",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_036.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_037.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_038.png",
+   "type": "grid",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_039.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_040.png",
+   "type": "grid",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_041.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_042.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_043.png",
+   "type": "grid",
+   "answer": "2",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_044.png",
+   "type": "grid",
+   "answer": "1",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_045.png",
+   "type": "grid",
+   "answer": "3",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_046.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_047.png",
+   "type": "grid",
+   "answer": "2",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_048.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  },
+  {
+   "file": "grid_049.png",
+   "type": "grid",
+   "answer": "0",
+   "pred": "",
+   "ok": false,
+   "sec": 0.0,
+   "tok": null,
+   "error": "URLError(ConnectionRefusedError(111, 'Connection refused'))"
+  }
+ ]
+}

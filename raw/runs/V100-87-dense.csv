@@ -1,0 +1,13 @@
+dense_class,quant,group_size,shape_id,M,K,N,auto_cta_geometry,auto_split_k,status,marlin_us,flops,marlin_tflops,all_finite,reason
+marlin_linear_kernel,uint4,-1,dense_align_cta256_tiny_square_m1_k512_n256,1,512,256,32x256x32x4x32x64x32,1,OK,178.18,262144,0.001471,yes,
+marlin_linear_kernel,uint4,-1,dense_align_cta256_tiny_square_m8_k512_n256,8,512,256,32x256x32x4x32x64x32,1,OK,182.27,2097152,0.011506,yes,
+marlin_linear_kernel,uint4,-1,dense_align_cta256_tiny_square_m16_k512_n256,16,512,256,32x256x32x4x32x64x32,1,OK,177.15,4194304,0.023676,yes,
+marlin_linear_kernel,uint4,-1,dense_align_cta256_tiny_square_m24_k512_n256,24,512,256,32x256x32x4x32x64x32,1,OK,177.15,6291456,0.035514,yes,
+marlin_linear_kernel,uint4,-1,dense_align_cta256_tiny_square_m32_k512_n256,32,512,256,32x256x32x4x32x64x32,1,OK,175.10,8388608,0.047906,yes,
+marlin_linear_kernel,uint4,-1,dense_align_cta256_tiny_square_m48_k512_n256,48,512,256,32x256x32x4x32x64x32,1,OK,175.10,12582912,0.071860,yes,
+marlin_linear_kernel,uint4,-1,dense_align_cta256_tiny_square_m64_k512_n256,64,512,256,32x256x32x4x32x64x32,1,OK,179.71,16777216,0.093356,yes,
+marlin_linear_kernel,uint4,-1,dense_align_cta256_tiny_square_m1024_k512_n256,1024,512,256,32x256x32x4x32x64x32,1,OK,178.18,268435456,1.506575,yes,
+marlin_linear_kernel,uint4,-1,dense_align_cta256_tiny_square_m2048_k512_n256,2048,512,256,32x256x32x4x32x64x32,1,OK,176.13,536870912,3.048186,yes,
+marlin_linear_kernel,uint4,-1,dense_align_cta256_tiny_square_m4096_k512_n256,4096,512,256,32x256x32x4x32x64x32,1,OK,185.34,1073741824,5.793237,yes,
+marlin_linear_kernel,uint4,-1,dense_align_cta256_tiny_square_m5120_k512_n256,5120,512,256,32x256x32x4x32x64x32,1,OK,184.32,1342177280,7.281778,yes,
+marlin_linear_kernel,uint4,-1,dense_align_cta64_narrow_m1_k768_n192,1,768,192,64x64x32x4x32x32x32,1,OK,175.10,294912,0.001684,yes,

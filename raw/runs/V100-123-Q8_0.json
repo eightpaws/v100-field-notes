@@ -1,0 +1,333 @@
+{
+ "base_url": "http://127.0.0.1:18363",
+ "model": "qwen3coder30b-Q8_0",
+ "tasks": 40,
+ "repeats": 1,
+ "runs": 40,
+ "passed": 21,
+ "pass@1": 0.525,
+ "avg_sec": 4.98,
+ "tok_s": 17.1,
+ "rows": [
+  {
+   "task": 1,
+   "repeat": 0,
+   "ok": false,
+   "sec": 12.65,
+   "tok": 241,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 23, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 2,
+   "repeat": 0,
+   "ok": false,
+   "sec": 2.69,
+   "tok": 26,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 3,
+   "repeat": 0,
+   "ok": true,
+   "sec": 5.02,
+   "tok": 86,
+   "err": null
+  },
+  {
+   "task": 4,
+   "repeat": 0,
+   "ok": true,
+   "sec": 6.04,
+   "tok": 109,
+   "err": null
+  },
+  {
+   "task": 5,
+   "repeat": 0,
+   "ok": false,
+   "sec": 7.61,
+   "tok": 142,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 21, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 6,
+   "repeat": 0,
+   "ok": true,
+   "sec": 5.77,
+   "tok": 100,
+   "err": null
+  },
+  {
+   "task": 7,
+   "repeat": 0,
+   "ok": true,
+   "sec": 2.69,
+   "tok": 31,
+   "err": null
+  },
+  {
+   "task": 8,
+   "repeat": 0,
+   "ok": true,
+   "sec": 2.21,
+   "tok": 23,
+   "err": null
+  },
+  {
+   "task": 9,
+   "repeat": 0,
+   "ok": false,
+   "sec": 5.92,
+   "tok": 106,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 17, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 10,
+   "repeat": 0,
+   "ok": true,
+   "sec": 2.12,
+   "tok": 20,
+   "err": null
+  },
+  {
+   "task": 11,
+   "repeat": 0,
+   "ok": true,
+   "sec": 4.96,
+   "tok": 85,
+   "err": null
+  },
+  {
+   "task": 12,
+   "repeat": 0,
+   "ok": true,
+   "sec": 2.04,
+   "tok": 18,
+   "err": null
+  },
+  {
+   "task": 13,
+   "repeat": 0,
+   "ok": false,
+   "sec": 7.86,
+   "tok": 154,
+   "err": "line 24, in <module>\n  File \"<string>\", line 7, in count_common\nAttributeError: 'list' object has no attribute 'values'\n"
+  },
+  {
+   "task": 14,
+   "repeat": 0,
+   "ok": true,
+   "sec": 6.01,
+   "tok": 110,
+   "err": null
+  },
+  {
+   "task": 15,
+   "repeat": 0,
+   "ok": false,
+   "sec": 2.47,
+   "tok": 29,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 6, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 16,
+   "repeat": 0,
+   "ok": false,
+   "sec": 2.8,
+   "tok": 36,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 17,
+   "repeat": 0,
+   "ok": true,
+   "sec": 2.08,
+   "tok": 20,
+   "err": null
+  },
+  {
+   "task": 18,
+   "repeat": 0,
+   "ok": true,
+   "sec": 2.64,
+   "tok": 32,
+   "err": null
+  },
+  {
+   "task": 19,
+   "repeat": 0,
+   "ok": true,
+   "sec": 3.95,
+   "tok": 63,
+   "err": null
+  },
+  {
+   "task": 20,
+   "repeat": 0,
+   "ok": true,
+   "sec": 6.44,
+   "tok": 118,
+   "err": null
+  },
+  {
+   "task": 21,
+   "repeat": 0,
+   "ok": false,
+   "sec": 2.57,
+   "tok": 31,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 22,
+   "repeat": 0,
+   "ok": false,
+   "sec": 2.99,
+   "tok": 41,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 10, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 23,
+   "repeat": 0,
+   "ok": true,
+   "sec": 2.45,
+   "tok": 27,
+   "err": null
+  },
+  {
+   "task": 24,
+   "repeat": 0,
+   "ok": false,
+   "sec": 4.62,
+   "tok": 79,
+   "err": "ng>\", line 13, in <module>\n  File \"<string>\", line 6, in binary_to_decimal\nTypeError: object of type 'int' has no len()\n"
+  },
+  {
+   "task": 25,
+   "repeat": 0,
+   "ok": false,
+   "sec": 6.37,
+   "tok": 118,
+   "err": "l last):\n  File \"<string>\", line 19, in <module>\nTypeError: find_Product() takes 1 positional argument but 2 were given\n"
+  },
+  {
+   "task": 26,
+   "repeat": 0,
+   "ok": false,
+   "sec": 5.8,
+   "tok": 105,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 21, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 27,
+   "repeat": 0,
+   "ok": true,
+   "sec": 2.47,
+   "tok": 29,
+   "err": null
+  },
+  {
+   "task": 28,
+   "repeat": 0,
+   "ok": true,
+   "sec": 5.99,
+   "tok": 109,
+   "err": null
+  },
+  {
+   "task": 29,
+   "repeat": 0,
+   "ok": false,
+   "sec": 2.84,
+   "tok": 35,
+   "err": "t):\n  File \"<string>\", line 7, in <module>\nTypeError: get_Odd_Occurrence() takes 1 positional argument but 2 were given\n"
+  },
+  {
+   "task": 30,
+   "repeat": 0,
+   "ok": true,
+   "sec": 4.17,
+   "tok": 65,
+   "err": null
+  },
+  {
+   "task": 31,
+   "repeat": 0,
+   "ok": false,
+   "sec": 6.73,
+   "tok": 125,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 19, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 32,
+   "repeat": 0,
+   "ok": true,
+   "sec": 7.99,
+   "tok": 155,
+   "err": null
+  },
+  {
+   "task": 33,
+   "repeat": 0,
+   "ok": false,
+   "sec": 4.35,
+   "tok": 72,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 13, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 34,
+   "repeat": 0,
+   "ok": false,
+   "sec": 8.11,
+   "tok": 159,
+   "err": "l last):\n  File \"<string>\", line 26, in <module>\nTypeError: find_missing() takes 1 positional argument but 2 were given\n"
+  },
+  {
+   "task": 35,
+   "repeat": 0,
+   "ok": true,
+   "sec": 3.24,
+   "tok": 46,
+   "err": null
+  },
+  {
+   "task": 36,
+   "repeat": 0,
+   "ok": false,
+   "sec": 13.33,
+   "tok": 279,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 42, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 37,
+   "repeat": 0,
+   "ok": false,
+   "sec": 6.84,
+   "tok": 129,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 22, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 38,
+   "repeat": 0,
+   "ok": true,
+   "sec": 4.82,
+   "tok": 82,
+   "err": null
+  },
+  {
+   "task": 39,
+   "repeat": 0,
+   "ok": false,
+   "sec": 6.01,
+   "tok": 108,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 17, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 40,
+   "repeat": 0,
+   "ok": true,
+   "sec": 3.63,
+   "tok": 55,
+   "err": null
+  }
+ ]
+}

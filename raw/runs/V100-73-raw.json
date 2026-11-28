@@ -1,0 +1,5 @@
+{
+ "load_sec": 3.7,
+ "1024px": "OutOfMemoryError: CUDA out of memory. Tried to allocate 4.50 GiB. GPU 0 has a total capacity of 15.77 GiB of which 2.41 GiB is f",
+ "832px": "RuntimeError: Input type (c10::Half) and bias type (float) should be the same"
+}

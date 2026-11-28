@@ -1,0 +1,216 @@
+{
+ "model": "Qwen2.5-Coder-7B-Instruct-Q8_0",
+ "engine": "llama.cpp build129 (af5c583)",
+ "runs": [
+  {
+   "run": 1,
+   "temp": 0.0,
+   "seed": 42,
+   "gen_s": 11.2,
+   "lines": 110,
+   "bytes": 3921,
+   "sha": "250c6b608907",
+   "tests_passed": 4,
+   "tests_failed": 8,
+   "usage": {
+    "completion_tokens": 925,
+    "prompt_tokens": 462,
+    "total_tokens": 1387,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "pytest_tail": "8 failed, 4 passed in 0.22s",
+   "raw_len": 3934
+  },
+  {
+   "run": 2,
+   "temp": 0.0,
+   "seed": 42,
+   "gen_s": 11.2,
+   "lines": 110,
+   "bytes": 3921,
+   "sha": "250c6b608907",
+   "tests_passed": 4,
+   "tests_failed": 8,
+   "usage": {
+    "completion_tokens": 925,
+    "prompt_tokens": 462,
+    "total_tokens": 1387,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "pytest_tail": "8 failed, 4 passed in 0.22s",
+   "raw_len": 3934
+  },
+  {
+   "run": 3,
+   "temp": 0.0,
+   "seed": 42,
+   "gen_s": 11.2,
+   "lines": 110,
+   "bytes": 3921,
+   "sha": "250c6b608907",
+   "tests_passed": 4,
+   "tests_failed": 8,
+   "usage": {
+    "completion_tokens": 925,
+    "prompt_tokens": 462,
+    "total_tokens": 1387,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "pytest_tail": "8 failed, 4 passed in 0.21s",
+   "raw_len": 3934
+  },
+  {
+   "run": 4,
+   "temp": 0.0,
+   "seed": 42,
+   "gen_s": 11.2,
+   "lines": 110,
+   "bytes": 3921,
+   "sha": "250c6b608907",
+   "tests_passed": 4,
+   "tests_failed": 8,
+   "usage": {
+    "completion_tokens": 925,
+    "prompt_tokens": 462,
+    "total_tokens": 1387,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "pytest_tail": "8 failed, 4 passed in 0.22s",
+   "raw_len": 3934
+  },
+  {
+   "run": 5,
+   "temp": 0.0,
+   "seed": 42,
+   "gen_s": 11.2,
+   "lines": 110,
+   "bytes": 3921,
+   "sha": "250c6b608907",
+   "tests_passed": 4,
+   "tests_failed": 8,
+   "usage": {
+    "completion_tokens": 925,
+    "prompt_tokens": 462,
+    "total_tokens": 1387,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "pytest_tail": "8 failed, 4 passed in 0.21s",
+   "raw_len": 3934
+  },
+  {
+   "run": 6,
+   "temp": 0.2,
+   "seed": 1006,
+   "gen_s": 11.3,
+   "lines": 115,
+   "bytes": 3956,
+   "sha": "b492a84e8913",
+   "tests_passed": 4,
+   "tests_failed": 8,
+   "usage": {
+    "completion_tokens": 934,
+    "prompt_tokens": 462,
+    "total_tokens": 1396,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "pytest_tail": "8 failed, 4 passed in 0.21s",
+   "raw_len": 3969
+  },
+  {
+   "run": 7,
+   "temp": 0.2,
+   "seed": 1007,
+   "gen_s": 11.2,
+   "lines": 109,
+   "bytes": 3925,
+   "sha": "c23aadbff703",
+   "tests_passed": 4,
+   "tests_failed": 8,
+   "usage": {
+    "completion_tokens": 925,
+    "prompt_tokens": 462,
+    "total_tokens": 1387,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "pytest_tail": "8 failed, 4 passed in 0.17s",
+   "raw_len": 3938
+  },
+  {
+   "run": 8,
+   "temp": 0.2,
+   "seed": 1008,
+   "gen_s": 7.8,
+   "lines": 75,
+   "bytes": 2678,
+   "sha": "43dcfe4ef5fd",
+   "tests_passed": 4,
+   "tests_failed": 8,
+   "usage": {
+    "completion_tokens": 648,
+    "prompt_tokens": 462,
+    "total_tokens": 1110,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "pytest_tail": "8 failed, 4 passed in 0.17s",
+   "raw_len": 2691
+  },
+  {
+   "run": 9,
+   "temp": 0.2,
+   "seed": 1009,
+   "gen_s": 11.5,
+   "lines": 115,
+   "bytes": 4124,
+   "sha": "67145b84966c",
+   "tests_passed": 4,
+   "tests_failed": 8,
+   "usage": {
+    "completion_tokens": 952,
+    "prompt_tokens": 462,
+    "total_tokens": 1414,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "pytest_tail": "8 failed, 4 passed in 0.20s",
+   "raw_len": 4137
+  },
+  {
+   "run": 10,
+   "temp": 0.2,
+   "seed": 1010,
+   "gen_s": 7.6,
+   "lines": 73,
+   "bytes": 2572,
+   "sha": "ebca708a5600",
+   "tests_passed": 4,
+   "tests_failed": 8,
+   "usage": {
+    "completion_tokens": 627,
+    "prompt_tokens": 462,
+    "total_tokens": 1089,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "pytest_tail": "8 failed, 4 passed in 0.17s",
+   "raw_len": 2585
+  }
+ ]
+}

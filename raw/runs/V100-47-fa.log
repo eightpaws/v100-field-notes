@@ -1,0 +1,15 @@
+=== fa=0, ctx 4096, KV f16 ===
+error: invalid parameter for argument: -c
+=== fa=0, ctx 4096, KV f16 (повтор) ===
+error: invalid parameter for argument: -c
+=== fa=1, ctx 4096, KV f16 ===
+error: invalid parameter for argument: -c
+=== fa=1, ctx 2048, KV f16 ===
+error: invalid parameter for argument: -c
+=== fa=1, ctx 1024, KV f16 ===
+error: invalid parameter for argument: -c
+=== fa=1, ctx 2048, KV f16 явно ===
+error: invalid parameter for argument: -c
+=== fa=1, ctx 4096, KV q8_0 ===
+error: invalid parameter for argument: -c
+ГОТОВО

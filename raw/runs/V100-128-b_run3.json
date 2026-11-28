@@ -1,0 +1,42 @@
+{
+  "tag": "run3",
+  "tests_total": 18,
+  "tests_passed_on_pristine": 4,
+  "tests_failed_on_pristine": 14,
+  "passing_tests": [
+    "test_round_half_up",
+    "test_from_cents",
+    "test_format_money",
+    "test_in_return_window"
+  ],
+  "failing_tests": [
+    "test_to_cents",
+    "test_apply_percent",
+    "test_apply_discount",
+    "test_bulk_discount_percent",
+    "test_line_total",
+    "test_tiered_total",
+    "test_tax_amount",
+    "test_shipping_cost",
+    "test_dedupe_lines",
+    "test_coupon_discount_percent",
+    "test_proration_cents",
+    "test_convert_cents",
+    "test_invoice_totals",
+    "test_ledger"
+  ],
+  "coverage_passing_only": 22.80701754385965,
+  "killed": 1,
+  "survived": [
+    "bulk_tier_strict_gt",
+    "discount_cap_removed",
+    "inclusive_tax_wrong_denominator",
+    "free_shipping_strict_gt",
+    "dedupe_overwrites_quantity",
+    "return_window_strict_lt",
+    "fx_truncates",
+    "bulk_percent_last_tier",
+    "proration_off_by_one_day"
+  ],
+  "kill_rate_passing_only": 0.1
+}

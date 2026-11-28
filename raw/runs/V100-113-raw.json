@@ -1,0 +1,525 @@
+{
+ "model": "Qwen2.5-Coder-7B-Instruct-Q8_0",
+ "engine": "llama.cpp build129 (af5c583)",
+ "tasks": 20,
+ "tasks_fully_correct": 7,
+ "queries_total": 60,
+ "queries_correct": 46,
+ "migrations_ok": 14,
+ "boot_s": 2.0310685634613037,
+ "elapsed_s": 36.90857243537903,
+ "details": [
+  {
+   "parse": true,
+   "migration": false,
+   "queries": [
+    {
+     "ok": true,
+     "sql": "SELECT c.name, SUM(p.price * o.qty) AS revenue FROM categories c JOIN products p ON c.id = p.category_id JOIN orders o ON p.id = o.product_id GROUP BY c.name;",
+     "rows": 3
+    },
+    {
+     "ok": true,
+     "sql": "SELECT p.name, SUM(o.qty) AS total_qty FROM products p JOIN orders o ON p.id = o.product_id GROUP BY p.name ORDER BY total_qty DESC, p.name ASC LIMIT 3;",
+     "rows": 3
+    },
+    {
+     "ok": true,
+     "sql": "SELECT strftime('%Y-%m', o.created_at) AS month, COUNT(o.id) AS order_count FROM orders o GROUP BY month ORDER BY month;",
+     "rows": 3
+    }
+   ],
+   "mig_bad_rows": 4,
+   "id": "T01",
+   "title": "shop revenue",
+   "raw_len": 656
+  },
+  {
+   "parse": true,
+   "migration": true,
+   "queries": [
+    {
+     "ok": false,
+     "sql": "SELECT title FROM books WHERE id NOT IN (SELECT book_id FROM loans WHERE returned = 1)",
+     "error": "no such column: returned"
+    },
+    {
+     "ok": false,
+     "sql": "SELECT a.name, COUNT(l.id) AS loan_count FROM authors a LEFT JOIN books b ON a.id = b.author_id LEFT JOIN loans l ON b.id = l.book_id WHERE l.returned = 1 GROUP BY a.name",
+     "error": "no such column: l.returned"
+    },
+    {
+     "ok": false,
+     "sql": "SELECT ROUND(AVG(JULIANDAY(l.returned_at) - JULIANDAY(l.loaned_at)), 2) AS average_duration FROM loans l WHERE l.returned = 1",
+     "error": "no such column: l.returned"
+    }
+   ],
+   "mig_bad_rows": 0,
+   "id": "T02",
+   "title": "library loans",
+   "raw_len": 584
+  },
+  {
+   "parse": true,
+   "migration": false,
+   "queries": [
+    {
+     "ok": true,
+     "sql": "SELECT d.name, ROUND(AVG(e.salary), 2) AS avg_salary FROM departments d JOIN employees e ON d.id = e.dept_id GROUP BY d.name;",
+     "rows": 3
+    },
+    {
+     "ok": true,
+     "sql": "SELECT e.name FROM employees e WHERE e.hired_at LIKE '2023%'",
+     "rows": 2
+    },
+    {
+     "ok": true,
+     "sql": "SELECT d.name, MAX(e.salary) AS max_salary FROM departments d JOIN employees e ON d.id = e.dept_id GROUP BY d.name",
+     "rows": 3
+    }
+   ],
+   "mig_bad_rows": 5,
+   "id": "T03",
+   "title": "hr salary",
+   "raw_len": 428
+  },
+  {
+   "parse": true,
+   "migration": false,
+   "queries": [
+    {
+     "ok": false,
+     "sql": "SELECT d.name, SUM(v.cost) AS total_cost FROM doctors d LEFT JOIN visits v ON d.id = v.doctor_id GROUP BY d.id;",
+     "rows": 3,
+     "expect": "[('Dr Fox', 0), ('Dr Kim', 400.0), ('Dr Lee', 960.0)]",
+     "got": "[('Dr Fox', None), ('Dr Kim', 400.0), ('Dr Lee', 960.0)]"
+    },
+    {
+     "ok": true,
+     "sql": "SELECT p.name FROM patients p JOIN visits v ON p.id = v.patient_id GROUP BY p.id HAVING COUNT(v.id) > 1;",
+     "rows": 2
+    },
+    {
+     "ok": true,
+     "sql": "SELECT p.name, MAX(v.cost) AS cost FROM patients p JOIN visits v ON p.id = v.patient_id GROUP BY p.id;",
+     "rows": 3
+    }
+   ],
+   "mig_bad_rows": 2,
+   "id": "T04",
+   "title": "hospital visits",
+   "raw_len": 455
+  },
+  {
+   "parse": true,
+   "migration": true,
+   "queries": [
+    {
+     "ok": true,
+     "sql": "SELECT w.city, SUM(s.weight_kg) AS total_weight FROM warehouses w JOIN shipments s ON w.id = s.warehouse_id GROUP BY w.city;",
+     "rows": 3
+    },
+    {
+     "ok": true,
+     "sql": "SELECT w.city, MAX(s.weight_kg) AS weight_kg FROM warehouses w JOIN shipments s ON w.id = s.warehouse_id GROUP BY w.city;",
+     "rows": 3
+    },
+    {
+     "ok": true,
+     "sql": "SELECT shipped_at AS date, COUNT(*) AS count FROM shipments GROUP BY shipped_at;",
+     "rows": 3
+    }
+   ],
+   "mig_bad_rows": 0,
+   "id": "T05",
+   "title": "logistics",
+   "raw_len": 546
+  },
+  {
+   "parse": true,
+   "migration": true,
+   "queries": [
+    {
+     "ok": true,
+     "sql": "SELECT subject, ROUND(AVG(score), 2) AS average_score FROM grades GROUP BY subject;",
+     "rows": 2
+    },
+    {
+     "ok": true,
+     "sql": "SELECT name FROM students WHERE id NOT IN (SELECT student_id FROM grades WHERE score < 80);",
+     "rows": 2
+    },
+    {
+     "ok": true,
+     "sql": "SELECT name, SUM(score) AS total_score FROM students JOIN grades ON students.id = grades.student_id GROUP BY name ORDER BY total_score DESC LIMIT 1;",
+     "rows": 1
+    }
+   ],
+   "mig_bad_rows": 0,
+   "id": "T06",
+   "title": "school grades",
+   "raw_len": 572
+  },
+  {
+   "parse": true,
+   "migration": true,
+   "queries": [
+    {
+     "ok": false,
+     "sql": "SELECT owner, balance_start + SUM(signed) AS balance FROM accounts JOIN transactions ON accounts.id = transactions.account_id GROUP BY owner;",
+     "error": "no such column: signed"
+    },
+    {
+     "ok": false,
+     "sql": "SELECT owner FROM accounts WHERE balance_start + SUM(signed) < 0;",
+     "error": "no such column: signed"
+    },
+    {
+     "ok": false,
+     "sql": "SELECT created_at AS date, SUM(CASE WHEN kind = 'debit' THEN amount ELSE 0 END) AS total_debit FROM transactions GROUP BY created_at;",
+     "rows": 4,
+     "expect": "[('2026-01-09', 200.0), ('2026-02-01', 400.0), ('2026-02-03', 100.0)]",
+     "got": "[('2026-01-05', 0), ('2026-01-09', 200.0), ('2026-02-01', 400.0), ('2026-02-03', 100.0)]"
+    }
+   ],
+   "mig_bad_rows": 0,
+   "id": "T07",
+   "title": "bank accounts",
+   "raw_len": 552
+  },
+  {
+   "parse": true,
+   "migration": true,
+   "queries": [
+    {
+     "ok": true,
+     "sql": "SELECT title FROM events WHERE id NOT IN (SELECT event_id FROM registrations);",
+     "rows": 1
+    },
+    {
+     "ok": true,
+     "sql": "SELECT title, COUNT(*) AS registration_count FROM events JOIN registrations ON events.id = registrations.event_id GROUP BY title ORDER BY registration_count DESC LIMIT 1;",
+     "rows": 1
+    },
+    {
+     "ok": true,
+     "sql": "SELECT user_name FROM registrations GROUP BY user_name HAVING COUNT(event_id) >= 2;",
+     "rows": 2
+    }
+   ],
+   "mig_bad_rows": 0,
+   "id": "T08",
+   "title": "events",
+   "raw_len": 563
+  },
+  {
+   "parse": true,
+   "migration": false,
+   "queries": [
+    {
+     "ok": true,
+     "sql": "SELECT c.name, COUNT(t.id) AS open_ticket_count FROM customers c LEFT JOIN tickets t ON c.id = t.customer_id AND t.status = 'open' GROUP BY c.name;",
+     "rows": 3
+    },
+    {
+     "ok": false,
+     "sql": "SELECT ROUND(AVG(t.closed_at - t.created_at) * 24, 2) AS average_resolution_time FROM tickets t WHERE t.status = 'closed';",
+     "rows": 1,
+     "expect": "[(14.25,)]",
+     "got": "[(0.0,)]"
+    },
+    {
+     "ok": true,
+     "sql": "SELECT c.name FROM customers c WHERE c.id NOT IN (SELECT customer_id FROM tickets);",
+     "rows": 1
+    }
+   ],
+   "mig_bad_rows": 4,
+   "id": "T09",
+   "title": "support tickets",
+   "raw_len": 555
+  },
+  {
+   "parse": true,
+   "migration": true,
+   "queries": [
+    {
+     "ok": true,
+     "sql": "SELECT p.name, SUM(s.qty) AS total_qty FROM products p LEFT JOIN stock s ON p.id = s.product_id GROUP BY p.name;",
+     "rows": 3
+    },
+    {
+     "ok": true,
+     "sql": "SELECT p.name FROM products p WHERE p.id NOT IN (SELECT product_id FROM stock GROUP BY product_id HAVING SUM(qty) > 0);",
+     "rows": 1
+    },
+    {
+     "ok": true,
+     "sql": "SELECT warehouse, SUM(qty) AS total_qty FROM stock GROUP BY warehouse ORDER BY total_qty DESC LIMIT 1;",
+     "rows": 1
+    }
+   ],
+   "mig_bad_rows": 0,
+   "id": "T10",
+   "title": "stock",
+   "raw_len": 511
+  },
+  {
+   "parse": true,
+   "migration": false,
+   "queries": [
+    {
+     "ok": true,
+     "sql": "SELECT dest, SUM(price * seats) AS revenue FROM flights JOIN bookings ON flights.id = bookings.flight_id GROUP BY dest;",
+     "rows": 2
+    },
+    {
+     "ok": true,
+     "sql": "SELECT dest FROM flights WHERE id NOT IN (SELECT flight_id FROM bookings);",
+     "rows": 1
+    },
+    {
+     "ok": true,
+     "sql": "SELECT origin, SUM(seats) AS seats FROM flights JOIN bookings ON flights.id = bookings.flight_id GROUP BY origin;",
+     "rows": 1
+    }
+   ],
+   "mig_bad_rows": 3,
+   "id": "T11",
+   "title": "flights",
+   "raw_len": 425
+  },
+  {
+   "parse": true,
+   "migration": true,
+   "queries": [
+    {
+     "ok": false,
+     "sql": "SELECT artists.name, SUM(tracks.seconds) AS total_seconds FROM artists JOIN tracks ON artists.id = tracks.artist_id GROUP BY artists.name;",
+     "rows": 3,
+     "expect": "[('Aria', 680), ('Kino', 600)]",
+     "got": "[('Aria', 440), ('DDT', 180), ('Kino', 300)]"
+    },
+    {
+     "ok": false,
+     "sql": "SELECT tracks.title, tracks.plays_count AS play_count FROM tracks ORDER BY plays_count DESC LIMIT 1;",
+     "error": "no such column: tracks.plays_count"
+    },
+    {
+     "ok": true,
+     "sql": "SELECT plays.played_at AS date, COUNT(*) AS count FROM plays GROUP BY plays.played_at;",
+     "rows": 4
+    }
+   ],
+   "mig_bad_rows": 0,
+   "id": "T12",
+   "title": "music plays",
+   "raw_len": 539
+  },
+  {
+   "parse": true,
+   "migration": true,
+   "queries": [
+    {
+     "ok": true,
+     "sql": "SELECT orders.id, SUM(dishes.price * items.qty) AS total FROM items JOIN dishes ON items.dish_id = dishes.id JOIN orders ON items.order_id = orders.id GROUP BY orders.id;",
+     "rows": 3
+    },
+    {
+     "ok": true,
+     "sql": "SELECT dishes.name, SUM(items.qty) AS total_qty FROM items JOIN dishes ON items.dish_id = dishes.id GROUP BY dishes.name ORDER BY total_qty DESC LIMIT 1;",
+     "rows": 1
+    },
+    {
+     "ok": false,
+     "sql": "SELECT orders.id FROM orders WHERE total > 1000;",
+     "error": "no such column: total"
+    }
+   ],
+   "mig_bad_rows": 0,
+   "id": "T13",
+   "title": "restaurant",
+   "raw_len": 639
+  },
+  {
+   "parse": true,
+   "migration": true,
+   "queries": [
+    {
+     "ok": false,
+     "sql": "SELECT members.name, SUM(workouts.calories) AS total_calories FROM members LEFT JOIN workouts ON members.id = workouts.member_id GROUP BY members.name;",
+     "rows": 3,
+     "expect": "[('Ann', 1000), ('Bob', 520), ('Cid', 0)]",
+     "got": "[('Ann', 1000), ('Bob', 520), ('Cid', None)]"
+    },
+    {
+     "ok": true,
+     "sql": "SELECT members.name, SUM(workouts.minutes) AS total_minutes FROM members JOIN workouts ON members.id = workouts.member_id GROUP BY members.name ORDER BY total_minutes DESC LIMIT 1;",
+     "rows": 1
+    },
+    {
+     "ok": true,
+     "sql": "SELECT workouts.on_date, ROUND(AVG(workouts.minutes), 2) AS average_minutes FROM workouts GROUP BY workouts.on_date;",
+     "rows": 3
+    }
+   ],
+   "mig_bad_rows": 0,
+   "id": "T14",
+   "title": "fitness",
+   "raw_len": 665
+  },
+  {
+   "parse": true,
+   "migration": true,
+   "queries": [
+    {
+     "ok": false,
+     "sql": "SELECT title FROM pages WHERE rev_count = 0;",
+     "error": "no such column: rev_count"
+    },
+    {
+     "ok": true,
+     "sql": "SELECT author, COUNT(*) AS revision_count FROM revisions GROUP BY author;",
+     "rows": 3
+    },
+    {
+     "ok": true,
+     "sql": "SELECT p.title, r.revision_count FROM pages p JOIN (SELECT page_id, COUNT(*) AS revision_count FROM revisions GROUP BY page_id) r ON p.id = r.page_id ORDER BY r.revision_count DESC LIMIT 1;",
+     "rows": 1
+    }
+   ],
+   "mig_bad_rows": 0,
+   "id": "T15",
+   "title": "wiki pages",
+   "raw_len": 517
+  },
+  {
+   "parse": true,
+   "migration": true,
+   "queries": [
+    {
+     "ok": true,
+     "sql": "SELECT s.number, SUM(se.fee) AS total_fee FROM spots s JOIN sessions se ON s.id = se.spot_id GROUP BY s.number;",
+     "rows": 3
+    },
+    {
+     "ok": true,
+     "sql": "SELECT id FROM sessions WHERE hours > 5;",
+     "rows": 2
+    },
+    {
+     "ok": true,
+     "sql": "SELECT s.number, SUM(se.fee) AS total_fee FROM spots s JOIN sessions se ON s.id = se.spot_id GROUP BY s.number ORDER BY total_fee DESC LIMIT 1;",
+     "rows": 1
+    }
+   ],
+   "mig_bad_rows": 0,
+   "id": "T16",
+   "title": "parking",
+   "raw_len": 491
+  },
+  {
+   "parse": true,
+   "migration": true,
+   "queries": [
+    {
+     "ok": true,
+     "sql": "SELECT questions.text, ROUND(AVG(answers.score), 2) AS average_score FROM questions JOIN answers ON questions.id = answers.question_id GROUP BY questions.text;",
+     "rows": 2
+    },
+    {
+     "ok": true,
+     "sql": "SELECT questions.text FROM questions WHERE questions.id NOT IN (SELECT question_id FROM answers);",
+     "rows": 1
+    },
+    {
+     "ok": true,
+     "sql": "SELECT questions.text, COUNT(answers.id) AS count FROM questions JOIN answers ON questions.id = answers.question_id WHERE answers.score >= 4 GROUP BY questions.text;",
+     "rows": 2
+    }
+   ],
+   "mig_bad_rows": 0,
+   "id": "T17",
+   "title": "survey",
+   "raw_len": 660
+  },
+  {
+   "parse": true,
+   "migration": true,
+   "queries": [
+    {
+     "ok": true,
+     "sql": "SELECT d.name, COALESCE(SUM(r.fare), 0) AS total_fare FROM drivers d LEFT JOIN rides r ON d.id = r.driver_id GROUP BY d.name;",
+     "rows": 3
+    },
+    {
+     "ok": true,
+     "sql": "SELECT d.name, COUNT(r.id) AS ride_count FROM drivers d LEFT JOIN rides r ON d.id = r.driver_id GROUP BY d.name ORDER BY ride_count DESC LIMIT 1;",
+     "rows": 1
+    },
+    {
+     "ok": false,
+     "sql": "SELECT ROUND(AVG(r.fare / r.distance_km), 2) AS average_fare_per_km FROM rides r;",
+     "rows": 1,
+     "expect": "[(58.02,)]",
+     "got": "[(55.72,)]"
+    }
+   ],
+   "mig_bad_rows": 0,
+   "id": "T18",
+   "title": "taxi",
+   "raw_len": 550
+  },
+  {
+   "parse": true,
+   "migration": false,
+   "queries": [
+    {
+     "ok": true,
+     "sql": "SELECT name FROM users WHERE id NOT IN (SELECT user_id FROM subscriptions);",
+     "rows": 1
+    },
+    {
+     "ok": true,
+     "sql": "SELECT plan, COUNT(*) FROM subscriptions GROUP BY plan;",
+     "rows": 2
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM subscriptions WHERE (start_date <= '2026-03-01' AND (end_date IS NULL OR end_date >= '2026-03-01'));",
+     "rows": 1
+    }
+   ],
+   "mig_bad_rows": 3,
+   "id": "T19",
+   "title": "streaming",
+   "raw_len": 374
+  },
+  {
+   "parse": true,
+   "migration": true,
+   "queries": [
+    {
+     "ok": true,
+     "sql": "SELECT companies.name, COALESCE(SUM(deals.amount), 0) AS total_amount FROM companies LEFT JOIN deals ON companies.id = deals.company_id GROUP BY companies.name;",
+     "rows": 3
+    },
+    {
+     "ok": true,
+     "sql": "SELECT companies.name FROM companies LEFT JOIN deals ON companies.id = deals.company_id WHERE deals.id IS NULL;",
+     "rows": 1
+    },
+    {
+     "ok": true,
+     "sql": "SELECT deals.stage, ROUND(AVG(deals.amount), 2) AS average_amount FROM deals GROUP BY deals.stage;",
+     "rows": 3
+    }
+   ],
+   "mig_bad_rows": 0,
+   "id": "T20",
+   "title": "crm",
+   "raw_len": 601
+  }
+ ]
+}

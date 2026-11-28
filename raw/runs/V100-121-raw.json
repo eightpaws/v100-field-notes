@@ -1,0 +1,189 @@
+{
+ "harness": "v121 style conformance on an existing typed project",
+ "tag": "qwen2.5-coder-7b-q8",
+ "model": "qwen2.5-coder-7b-instruct-q8_0.gguf",
+ "engine": "llama.cpp build129 (af5c583) llama-server",
+ "temp": 0.0,
+ "tasks": 10,
+ "completed": 10,
+ "ruff_clean": 4,
+ "mypy_clean": 9,
+ "tests_passed": 8,
+ "median_edit_pct": 19.5,
+ "mean_edit_pct": 18.3,
+ "within_20pct": 7,
+ "gen_s_total": 40.8,
+ "rows": [
+  {
+   "task": "t01",
+   "func": "apply_percent_discount",
+   "gen_s": 4.2,
+   "ruff": 1,
+   "ruff_codes": [
+    "I001@6"
+   ],
+   "mypy": 0,
+   "mypy_msgs": [],
+   "test": true,
+   "test_tail": "3 passed in 0.01s",
+   "edit_pct": 27.9,
+   "similarity": 0.738,
+   "gen_lines": 41,
+   "ref_lines": 43
+  },
+  {
+   "task": "t02",
+   "func": "cheapest_item",
+   "gen_s": 3.4,
+   "ruff": 0,
+   "ruff_codes": [],
+   "mypy": 0,
+   "mypy_msgs": [],
+   "test": true,
+   "test_tail": "2 passed in 0.01s",
+   "edit_pct": 22.0,
+   "similarity": 0.821,
+   "gen_lines": 37,
+   "ref_lines": 41
+  },
+  {
+   "task": "t03",
+   "func": "safe_divide",
+   "gen_s": 3.9,
+   "ruff": 2,
+   "ruff_codes": [
+    "I001@6",
+    "E501@43"
+   ],
+   "mypy": 1,
+   "mypy_msgs": [
+    "shopkit/pricing.py:57: error: \"type[Decimal]\" has no attribute \"ROUND_HALF_UP\"  [attr-defined]"
+   ],
+   "test": false,
+   "test_tail": "1 failed, 1 passed in 0.03s",
+   "edit_pct": 19.5,
+   "similarity": 0.815,
+   "gen_lines": 40,
+   "ref_lines": 41
+  },
+  {
+   "task": "t04",
+   "func": "parse_decimal",
+   "gen_s": 5.3,
+   "ruff": 1,
+   "ruff_codes": [
+    "I001@3"
+   ],
+   "mypy": 0,
+   "mypy_msgs": [],
+   "test": false,
+   "test_tail": "1 failed, 1 passed in 0.02s",
+   "edit_pct": 18.4,
+   "similarity": 0.808,
+   "gen_lines": 50,
+   "ref_lines": 49
+  },
+  {
+   "task": "t05",
+   "func": "validate_email",
+   "gen_s": 5.0,
+   "ruff": 0,
+   "ruff_codes": [],
+   "mypy": 0,
+   "mypy_msgs": [],
+   "test": true,
+   "test_tail": "2 passed in 0.01s",
+   "edit_pct": 14.9,
+   "similarity": 0.851,
+   "gen_lines": 47,
+   "ref_lines": 47
+  },
+  {
+   "task": "t06",
+   "func": "group_by_category",
+   "gen_s": 3.4,
+   "ruff": 7,
+   "ruff_codes": [
+    "UP035@4",
+    "UP035@4",
+    "UP006@9",
+    "UP006@33",
+    "UP006@33",
+    "UP006@42",
+    "UP006@42"
+   ],
+   "mypy": 0,
+   "mypy_msgs": [],
+   "test": true,
+   "test_tail": "1 passed in 0.01s",
+   "edit_pct": 25.8,
+   "similarity": 0.719,
+   "gen_lines": 33,
+   "ref_lines": 31
+  },
+  {
+   "task": "t07",
+   "func": "sum_quantities",
+   "gen_s": 2.6,
+   "ruff": 0,
+   "ruff_codes": [],
+   "mypy": 0,
+   "mypy_msgs": [],
+   "test": true,
+   "test_tail": "2 passed in 0.01s",
+   "edit_pct": 7.4,
+   "similarity": 0.926,
+   "gen_lines": 27,
+   "ref_lines": 27
+  },
+  {
+   "task": "t08",
+   "func": "find_by_sku",
+   "gen_s": 3.0,
+   "ruff": 0,
+   "ruff_codes": [],
+   "mypy": 0,
+   "mypy_msgs": [],
+   "test": true,
+   "test_tail": "2 passed in 0.01s",
+   "edit_pct": 9.7,
+   "similarity": 0.903,
+   "gen_lines": 31,
+   "ref_lines": 31
+  },
+  {
+   "task": "t09",
+   "func": "format_price",
+   "gen_s": 5.3,
+   "ruff": 1,
+   "ruff_codes": [
+    "I001@3"
+   ],
+   "mypy": 0,
+   "mypy_msgs": [],
+   "test": true,
+   "test_tail": "2 passed in 0.01s",
+   "edit_pct": 20.0,
+   "similarity": 0.744,
+   "gen_lines": 46,
+   "ref_lines": 40
+  },
+  {
+   "task": "t10",
+   "func": "truncate_text",
+   "gen_s": 4.7,
+   "ruff": 1,
+   "ruff_codes": [
+    "I001@3"
+   ],
+   "mypy": 0,
+   "mypy_msgs": [],
+   "test": true,
+   "test_tail": "3 passed in 0.01s",
+   "edit_pct": 17.5,
+   "similarity": 0.815,
+   "gen_lines": 41,
+   "ref_lines": 40
+  }
+ ]
+}

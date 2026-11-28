@@ -1,0 +1,108 @@
+{
+ "runs": [
+  {
+   "n": 1,
+   "ms": 242,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 2,
+   "ms": 67,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 3,
+   "ms": 68,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 4,
+   "ms": 67,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 5,
+   "ms": 66,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 6,
+   "ms": 66,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 7,
+   "ms": 66,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 8,
+   "ms": 66,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 9,
+   "ms": 66,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 10,
+   "ms": 66,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 11,
+   "ms": 66,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 12,
+   "ms": 66,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 13,
+   "ms": 67,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 14,
+   "ms": 66,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 15,
+   "ms": 66,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 16,
+   "ms": 66,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 17,
+   "ms": 66,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 18,
+   "ms": 66,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 19,
+   "ms": 66,
+   "content": "total += price * qty"
+  },
+  {
+   "n": 20,
+   "ms": 66,
+   "content": "total += price * qty"
+  }
+ ],
+ "median_ms": 66,
+ "p95_ms": 68,
+ "min_ms": 66,
+ "max_ms": 242
+}

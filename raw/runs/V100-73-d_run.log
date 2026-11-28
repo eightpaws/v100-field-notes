@@ -1,0 +1,52 @@
+[transformers] `Siglip2ImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Siglip2ImageProcessor` instead.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00, 17.57it/s]
+Loading weights:   0%|          | 0/196 [00:00<?, ?it/s][ALoading weights: 100%|██████████| 196/196 [00:00<00:00, 2780.72it/s]
+Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00,  4.10it/s]
+Loading weights:   0%|          | 0/517 [00:00<?, ?it/s][A
+Loading weights:  25%|██▌       | 130/517 [00:00<00:00, 1294.33it/s][A
+Loading weights:  50%|█████     | 260/517 [00:00<00:00, 1153.13it/s][ALoading weights: 100%|██████████| 517/517 [00:00<00:00, 2034.46it/s]
+Loading pipeline components...:  71%|███████▏  | 5/7 [00:01<00:00,  3.15it/s]Loading pipeline components...:  86%|████████▌ | 6/7 [00:01<00:00,  3.31it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:01<00:00,  4.15it/s]
+There are modules in AutoencoderKL that should be kept in float32: []. Casting directly with `to()` can lead to inconsistent results; set `torch_dtype` in `from_pretrained()` instead to keep these modules in float32.
+/var/lib/ollama/venvs/video/lib/python3.12/site-packages/diffusers/pipelines/pipeline_utils.py:2273: FutureWarning: `enable_vae_slicing` is deprecated and will be removed in version 0.40.0. Calling `enable_vae_slicing()` on a `StableDiffusionXLPipeline` is deprecated and this method will be removed in a future version. Please use `pipe.vae.enable_slicing()`.
+  deprecate(
+/var/lib/ollama/venvs/video/lib/python3.12/site-packages/diffusers/pipelines/pipeline_utils.py:2300: FutureWarning: `enable_vae_tiling` is deprecated and will be removed in version 0.40.0. Calling `enable_vae_tiling()` on a `StableDiffusionXLPipeline` is deprecated and this method will be removed in a future version. Please use `pipe.vae.enable_tiling()`.
+  deprecate(
+Traceback (most recent call last):
+  File "/home/hermes/v100_73_images.py", line 68, in <module>
+    res["sdxl_768_30steps"] = sdxl()
+                              ^^^^^^
+  File "/home/hermes/v100_73_images.py", line 35, in sdxl
+    img = pipe(PROMPTS[i % len(PROMPTS)], num_inference_steps=steps, guidance_scale=6.0,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/ollama/venvs/video/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/ollama/venvs/video/lib/python3.12/site-packages/diffusers/pipelines/stable_diffusion_xl/pipeline_stable_diffusion_xl.py", line 1212, in __call__
+    noise_pred = self.unet(
+                 ^^^^^^^^^^
+  File "/var/lib/ollama/venvs/video/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/ollama/venvs/video/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/ollama/venvs/video/lib/python3.12/site-packages/diffusers/utils/peft_utils.py", line 315, in wrapper
+    result = forward_fn(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/ollama/venvs/video/lib/python3.12/site-packages/diffusers/models/unets/unet_2d_condition.py", line 1108, in forward
+    sample = self.conv_in(sample)
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/ollama/venvs/video/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/ollama/venvs/video/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/ollama/venvs/video/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 553, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/lib/ollama/venvs/video/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 548, in _conv_forward
+    return F.conv2d(
+           ^^^^^^^^^
+RuntimeError: GET was unable to find an engine to execute this computation

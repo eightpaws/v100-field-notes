@@ -1,0 +1,66 @@
+{
+ "model": "Qwen2.5-Coder-7B-Instruct-Q8_0",
+ "engine": "llama.cpp ",
+ "projects": {
+  "fastapi_jwt": {
+   "files": 12,
+   "score": 9,
+   "checks": {
+    "readme_with_run": true,
+    "license": true,
+    "env_sample": true,
+    "requirements_pinned": true,
+    "no_secrets": true,
+    "tests": true,
+    "gitignore_env": true,
+    "dockerfile": true,
+    "naming": true,
+    "parses_no_stubs": false
+   },
+   "secrets": [],
+   "stub_markers": 0
+  },
+  "cli_etl": {
+   "files": 8,
+   "score": 7,
+   "checks": {
+    "readme_with_run": true,
+    "license": false,
+    "env_sample": true,
+    "requirements_pinned": true,
+    "no_secrets": true,
+    "tests": true,
+    "gitignore_env": true,
+    "dockerfile": false,
+    "naming": true,
+    "parses_no_stubs": false
+   },
+   "secrets": [],
+   "stub_markers": 0
+  },
+  "api_client": {
+   "files": 7,
+   "score": 7,
+   "checks": {
+    "readme_with_run": true,
+    "license": true,
+    "env_sample": true,
+    "requirements_pinned": true,
+    "no_secrets": false,
+    "tests": true,
+    "gitignore_env": true,
+    "dockerfile": false,
+    "naming": true,
+    "parses_no_stubs": false
+   },
+   "secrets": [
+    "hardcoded_cred"
+   ],
+   "stub_markers": 0
+  }
+ },
+ "mean_score": 7.67,
+ "best_score": 9,
+ "secret_hits": 1,
+ "wall_s": 60.4
+}

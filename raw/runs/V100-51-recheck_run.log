@@ -1,0 +1,17 @@
+свободная память до старта: 90 ГБ
+=== ncmoe 20, q8_0 KV (повтор 1) ===
+| qwen3moe 30B.A3B Q4_K - Medium |  17.28 GiB |    30.53 B | CUDA       |  99 |         20 |   q8_0 |   q8_0 |   1 |           pp128 |        188.35 ± 0.00 |
+| qwen3moe 30B.A3B Q4_K - Medium |  17.28 GiB |    30.53 B | CUDA       |  99 |         20 |   q8_0 |   q8_0 |   1 |            tg32 |          0.95 ± 0.00 |
+=== ncmoe 20, q8_0 KV (повтор 2) ===
+| qwen3moe 30B.A3B Q4_K - Medium |  17.28 GiB |    30.53 B | CUDA       |  99 |         20 |   q8_0 |   q8_0 |   1 |           pp128 |        190.77 ± 0.00 |
+| qwen3moe 30B.A3B Q4_K - Medium |  17.28 GiB |    30.53 B | CUDA       |  99 |         20 |   q8_0 |   q8_0 |   1 |            tg32 |          0.94 ± 0.00 |
+=== ncmoe 20, q8_0 KV (повтор 3) ===
+| qwen3moe 30B.A3B Q4_K - Medium |  17.28 GiB |    30.53 B | CUDA       |  99 |         20 |   q8_0 |   q8_0 |   1 |           pp128 |        191.56 ± 0.00 |
+| qwen3moe 30B.A3B Q4_K - Medium |  17.28 GiB |    30.53 B | CUDA       |  99 |         20 |   q8_0 |   q8_0 |   1 |            tg32 |          0.86 ± 0.00 |
+=== ncmoe 16, q8_0 KV (контроль) ===
+| qwen3moe 30B.A3B Q4_K - Medium |  17.28 GiB |    30.53 B | CUDA       |  99 |         16 |   q8_0 |   q8_0 |   1 |           pp128 |        228.55 ± 0.00 |
+| qwen3moe 30B.A3B Q4_K - Medium |  17.28 GiB |    30.53 B | CUDA       |  99 |         16 |   q8_0 |   q8_0 |   1 |            tg32 |          1.16 ± 0.00 |
+=== ncmoe 16, f16 KV (контроль) ===
+| qwen3moe 30B.A3B Q4_K - Medium |  17.28 GiB |    30.53 B | CUDA       |  99 |         16 |   0 |           pp128 |        225.95 ± 0.00 |
+| qwen3moe 30B.A3B Q4_K - Medium |  17.28 GiB |    30.53 B | CUDA       |  99 |         16 |   0 |            tg32 |          1.08 ± 0.00 |
+ГОТОВО
