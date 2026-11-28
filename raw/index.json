@@ -882,6 +882,12 @@
   "verdict": "Same model, same size, same quant: the abliterated build kept every task the base build solved and added two, while refusals on harmful prompts fell from 2 of 20 to zero."
  },
  {
+  "id": "V100-159",
+  "title": "19.87 GB Q5_K_M via RPC: What does the second card provide",
+  "result_type": "mixed",
+  "verdict": "Full offload of 65 layers through RPC is launched; the second card provides 2.64x to one. \\| -ts (PC / V100) \\| VRAM V100 \\| decode tg128, tok/s (n=3) \\| MBPP pass@1 \\| \\|---\\|---\\|---\\|---\\| \\| 0.75 / 0.25 \\| 5821 MiB \\| 12.4 (12.3-12.4) \\| 0.65."
+ },
+ {
   "id": "4060ti-capabilities-vs-v100",
   "title": "What the 4060 Ti can do that the V100 cannot",
   "result_type": "unstated",
