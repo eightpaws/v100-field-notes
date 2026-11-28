@@ -877,9 +877,9 @@
  },
  {
   "id": "V100-158",
-  "title": "Abatement and code quality: two assemblies of one model of one size",
-  "result_type": "mixed",
-  "verdict": "MBPP 40 tasks: Standard Qwen3.8-27B IQ3_S - 25/40 (pass@1 0.625, 32.2 tok/s), abliterated of the same precision and size - 27/40 (0.675, 33.1 tok/s)."
+  "title": "Abliteration and code quality: two builds of one model at the same size and quant",
+  "result_type": "positive",
+  "verdict": "Same model, same size, same quant: the abliterated build kept every task the base build solved and added two, while refusals on harmful prompts fell from 2 of 20 to zero."
  },
  {
   "id": "4060ti-capabilities-vs-v100",
