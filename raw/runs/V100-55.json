@@ -1,0 +1,399 @@
+{
+ "card": "V100-55",
+ "engine": {
+  "name": "llama.cpp",
+  "version": "1.1.0-dev",
+  "build": 1,
+  "commit": "28148b5",
+  "tool": "llama-bench"
+ },
+ "gpu": "Tesla V100-SXM2-16GB, cc 7.0, 16144 MiB",
+ "driver": "580.178.04",
+ "cuda": "12.9",
+ "params": {
+  "n_batch": 2048,
+  "n_ubatch": 512,
+  "type_k": "f16",
+  "type_v": "f16"
+ },
+ "peak_vram_note": "sampled with nvidia-smi every 0.2 s; only configs from -ngl 44 upward were sampled (second sweep)",
+ "entries": [
+  {
+   "config": "dense_ngl20",
+   "peak_vram_mib": null,
+   "repeats": 1,
+   "rc": 0,
+   "n_gpu_layers": 20,
+   "n_cpu_moe": 0,
+   "model": "qwen2.5-32b-instruct.gguf",
+   "tests": [
+    {
+     "kind": "pp",
+     "n_prompt": 128,
+     "n_gen": 0,
+     "avg_ts": 67.19,
+     "stddev_ts": 0.0
+    },
+    {
+     "kind": "tg",
+     "n_prompt": 0,
+     "n_gen": 16,
+     "avg_ts": 3.91,
+     "stddev_ts": 0.0
+    }
+   ]
+  },
+  {
+   "config": "dense_ngl24",
+   "peak_vram_mib": null,
+   "repeats": 1,
+   "rc": 0,
+   "n_gpu_layers": 24,
+   "n_cpu_moe": 0,
+   "model": "qwen2.5-32b-instruct.gguf",
+   "tests": [
+    {
+     "kind": "pp",
+     "n_prompt": 128,
+     "n_gen": 0,
+     "avg_ts": 70.79,
+     "stddev_ts": 0.0
+    },
+    {
+     "kind": "tg",
+     "n_prompt": 0,
+     "n_gen": 16,
+     "avg_ts": 4.19,
+     "stddev_ts": 0.0
+    }
+   ]
+  },
+  {
+   "config": "dense_ngl28",
+   "peak_vram_mib": null,
+   "repeats": 1,
+   "rc": 0,
+   "n_gpu_layers": 28,
+   "n_cpu_moe": 0,
+   "model": "qwen2.5-32b-instruct.gguf",
+   "tests": [
+    {
+     "kind": "pp",
+     "n_prompt": 128,
+     "n_gen": 0,
+     "avg_ts": 80.33,
+     "stddev_ts": 0.0
+    },
+    {
+     "kind": "tg",
+     "n_prompt": 0,
+     "n_gen": 16,
+     "avg_ts": 4.75,
+     "stddev_ts": 0.0
+    }
+   ]
+  },
+  {
+   "config": "dense_ngl32",
+   "peak_vram_mib": null,
+   "repeats": 1,
+   "rc": 0,
+   "n_gpu_layers": 32,
+   "n_cpu_moe": 0,
+   "model": "qwen2.5-32b-instruct.gguf",
+   "tests": [
+    {
+     "kind": "pp",
+     "n_prompt": 128,
+     "n_gen": 0,
+     "avg_ts": 84.79,
+     "stddev_ts": 0.0
+    },
+    {
+     "kind": "tg",
+     "n_prompt": 0,
+     "n_gen": 16,
+     "avg_ts": 5.14,
+     "stddev_ts": 0.0
+    }
+   ]
+  },
+  {
+   "config": "dense_ngl40",
+   "peak_vram_mib": null,
+   "repeats": 1,
+   "rc": 0,
+   "n_gpu_layers": 40,
+   "n_cpu_moe": 0,
+   "model": "qwen2.5-32b-instruct.gguf",
+   "tests": [
+    {
+     "kind": "pp",
+     "n_prompt": 128,
+     "n_gen": 0,
+     "avg_ts": 102.27,
+     "stddev_ts": 0.0
+    },
+    {
+     "kind": "tg",
+     "n_prompt": 0,
+     "n_gen": 16,
+     "avg_ts": 6.42,
+     "stddev_ts": 0.0
+    }
+   ]
+  },
+  {
+   "config": "dense_ngl44",
+   "peak_vram_mib": 13461,
+   "repeats": 1,
+   "rc": 0,
+   "n_gpu_layers": 44,
+   "n_cpu_moe": 0,
+   "model": "qwen2.5-32b-instruct.gguf",
+   "tests": [
+    {
+     "kind": "pp",
+     "n_prompt": 128,
+     "n_gen": 0,
+     "avg_ts": 105.43,
+     "stddev_ts": 0.0
+    },
+    {
+     "kind": "tg",
+     "n_prompt": 0,
+     "n_gen": 16,
+     "avg_ts": 6.86,
+     "stddev_ts": 0.0
+    }
+   ]
+  },
+  {
+   "config": "dense_ngl48",
+   "peak_vram_mib": 14541,
+   "repeats": 1,
+   "rc": 0,
+   "n_gpu_layers": 48,
+   "n_cpu_moe": 0,
+   "model": "qwen2.5-32b-instruct.gguf",
+   "tests": [
+    {
+     "kind": "pp",
+     "n_prompt": 128,
+     "n_gen": 0,
+     "avg_ts": 122.89,
+     "stddev_ts": 0.0
+    },
+    {
+     "kind": "tg",
+     "n_prompt": 0,
+     "n_gen": 16,
+     "avg_ts": 7.51,
+     "stddev_ts": 0.0
+    }
+   ]
+  },
+  {
+   "config": "dense_ngl52",
+   "peak_vram_mib": 15659,
+   "repeats": 1,
+   "rc": 0,
+   "n_gpu_layers": 52,
+   "n_cpu_moe": 0,
+   "model": "qwen2.5-32b-instruct.gguf",
+   "tests": [
+    {
+     "kind": "pp",
+     "n_prompt": 128,
+     "n_gen": 0,
+     "avg_ts": 147.94,
+     "stddev_ts": 0.0
+    },
+    {
+     "kind": "tg",
+     "n_prompt": 0,
+     "n_gen": 16,
+     "avg_ts": 9.56,
+     "stddev_ts": 0.0
+    }
+   ]
+  },
+  {
+   "config": "dense_ngl56",
+   "peak_vram_mib": 311,
+   "repeats": 1,
+   "rc": 1,
+   "stderr_tail": [
+    "ggml_backend_buft_alloc_buffer_n_default: failed to allocate CUDA0 buffer of size 16636948480",
+    "llama_model_load: error loading model: unable to allocate CUDA0 buffer",
+    "llama_model_load_from_file_impl: failed to load model",
+    "llama_bench: error: failed to load model '/models/qwen2.5-32b-instruct.gguf'"
+   ],
+   "tests": []
+  },
+  {
+   "config": "dense_ngl60",
+   "peak_vram_mib": 311,
+   "repeats": 1,
+   "rc": 1,
+   "stderr_tail": [
+    "ggml_backend_buft_alloc_buffer_n_default: failed to allocate CUDA0 buffer of size 17846489088",
+    "llama_model_load: error loading model: unable to allocate CUDA0 buffer",
+    "llama_model_load_from_file_impl: failed to load model",
+    "llama_bench: error: failed to load model '/models/qwen2.5-32b-instruct.gguf'"
+   ],
+   "tests": []
+  },
+  {
+   "config": "dense_ngl64",
+   "peak_vram_mib": 311,
+   "repeats": 1,
+   "rc": 1,
+   "stderr_tail": [
+    "ggml_backend_buft_alloc_buffer_n_default: failed to allocate CUDA0 buffer of size 19095228416",
+    "llama_model_load: error loading model: unable to allocate CUDA0 buffer",
+    "llama_model_load_from_file_impl: failed to load model",
+    "llama_bench: error: failed to load model '/models/qwen2.5-32b-instruct.gguf'"
+   ],
+   "tests": []
+  },
+  {
+   "config": "dense_ngl99",
+   "peak_vram_mib": null,
+   "repeats": 1,
+   "rc": 1,
+   "stderr_tail": [
+    "ggml_backend_buft_alloc_buffer_n_default: failed to allocate CUDA0 buffer of size 19407413248",
+    "llama_model_load: error loading model: unable to allocate CUDA0 buffer",
+    "llama_model_load_from_file_impl: failed to load model",
+    "llama_bench: error: failed to load model '/models/qwen2.5-32b-instruct.gguf'"
+   ],
+   "tests": []
+  },
+  {
+   "config": "moe_ncmoe8",
+   "peak_vram_mib": null,
+   "repeats": 1,
+   "rc": 0,
+   "n_gpu_layers": 99,
+   "n_cpu_moe": 8,
+   "model": "qwen3-30b-a3b.gguf",
+   "tests": [
+    {
+     "kind": "pp",
+     "n_prompt": 128,
+     "n_gen": 0,
+     "avg_ts": 404.34,
+     "stddev_ts": 0.0
+    },
+    {
+     "kind": "tg",
+     "n_prompt": 0,
+     "n_gen": 16,
+     "avg_ts": 85.77,
+     "stddev_ts": 0.0
+    }
+   ]
+  },
+  {
+   "config": "moe_ncmoe16",
+   "peak_vram_mib": null,
+   "repeats": 1,
+   "rc": 0,
+   "n_gpu_layers": 99,
+   "n_cpu_moe": 16,
+   "model": "qwen3-30b-a3b.gguf",
+   "tests": [
+    {
+     "kind": "pp",
+     "n_prompt": 128,
+     "n_gen": 0,
+     "avg_ts": 260.18,
+     "stddev_ts": 0.0
+    },
+    {
+     "kind": "tg",
+     "n_prompt": 0,
+     "n_gen": 16,
+     "avg_ts": 57.64,
+     "stddev_ts": 0.0
+    }
+   ]
+  },
+  {
+   "config": "moe_ncmoe24",
+   "peak_vram_mib": null,
+   "repeats": 1,
+   "rc": 0,
+   "n_gpu_layers": 99,
+   "n_cpu_moe": 24,
+   "model": "qwen3-30b-a3b.gguf",
+   "tests": [
+    {
+     "kind": "pp",
+     "n_prompt": 128,
+     "n_gen": 0,
+     "avg_ts": 192.44,
+     "stddev_ts": 0.0
+    },
+    {
+     "kind": "tg",
+     "n_prompt": 0,
+     "n_gen": 16,
+     "avg_ts": 47.67,
+     "stddev_ts": 0.0
+    }
+   ]
+  },
+  {
+   "config": "ctl7b_ngl99",
+   "peak_vram_mib": null,
+   "repeats": 1,
+   "rc": 0,
+   "n_gpu_layers": 99,
+   "n_cpu_moe": 0,
+   "model": "qwen2.5-7b-instruct.gguf",
+   "tests": [
+    {
+     "kind": "pp",
+     "n_prompt": 128,
+     "n_gen": 0,
+     "avg_ts": 1359.0,
+     "stddev_ts": 0.0
+    },
+    {
+     "kind": "tg",
+     "n_prompt": 0,
+     "n_gen": 16,
+     "avg_ts": 120.05,
+     "stddev_ts": 0.0
+    }
+   ]
+  },
+  {
+   "config": "dense_max_r2",
+   "peak_vram_mib": 14541,
+   "repeats": 2,
+   "rc": 0,
+   "n_gpu_layers": 48,
+   "n_cpu_moe": 0,
+   "model": "qwen2.5-32b-instruct.gguf",
+   "tests": [
+    {
+     "kind": "pp",
+     "n_prompt": 128,
+     "n_gen": 0,
+     "avg_ts": 127.23,
+     "stddev_ts": 5.52
+    },
+    {
+     "kind": "tg",
+     "n_prompt": 0,
+     "n_gen": 16,
+     "avg_ts": 7.28,
+     "stddev_ts": 0.43
+    }
+   ]
+  }
+ ]
+}

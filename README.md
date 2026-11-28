@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **167** - 28 positive, 95 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **25** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **167** - 28 positive, 95 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **24** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -92,7 +92,7 @@ Read this before quoting a number.
 | [V100-52](results/V100-52.md) | Local edit → test → fix loop | **Positive.** The loop closes locally in 15 seconds per iteration, which makes unattended refactoring and test-fixing practical. A dense 32B on the same card would run at 3 tok/s and be unusable for this. |
 | [V100-53](results/V100-53.md) | Cache prefix: equal comparison at equal prompt length | **Positive.** At equal prompt length the prefix cache still wins 7.4x at 2k, 9.2x at 6k and 11.0x at 12k, and the gain grows with context instead of shrinking. The "8x" reported in V100-11 was an understatement, not an artifact of the different prompt lengths. |
 | [V100-54](results/V100-54.md) | Volt-forever: Honest native base with included cuDNN | **Mixed.** Partial: cuDNN-on is not available on our stack. |
-| [V100-55](results/V100-55.md) | Llama-Bench refuses to load more than 20 layers. | **Positive.** There is no limit of 20 layers. The matrix is based on Qwen3-Coder-30B (17.28 GiB), f16 KV, p128/n16: \| ncmoe \| prefill pp128 \| decode tg16 \| \|---\|---\|---\| \| 24 \| 179.2 \| 39.2 \| \| 32 \| 145.2 \| 34.6 \| Both configurations load and. |
+| [V100-55](results/V100-55.md) | There is no 20-layer limit: the ceiling is one device buffer of weights | **Positive.** There is no 20-layer limit: 52 of 64 layers fit and run, and the refusal above that is a single failed allocation of the whole offloaded weight buffer — which is also why -ngl 99 cannot… |
 | [V100-56](results/V100-56.md) | 32k with q8_0 KV and 64k with q4_0 KV on a 7B model | **Positive.** Both settings work: 32k with q8_0 and 64k with q4_0 KV fit on one 16 GB card, and decode stays at 126 tok/s at either context length. Compressed KV is what makes 64k possible at all; the price is prefill, which drops by a third from 32k to 64k. |
 | [V100-57](results/V100-57.md) | Q8_0 KV: Confirm double decoding or attribute to noise |  |
 | [V100-58](results/V100-58.md) | Throughput, batching, quality | **Mixed.** Under load, 1Cat-vLLM outperforms llama.cpp by six times. 7B GGUF, --max-model-len 4096, --gpu-memory-utilization 0.6, different prompts for all requests (otherwise prefix cache boosts the number): \| Mode \| Tokens \| Time \| Total. |
@@ -223,7 +223,6 @@ Until then the caveat stands, and a table row is not a substitute for a measurem
 |---|---|---|---|
 | V100-53 | V100-11 | repeat the prefix-cache comparison at equal prompt length | 1.5 h |
 | V100-54 | V100-27 | native baseline with cuDNN enabled | 1.5 h |
-| V100-55 | V100-37 | capture stderr to explain the ngl above 20 refusal | 1 h |
 | V100-56 | V100-02 | measure the 32k point and try q4_0 KV at 64k | 2 h |
 | V100-57 | V100-02 | repeat the q8_0 decode comparison with restarts between modes | 1.5 h |
 | V100-58 | V100-12 | batching at 1/4/8 clients, aggregate throughput, answer quality | 4 h |
@@ -247,7 +246,7 @@ Until then the caveat stands, and a table row is not a substitute for a measurem
 | V100-51b | V100-51 | re-measure and archive the raw output; the original run was not archived | 1 h |
 | V100-52b | V100-52 | re-measure and archive the raw output; the original run was not archived | 1 h |
 
-Total queued: **25** re-runs, roughly 40.5 h of GPU time.
+Total queued: **24** re-runs, roughly 39.5 h of GPU time.
 
 ## How to read this
 

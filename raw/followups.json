@@ -12,12 +12,6 @@
   "estimate": "1.5 h"
  },
  {
-  "id": "V100-55",
-  "parent": "V100-37",
-  "what": "capture stderr to explain the ngl above 20 refusal",
-  "estimate": "1 h"
- },
- {
   "id": "V100-56",
   "parent": "V100-02",
   "what": "measure the 32k point and try q4_0 KV at 64k",
