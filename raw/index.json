@@ -253,9 +253,9 @@
  },
  {
   "id": "V100-46",
-  "title": "Tool calling on a local V100 model",
-  "result_type": "positive",
-  "verdict": "Tool calling works correctly with the Qwen3-Coder chat template: valid JSON arguments, no extra calls, correct final answer. At 75 tok/s decode a conversational turn costs 2–3 s."
+  "title": "Tool calling: a five-task battery instead of one request",
+  "result_type": "mixed",
+  "verdict": "Argument formatting is not the problem: 0 malformed JSON and 0 repeated identical calls across 24 tool calls. Task success is: 2/5 for Qwen2.5-7B-Instruct and Qwen3-30B-A3B, 0/5 for…"
  },
  {
   "id": "V100-47",

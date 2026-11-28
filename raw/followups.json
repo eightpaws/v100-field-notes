@@ -114,12 +114,6 @@
   "estimate": "1 h"
  },
  {
-  "id": "V100-46b",
-  "parent": "V100-46",
-  "what": "re-measure and archive the raw output; the original run was not archived",
-  "estimate": "1 h"
- },
- {
   "id": "V100-47b",
   "parent": "V100-47",
   "what": "re-measure and archive the raw output; the original run was not archived",

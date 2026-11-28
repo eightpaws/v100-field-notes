@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **167** - 28 positive, 95 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **167** - 27 positive, 96 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **25** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -83,7 +83,7 @@ Read this before quoting a number.
 | [V100-43](results/V100-43.md) | llama-server as the working server: prefix cache and batching | **Positive.** Prefix caching works and is the main reason to run llama-server for agent workloads: prompt processing drops from 845 ms to 89 ms (9.5x), round trip from 1.18 s to 0.39 s. |
 | [V100-44](results/V100-44.md) | NVFP4 on sm_70: 4-bit float in 16 GB | **Mixed.** Works on sm_70. vLLM 1.5.4 (--quantization modelopt_fp4) boosted Ornith-1.5-9B-NVFP4 on V100: 14 133 MiB VRAM, decode 86.7-86.8 tok/s (first request 83.0), code is correct. |
 | [V100-45](results/V100-45.md) | Qwen3-Coder-30B-A3B as a coding writer on 16 GB | **Positive.** Working configuration is -ngl 99 -ncmoe 8 -c 4096. An 8192-token context needs more VRAM (compute buffer allocation fails), so long files require either 12 CPU layers or a smaller context. |
-| [V100-46](results/V100-46.md) | Tool calling on a local V100 model | **Positive.** Tool calling works correctly with the Qwen3-Coder chat template: valid JSON arguments, no extra calls, correct final answer. At 75 tok/s decode a conversational turn costs 2–3 s. |
+| [V100-46](results/V100-46.md) | Tool calling: a five-task battery instead of one request | **Mixed.** Argument formatting is not the problem: 0 malformed JSON and 0 repeated identical calls across 24 tool calls. Task success is: 2/5 for Qwen2.5-7B-Instruct and Qwen3-30B-A3B, 0/5 for… |
 | [V100-47](results/V100-47.md) | DeepSeek-Coder-V2-Lite 16B MoE: the fastest decode on V100 | **Positive.** Best decode measured on this card by a wide margin: 183.6 tok/s with 2250 tok/s prefill, working configuration -ngl 99 -fa 0. Flash attention must be off — it is 160x slower on this architecture. |
 | [V100-48](results/V100-48.md) | FIM autocomplete in the editor via llama-server /infill | **Mixed.** FIM works and is fast enough to type ahead of a human. Latency is unstable (126 ms to 1.5 s on the same prompt) — the old build's slot handling is the suspect; a single slot with --cache-reuse is the next thing to try. |
 | [V100-49](results/V100-49.md) | Embeddings for code search with bge-m3 on V100 | **Mixed.** Mixed: recall@5 of 0.767 with 46x less context than reading ten whole files, but near-duplicate kernels are confused, so a reranker on top of the same index is the next step. |
@@ -240,7 +240,6 @@ Until then the caveat stands, and a table row is not a substitute for a measurem
 | V100-42b | V100-42 | re-measure and archive the raw output; the original run was not archived | 1 h |
 | V100-43b | V100-43 | re-measure and archive the raw output; the original run was not archived | 1 h |
 | V100-45b | V100-45 | re-measure and archive the raw output; the original run was not archived | 1 h |
-| V100-46b | V100-46 | re-measure and archive the raw output; the original run was not archived | 1 h |
 | V100-47b | V100-47 | re-measure and archive the raw output; the original run was not archived | 1 h |
 | V100-48b | V100-48 | re-measure and archive the raw output; the original run was not archived | 1 h |
 | V100-49c | V100-49 | reranker over the same index, and a Python corpus | 2 h |
