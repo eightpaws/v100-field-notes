@@ -415,9 +415,9 @@
  },
  {
   "id": "V100-74",
-  "title": "Olala-v1.0-mini-7A1B: MoE with 1B active on 16 GB",
-  "result_type": "mixed",
-  "verdict": "Blocked by engine (24.11). File downloaded and intact (5,990,551,040 bytes, exact size verified), but llama.cpp master from 24.11 (build 12.9, sm_70) responds with unknown model architecture: 'olala'."
+  "title": "Olala-v1.0-mini-7A1B: a fork loads the 7B MoE, but the output is degenerate",
+  "result_type": "negative",
+  "verdict": "**Negative.** A community fork loads the model and decodes at 43.5 tok/s, but the output is degenerate on GPU and CPU alike, so the model is unusable on this stack and its quality stays unmeasured."
  },
  {
   "id": "V100-75",
