@@ -224,8 +224,8 @@
  {
   "id": "V100-41",
   "title": "GPT-OSS-20B MXFP4 on a 16 GB Volta card",
-  "result_type": "mixed",
-  "verdict": "Usable only with flash attention on and 4 expert layers pushed to CPU: 24 tok/s decode. Both faster coding candidates (DeepSeek-Coder-V2-Lite at 183 tok/s, Qwen3-Coder-30B at 75 tok/s) beat it, so it stays out of the working stack."
+  "result_type": "positive",
+  "verdict": "The model fits a 16 GB V100 whole and decodes at 159 tok/s; pushing expert layers to the CPU only loses speed."
  },
  {
   "id": "V100-42",
