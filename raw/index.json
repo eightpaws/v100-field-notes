@@ -585,7 +585,7 @@
   "id": "V100-103",
   "title": "Batch savings: Batch vs individual loads",
   "result_type": "positive",
-  "verdict": "Group of four runs on one model: batch 23.9 s vs."
+  "verdict": "Batching pays: four runs on one model take 23.9 s back to back versus 39.1 s as separate loads, a 38.8 % saving, because every model switch costs a reload - 3-4 s for a 7B, about 10 s for a 16B, 40-60 s for a 30B MoE - that batching removes."
  },
  {
   "id": "V100-104",
