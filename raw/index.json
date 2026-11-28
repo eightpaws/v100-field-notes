@@ -471,7 +471,7 @@
   "id": "V100-83",
   "title": "Strata-V100: third engine for verification",
   "result_type": "mixed",
-  "verdict": "Third engine works on sm_70: pass@1 0.53 on 200 MBPP tasks at 38.1 tok/s, and the 23k-token needle was found in 11.9 s - usable, but only in a 1-bit quant."
+  "verdict": "Run Coder IQ1_M (25.11.2026, VM 200, V100-SXM2-16GB)."
  },
  {
   "id": "V100-84",
@@ -620,7 +620,7 @@
  {
   "id": "V100-109",
   "title": "Medium-sized project from scratch: FastAPI, Postgres, authorization, tests, Docker",
-  "result_type": "mixed",
+  "result_type": "negative",
   "verdict": "The project has been assembled but does not launch."
  },
  {

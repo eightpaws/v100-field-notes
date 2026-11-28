@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **168** - 30 positive, 94 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **24** - each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **168** - 30 positive, 93 mixed, 31 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **24** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -119,7 +119,7 @@ Read this before quoting a number.
 | [V100-80](results/V100-80.md) | Inkling-2-Mini 26B/3.4B Q3 on sm_70: NaN check | **Positive.** Usable: a 26B MoE at 13.6 GB answers correctly on a 16 GB Volta card at about 29 tok/s, provided the client allows a long thinking budget and reads reasoning_content as part of the stream. |
 | [V100-81](results/V100-81.md) | MOE cache experts in RAM instead of `-ncmoe` | **Mixed.** Experts cache on sm_70 is not profitable: it doesn't fit on the card with -ncmoe 8, and when it fits (with -ncmoe 12), it loses to the current scheme. |
 | [V100-82](results/V100-82.md) | 262K context on a single 16 GB card | **Positive.** Yes for a small model: 262k fits on 16 GB with quantised KV. The ceiling is set by model size, not by the card: 0.5–1B reaches 262k, a dense 7B is realistic at 64k, and a 30B MoE at 8–16k. |
-| [V100-83](results/V100-83.md) | Strata-V100: third engine for verification | **Mixed.** Third engine works on sm_70: pass@1 0.53 on 200 MBPP tasks at 38.1 tok/s, and the 23k-token needle was found in 11.9 s - usable, but only in a 1-bit quant. |
+| [V100-83](results/V100-83.md) | Strata-V100: third engine for verification | **Mixed.** Run Coder IQ1_M (25.11.2026, VM 200, V100-SXM2-16GB). |
 | [V100-84](results/V100-84.md) | QWEN38-MTP flags from the recipe | **Mixed.** The MTP flag is present in the build (--spec-type draft-mtp in build129), but there's nothing to test it on: the only Qwen3.8-27B on disk is a third-party quantum pxqn-onecard (13.57 GB), its tensor type 263 is outside the list of. |
 | [V100-85](results/V100-85.md) | Xing4.0-29B-A4B in IQ2_M | **Negative.** Negative. The 2-bit quant does what it promises on memory - a 29B MoE resident in 16 GB at 71 tok/s decode - but code quality lands at 0.425, below the card's 0.55 bar and below even a 7B model at Q8_0 (0.625) and a 7B in 4-bit AWQ (0.50). Worth keeping only as a fast drafter or summarizer, not as ... |
 | [V100-86](results/V100-86.md) | v100-llm-kit: prebuilt SM70 binaries vs our own build | **Mixed.** Mixed: prefill 16 % faster with the shipped sm_70 binaries, decode identical. Worth taking for long prompts (document analysis, repository context); not a reason to migrate a decode-bound workload. The vendor's agent wrapper (serve-qwen3.sh, Claude Code integration) and the claimed Gemma 4 26B-A4B ... |
@@ -144,7 +144,7 @@ Read this before quoting a number.
 | [V100-106](results/V100-106.md) | Linters as an acceptance gate: how much generated code passes first time | **Mixed.** Static checks are not the bottleneck: lint cleanliness is nearly free for this model (39/40), while the behaviour of the same code passes tests only 24/40, so tests must be the acceptance gate and linters only a hygiene filter. |
 | [V100-107](results/V100-107.md) | Safety: semgrep, bandit, gosec on generated code | **Mixed.** The "secure by default" prompt barely helps: 8 bandit findings in normal mode versus 7 in secure mode (MEDIUM 3 against 2, HIGH none in either), clean files 6 out of 10 versus 7. |
 | [V100-108](results/V100-108.md) | Tests that catch: mutation testing of generated tests | **Mixed.** Three branches, Qwen2.5-Coder-7B Q8, temp 0.2. |
-| [V100-109](results/V100-109.md) | Medium-sized project from scratch: FastAPI, Postgres, authorization, tests, Docker | **Mixed.** The project has been assembled but does not launch. |
+| [V100-109](results/V100-109.md) | Medium-sized project from scratch: FastAPI, Postgres, authorization, tests, Docker | **Negative.** The project has been assembled but does not launch. |
 | [V100-110](results/V100-110.md) | Red test cycle → repair on four languages | **Mixed.** 20 tasks (5 each in Python, JavaScript, C, Perl), Qwen2.5-Coder-7B-Instruct Q8_0, llama-server build129, temperature 0; total set - 25s, server up in 2s. |
 | [V100-111](results/V100-111.md) | Review diff: five planted bugs, accuracy and completeness | **Mixed.** 10 commits with 5 planted defects each (boundary, null, race, injection, leak), Qwen2.5-Coder-7B Q8_0, 16 seconds total. |
 | [V100-112](results/V100-112.md) | Refactoring with green tests | **Mixed.** Refactoring Tasks: 10 tasks, 2-3 files each (helper code extraction, global renaming, deduplication, signature change, constant extraction, module separation, dead parameter removal, common exception module, nested calculation extraction,. |
