@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **167** - 29 positive, 94 mixed, 30 negative
+Closed experiments: **167** - 29 positive, 94 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -141,7 +141,7 @@ Read this before quoting a number.
 | [V100-103](results/V100-103.md) | Batch savings: Batch vs individual loads | **Positive.** Group of four runs on one model: batch 23.9 s vs. |
 | [V100-104](results/V100-104.md) | GPU Unlock: Thawing cores 4060 Ti, +24% on 4060 | **Mixed.** Translation: "Measurement 'before' exists, unlock was not installed. |
 | [V100-105](results/V100-105.md) | Polyglot: eight languages on one harness | **Mixed.** 6 languages (Python, JavaScript, PHP, Ruby, Go, Java) x 10 functions x 21 statements per language, three models, temperature 0, one run 3m 4s. |
-| [V100-106](results/V100-106.md) | Linters as an acceptance gate: how much generated code passes first time | **Mixed.** Static checks are not the bottleneck: 39 of 40 files are lint-clean while the same code passes its tests only 24 of 40, so tests must be the acceptance gate and linters a hygiene filter. |
+| [V100-106](results/V100-106.md) | Linters as an acceptance gate: how much generated code passes first time | **Mixed.** Static checks are not the bottleneck: lint cleanliness is nearly free for this model (39/40), while the behaviour of the same code passes tests only 24/40, so tests must be the acceptance gate and linters only a hygiene filter. |
 | [V100-107](results/V100-107.md) | Safety: semgrep, bandit, gosec on generated code | **Mixed.** The "secure by default" prompt barely helps: 8 bandit findings in normal mode versus 7 in secure mode (MEDIUM 3 against 2, HIGH none in either), clean files 6 out of 10 versus 7. |
 | [V100-108](results/V100-108.md) | Tests that catch: mutation testing of generated tests | **Mixed.** Three branches, Qwen2.5-Coder-7B Q8, temp 0.2. |
 | [V100-109](results/V100-109.md) | Medium-sized project from scratch: FastAPI, Postgres, authorization, tests, Docker | **Mixed.** The project has been assembled but does not launch. |
