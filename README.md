@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **168** - 29 positive, 95 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **24** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **168** - 30 positive, 94 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **24** - each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -188,7 +188,7 @@ Read this before quoting a number.
 | [V100-156](results/V100-156.md) | How many clients does 27B hold and where does TTFT fail? | **Mixed.** One PXA slot handles approximately 100 tok/s of aggregate at any number of clients, so only the queue grows. |
 | [V100-157](results/V100-157.md) | Gemma 4 26B-A4B: 32k context and quality on long prompt | **Mixed.** 32k context with q8_0 KV fits: rise 34s, peak VRAM 15,217 MiB of 16,144 (reserve 927 MiB). |
 | [V100-158](results/V100-158.md) | Abliteration and code quality: two builds of one model at the same size and quant | **Positive.** Same model, same size, same quant: the abliterated build kept every task the base build solved and added two, while refusals on harmful prompts fell from 2 of 20 to zero. |
-| [V100-159](results/V100-159.md) | 19.87 GB Q5_K_M via RPC: What does the second card provide | **Mixed.** Full offload of 65 layers through RPC is launched; the second card provides 2.64x to one. \| -ts (PC / V100) \| VRAM V100 \| decode tg128, tok/s (n=3) \| MBPP pass@1 \| \|---\|---\|---\|---\| \| 0.75 / 0.25 \| 5821 MiB \| 12.4 (12.3-12.4) \| 0.65. |
+| [V100-159](results/V100-159.md) | 19.87 GB Q5_K_M over GGML_RPC: what the second card adds | **Positive.** Splitting a 27B Q5_K_M across both cards over RPC does what a single card cannot - 19.6 tok/s against 7.43 at partial offload, with pass@1 unchanged at 0.65. |
 | [upscale-for-print](results/upscale-for-print.md) | Upscaling for print: ESRGAN vs UltraSharp, SUPIR blocked by the channel | **Mixed.** Mixed. The GAN half is measured and inspected: Real-ESRGAN at 0,9 s per frame is acceptable for A4 after colour correction but adds no real texture, while 4x-UltraSharp in this form is unusable for product photos - the buyer would see details the product does not have. The diffusion half produced ... |
 | [4060ti-capabilities-vs-v100](results/4060ti-capabilities-vs-v100.md) | What the 4060 Ti can do that the V100 cannot | The split is clean and measured: the 4060 Ti is the card that can train QLoRA at 398 tok/s (3B) and run bf16 paths, while the V100 is the card that serves inference with 900 GB/s and answers prefill-bound requests; routing training to the 4060 Ti and serving to the V100 is the rule these numbers ... |
 | [background-swap-three-methods](results/background-swap-three-methods.md) | Background replacement: three methods, the deterministic one won | **Positive.** Positive for the catalogue path: the deterministic white background wins on untouchable product pixels and cost, while img2img and inpainting stay for interior scenes where a prompt cannot steer colour reliably. Three methods, three clear roles, no method pretending to do all three. |

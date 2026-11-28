@@ -1,0 +1,102 @@
+{
+ "card": "V100-159",
+ "title": "19.87 GB Q5_K_M over GGML_RPC on two cards",
+ "engine": "llama.cpp 1.0.0-dev build 12359 (commit b1b770d90) built with GGML_RPC=ON; ggml-rpc-server b12816 on the second card",
+ "entries": [
+  {
+   "split_benchmark": [
+    {
+     "split_pc_v100": "0.75,0.25",
+     "tag": "decode_v100_heavy2",
+     "v100_vram_mib": 5821,
+     "decode_tok_s_mean": 12.4,
+     "decode_tok_s_range": [
+      12.3,
+      12.4
+     ],
+     "decode_repeats": 3,
+     "mbpp_pass_at_1": "0.65 (26/40)"
+    },
+    {
+     "split_pc_v100": "0.65,0.35",
+     "tag": "decode_v100_heavy",
+     "v100_vram_mib": 7699,
+     "decode_tok_s_mean": 13.4,
+     "decode_tok_s_range": [
+      12.9,
+      13.7
+     ],
+     "decode_repeats": 3,
+     "mbpp_pass_at_1": "0.65 (26/40)"
+    },
+    {
+     "split_pc_v100": "0.50,0.50",
+     "tag": "decode_half_half",
+     "v100_vram_mib": 10413,
+     "decode_tok_s_mean": 16.6,
+     "decode_tok_s_range": [
+      16.4,
+      16.7
+     ],
+     "decode_repeats": 3,
+     "mbpp_pass_at_1": "0.65 (26/40)"
+    },
+    {
+     "split_pc_v100": "0.35,0.65",
+     "tag": "decode_v100_065",
+     "v100_vram_mib": 12953,
+     "decode_tok_s_mean": 19.4,
+     "decode_tok_s_range": [
+      19.3,
+      19.5
+     ],
+     "decode_repeats": 3,
+     "mbpp_pass_at_1": "not measured"
+    },
+    {
+     "split_pc_v100": "0.25,0.75",
+     "tag": "decode_v100_075",
+     "v100_vram_mib": 14841,
+     "decode_tok_s_mean": 19.6,
+     "decode_tok_s_range": [
+      19.1,
+      20.3
+     ],
+     "decode_repeats": 3,
+     "mbpp_pass_at_1": "not measured"
+    }
+   ],
+   "note": "decode = n=3 x 128 tokens, prompt 33 tokens; VRAM from nvidia-smi after load"
+  },
+  {
+   "harness": "mbpp 0.50/0.50",
+   "tasks": 40,
+   "passed": 26,
+   "pass_at_1": 0.65,
+   "avg_sec": 8.98,
+   "tok_s": 12.2,
+   "model": "qwen38-27b-ud-q5km.gguf",
+   "flags": "--no-think --max-tokens 1536"
+  },
+  {
+   "harness": "mbpp 0.65/0.35",
+   "tasks": 40,
+   "passed": 26,
+   "pass_at_1": 0.65,
+   "avg_sec": 11.27,
+   "tok_s": 9.8,
+   "model": "qwen38-27b-ud-q5km.gguf",
+   "flags": "--no-think --max-tokens 1536"
+  },
+  {
+   "harness": "mbpp 0.75/0.25",
+   "tasks": 40,
+   "passed": 26,
+   "pass_at_1": 0.65,
+   "avg_sec": 11.79,
+   "tok_s": 9.3,
+   "model": "qwen38-27b-ud-q5km.gguf",
+   "flags": "--no-think --max-tokens 1536"
+  }
+ ]
+}
