@@ -1,4 +1,4 @@
-=== fa=off, p256/n64 (база, повтор) ===
+=== fa=off, p256/n64 (ru, ru) ===
 | deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   0 |           pp256 |     2978.15 ± 207.72 |
 | deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   0 |            tg64 |        187.12 ± 0.84 |
 === fa=on,  p256/n64 ===
@@ -14,4 +14,4 @@
 | deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |           pp256 |      1113.18 ± 93.70 |
 | deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            tg64 |         37.43 ± 3.28 |
 === fa=off, q8_0 KV, p256/n64 ===
-ГОТОВО
+ru

@@ -1,9 +1,9 @@
-[06:10:14] фиксирую video
-  пакетов: 302
-[06:10:15] фиксирую vllm
-  пакетов: 191
-[06:10:16] переношу уже скачанные колёса
-  колёс на диске: 5
-[06:10:20] докачиваю критичные пакеты
+[06:10:14] ru video
+  ru: 302
+[06:10:15] ru vllm
+  ru: 191
+[06:10:16] ru ru ru ru
+  ru ru ru: 5
+[06:10:20] ru ru ru
 WARNING: The directory '/var/cache/pkg/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
-[06:17:11] итог: колёс 12, объём 2.3G
+[06:17:11] ru: ru 12, ru 2.3G
