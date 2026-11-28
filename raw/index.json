@@ -199,9 +199,9 @@
  },
  {
   "id": "V100-37",
-  "title": "32B dense vs 30B MoE: decode re-measured with 96 GB RAM",
+  "title": "32B dense vs 30B MoE: decode re-measured on 94 GiB of RAM",
   "result_type": "negative",
-  "verdict": "The 16 GB card is the wall, not system RAM: dense 32B Q4 decodes at 3.9 tok/s and the 30B MoE at 31.5 tok/s (n=3), and -ngl 99 fails with cudaMalloc OOM at 17.5-18.5 GiB requested."
+  "verdict": "System RAM is not the wall: with 94 GiB the dense 32B still decodes at 3.9 tok/s and the 30B MoE at 31.5 tok/s, so on 16 GB load a 30B MoE or stay at 14B dense; dense 30B+ is not worth the download."
  },
  {
   "id": "V100-38",
