@@ -805,9 +805,9 @@
  },
  {
   "id": "V100-146",
-  "title": "CogVideoX-5B: does not launch on this stack",
+  "title": "CogVideoX-5B: 480p runs to full clip length, 720x480 runs out of memory",
   "result_type": "mixed",
-  "verdict": "CogVideoX-5B does not run on this build: with cuDNN enabled, it's GET was unable to find an engine on fp16-convolutions, and with disabled, the VAE decoder requests 17.8 GiB while only 8.8 is available."
+  "verdict": "**Mixed.** 480p works to the model's full 49 frames in 110 s at 12 281 MiB peak, 720x480 runs out of memory on 16 GB; the earlier blocked verdict was the cuDNN 9 build, not the GPU."
  },
  {
   "id": "V100-147",
@@ -997,9 +997,9 @@
  },
  {
   "id": "video-cogvideox-blocked",
-  "title": "CogVideoX on V100: 480p runs to full clip length, 720x480 runs out of memory",
-  "result_type": "mixed",
-  "verdict": "**Mixed.** CogVideoX-5B does run on this card and produces full-length 480p clips at 2.2-2.7 s per frame (49 frames in 110 s, 12 281 MiB peak), but 720x480 runs out of memory on 16 GB; the earlier blocked verdict was the cuDNN 9 build, not the GPU."
+  "title": "CogVideoX on V100 — blocked by the build, not by the model",
+  "result_type": "negative",
+  "verdict": "With cuDNN 9 video is blocked for a build reason, not a model limit: fp16 convolutions find no engine on sm_70, and without cuDNN the VAE asks 17.8 GiB. With the cuDNN 8 environment the same model runs - see V100-146."
  },
  {
   "id": "vlm-card-controller-fails",
