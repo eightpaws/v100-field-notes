@@ -1,9 +1,9 @@
 [
  {
   "id": "V100-01",
-  "title": "Speculative decoding in llama.cpp",
-  "result_type": "mixed",
-  "verdict": "Speculative decoding was tested on two targets, and the result depends on the model pair: it accelerates on 7B, but slows down almost twofold on 14B."
+  "title": "Speculative decoding in llama.cpp: slower on both targets",
+  "result_type": "negative",
+  "verdict": "A 0.5B Q8 draft under --spec-type draft-simple makes decoding slower on this card for both a 7B and a 14B Q4 target, and the earlier +21% on 7B does not reproduce."
  },
  {
   "id": "V100-02",

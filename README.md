@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **167** - 29 positive, 95 mixed, 29 negative, 14 with a measured result but no pass/fail verdict.Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **167** - 29 positive, 94 mixed, 30 negative
 
 ## Test rig
 
@@ -42,7 +42,7 @@ Read this before quoting a number.
 
 | Idea | What | Result |
 |---|---|---|
-| [V100-01](results/V100-01.md) | Speculative decoding in llama.cpp | **Mixed.** Speculative decoding was tested on two targets, and the result depends on the model pair: it accelerates on 7B, but slows down almost twofold on 14B. |
+| [V100-01](results/V100-01.md) | Speculative decoding in llama.cpp: slower on both targets | **Negative.** A 0.5B Q8 draft under --spec-type draft-simple makes decoding slower on this card for both a 7B and a 14B Q4 target, and the earlier +21% on 7B does not reproduce. |
 | [V100-02](results/V100-02.md) | q8_0 KV cache: how much context a 14B model gets in 16 GB | **Mixed.** Keep q8_0 KV with FlashAttention on, and treat 32k as the practical ceiling for a 14B model on a 16 GB card. 64k does not fit at any KV precision, so the "64k on a V100" advice is worth ignoring rather than retrying. |
 | [V100-03](results/V100-03.md) | Importance matrix for Q4_K on a Russian corpus | **Mixed.** Mixed: 0.61 % lower held-out perplexity at an identical file size, but no measurable change in cloze accuracy — cheap to produce, not a quality lever for Russian answers. |
 | [V100-04](results/V100-04.md) | VLM as a card reject controller | **Mixed.** Qwen2.5-VL-3B-Instruct (fp16, device_map=cuda) on 24 generated cards 640x640 produced 24 out of 24 "good", 1.8 sec per image (45.4 sec per batch), peak VRAM 7,634 MiB. |
