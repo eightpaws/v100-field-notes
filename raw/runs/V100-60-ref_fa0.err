@@ -1,0 +1,7 @@
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 16144 MiB):
+  Device 0: Tesla V100-SXM2-16GB, compute capability 7.0, VMM: yes, VRAM: 16144 MiB
+ggml_backend_cuda_buffer_type_alloc_buffer: allocating 8148.38 MiB on device 0: cudaMalloc failed: out of memory
+ggml_backend_buft_alloc_buffer_n_default: failed to allocate CUDA0 buffer of size 8544198656
+llama_model_load: error loading model: unable to allocate CUDA0 buffer
+llama_model_load_from_file_impl: failed to load model
+llama_bench: error: failed to load model '/models/qwen2.5-coder-14b.gguf'

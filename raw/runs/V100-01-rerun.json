@@ -1,0 +1,230 @@
+{
+ "card": "V100-01",
+ "build": "",
+ "prompt_lang": "ru",
+ "prompt_sha256": "b0b64dd963bc6ae5",
+ "prompt_note": "prompt is the same Russian phrase as in the original 2026-11-23 run; the text is omitted here so this public raw file stays ASCII-only",
+ "n_predict": 96,
+ "temperature": 0.0,
+ "repeats": 3,
+ "started": "2026-11-28T01:03:54Z",
+ "configs": [
+  {
+   "config": "7b_base",
+   "model": "qwen2.5-coder-7b-instruct-q4_k_m.gguf",
+   "draft": false,
+   "port": 18171,
+   "cmd": "/root/llama-old/build/bin/llama-server -m /srv/media/ai-cache/downloads/qwen2.5-coder-7b-instruct-q4_k_m.gguf -ngl 99 -c 4096 -np 1 --host 127.0.0.1 --port 18171 -lv 2",
+   "log": "/srv/media/night/v100_01_7b_base.log",
+   "runs": [
+    {
+     "i": 1,
+     "predicted_n": 96,
+     "decode_tok_s": 121.27,
+     "prompt_n": 16,
+     "prefill_tok_s": 382.78,
+     "wall_s": 0.83,
+     "vram_mib_before": 4897,
+     "vram_mib_after": 4897,
+     "draft_n": null,
+     "draft_n_accepted": null,
+     "content_sha_head": "218ce82540c2"
+    },
+    {
+     "i": 2,
+     "predicted_n": 96,
+     "decode_tok_s": 121.25,
+     "prompt_n": 16,
+     "prefill_tok_s": 844.77,
+     "wall_s": 0.81,
+     "vram_mib_before": 4897,
+     "vram_mib_after": 4897,
+     "draft_n": null,
+     "draft_n_accepted": null,
+     "content_sha_head": "218ce82540c2"
+    },
+    {
+     "i": 3,
+     "predicted_n": 96,
+     "decode_tok_s": 120.78,
+     "prompt_n": 16,
+     "prefill_tok_s": 839.37,
+     "wall_s": 0.81,
+     "vram_mib_before": 4897,
+     "vram_mib_after": 4897,
+     "draft_n": null,
+     "draft_n_accepted": null,
+     "content_sha_head": "218ce82540c2"
+    }
+   ],
+   "load_s": 14.1,
+   "decode_mean": 121.1,
+   "decode_stdev": 0.28,
+   "draft_acceptance": null,
+   "vram_peak_mib": 4897
+  },
+  {
+   "config": "7b_spec",
+   "model": "qwen2.5-coder-7b-instruct-q4_k_m.gguf",
+   "draft": true,
+   "port": 18172,
+   "cmd": "/root/llama-old/build/bin/llama-server -m /srv/media/ai-cache/downloads/qwen2.5-coder-7b-instruct-q4_k_m.gguf -ngl 99 -c 4096 -np 1 --host 127.0.0.1 --port 18172 -lv 2 --spec-type draft-simple -md /srv/media/ai-cache/downloads/qwen2.5-0.5b-instruct-q8_0.gguf --spec-draft-ngl 99 --spec-draft-n-max 8",
+   "log": "/srv/media/night/v100_01_7b_spec.log",
+   "runs": [
+    {
+     "i": 1,
+     "predicted_n": 96,
+     "decode_tok_s": 60.77,
+     "prompt_n": 16,
+     "prefill_tok_s": 314.93,
+     "wall_s": 1.62,
+     "vram_mib_before": 5489,
+     "vram_mib_after": 5493,
+     "draft_n": 255,
+     "draft_n_accepted": 61,
+     "content_sha_head": "218ce82540c2"
+    },
+    {
+     "i": 2,
+     "predicted_n": 96,
+     "decode_tok_s": 60.65,
+     "prompt_n": 16,
+     "prefill_tok_s": 654.64,
+     "wall_s": 1.6,
+     "vram_mib_before": 5493,
+     "vram_mib_after": 5493,
+     "draft_n": 255,
+     "draft_n_accepted": 61,
+     "content_sha_head": "218ce82540c2"
+    },
+    {
+     "i": 3,
+     "predicted_n": 96,
+     "decode_tok_s": 61.06,
+     "prompt_n": 16,
+     "prefill_tok_s": 660.53,
+     "wall_s": 1.58,
+     "vram_mib_before": 5493,
+     "vram_mib_after": 5493,
+     "draft_n": 255,
+     "draft_n_accepted": 61,
+     "content_sha_head": "218ce82540c2"
+    }
+   ],
+   "load_s": 6.0,
+   "decode_mean": 60.83,
+   "decode_stdev": 0.21,
+   "draft_acceptance": 0.239,
+   "vram_peak_mib": 5493
+  },
+  {
+   "config": "14b_base",
+   "model": "qwen2.5-coder-14b.gguf",
+   "draft": false,
+   "port": 18173,
+   "cmd": "/root/llama-old/build/bin/llama-server -m /models/qwen2.5-coder-14b.gguf -ngl 99 -c 4096 -np 1 --host 127.0.0.1 --port 18173 -lv 2",
+   "log": "/srv/media/night/v100_01_14b_base.log",
+   "runs": [
+    {
+     "i": 1,
+     "predicted_n": 96,
+     "decode_tok_s": 67.35,
+     "prompt_n": 16,
+     "prefill_tok_s": 287.74,
+     "wall_s": 1.47,
+     "vram_mib_before": 9407,
+     "vram_mib_after": 9407,
+     "draft_n": null,
+     "draft_n_accepted": null,
+     "content_sha_head": "8bf4a5aeb547"
+    },
+    {
+     "i": 2,
+     "predicted_n": 96,
+     "decode_tok_s": 67.48,
+     "prompt_n": 16,
+     "prefill_tok_s": 424.98,
+     "wall_s": 1.46,
+     "vram_mib_before": 9407,
+     "vram_mib_after": 9407,
+     "draft_n": null,
+     "draft_n_accepted": null,
+     "content_sha_head": "8bf4a5aeb547"
+    },
+    {
+     "i": 3,
+     "predicted_n": 96,
+     "decode_tok_s": 67.38,
+     "prompt_n": 16,
+     "prefill_tok_s": 429.52,
+     "wall_s": 1.45,
+     "vram_mib_before": 9407,
+     "vram_mib_after": 9407,
+     "draft_n": null,
+     "draft_n_accepted": null,
+     "content_sha_head": "8bf4a5aeb547"
+    }
+   ],
+   "load_s": 20.0,
+   "decode_mean": 67.4,
+   "decode_stdev": 0.07,
+   "draft_acceptance": null,
+   "vram_peak_mib": 9407
+  },
+  {
+   "config": "14b_spec",
+   "model": "qwen2.5-coder-14b.gguf",
+   "draft": true,
+   "port": 18174,
+   "cmd": "/root/llama-old/build/bin/llama-server -m /models/qwen2.5-coder-14b.gguf -ngl 99 -c 4096 -np 1 --host 127.0.0.1 --port 18174 -lv 2 --spec-type draft-simple -md /srv/media/ai-cache/downloads/qwen2.5-0.5b-instruct-q8_0.gguf --spec-draft-ngl 99 --spec-draft-n-max 8",
+   "log": "/srv/media/night/v100_01_14b_spec.log",
+   "runs": [
+    {
+     "i": 1,
+     "predicted_n": 96,
+     "decode_tok_s": 39.61,
+     "prompt_n": 16,
+     "prefill_tok_s": 237.73,
+     "wall_s": 2.47,
+     "vram_mib_before": 9999,
+     "vram_mib_after": 10005,
+     "draft_n": 286,
+     "draft_n_accepted": 57,
+     "content_sha_head": "110f52247109"
+    },
+    {
+     "i": 2,
+     "predicted_n": 96,
+     "decode_tok_s": 39.67,
+     "prompt_n": 16,
+     "prefill_tok_s": 362.73,
+     "wall_s": 2.45,
+     "vram_mib_before": 10005,
+     "vram_mib_after": 10005,
+     "draft_n": 286,
+     "draft_n_accepted": 57,
+     "content_sha_head": "110f52247109"
+    },
+    {
+     "i": 3,
+     "predicted_n": 96,
+     "decode_tok_s": 39.58,
+     "prompt_n": 16,
+     "prefill_tok_s": 375.14,
+     "wall_s": 2.45,
+     "vram_mib_before": 10005,
+     "vram_mib_after": 10005,
+     "draft_n": 286,
+     "draft_n_accepted": 57,
+     "content_sha_head": "110f52247109"
+    }
+   ],
+   "load_s": 4.0,
+   "decode_mean": 39.62,
+   "decode_stdev": 0.05,
+   "draft_acceptance": 0.199,
+   "vram_peak_mib": 10005
+  }
+ ],
+ "finished": "2026-11-28T01:05:19Z"
+}

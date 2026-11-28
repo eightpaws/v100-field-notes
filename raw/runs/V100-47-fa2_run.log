@@ -1,0 +1,17 @@
+=== fa=off, p256/n64 (база, повтор) ===
+| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   0 |           pp256 |     2978.15 ± 207.72 |
+| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   0 |            tg64 |        187.12 ± 0.84 |
+=== fa=on,  p256/n64 ===
+| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   1 |           pp256 |     1013.38 ± 298.85 |
+| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   1 |            tg64 |         50.44 ± 1.83 |
+=== fa=on,  p2048/n64 ===
+| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   1 |          pp2048 |       694.04 ± 34.58 |
+| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   1 |            tg64 |         46.98 ± 5.43 |
+=== fa=off, p2048/n64 ===
+| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   0 |          pp2048 |      3489.62 ± 48.89 |
+| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   0 |            tg64 |        186.95 ± 0.81 |
+=== fa=on,  q8_0 KV, p256/n64 ===
+| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |           pp256 |      1113.18 ± 93.70 |
+| deepseek2 16B Q4_K - Medium    |   9.65 GiB |    15.71 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            tg64 |         37.43 ± 3.28 |
+=== fa=off, q8_0 KV, p256/n64 ===
+ГОТОВО

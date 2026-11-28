@@ -1,0 +1,253 @@
+{
+ "base_url": "http://127.0.0.1:18476",
+ "model": "qwen-abl",
+ "tasks": 40,
+ "repeats": 1,
+ "runs": 40,
+ "passed": 0,
+ "pass@1": 0.0,
+ "avg_sec": 0.0,
+ "tok_s": 0.0,
+ "rows": [
+  {
+   "task": 1,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 2,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 3,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 4,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 5,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 6,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 7,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 8,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 9,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 10,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 11,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 12,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 13,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 14,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 15,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 16,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 17,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 18,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 19,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 20,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 21,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 22,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 23,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 24,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 25,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 26,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 27,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 28,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 29,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 30,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 31,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 32,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 33,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 34,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 35,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 36,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 37,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 38,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 39,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 40,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "case": "1280x704_97_tiled",
+ "tiling": true,
+ "model": "Wan2.2-TI2V-5B",
+ "steps": 30,
+ "frames": 97,
+ "fps": 16,
+ "load_s": 5.9,
+ "gen_s": 903.0,
+ "video_s": 6.06,
+ "vram_peak_gb": 13.55,
+ "mp4": "/srv/media/night/v100_62_wan22_1280x704_97f_tiled.mp4",
+ "mp4_bytes": 143561,
+ "stills": [
+  "/srv/media/night/v100_62_frame_000.png",
+  "/srv/media/night/v100_62_frame_032.png",
+  "/srv/media/night/v100_62_frame_063.png",
+  "/srv/media/night/v100_62_frame_095.png"
+ ],
+ "seams": [
+  {
+   "worst_col": 586,
+   "worst_col_val": 5.986,
+   "median_col": 0.599,
+   "col_ratio": 9.99,
+   "worst_row": 596,
+   "worst_row_val": 6.538,
+   "median_row": 0.798,
+   "row_ratio": 8.19,
+   "frame": 0,
+   "sharpness": 17.0
+  },
+  {
+   "worst_col": 652,
+   "worst_col_val": 5.795,
+   "median_col": 0.624,
+   "col_ratio": 9.29,
+   "worst_row": 595,
+   "worst_row_val": 6.348,
+   "median_row": 0.794,
+   "row_ratio": 8.0,
+   "frame": 32,
+   "sharpness": 16.7
+  },
+  {
+   "worst_col": 585,
+   "worst_col_val": 5.914,
+   "median_col": 0.622,
+   "col_ratio": 9.51,
+   "worst_row": 596,
+   "worst_row_val": 6.41,
+   "median_row": 0.8,
+   "row_ratio": 8.01,
+   "frame": 63,
+   "sharpness": 16.0
+  },
+  {
+   "worst_col": 585,
+   "worst_col_val": 5.822,
+   "median_col": 0.629,
+   "col_ratio": 9.25,
+   "worst_row": 596,
+   "worst_row_val": 6.646,
+   "median_row": 0.801,
+   "row_ratio": 8.3,
+   "frame": 95,
+   "sharpness": 15.8
+  }
+ ],
+ "result": "OK"
+}

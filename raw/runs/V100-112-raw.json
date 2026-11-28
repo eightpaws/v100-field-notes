@@ -1,0 +1,264 @@
+{
+ "summary": {
+  "model": "qwen2.5-coder-7b-instruct-q8_0.gguf",
+  "tasks": 10,
+  "valid": 10,
+  "tests_green": 9,
+  "api_ok": 9,
+  "clean": 7,
+  "foreign_edits": 1,
+  "unrelated_touched": 0,
+  "boot_s": 2.0,
+  "total_s": 20.5,
+  "mean_reply_s": 1.6
+ },
+ "details": [
+  {
+   "id": "r01",
+   "name": "extract duplicated per-row arithmetic into one private helper",
+   "baseline_rc": 0,
+   "baseline_probe_rc": 1,
+   "baseline_tail": "OK\n",
+   "elapsed_s": 2.8,
+   "returned": [
+    "invoice.py"
+   ],
+   "foreign_files": [],
+   "written": [
+    "invoice.py"
+   ],
+   "valid": true,
+   "rc": 0,
+   "tests_green": true,
+   "api_ok": true,
+   "tests_tail": "OK\n",
+   "api_tail": "",
+   "unrelated_changed": false,
+   "clean": true
+  },
+  {
+   "id": "r02",
+   "name": "rename a private helper in every file that calls it",
+   "baseline_rc": 0,
+   "baseline_probe_rc": 1,
+   "baseline_tail": "OK\n",
+   "elapsed_s": 1.6,
+   "returned": [
+    "pricing.py",
+    "reports.py"
+   ],
+   "foreign_files": [],
+   "written": [
+    "pricing.py",
+    "reports.py"
+   ],
+   "valid": true,
+   "rc": 0,
+   "tests_green": true,
+   "api_ok": true,
+   "tests_tail": "OK\n",
+   "api_tail": "",
+   "unrelated_changed": false,
+   "clean": true
+  },
+  {
+   "id": "r03",
+   "name": "deduplicate identical normalisation into one private function",
+   "baseline_rc": 0,
+   "baseline_probe_rc": 1,
+   "baseline_tail": "OK\n",
+   "elapsed_s": 1.0,
+   "returned": [
+    "norm.py"
+   ],
+   "foreign_files": [],
+   "written": [
+    "norm.py"
+   ],
+   "valid": true,
+   "rc": 0,
+   "tests_green": true,
+   "api_ok": true,
+   "tests_tail": "OK\n",
+   "api_tail": "",
+   "unrelated_changed": false,
+   "clean": true
+  },
+  {
+   "id": "r04",
+   "name": "change a function signature and update all call sites",
+   "baseline_rc": 0,
+   "baseline_probe_rc": 1,
+   "baseline_tail": "OK\n",
+   "elapsed_s": 1.4,
+   "returned": [
+    "jobs.py",
+    "notify.py"
+   ],
+   "foreign_files": [],
+   "written": [
+    "jobs.py",
+    "notify.py"
+   ],
+   "valid": true,
+   "rc": 0,
+   "tests_green": true,
+   "api_ok": true,
+   "tests_tail": "OK\n",
+   "api_tail": "",
+   "unrelated_changed": false,
+   "clean": true
+  },
+  {
+   "id": "r05",
+   "name": "replace repeated magic bounds with module constants",
+   "baseline_rc": 0,
+   "baseline_probe_rc": 1,
+   "baseline_tail": "OK\n",
+   "elapsed_s": 1.2,
+   "returned": [
+    "limits.py"
+   ],
+   "foreign_files": [],
+   "written": [
+    "limits.py"
+   ],
+   "valid": true,
+   "rc": 0,
+   "tests_green": true,
+   "api_ok": true,
+   "tests_tail": "OK\n",
+   "api_tail": "",
+   "unrelated_changed": false,
+   "clean": true
+  },
+  {
+   "id": "r06",
+   "name": "move a private helper into a new module, keep the public API importable",
+   "baseline_rc": 0,
+   "baseline_probe_rc": 1,
+   "baseline_tail": "OK\n",
+   "elapsed_s": 1.0,
+   "returned": [
+    "_text.py",
+    "core.py"
+   ],
+   "foreign_files": [],
+   "written": [
+    "_text.py",
+    "core.py"
+   ],
+   "valid": true,
+   "rc": 0,
+   "tests_green": true,
+   "api_ok": true,
+   "tests_tail": "OK\n",
+   "api_tail": "",
+   "unrelated_changed": false,
+   "clean": true
+  },
+  {
+   "id": "r07",
+   "name": "remove an unused parameter and update the call sites",
+   "baseline_rc": 0,
+   "baseline_probe_rc": 1,
+   "baseline_tail": "OK\n",
+   "elapsed_s": 1.2,
+   "returned": [
+    "callers.py",
+    "fmt.py"
+   ],
+   "foreign_files": [],
+   "written": [
+    "callers.py",
+    "fmt.py"
+   ],
+   "valid": true,
+   "rc": 0,
+   "tests_green": true,
+   "api_ok": false,
+   "tests_tail": "OK\n",
+   "api_tail": "Traceback (most recent call last):\n  File \"/tmp/v112_8kpgsc7n/probe_api.py\", line 2, in <module>\n    assert list(inspect.signature(fmt.label).parameters) == [\"name\", \"code\"], inspect.signature(fmt.label)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: (name, code, legacy=False)\n",
+   "unrelated_changed": false,
+   "clean": false
+  },
+  {
+   "id": "r08",
+   "name": "deduplicate an exception class and a validator into one new module",
+   "baseline_rc": 0,
+   "baseline_probe_rc": 1,
+   "baseline_tail": "OK\n",
+   "elapsed_s": 1.7,
+   "returned": [
+    "api.py",
+    "checks.py",
+    "form.py"
+   ],
+   "foreign_files": [],
+   "written": [
+    "api.py",
+    "checks.py",
+    "form.py"
+   ],
+   "valid": true,
+   "rc": 0,
+   "tests_green": true,
+   "api_ok": true,
+   "tests_tail": "OK\n",
+   "api_tail": "",
+   "unrelated_changed": false,
+   "clean": true
+  },
+  {
+   "id": "r09",
+   "name": "extract a nested per-record calculation into a function",
+   "baseline_rc": 0,
+   "baseline_probe_rc": 1,
+   "baseline_tail": "OK\n",
+   "elapsed_s": 1.6,
+   "returned": [
+    "orders.py"
+   ],
+   "foreign_files": [],
+   "written": [
+    "orders.py"
+   ],
+   "valid": true,
+   "rc": 1,
+   "tests_green": false,
+   "api_ok": true,
+   "tests_tail": "Traceback (most recent call last):\n  File \"/tmp/v112_drzoxgyt/test_repo.py\", line 5, in <module>\n    assert build(data) == [{\"id\": 1, \"due\": 20.0}, {\"id\": 2, \"due\": 180.0}], build(data)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: [{'id': 1, 'due': 20.0}, {'id': 2, 'due': 180.0}, {'id': 3, 'due': 0}]\n",
+   "api_tail": "",
+   "unrelated_changed": false,
+   "clean": false
+  },
+  {
+   "id": "r10",
+   "name": "make a parameter keyword-only and fix the call sites",
+   "baseline_rc": 0,
+   "baseline_probe_rc": 1,
+   "baseline_tail": "OK\n",
+   "elapsed_s": 2.2,
+   "returned": [
+    "cli.py",
+    "runner.py",
+    "test_repo.py"
+   ],
+   "foreign_files": [
+    "test_repo.py"
+   ],
+   "written": [
+    "cli.py",
+    "runner.py"
+   ],
+   "valid": true,
+   "rc": 0,
+   "tests_green": true,
+   "api_ok": true,
+   "tests_tail": "OK\n",
+   "api_tail": "",
+   "unrelated_changed": false,
+   "clean": false
+  }
+ ]
+}

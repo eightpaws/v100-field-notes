@@ -1,0 +1,161 @@
+{
+ "card": "V100-124",
+ "model": "Qwen2.5-Coder-7B-Instruct-Q8_0",
+ "engine": "llama.cpp build129 (af5c583)",
+ "runs": [
+  {
+   "run": 1,
+   "gen_s": 5.0,
+   "lines": 50,
+   "passed": 3,
+   "total": 10,
+   "usage": {
+    "completion_tokens": 413,
+    "prompt_tokens": 330,
+    "total_tokens": 743,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "rows": [
+    {
+     "scenario": "ok_200",
+     "ok": false,
+     "note": "AttributeError: 'NoneType' object has no attribute 'JSONDecodeError'",
+     "s": 0.03
+    },
+    {
+     "scenario": "retry_429",
+     "ok": false,
+     "note": "AttributeError: 'NoneType' object has no attribute 'JSONDecodeError'",
+     "s": 2.01
+    },
+    {
+     "scenario": "retry_500",
+     "ok": false,
+     "note": "AttributeError: 'NoneType' object has no attribute 'JSONDecodeError'",
+     "s": 2.01
+    },
+    {
+     "scenario": "exhaust_retries",
+     "ok": true,
+     "note": "Exception, запросов 3",
+     "s": 3.01
+    },
+    {
+     "scenario": "dropped_conn",
+     "ok": false,
+     "note": "AttributeError: 'NoneType' object has no attribute 'JSONDecodeError'",
+     "s": 0.0
+    },
+    {
+     "scenario": "timeout",
+     "ok": true,
+     "note": "Exception за 2.6 с",
+     "s": 2.61
+    },
+    {
+     "scenario": "idem_key_sent",
+     "ok": false,
+     "note": "ключей 0",
+     "s": 0.0
+    },
+    {
+     "scenario": "idem_key_reused",
+     "ok": false,
+     "note": "уникальных ключей 0",
+     "s": 0.0
+    },
+    {
+     "scenario": "retry_after",
+     "ok": false,
+     "note": "AttributeError: 'NoneType' object has no attribute 'JSONDecodeError'",
+     "s": 2.01
+    },
+    {
+     "scenario": "no_retry_404",
+     "ok": true,
+     "note": "запросов 1",
+     "s": 0.0
+    }
+   ]
+  },
+  {
+   "run": 2,
+   "gen_s": 5.0,
+   "lines": 50,
+   "passed": 3,
+   "total": 10,
+   "usage": {
+    "completion_tokens": 413,
+    "prompt_tokens": 330,
+    "total_tokens": 743,
+    "prompt_tokens_details": {
+     "cached_tokens": 0
+    }
+   },
+   "rows": [
+    {
+     "scenario": "ok_200",
+     "ok": false,
+     "note": "AttributeError: 'NoneType' object has no attribute 'JSONDecodeError'",
+     "s": 0.03
+    },
+    {
+     "scenario": "retry_429",
+     "ok": false,
+     "note": "AttributeError: 'NoneType' object has no attribute 'JSONDecodeError'",
+     "s": 2.01
+    },
+    {
+     "scenario": "retry_500",
+     "ok": false,
+     "note": "AttributeError: 'NoneType' object has no attribute 'JSONDecodeError'",
+     "s": 2.01
+    },
+    {
+     "scenario": "exhaust_retries",
+     "ok": true,
+     "note": "Exception, запросов 3",
+     "s": 3.01
+    },
+    {
+     "scenario": "dropped_conn",
+     "ok": false,
+     "note": "AttributeError: 'NoneType' object has no attribute 'JSONDecodeError'",
+     "s": 0.0
+    },
+    {
+     "scenario": "timeout",
+     "ok": true,
+     "note": "Exception за 2.6 с",
+     "s": 2.61
+    },
+    {
+     "scenario": "idem_key_sent",
+     "ok": false,
+     "note": "ключей 0",
+     "s": 0.0
+    },
+    {
+     "scenario": "idem_key_reused",
+     "ok": false,
+     "note": "уникальных ключей 0",
+     "s": 0.0
+    },
+    {
+     "scenario": "retry_after",
+     "ok": false,
+     "note": "AttributeError: 'NoneType' object has no attribute 'JSONDecodeError'",
+     "s": 2.01
+    },
+    {
+     "scenario": "no_retry_404",
+     "ok": true,
+     "note": "запросов 1",
+     "s": 0.0
+    }
+   ]
+  }
+ ]
+}

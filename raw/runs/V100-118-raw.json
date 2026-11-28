@@ -1,0 +1,221 @@
+{
+ "model": "qwen2.5-coder-7b",
+ "tasks": 10,
+ "temperature": 0.0,
+ "max_tokens": 512,
+ "single": {
+  "passed": 7,
+  "pass@1": 0.7,
+  "avg_sec": 0.5,
+  "tokens": 490
+ },
+ "pipeline": {
+  "passed": 6,
+  "pass@1": 0.6,
+  "avg_sec": 6.1,
+  "tokens": 6516
+ },
+ "delta_pp": -10.0,
+ "rows": [
+  {
+   "task": 1,
+   "fname": "min_cost",
+   "single_ok": false,
+   "single_sec": 1.0,
+   "single_tok": 81,
+   "single_err": "Traceback (most recent call last):\n  File \"<string>\", line 8, in <module>\nAssertionError\n",
+   "pipe_ok": false,
+   "pipe_sec": 10.0,
+   "pipe_tok": 1073,
+   "pipe_selfcheck": false,
+   "pipe_err": "Traceback (most recent call last):\n  File \"<string>\", line 28, in <module>\nAssertionError\n",
+   "step_chars": [
+    1000,
+    1021,
+    756,
+    206,
+    756
+   ]
+  },
+  {
+   "task": 2,
+   "fname": "similar_elements",
+   "single_ok": false,
+   "single_sec": 0.5,
+   "single_tok": 30,
+   "single_err": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\nAssertionError\n",
+   "pipe_ok": false,
+   "pipe_sec": 4.8,
+   "pipe_tok": 493,
+   "pipe_selfcheck": true,
+   "pipe_err": "Traceback (most recent call last):\n  File \"<string>\", line 9, in <module>\nAssertionError\n",
+   "step_chars": [
+    672,
+    398,
+    224,
+    373,
+    224
+   ]
+  },
+  {
+   "task": 3,
+   "fname": "is_not_prime",
+   "single_ok": true,
+   "single_sec": 0.5,
+   "single_tok": 58,
+   "single_err": null,
+   "pipe_ok": true,
+   "pipe_sec": 5.2,
+   "pipe_tok": 554,
+   "pipe_selfcheck": true,
+   "pipe_err": null,
+   "step_chars": [
+    568,
+    716,
+    258,
+    181,
+    259
+   ]
+  },
+  {
+   "task": 4,
+   "fname": "heap_queue_largest",
+   "single_ok": true,
+   "single_sec": 0.8,
+   "single_tok": 86,
+   "single_err": null,
+   "pipe_ok": false,
+   "pipe_sec": 6.7,
+   "pipe_tok": 718,
+   "pipe_selfcheck": true,
+   "pipe_err": "Traceback (most recent call last):\n  File \"<string>\", line 16, in <module>\nTypeError: heap_queue_largest() takes 1 positional argument but 2 were given\n",
+   "step_chars": [
+    739,
+    984,
+    391,
+    417,
+    391
+   ]
+  },
+  {
+   "task": 5,
+   "fname": "count_ways",
+   "single_ok": false,
+   "single_sec": 0.8,
+   "single_tok": 74,
+   "single_err": "Traceback (most recent call last):\n  File \"<string>\", line 11, in <module>\nAssertionError\n",
+   "pipe_ok": false,
+   "pipe_sec": 7.3,
+   "pipe_tok": 781,
+   "pipe_selfcheck": true,
+   "pipe_err": "Traceback (most recent call last):\n  File \"<string>\", line 19, in <module>\nAssertionError\n",
+   "step_chars": [
+    561,
+    923,
+    289,
+    149,
+    289
+   ]
+  },
+  {
+   "task": 6,
+   "fname": "differ_At_One_Bit_Pos",
+   "single_ok": true,
+   "single_sec": 0.4,
+   "single_tok": 37,
+   "single_err": null,
+   "pipe_ok": true,
+   "pipe_sec": 6.3,
+   "pipe_tok": 661,
+   "pipe_selfcheck": false,
+   "pipe_err": null,
+   "step_chars": [
+    712,
+    480,
+    407,
+    344,
+    407
+   ]
+  },
+  {
+   "task": 7,
+   "fname": "find_char_long",
+   "single_ok": true,
+   "single_sec": 0.3,
+   "single_tok": 31,
+   "single_err": null,
+   "pipe_ok": true,
+   "pipe_sec": 5.8,
+   "pipe_tok": 627,
+   "pipe_selfcheck": true,
+   "pipe_err": null,
+   "step_chars": [
+    660,
+    458,
+    646,
+    229,
+    646
+   ]
+  },
+  {
+   "task": 8,
+   "fname": "square_nums",
+   "single_ok": true,
+   "single_sec": 0.3,
+   "single_tok": 24,
+   "single_err": null,
+   "pipe_ok": true,
+   "pipe_sec": 4.4,
+   "pipe_tok": 463,
+   "pipe_selfcheck": true,
+   "pipe_err": null,
+   "step_chars": [
+    594,
+    537,
+    248,
+    240,
+    248
+   ]
+  },
+  {
+   "task": 9,
+   "fname": "find_Rotations",
+   "single_ok": true,
+   "single_sec": 0.5,
+   "single_tok": 49,
+   "single_err": null,
+   "pipe_ok": true,
+   "pipe_sec": 5.9,
+   "pipe_tok": 637,
+   "pipe_selfcheck": true,
+   "pipe_err": null,
+   "step_chars": [
+    842,
+    919,
+    331,
+    222,
+    331
+   ]
+  },
+  {
+   "task": 10,
+   "fname": "small_nnum",
+   "single_ok": true,
+   "single_sec": 0.2,
+   "single_tok": 20,
+   "single_err": null,
+   "pipe_ok": true,
+   "pipe_sec": 4.8,
+   "pipe_tok": 509,
+   "pipe_selfcheck": true,
+   "pipe_err": null,
+   "step_chars": [
+    713,
+    556,
+    185,
+    242,
+    185
+   ]
+  }
+ ]
+}

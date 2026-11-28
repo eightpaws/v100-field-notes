@@ -1,0 +1,39 @@
+{
+  "card": "V100-17",
+  "engine": "lmdeploy 0.18.0, TurboMind backend",
+  "torch": "2.10.0+cu128",
+  "device": "Tesla V100-SXM2-16GB (sm_70)",
+  "driver": "580.178.04",
+  "cuda_toolkit": "12.9",
+  "model": "Qwen2.5-Coder-7B-Instruct-AWQ",
+  "weights_bytes": 5590000000,
+  "run_utc": "2026-11-28T03:01:19Z..2026-11-28T03:02:09Z",
+  "serve_ready_s": 50,
+  "decode": {
+    "n": 3,
+    "completion_tokens": 256,
+    "tok_s": [131.2, 131.3, 131.3],
+    "mean_tok_s": 131.3,
+    "stdev_tok_s": 0.03,
+    "method": "end-to-end wall time including HTTP, greedy temperature 0"
+  },
+  "prefill": [
+    {"prompt_tokens": 51, "elapsed_s": 0.211, "prefill_tok_s": 241.5},
+    {"prompt_tokens": 751, "elapsed_s": 0.158, "prefill_tok_s": 4754.6}
+  ],
+  "vram_used_mib_at_bench": 14769,
+  "quality": {
+    "benchmark": "MBPP",
+    "tasks": 40,
+    "pass_at_1_awq_4bit": 0.50,
+    "pass_at_1_q8_0_baseline": 0.625,
+    "note": "quality numbers come from the earlier session of this card and were not re-measured in this run"
+  },
+  "log_excerpt": [
+    "GPU_FREE util=0 mem=0 (waited 0s)",
+    "STAGE serve 2026-11-28T03:01:19+00:00",
+    "serve ready after 50s",
+    "STAGE bench 2026-11-28T03:02:00+00:00",
+    "STAGE done 2026-11-28T03:02:09+00:00"
+  ]
+}

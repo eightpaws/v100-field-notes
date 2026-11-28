@@ -1,0 +1,213 @@
+{
+ "base_url": "http://127.0.0.1:18470",
+ "model": "qwen-abl",
+ "tasks": 30,
+ "repeats": 1,
+ "runs": 30,
+ "passed": 5,
+ "pass@1": 0.167,
+ "avg_sec": 8.09,
+ "tok_s": 34.9,
+ "rows": [
+  {
+   "task": 1,
+   "repeat": 0,
+   "ok": false,
+   "sec": 43.11,
+   "tok": 1500,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'min_cost' is not defined\n"
+  },
+  {
+   "task": 2,
+   "repeat": 0,
+   "ok": false,
+   "sec": 39.51,
+   "tok": 1388,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\nAssertionError\n"
+  },
+  {
+   "task": 3,
+   "repeat": 0,
+   "ok": true,
+   "sec": 9.36,
+   "tok": 319,
+   "err": null
+  },
+  {
+   "task": 4,
+   "repeat": 0,
+   "ok": false,
+   "sec": 17.12,
+   "tok": 595,
+   "err": "t):\n  File \"<string>\", line 8, in <module>\nTypeError: heap_queue_largest() takes 1 positional argument but 2 were given\n"
+  },
+  {
+   "task": 5,
+   "repeat": 0,
+   "ok": false,
+   "sec": 42.66,
+   "tok": 1500,
+   "err": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'count_ways' is not defined\n"
+  },
+  {
+   "task": 6,
+   "repeat": 0,
+   "ok": true,
+   "sec": 17.65,
+   "tok": 613,
+   "err": null
+  },
+  {
+   "task": 7,
+   "repeat": 0,
+   "ok": true,
+   "sec": 8.69,
+   "tok": 295,
+   "err": null
+  },
+  {
+   "task": 8,
+   "repeat": 0,
+   "ok": true,
+   "sec": 4.24,
+   "tok": 137,
+   "err": null
+  },
+  {
+   "task": 9,
+   "repeat": 0,
+   "ok": false,
+   "sec": 42.69,
+   "tok": 1500,
+   "err": "aceback (most recent call last):\n  File \"<string>\", line 3, in <module>\nNameError: name 'find_Rotations' is not defined\n"
+  },
+  {
+   "task": 10,
+   "repeat": 0,
+   "ok": true,
+   "sec": 17.79,
+   "tok": 618,
+   "err": null
+  },
+  {
+   "task": 11,
+   "repeat": 0,
+   "ok": false,
+   "err": "Remote end closed connection without response"
+  },
+  {
+   "task": 12,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 13,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 14,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 15,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 16,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 17,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 18,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 19,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 20,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 21,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 22,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 23,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 24,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 25,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 26,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 27,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 28,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 29,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "task": 30,
+   "repeat": 0,
+   "ok": false,
+   "err": "<urlopen error [Errno 111] Connection refused>"
+  }
+ ]
+}

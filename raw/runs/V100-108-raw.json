@@ -1,0 +1,14 @@
+{
+ "harness": "v108 mutmut-style first-order mutation of model-written code, tests by the same model",
+ "tag": "qwen2.5-coder-7b-q8",
+ "model": "qwen2.5-coder-7b-instruct-q8_0.gguf",
+ "engine": "llama.cpp llama-cli (qwen switch, no server)",
+ "baseline_green": false,
+ "coverage_pct": null,
+ "module_lines": 39,
+ "test_lines": 42,
+ "mutants": 0,
+ "killed": 0,
+ "kill_pct": null,
+ "rows": []
+}

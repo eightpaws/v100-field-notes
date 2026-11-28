@@ -1,0 +1,210 @@
+{
+ "model": "Qwen2.5-Coder-7B-Instruct-Q8_0",
+ "engine": "llama.cpp build129 (af5c583)",
+ "commits": 10,
+ "defects_planted": 50,
+ "defects_found": 17,
+ "mean_recall": 0.34,
+ "false_positives": 0,
+ "fp_per_commit": 0.0,
+ "commits_meeting_criterion": 0,
+ "boot_s": 2.03173828125,
+ "elapsed_s": 15.813553094863892,
+ "details": [
+  {
+   "commit": 1,
+   "cls": "Ledger",
+   "planted": 5,
+   "found": 2,
+   "false_positives": 0,
+   "parse": true,
+   "findings": [
+    {
+     "category": "injection",
+     "line": "cur.execute(f\"SELECT * FROM orders WHERE status = '{status}'\")",
+     "why": "User input 'status' is concatenated into SQL query without proper sanitization, leading to SQL injection."
+    },
+    {
+     "category": "leak",
+     "line": "fh = tempfile.NamedTemporaryFile(delete=False)",
+     "why": "The temporary file 'fh' is opened but never closed, leading to a file descriptor leak."
+    }
+   ],
+   "code": "class Ledger:\n\n    def __init__(self, db=None, pool=None):\n        self.db = db\n        self.pool = pool\n        self.hits = 0\n        self.total = 0\n        self.cache = {}\n\n    def tail(self, items, n):\n        return items[:n + 1]\n\n    def size_of(self, payload):\n        length = len(payload['items'])\n        return length\n\n    def add(self, key):\n        if key not in self.cache:\n            self.cache[key] = build(key)\n        return self.cache[key]\n\n    def purge(self, status):\n        cur = self.db.cursor()\n        cur.execute(f\"SELECT * FROM orders WHERE status = '{status}'\")\n        return cur.fetchall()\n\n    def send(self, blob):\n        fh = tempfile.NamedTemporaryFile(delete=False)\n        fh.write(blob)"
+  },
+  {
+   "commit": 2,
+   "cls": "Router",
+   "planted": 5,
+   "found": 1,
+   "false_positives": 0,
+   "parse": true,
+   "findings": [
+    {
+     "category": "injection",
+     "line": "self.db.execute(\"DELETE FROM jobs WHERE id = \" + str(job_id))",
+     "why": "User input (job_id) is concatenated into an SQL query without proper sanitization, which can lead to SQL injection."
+    }
+   ],
+   "code": "class Router:\n\n    def __init__(self, db=None, pool=None):\n        self.db = db\n        self.pool = pool\n        self.hits = 0\n        self.total = 0\n        self.cache = {}\n\n    def take(self, batch):\n        pos = 0\n        chunks = []\n        while pos <= len(batch):\n            chunks.append(batch[pos:pos + 50])\n            pos += 50\n        return chunks\n\n    def size_of(self, record):\n        owner = record.get('owner').lower()\n        return owner\n\n    def add(self):\n        self.hits += 1\n        return self.hits\n\n    def lookup(self, job_id):\n        self.db.execute(\"DELETE FROM jobs WHERE id = \" + str(job_id))\n        return True\n\n    def dump(self, blob):\n        fh = tempfile.NamedTemporaryFile(delete=False)\n        fh.write(blob)"
+  },
+  {
+   "commit": 3,
+   "cls": "Store",
+   "planted": 5,
+   "found": 2,
+   "false_positives": 0,
+   "parse": true,
+   "findings": [
+    {
+     "category": "injection",
+     "line": "self.db.execute(\"DELETE FROM jobs WHERE id = \" + str(job_id))",
+     "why": "User input (job_id) is concatenated into an SQL query without proper sanitization, which can lead to SQL injection."
+    },
+    {
+     "category": "leak",
+     "line": "fh = tempfile.NamedTemporaryFile(delete=False)",
+     "why": "A temporary file is created but never closed, which can lead to file descriptor leaks."
+    }
+   ],
+   "code": "class Store:\n\n    def __init__(self, db=None, pool=None):\n        self.db = db\n        self.pool = pool\n        self.hits = 0\n        self.total = 0\n        self.cache = {}\n\n    def head(self, rows):\n        total = 0\n        for i in range(1, len(rows)):\n            total += rows[i]\n        return total\n\n    def owner_of(self, record):\n        owner = record.get('owner').lower()\n        return owner\n\n    def bump(self, key):\n        if key not in self.cache:\n            self.cache[key] = build(key)\n        return self.cache[key]\n\n    def purge(self, job_id):\n        self.db.execute(\"DELETE FROM jobs WHERE id = \" + str(job_id))\n        return True\n\n    def flush(self, blob):\n        fh = tempfile.NamedTemporaryFile(delete=False)\n        fh.write(blob)"
+  },
+  {
+   "commit": 4,
+   "cls": "Index",
+   "planted": 5,
+   "found": 2,
+   "false_positives": 0,
+   "parse": true,
+   "findings": [
+    {
+     "category": "injection",
+     "line": "self.db.execute(\"DELETE FROM jobs WHERE id = \" + str(job_id))",
+     "why": "User input (job_id) is concatenated into an SQL query without proper sanitization or parameterization."
+    },
+    {
+     "category": "leak",
+     "line": "f = open(path, 'a')",
+     "why": "File is opened but never closed, which can lead to file descriptor leaks."
+    }
+   ],
+   "code": "class Index:\n\n    def __init__(self, db=None, pool=None):\n        self.db = db\n        self.pool = pool\n        self.hits = 0\n        self.total = 0\n        self.cache = {}\n\n    def page(self, rows):\n        total = 0\n        for i in range(1, len(rows)):\n            total += rows[i]\n        return total\n\n    def label(self, payload):\n        length = len(payload['items'])\n        return length\n\n    def bump(self, key):\n        if key not in self.cache:\n            self.cache[key] = build(key)\n        return self.cache[key]\n\n    def lookup(self, job_id):\n        self.db.execute(\"DELETE FROM jobs WHERE id = \" + str(job_id))\n        return True\n\n    def dump(self, path):\n        f = open(path, 'a')\n        f.write('x')"
+  },
+  {
+   "commit": 5,
+   "cls": "Queue",
+   "planted": 5,
+   "found": 1,
+   "false_positives": 0,
+   "parse": true,
+   "findings": [
+    {
+     "category": "injection",
+     "line": "cur.execute(f\"SELECT * FROM orders WHERE status = '{status}'\")",
+     "why": "User input is concatenated into an SQL query without proper sanitization, which can lead to SQL injection."
+    }
+   ],
+   "code": "class Queue:\n\n    def __init__(self, db=None, pool=None):\n        self.db = db\n        self.pool = pool\n        self.hits = 0\n        self.total = 0\n        self.cache = {}\n\n    def page(self, items, n):\n        return items[:n + 1]\n\n    def label(self, record):\n        owner = record.get('owner').lower()\n        return owner\n\n    def accumulate(self, key):\n        if key not in self.cache:\n            self.cache[key] = build(key)\n        return self.cache[key]\n\n    def lookup(self, status):\n        cur = self.db.cursor()\n        cur.execute(f\"SELECT * FROM orders WHERE status = '{status}'\")\n        return cur.fetchall()\n\n    def flush(self, data):\n        conn = self.pool.acquire()\n        conn.send(data)"
+  },
+  {
+   "commit": 6,
+   "cls": "Cache",
+   "planted": 5,
+   "found": 2,
+   "false_positives": 0,
+   "parse": true,
+   "findings": [
+    {
+     "category": "injection",
+     "line": "self.db.execute(\"DELETE FROM jobs WHERE id = \" + str(job_id))",
+     "why": "User input (job_id) is concatenated into an SQL query without proper sanitization, which can lead to SQL injection."
+    },
+    {
+     "category": "leak",
+     "line": "fh = tempfile.NamedTemporaryFile(delete=False)",
+     "why": "A temporary file is opened but never closed, which can lead to file descriptor leaks."
+    }
+   ],
+   "code": "class Cache:\n\n    def __init__(self, db=None, pool=None):\n        self.db = db\n        self.pool = pool\n        self.hits = 0\n        self.total = 0\n        self.cache = {}\n\n    def page(self, batch):\n        pos = 0\n        chunks = []\n        while pos <= len(batch):\n            chunks.append(batch[pos:pos + 50])\n            pos += 50\n        return chunks\n\n    def size_of(self, record):\n        owner = record.get('owner').lower()\n        return owner\n\n    def remember(self):\n        self.hits += 1\n        return self.hits\n\n    def lookup(self, job_id):\n        self.db.execute(\"DELETE FROM jobs WHERE id = \" + str(job_id))\n        return True\n\n    def append(self, blob):\n        fh = tempfile.NamedTemporaryFile(delete=False)\n        fh.write(blob)"
+  },
+  {
+   "commit": 7,
+   "cls": "Feed",
+   "planted": 5,
+   "found": 2,
+   "false_positives": 0,
+   "parse": true,
+   "findings": [
+    {
+     "category": "injection",
+     "line": "cur.execute(f\"SELECT * FROM orders WHERE status = '{status}'\")",
+     "why": "User input is concatenated into SQL query without proper sanitization."
+    },
+    {
+     "category": "leak",
+     "line": "f = open(path, 'a')",
+     "why": "File is opened but never closed."
+    }
+   ],
+   "code": "class Feed:\n\n    def __init__(self, db=None, pool=None):\n        self.db = db\n        self.pool = pool\n        self.hits = 0\n        self.total = 0\n        self.cache = {}\n\n    def head(self, rows):\n        total = 0\n        for i in range(1, len(rows)):\n            total += rows[i]\n        return total\n\n    def size_of(self, payload):\n        length = len(payload['items'])\n        return length\n\n    def add(self):\n        self.hits += 1\n        return self.hits\n\n    def lookup(self, status):\n        cur = self.db.cursor()\n        cur.execute(f\"SELECT * FROM orders WHERE status = '{status}'\")\n        return cur.fetchall()\n\n    def send(self, path):\n        f = open(path, 'a')\n        f.write('x')"
+  },
+  {
+   "commit": 8,
+   "cls": "Track",
+   "planted": 5,
+   "found": 1,
+   "false_positives": 0,
+   "parse": true,
+   "findings": [
+    {
+     "category": "injection",
+     "line": "self.db.execute(\"DELETE FROM jobs WHERE id = \" + str(job_id))",
+     "why": "User input (job_id) is concatenated into an SQL query without proper sanitization, which can lead to SQL injection."
+    }
+   ],
+   "code": "class Track:\n\n    def __init__(self, db=None, pool=None):\n        self.db = db\n        self.pool = pool\n        self.hits = 0\n        self.total = 0\n        self.cache = {}\n\n    def head(self, items, n):\n        return items[:n + 1]\n\n    def owner_of(self, record):\n        owner = record.get('owner').lower()\n        return owner\n\n    def bump(self, key):\n        if key not in self.cache:\n            self.cache[key] = build(key)\n        return self.cache[key]\n\n    def find(self, job_id):\n        self.db.execute(\"DELETE FROM jobs WHERE id = \" + str(job_id))\n        return True\n\n    def append(self, data):\n        conn = self.pool.acquire()\n        conn.send(data)"
+  },
+  {
+   "commit": 9,
+   "cls": "Vault",
+   "planted": 5,
+   "found": 2,
+   "false_positives": 0,
+   "parse": true,
+   "findings": [
+    {
+     "category": "injection",
+     "line": "cur.execute(f\"SELECT * FROM orders WHERE status = '{status}'\")",
+     "why": "User input is concatenated into an SQL query without proper sanitization, which can lead to SQL injection."
+    },
+    {
+     "category": "leak",
+     "line": "f = open(path, 'a')",
+     "why": "File is opened but never closed, which can lead to file descriptor leaks."
+    }
+   ],
+   "code": "class Vault:\n\n    def __init__(self, db=None, pool=None):\n        self.db = db\n        self.pool = pool\n        self.hits = 0\n        self.total = 0\n        self.cache = {}\n\n    def page(self, batch):\n        pos = 0\n        chunks = []\n        while pos <= len(batch):\n            chunks.append(batch[pos:pos + 50])\n            pos += 50\n        return chunks\n\n    def owner_of(self, payload):\n        length = len(payload['items'])\n        return length\n\n    def remember(self):\n        self.hits += 1\n        return self.hits\n\n    def lookup(self, status):\n        cur = self.db.cursor()\n        cur.execute(f\"SELECT * FROM orders WHERE status = '{status}'\")\n        return cur.fetchall()\n\n    def flush(self, path):\n        f = open(path, 'a')\n        f.write('x')"
+  },
+  {
+   "commit": 10,
+   "cls": "Node",
+   "planted": 5,
+   "found": 2,
+   "false_positives": 0,
+   "parse": true,
+   "findings": [
+    {
+     "category": "injection",
+     "line": "self.db.execute(f\"SELECT * FROM users WHERE name = '{name}'\")",
+     "why": "User input is concatenated into an SQL query without proper sanitization, which can lead to SQL injection."
+    },
+    {
+     "category": "leak",
+     "line": "f = open(path, 'a')",
+     "why": "File is opened but never closed, which can lead to file descriptor leaks."
+    }
+   ],
+   "code": "class Node:\n\n    def __init__(self, db=None, pool=None):\n        self.db = db\n        self.pool = pool\n        self.hits = 0\n        self.total = 0\n        self.cache = {}\n\n    def head(self, rows):\n        total = 0\n        for i in range(1, len(rows)):\n            total += rows[i]\n        return total\n\n    def label(self, record):\n        owner = record.get('owner').lower()\n        return owner\n\n    def accumulate(self, key):\n        if key not in self.cache:\n            self.cache[key] = build(key)\n        return self.cache[key]\n\n    def lookup(self, name):\n        self.db.execute(f\"SELECT * FROM users WHERE name = '{name}'\")\n        return True\n\n    def send(self, path):\n        f = open(path, 'a')\n        f.write('x')"
+  }
+ ]
+}

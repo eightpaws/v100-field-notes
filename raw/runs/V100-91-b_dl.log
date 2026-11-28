@@ -1,0 +1,138 @@
+18:08:51 part0 try=1 have=15544/2942886696
+18:08:51 part2 try=1 have=26151/2942886696
+18:24:18 part3 try=1 have=2416906828/2942886696
+18:24:19 part1 try=1 have=2355579616/2942886696
+18:25:01 part0 try=2 have=2640046172/2942886696
+18:25:02 part2 try=2 have=2732312540/2942886696
+18:25:14 part0 try=3 have=2640046172/2942886696
+18:25:15 part2 try=3 have=2732328076/2942886696
+18:25:26 part0 try=4 have=2640066983/2942886696
+18:25:28 part2 try=4 have=2732343612/2942886696
+18:25:38 part0 try=5 have=2640066983/2942886696
+18:25:41 part2 try=5 have=2732359148/2942886696
+18:25:51 part0 try=6 have=2640066983/2942886696
+18:26:07 part1 try=2 have=2942886696/2942886696
+18:26:08 part3 try=2 have=2942886696/2942886696
+18:26:08 part0 try=7 have=2640082519/2942886696
+18:26:24 part2 try=6 have=2942886696/2942886696
+18:26:46 part0 try=8 have=2942886696/2942886696
+18:28:13 FINAL size=11771546784 want=11771546784
+00000000: 4747 5546                                GGUF
+18:28:26 SHA 64b53b64c7aa39f20a7e54bd80582fe595b1d745624ee8a72e92508c0326d810
+18:28:26 DOWNLOAD_OK
+18:28:26 BENCH A_ourbuild_stockfa0 start
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 16144 MiB):
+  Device 0: Tesla V100-SXM2-16GB, compute capability 7.0, VMM: yes, VRAM: 16144 MiB
+ggml_backend_cuda_buffer_type_alloc_buffer: allocating 10827.36 MiB on device 0: cudaMalloc failed: out of memory
+ggml_backend_buft_alloc_buffer_n_default: failed to allocate CUDA0 buffer of size 11353313280
+llama_model_load: error loading model: unable to allocate CUDA0 buffer
+llama_model_load_from_file_impl: failed to load model
+llama_bench: error: failed to load model '/srv/media/models/qwen38-27b/Qwen3.8-27B-GSQ-RCO-IQ3_S.gguf'
+18:28:28 BENCH A_ourbuild_stockfa0 rc=1
+18:28:29 BENCH B_fork_stockpath start
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 16144 MiB):
+  Device 0: Tesla V100-SXM2-16GB, compute capability 7.0, VMM: yes, VRAM: 16144 MiB
+ggml_backend_cuda_buffer_type_alloc_buffer: allocating 10827.36 MiB on device 0: cudaMalloc failed: out of memory
+ggml_backend_buft_alloc_buffer_n_default: failed to allocate CUDA0 buffer of size 11353313280
+llama_model_load: error loading model: unable to allocate CUDA0 buffer
+llama_model_load_from_file_impl: failed to load model
+llama_bench: error: failed to load model '/srv/media/models/qwen38-27b/Qwen3.8-27B-GSQ-RCO-IQ3_S.gguf'
+18:28:30 BENCH B_fork_stockpath rc=1
+18:28:30 BENCH C_fork_d256 start
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 16144 MiB):
+  Device 0: Tesla V100-SXM2-16GB, compute capability 7.0, VMM: yes, VRAM: 16144 MiB
+ggml_backend_cuda_buffer_type_alloc_buffer: allocating 10827.36 MiB on device 0: cudaMalloc failed: out of memory
+ggml_backend_buft_alloc_buffer_n_default: failed to allocate CUDA0 buffer of size 11353313280
+llama_model_load: error loading model: unable to allocate CUDA0 buffer
+llama_model_load_from_file_impl: failed to load model
+llama_bench: error: failed to load model '/srv/media/models/qwen38-27b/Qwen3.8-27B-GSQ-RCO-IQ3_S.gguf'
+18:28:32 BENCH C_fork_d256 rc=1
+18:28:32 DONE_V91B
+18:29:24 FINAL size=11771546784 want=11771546784
+00000000: 4747 5546                                GGUF
+18:29:34 SHA 64b53b64c7aa39f20a7e54bd80582fe595b1d745624ee8a72e92508c0326d810
+18:29:34 DOWNLOAD_OK
+18:29:34 BENCH A_ourbuild_stockfa0 start
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 16144 MiB):
+  Device 0: Tesla V100-SXM2-16GB, compute capability 7.0, VMM: yes, VRAM: 16144 MiB
+{"build_commit": "dbaf582", "build_number": 400, "cpu_info": "AMD EPYC 7282 16-Core Processor", "gpu_info": "Tesla V100-SXM2-16GB", "backends": "CUDA", "model_filename": "/srv/media/models/qwen38-27b/Qwen3.8-27B-GSQ-RCO-IQ3_S.gguf", "model_type": "qwen35 27B IQ3_S - 3.4375 bpw", "model_size": 11760551936, "model_n_params": 26895998464, "n_batch": 2048, "n_ubatch": 2048, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "f16", "type_v": "f16", "n_gpu_layers": 99, "n_cpu_moe": 0, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": 0, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "auto", "lazy_mode": "auto", "embeddings": false, "no_op_offload": 0, "no_host": false, "repack": true, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 8192, "n_gen": 0, "n_depth": 0, "test_time": "2026-11-25T18:29:36Z", "avg_ns": 7570598965, "stddev_ns": 0, "avg_ts": 1082.080828, "stddev_ts": 0.000000, "samples_ns": [ 7570598965 ],"samples_ts": [ 1082.08 ]}
+CUDA error: out of memory
+  current device: 0, in function alloc at /root/llama-inkling/ggml/src/ggml-cuda/ggml-cuda.cu:729
+  cuMemCreate(&handle, reserve_size, &prop, 0)
+/root/llama-inkling/ggml/src/ggml-cuda/ggml-cuda.cu:119: CUDA error
+/root/llama-inkling/build/bin/libggml-base.so.1(+0x16b0b)[0x7e7372701b0b]
+/root/llama-inkling/build/bin/libggml-base.so.1(+0x16f8c)[0x7e7372701f8c]
+/root/llama-inkling/build/bin/libggml-base.so.1(ggml_abort+0x15b)[0x7e737270216b]
+/root/llama-inkling/build/bin/libggml-cuda.so.1(_Z15ggml_cuda_errorPKcS0_S0_iS0_+0xb7)[0x7e736eedeb87]
+/root/llama-inkling/build/bin/libggml-cuda.so.1(_ZN18ggml_cuda_pool_vmm5allocEmPm+0x6e5)[0x7e736ef00125]
+/root/llama-inkling/build/bin/libggml-cuda.so.1(+0x2f104a)[0x7e736eef104a]
+/root/llama-inkling/build/bin/libggml-cuda.so.1(+0x2fa978)[0x7e736eefa978]
+/root/llama-inkling/build/bin/libggml-base.so.1(ggml_backend_sched_graph_compute_async+0x7c1)[0x7e7372721881]
+/root/llama-inkling/build/bin/libllama.so.1(_ZN13llama_context13graph_computeEP11ggml_cgraphb+0x10c)[0x7e7371a898fc]
+/root/llama-inkling/build/bin/libllama.so.1(_ZN13llama_context14process_ubatchERK12llama_ubatch14llm_graph_typeP22llama_memory_context_iR11ggml_status+0x11d)[0x7e7371a8cd8d]
+/root/llama-inkling/build/bin/libllama.so.1(_ZN13llama_context6decodeERK15llama_batch_ext+0x856)[0x7e7371a97536]
+/root/llama-inkling/build/bin/libllama-bench-impl.so(+0x1d523)[0x7e7372ab0523]
+/root/llama-inkling/build/bin/libllama-bench-impl.so(_Z11llama_benchiPPc+0xfa1)[0x7e7372abfa81]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2a1ca)[0x7e737242a1ca]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x8b)[0x7e737242a28b]
+/root/llama-inkling/build/bin/llama-bench(+0x12a5)[0x5a1eadbbf2a5]
+18:29:54 BENCH A_ourbuild_stockfa0 rc=134
+18:29:54 BENCH B_fork_stockpath start
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 16144 MiB):
+  Device 0: Tesla V100-SXM2-16GB, compute capability 7.0, VMM: yes, VRAM: 16144 MiB
+{"build_commit": "5e11845", "build_number": 1, "cpu_info": "AMD EPYC 7282 16-Core Processor", "gpu_info": "Tesla V100-SXM2-16GB", "backends": "CUDA", "model_filename": "/srv/media/models/qwen38-27b/Qwen3.8-27B-GSQ-RCO-IQ3_S.gguf", "model_type": "qwen35 27B IQ3_S - 3.4375 bpw", "model_size": 11760551936, "model_n_params": 26895998464, "n_batch": 2048, "n_ubatch": 2048, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "f16", "type_v": "f16", "n_gpu_layers": 99, "n_cpu_moe": 0, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": 0, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "auto", "lazy_mode": "auto", "embeddings": false, "no_op_offload": 0, "no_host": false, "repack": true, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 8192, "n_gen": 0, "n_depth": 0, "test_time": "2026-11-25T18:29:57Z", "avg_ns": 7211487010, "stddev_ns": 0, "avg_ts": 1135.965438, "stddev_ts": 0.000000, "samples_ns": [ 7211487010 ],"samples_ts": [ 1135.97 ]}
+CUDA error: out of memory
+  current device: 0, in function alloc at /root/sm70-attn/ggml/src/ggml-cuda/ggml-cuda.cu:651
+  cuMemCreate(&handle, reserve_size, &prop, 0)
+/root/sm70-attn/ggml/src/ggml-cuda/ggml-cuda.cu:115: CUDA error
+/root/sm70-attn/build/bin/libggml-base.so.0(+0x16a9b)[0x7d7f9c345a9b]
+/root/sm70-attn/build/bin/libggml-base.so.0(+0x16f1c)[0x7d7f9c345f1c]
+/root/sm70-attn/build/bin/libggml-base.so.0(ggml_abort+0x15b)[0x7d7f9c3460fb]
+/root/sm70-attn/build/bin/libggml-cuda.so.0(_Z15ggml_cuda_errorPKcS0_S0_iS0_+0xb7)[0x7d7f978fd127]
+/root/sm70-attn/build/bin/libggml-cuda.so.0(_ZN18ggml_cuda_pool_vmm5allocEmPm+0x5f5)[0x7d7f9791d0b5]
+/root/sm70-attn/build/bin/libggml-cuda.so.0(+0x30e8a2)[0x7d7f9790e8a2]
+/root/sm70-attn/build/bin/libggml-cuda.so.0(+0x3135f6)[0x7d7f979135f6]
+/root/sm70-attn/build/bin/libggml-cuda.so.0(+0x31778e)[0x7d7f9791778e]
+/root/sm70-attn/build/bin/libggml-base.so.0(ggml_backend_sched_graph_compute_async+0x3f4)[0x7d7f9c364bc4]
+/root/sm70-attn/build/bin/libllama.so.0(_ZN13llama_context13graph_computeEP11ggml_cgraphb+0xdb)[0x7d7f9b6410eb]
+/root/sm70-attn/build/bin/libllama.so.0(_ZN13llama_context14process_ubatchERK12llama_ubatch14llm_graph_typeP22llama_memory_context_iR11ggml_status+0x136)[0x7d7f9b644d76]
+/root/sm70-attn/build/bin/libllama.so.0(_ZN13llama_context6decodeERK15llama_batch_ext+0x4bb)[0x7d7f9b64e16b]
+/root/sm70-attn/build/bin/libllama-bench-impl.so(+0x1d473)[0x7d7f9c6e4473]
+/root/sm70-attn/build/bin/libllama-bench-impl.so(_Z11llama_benchiPPc+0xe98)[0x7d7f9c6f38d8]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2a1ca)[0x7d7f9c02a1ca]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x8b)[0x7d7f9c02a28b]
+/root/sm70-attn/build/bin/llama-bench(+0x12a5)[0x60c197d6f2a5]
+18:30:14 BENCH B_fork_stockpath rc=134
+18:30:14 BENCH C_fork_d256 start
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 16144 MiB):
+  Device 0: Tesla V100-SXM2-16GB, compute capability 7.0, VMM: yes, VRAM: 16144 MiB
+[sm70-d256] ph#1 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#2 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#3 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#4 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#5 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#6 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#7 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#8 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#9 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#10 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#11 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#12 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#13 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#14 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#15 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#16 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#17 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#18 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#19 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] ph#20 REJECT: decode shape not eligible (gqa/batch/types) | cc=700 Q=(256,1,24,1) Qtype=0 K=(256,8192,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=8192 mask=0x70ff9a340500
+[sm70-d256] real#1 ACCEPT: sm70 d256 kernel selected | cc=700 Q=(256,2048,24,1) Qtype=0 K=(256,2048,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=2048 mask=0x70fe9c340500
+[sm70-d256] real#2 ACCEPT: sm70 d256 kernel selected | cc=700 Q=(256,2048,24,1) Qtype=0 K=(256,2048,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=2048 mask=0x70fe9c340500
+[sm70-d256] real#3 ACCEPT: sm70 d256 kernel selected | cc=700 Q=(256,2048,24,1) Qtype=0 K=(256,2048,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=2048 mask=0x70fe9c340500
+[sm70-d256] real#4 ACCEPT: sm70 d256 kernel selected | cc=700 Q=(256,2048,24,1) Qtype=0 K=(256,2048,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=2048 mask=0x70fe9c340500
+[sm70-d256] real#5 ACCEPT: sm70 d256 kernel selected | cc=700 Q=(256,2048,24,1) Qtype=0 K=(256,2048,4,1) Ktype=2 Knb0=18 Knb1=576 Knb2=144 rowK=144 Vtype=2 Vnb0=18 Vnb1=576 Vnb2=144 rowV=144 Mkv=2048 mask=0x70fe9c340500
+{"build_commit": "5e11845", "build_number": 1, "cpu_info": "AMD EPYC 7282 16-Core Processor", "gpu_info": "Tesla V100-SXM2-16GB", "backends": "CUDA", "model_filename": "/srv/media/models/qwen38-27b/Qwen3.8-27B-GSQ-RCO-IQ3_S.gguf", "model_type": "qwen35 27B IQ3_S - 3.4375 bpw", "model_size": 11760551936, "model_n_params": 26895998464, "n_batch": 2048, "n_ubatch": 2048, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "q4_0", "type_v": "q4_0", "n_gpu_layers": 99, "n_cpu_moe": 0, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": 1, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "auto", "lazy_mode": "auto", "embeddings": false, "no_op_offload": 0, "no_host": false, "repack": true, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 8192, "n_gen": 0, "n_depth": 0, "test_time": "2026-11-25T18:30:17Z", "avg_ns": 6402892506, "stddev_ns": 0, "avg_ts": 1279.421760, "stddev_ts": 0.000000, "samples_ns": [ 6402892506 ],"samples_ts": [ 1279.42 ]}
+{"build_commit": "5e11845", "build_number": 1, "cpu_info": "AMD EPYC 7282 16-Core Processor", "gpu_info": "Tesla V100-SXM2-16GB", "backends": "CUDA", "model_filename": "/srv/media/models/qwen38-27b/Qwen3.8-27B-GSQ-RCO-IQ3_S.gguf", "model_type": "qwen35 27B IQ3_S - 3.4375 bpw", "model_size": 11760551936, "model_n_params": 26895998464, "n_batch": 2048, "n_ubatch": 2048, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "q4_0", "type_v": "q4_0", "n_gpu_layers": 99, "n_cpu_moe": 0, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": 1, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "auto", "lazy_mode": "auto", "embeddings": false, "no_op_offload": 0, "no_host": false, "repack": true, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 16384, "n_gen": 0, "n_depth": 0, "test_time": "2026-11-25T18:30:30Z", "avg_ns": 13379087756, "stddev_ns": 0, "avg_ts": 1224.597693, "stddev_ts": 0.000000, "samples_ns": [ 13379087756 ],"samples_ts": [ 1224.6 ]}
+{"build_commit": "5e11845", "build_number": 1, "cpu_info": "AMD EPYC 7282 16-Core Processor", "gpu_info": "Tesla V100-SXM2-16GB", "backends": "CUDA", "model_filename": "/srv/media/models/qwen38-27b/Qwen3.8-27B-GSQ-RCO-IQ3_S.gguf", "model_type": "qwen35 27B IQ3_S - 3.4375 bpw", "model_size": 11760551936, "model_n_params": 26895998464, "n_batch": 2048, "n_ubatch": 2048, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "q4_0", "type_v": "q4_0", "n_gpu_layers": 99, "n_cpu_moe": 0, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": 1, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "auto", "lazy_mode": "auto", "embeddings": false, "no_op_offload": 0, "no_host": false, "repack": true, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 0, "n_gen": 64, "n_depth": 0, "test_time": "2026-11-25T18:30:57Z", "avg_ns": 1782239316, "stddev_ns": 0, "avg_ts": 35.909880, "stddev_ts": 0.000000, "samples_ns": [ 1782239316 ],"samples_ts": [ 35.9099 ]}
+18:30:59 BENCH C_fork_d256 rc=0
+18:30:59 DONE_V91B
