@@ -471,7 +471,7 @@
   "id": "V100-83",
   "title": "Strata-V100: third engine for verification",
   "result_type": "mixed",
-  "verdict": "Run Coder IQ1_M (25.11.2026, VM 200, V100-SXM2-16GB)."
+  "verdict": "Third engine works on sm_70: pass@1 0.53 on 200 MBPP tasks at 38.1 tok/s, and the 23k-token needle was found in 11.9 s - usable, but only in a 1-bit quant."
  },
  {
   "id": "V100-84",
@@ -555,7 +555,7 @@
   "id": "V100-98",
   "title": "Llama.cpp RPC: one model on two cards",
   "result_type": "mixed",
-  "verdict": "27.11.2026, llama.cpp b12811 (00d5c142c, ready binaries ubuntu-cuda-12.8), Qwen3-30B-A3B Q4_K_M 17.28 GB (does not fit in 16 GB of one card)."
+  "verdict": "A two-card pool doubles prefill (2405 vs 1181 tok/s) but decodes 29% slower than one card with experts in RAM: take it for long prompts, not for generation."
  },
  {
   "id": "V100-99",
