@@ -1,4 +1,4 @@
-{"q": "Сколько сейчас в Екатеринбурге и сколько", "tools": ["get_time", "calc"], "steps": 2, "ok": false}
-{"q": "Прочитай /srv/orders.csv и назови сумму ", "tools": ["read_file"], "steps": 2, "ok": true}
-{"q": "Какой курс доллара к рублю и сколько это", "tools": ["get_rate"], "steps": 2, "ok": false}
+{"q": "ru ru ru ru ru ru", "tools": ["get_time", "calc"], "steps": 2, "ok": false}
+{"q": "ru /srv/orders.csv ru ru ru ", "tools": ["read_file"], "steps": 2, "ok": true}
+{"q": "ru ru ru ru ru ru ru ru", "tools": ["get_rate"], "steps": 2, "ok": false}
 {"passed": 1, "total": 3}
