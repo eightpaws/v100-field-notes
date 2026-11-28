@@ -1,42 +1,106 @@
-[
- {
-  "model": "qwen2.5-32b Q4",
-  "file_gb": 18.49,
-  "ngl": 99,
-  "seconds": 44.1
- },
- {
-  "model": "qwen2.5-32b Q4",
-  "file_gb": 18.49,
-  "ngl": 40,
-  "seconds": 2.2
- },
- {
-  "model": "qwen2.5-32b Q4",
-  "file_gb": 18.49,
-  "ngl": 20,
-  "prefill_tok_s": 253.2,
-  "decode_tok_s": 3.0,
-  "seconds": 94.2
- },
- {
-  "model": "qwen3-30b-a3b Q4 (MoE)",
-  "file_gb": 17.28,
-  "ngl": 99,
-  "seconds": 39.8
- },
- {
-  "model": "qwen3-30b-a3b Q4 (MoE)",
-  "file_gb": 17.28,
-  "ngl": 40,
-  "seconds": 2.2
- },
- {
-  "model": "qwen3-30b-a3b Q4 (MoE)",
-  "file_gb": 17.28,
-  "ngl": 20,
-  "prefill_tok_s": 439.7,
-  "decode_tok_s": 24.5,
-  "seconds": 18.0
- }
-]
+{
+ "card": "V100-37",
+ "engine": "llama.cpp 1.1.0-dev build 28148b5",
+ "runs": [
+  {
+   "date": "2026-11-28",
+   "log": "/root/runs/V100-37/run.log",
+   "log_vram": "/root/runs/V100-37b/run.log",
+   "environment": {
+    "gpu": "Tesla V100-SXM2-16GB cc 7.0 16384 MiB",
+    "driver": "580.178.04",
+    "ram_gib": 94,
+    "cuda": "12.9",
+    "os": "Ubuntu 24.04.5 kernel 6.8.0-151"
+   },
+   "commands": [
+    "llama-bench -m /models/qwen2.5-32b-instruct.gguf -ngl 20 -p 512 -n 64 -r 3",
+    "llama-bench -m /models/qwen3-30b-a3b.gguf -ngl 20 -p 512 -n 64 -r 3",
+    "llama-bench -m /models/qwen2.5-32b-instruct.gguf -ngl 99 -p 512 -n 64 -r 1",
+    "llama-bench -m /models/qwen3-30b-a3b.gguf -ngl 99 -p 512 -n 64 -r 1"
+   ],
+   "entries": [
+    {
+     "model": "qwen2.5-32b-instruct Q4_K_M",
+     "size_gib": 18.48,
+     "ngl": 20,
+     "prefill_pp512_tok_s": 247.51,
+     "prefill_stdev": 18.16,
+     "decode_tg64_tok_s": 3.86,
+     "decode_stdev": 0.12,
+     "vram_peak_mib": 7101
+    },
+    {
+     "model": "qwen2.5-32b-instruct Q4_K_M",
+     "size_gib": 18.48,
+     "ngl": 99,
+     "result": "cudaMalloc failed: out of memory",
+     "alloc_requested_mib": 18508.35
+    },
+    {
+     "model": "qwen3-30b-a3b Q4_K_M",
+     "size_gib": 17.28,
+     "ngl": 20,
+     "prefill_pp512_tok_s": 512.62,
+     "prefill_stdev": 18.11,
+     "decode_tg64_tok_s": 31.51,
+     "decode_stdev": 0.72,
+     "vram_peak_mib": 7923
+    },
+    {
+     "model": "qwen3-30b-a3b Q4_K_M",
+     "size_gib": 17.28,
+     "ngl": 99,
+     "result": "cudaMalloc failed: out of memory",
+     "alloc_requested_mib": 17524.43
+    }
+   ],
+   "repeats": "n=3 per working configuration; refusals and VRAM single run"
+  },
+  {
+   "date": "2026-11-22",
+   "note": "earlier run, other build and flags (-n 128 -fa 1 -r 2); kept for comparison, not averaged with the run above",
+   "log_artifact": "/srv/media/night/v100_37/results.json",
+   "entries": [
+    {
+     "model": "qwen2.5-32b Q4",
+     "size_gib": 18.49,
+     "ngl": 20,
+     "prefill_pp512_tok_s": 253.2,
+     "decode_tok_s": 3.0
+    },
+    {
+     "model": "qwen2.5-32b Q4",
+     "size_gib": 18.49,
+     "ngl": 40,
+     "result": "does not load"
+    },
+    {
+     "model": "qwen2.5-32b Q4",
+     "size_gib": 18.49,
+     "ngl": 99,
+     "result": "does not load"
+    },
+    {
+     "model": "qwen3-30b-a3b Q4 (MoE)",
+     "size_gib": 17.28,
+     "ngl": 20,
+     "prefill_pp512_tok_s": 439.7,
+     "decode_tok_s": 24.5
+    },
+    {
+     "model": "qwen3-30b-a3b Q4 (MoE)",
+     "size_gib": 17.28,
+     "ngl": 40,
+     "result": "does not load"
+    },
+    {
+     "model": "qwen3-30b-a3b Q4 (MoE)",
+     "size_gib": 17.28,
+     "ngl": 99,
+     "result": "does not load"
+    }
+   ]
+  }
+ ]
+}

@@ -201,7 +201,7 @@
   "id": "V100-37",
   "title": "32B dense vs 30B MoE: decode re-measured with 96 GB RAM",
   "result_type": "negative",
-  "verdict": "The ceiling is the 16 GB card, not system RAM: 96 GB does not let a dense 32B model run at a usable speed (3.0 tok/s at 20 layers, refuses to load above that). Among large models only MoE is viable here — the same 20 layers give 24.5 tok/s, eight times the dense model. Practical rule: on 16 GB ..."
+  "verdict": "The 16 GB card is the wall, not system RAM: dense 32B Q4 decodes at 3.9 tok/s and the 30B MoE at 31.5 tok/s (n=3), and -ngl 99 fails with cudaMalloc OOM at 17.5-18.5 GiB requested."
  },
  {
   "id": "V100-38",
