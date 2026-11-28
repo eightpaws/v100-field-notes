@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **167** - 27 positive, 96 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **25** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **167** - 28 positive, 95 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **25** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -83,7 +83,7 @@ Read this before quoting a number.
 | [V100-43](results/V100-43.md) | llama-server as the working server: prefix cache and batching | **Positive.** Prefix caching works and is the main reason to run llama-server for agent workloads: prompt processing drops from 845 ms to 89 ms (9.5x), round trip from 1.18 s to 0.39 s. |
 | [V100-44](results/V100-44.md) | NVFP4 on sm_70: 4-bit float in 16 GB | **Mixed.** Works on sm_70. vLLM 1.5.4 (--quantization modelopt_fp4) boosted Ornith-1.5-9B-NVFP4 on V100: 14 133 MiB VRAM, decode 86.7-86.8 tok/s (first request 83.0), code is correct. |
 | [V100-45](results/V100-45.md) | Qwen3-Coder-30B-A3B as a coding writer on 16 GB | **Positive.** Working configuration is -ngl 99 -ncmoe 8 -c 4096. An 8192-token context needs more VRAM (compute buffer allocation fails), so long files require either 12 CPU layers or a smaller context. |
-| [V100-46](results/V100-46.md) | Tool calling: a five-task battery instead of one request | **Mixed.** Argument formatting is not the problem: 0 malformed JSON and 0 repeated identical calls across 24 tool calls. Task success is: 2/5 for Qwen2.5-7B-Instruct and Qwen3-30B-A3B, 0/5 for… |
+| [V100-46](results/V100-46.md) | Tool calling: a five-task battery instead of one request | **Mixed.** Tool calling on this rig is mechanically reliable (JSON arguments, no loops) but only 2 of 5 tasks finish unattended, and a coder-tuned 14B that never emits a tool call is unusable in an agent loop regardless of its code quality. |
 | [V100-47](results/V100-47.md) | DeepSeek-Coder-V2-Lite 16B MoE: the fastest decode on V100 | **Positive.** Best decode measured on this card by a wide margin: 183.6 tok/s with 2250 tok/s prefill, working configuration -ngl 99 -fa 0. Flash attention must be off — it is 160x slower on this architecture. |
 | [V100-48](results/V100-48.md) | FIM autocomplete in the editor via llama-server /infill | **Mixed.** FIM works and is fast enough to type ahead of a human. Latency is unstable (126 ms to 1.5 s on the same prompt) — the old build's slot handling is the suspect; a single slot with --cache-reuse is the next thing to try. |
 | [V100-49](results/V100-49.md) | Embeddings for code search with bge-m3 on V100 | **Mixed.** Mixed: recall@5 of 0.767 with 46x less context than reading ten whole files, but near-duplicate kernels are confused, so a reranker on top of the same index is the next step. |
@@ -92,7 +92,7 @@ Read this before quoting a number.
 | [V100-52](results/V100-52.md) | Local edit → test → fix loop | **Positive.** The loop closes locally in 15 seconds per iteration, which makes unattended refactoring and test-fixing practical. A dense 32B on the same card would run at 3 tok/s and be unusable for this. |
 | [V100-53](results/V100-53.md) | Cache prefix: equal comparison at equal prompt length | **Positive.** At equal prompt length the prefix cache still wins 7.4x at 2k, 9.2x at 6k and 11.0x at 12k, and the gain grows with context instead of shrinking. The "8x" reported in V100-11 was an understatement, not an artifact of the different prompt lengths. |
 | [V100-54](results/V100-54.md) | Volt-forever: Honest native base with included cuDNN | **Mixed.** Partial: cuDNN-on is not available on our stack. |
-| [V100-55](results/V100-55.md) | Llama-Bench refuses to load more than 20 layers. | **Mixed.** There is no limit of 20 layers. The matrix is based on Qwen3-Coder-30B (17.28 GiB), f16 KV, p128/n16: \| ncmoe \| prefill pp128 \| decode tg16 \| \|---\|---\|---\| \| 24 \| 179.2 \| 39.2 \| \| 32 \| 145.2 \| 34.6 \| Both configurations load and. |
+| [V100-55](results/V100-55.md) | Llama-Bench refuses to load more than 20 layers. | **Positive.** There is no limit of 20 layers. The matrix is based on Qwen3-Coder-30B (17.28 GiB), f16 KV, p128/n16: \| ncmoe \| prefill pp128 \| decode tg16 \| \|---\|---\|---\| \| 24 \| 179.2 \| 39.2 \| \| 32 \| 145.2 \| 34.6 \| Both configurations load and. |
 | [V100-56](results/V100-56.md) | 32k with q8_0 KV and 64k with q4_0 KV on a 7B model | **Positive.** Both settings work: 32k with q8_0 and 64k with q4_0 KV fit on one 16 GB card, and decode stays at 126 tok/s at either context length. Compressed KV is what makes 64k possible at all; the price is prefill, which drops by a third from 32k to 64k. |
 | [V100-57](results/V100-57.md) | Q8_0 KV: Confirm double decoding or attribute to noise |  |
 | [V100-58](results/V100-58.md) | Throughput, batching, quality | **Mixed.** Under load, 1Cat-vLLM outperforms llama.cpp by six times. 7B GGUF, --max-model-len 4096, --gpu-memory-utilization 0.6, different prompts for all requests (otherwise prefix cache boosts the number): \| Mode \| Tokens \| Time \| Total. |
@@ -247,7 +247,7 @@ Until then the caveat stands, and a table row is not a substitute for a measurem
 | V100-51b | V100-51 | re-measure and archive the raw output; the original run was not archived | 1 h |
 | V100-52b | V100-52 | re-measure and archive the raw output; the original run was not archived | 1 h |
 
-Total queued: **26** re-runs, roughly 41.5 h of GPU time.
+Total queued: **25** re-runs, roughly 40.5 h of GPU time.
 
 ## How to read this
 

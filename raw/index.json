@@ -255,7 +255,7 @@
   "id": "V100-46",
   "title": "Tool calling: a five-task battery instead of one request",
   "result_type": "mixed",
-  "verdict": "Argument formatting is not the problem: 0 malformed JSON and 0 repeated identical calls across 24 tool calls. Task success is: 2/5 for Qwen2.5-7B-Instruct and Qwen3-30B-A3B, 0/5 for…"
+  "verdict": "Tool calling on this rig is mechanically reliable (JSON arguments, no loops) but only 2 of 5 tasks finish unattended, and a coder-tuned 14B that never emits a tool call is unusable in an agent loop regardless of its code quality."
  },
  {
   "id": "V100-47",
@@ -308,7 +308,7 @@
  {
   "id": "V100-55",
   "title": "Llama-Bench refuses to load more than 20 layers.",
-  "result_type": "mixed",
+  "result_type": "positive",
   "verdict": "There is no limit of 20 layers. The matrix is based on Qwen3-Coder-30B (17.28 GiB), f16 KV, p128/n16: \\| ncmoe \\| prefill pp128 \\| decode tg16 \\| \\|---\\|---\\|---\\| \\| 24 \\| 179.2 \\| 39.2 \\| \\| 32 \\| 145.2 \\| 34.6 \\| Both configurations load and."
  },
  {
