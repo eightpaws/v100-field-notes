@@ -82,13 +82,17 @@ if bad:
 
 # Тот же запрет, что в CI: репозиторий англоязычный. Проверяем локально, чтобы
 # провал не всплывал через шесть секунд после пуша и письмом на почту.
+# Сканируем ВСЕ .md и .json, как это делает CI, а не только results и projects:
+# сырые логи из raw/runs тоже публикуются и тоже валили сборку.
 cyrillic = []
-for p in sorted(RESULTS.glob("*.md")) + sorted((ROOT / "projects").rglob("*.json")):
+published = [p for p in ROOT.rglob("*") if p.is_file()
+             and p.suffix in (".md", ".json") and ".git" not in p.parts]
+for p in sorted(published):
     text = p.read_text(encoding="utf-8", errors="replace")
     if re.search(r"[\u0400-\u04FF]{4}", text):
         cyrillic.append(str(p.relative_to(ROOT)).replace("\\", "/"))
 if cyrillic:
-    errors.append("Cyrillic in published files: " + ", ".join(cyrillic))
+    errors.append("Cyrillic in published files: " + ", ".join(cyrillic[:10]))
 
 # Ссылка на несуществующий файл замеров читается как обещание данных, которых нет.
 runs_dir = ROOT / "raw" / "runs"
