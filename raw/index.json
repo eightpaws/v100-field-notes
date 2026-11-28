@@ -852,6 +852,12 @@
   "verdict": "Thinking does not pay on MBPP-sized tasks: the score is unchanged and the run costs 3.8x to 7.6x more wall time, so it stays off by default."
  },
  {
+  "id": "V100-154",
+  "title": "Does RPC pay off when it doesn't fit into one card?",
+  "result_type": "mixed",
+  "verdict": "A single V100 16GB cannot fit: -ngl 99 fails on allocations of 17,923 MiB (cudaMalloc: out of memory), and 56 layers out of 65 load (peak 15,563 MiB), but there's no more space for compute buffers."
+ },
+ {
   "id": "V100-155",
   "title": "PXA 27B: Quality on 8k context",
   "result_type": "positive",
