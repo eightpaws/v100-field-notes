@@ -997,9 +997,9 @@
  },
  {
   "id": "video-cogvideox-blocked",
-  "title": "CogVideoX on V100 — blocked by the build, not by the model",
-  "result_type": "negative",
-  "verdict": "With cuDNN 9 video is blocked for a build reason, not a model limit: fp16 convolutions find no engine on sm_70, and without cuDNN the VAE asks 17.8 GiB. The fix is a cuDNN 8 environment, measured in V100-141, not a smaller clip."
+  "title": "CogVideoX on V100: 480p runs to full clip length, 720x480 runs out of memory",
+  "result_type": "mixed",
+  "verdict": "**Mixed.** CogVideoX-5B does run on this card and produces full-length 480p clips at 2.2-2.7 s per frame (49 frames in 110 s, 12 281 MiB peak), but 720x480 runs out of memory on 16 GB; the earlier blocked verdict was the cuDNN 9 build, not the GPU."
  },
  {
   "id": "vlm-card-controller-fails",

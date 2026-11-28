@@ -1,0 +1,66 @@
+{
+ "env": {
+  "torch": "2.3.1+cu121",
+  "cuda": "12.1",
+  "cudnn": 8902,
+  "cudnn_enabled": true,
+  "gpu": "Tesla V100-SXM2-16GB",
+  "capability": "7.0"
+ },
+ "model_path": "/srv/media/ai-cache/models/cogvideox-5b",
+ "model_load_seconds": 122,
+ "prompt": "A greenhouse shelf with blooming begonias, soft daylight, camera slowl",
+ "runs": [
+  {
+   "config": "480x320_17f",
+   "width": 480,
+   "height": 320,
+   "frames_requested": 17,
+   "steps": 20,
+   "ok": true,
+   "seconds_generation": 45.2,
+   "seconds_per_frame": 2.7,
+   "vram_peak_allocated_mib": 11119,
+   "vram_peak_reserved_mib": 11520,
+   "video": "/srv/media/night/v146/v146_480x320_17f.mp4",
+   "video_bytes": 58016,
+   "frames_on_disk": 17,
+   "size": "480x320",
+   "sharpness_median": 47.3,
+   "sharpness_min": 39.3,
+   "motion_median": 4.3,
+   "frozen_frames": 0
+  },
+  {
+   "config": "720x480_25f",
+   "width": 720,
+   "height": 480,
+   "frames_requested": 25,
+   "steps": 20,
+   "ok": false,
+   "error": "OOM",
+   "detail": "CUDA out of memory. Tried to allocate 1.32 GiB. GPU ",
+   "seconds_to_fail": 139.6
+  },
+  {
+   "config": "480x320_49f",
+   "width": 480,
+   "height": 320,
+   "frames_requested": 49,
+   "steps": 20,
+   "ok": true,
+   "seconds_generation": 110.1,
+   "seconds_per_frame": 2.2,
+   "vram_peak_allocated_mib": 12281,
+   "vram_peak_reserved_mib": 13264,
+   "video": "/srv/media/night/v146/v146_480x320_49f.mp4",
+   "video_bytes": 155310,
+   "frames_on_disk": 49,
+   "size": "480x320",
+   "sharpness_median": 42.9,
+   "sharpness_min": 24.3,
+   "motion_median": 3.56,
+   "frozen_frames": 0
+  }
+ ]
+}

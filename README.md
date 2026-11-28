@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **168** - 30 positive, 93 mixed, 31 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **24** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **168** - 30 positive, 94 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **24** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -208,7 +208,7 @@ Read this before quoting a number.
 | [rag-nemotron-vs-vikhr](results/rag-nemotron-vs-vikhr.md) | Shop RAG assistant: Nemotron is twice as fast and three times more wrong | **Negative.** Negative for the RAG role: Nemotron is twice as fast but three times more often wrong against the local vikhr model, so for customer-facing retrieval it loses on accuracy. |
 | [shop-assistant-similar-products](results/shop-assistant-similar-products.md) | Assistant on similar products — 87.5 % on full names, 15 % on short ones | **Mixed.** Retrieval is fine and first choice is not: the right variant is in the top five 90 % of the time but first only 15 %, so the assistant must list the varieties instead of picking one, which is now enforced in the system prompt. |
 | [ternary-bonsai-27b](results/ternary-bonsai-27b.md) | Ternary-Bonsai-2-27B on the V100: 27B in 6.8 GB at 67 tok/s | Mixed: the ternary 27B does run here and holds 6.8 GB, but the throughput it reaches decides whether the trade is worth it for the shop - see the measurement above. |
-| [video-cogvideox-blocked](results/video-cogvideox-blocked.md) | CogVideoX on V100 — blocked by the build, not by the model | **Negative.** With cuDNN 9 video is blocked for a build reason, not a model limit: fp16 convolutions find no engine on sm_70, and without cuDNN the VAE asks 17.8 GiB. The fix is a cuDNN 8 environment, measured in V100-141, not a smaller clip. |
+| [video-cogvideox-blocked](results/video-cogvideox-blocked.md) | CogVideoX on V100: 480p runs to full clip length, 720x480 runs out of memory | **Mixed.** CogVideoX-5B does run on this card and produces full-length 480p clips at 2.2-2.7 s per frame (49 frames in 110 s, 12 281 MiB peak), but 720x480 runs out of memory on 16 GB; the earlier blocked verdict was the cuDNN 9 build, not the GPU. |
 | [vlm-card-controller-fails](results/vlm-card-controller-fails.md) | Card controller: Qwen2.5-VL-3B calls everything good | **Negative.** Negative: the 3B VLM accepted every card it was shown, good and bad alike, so as a controller it carries no signal - a human or a mechanical check still has to do the deciding. |
 
 ## Follow-ups in progress
