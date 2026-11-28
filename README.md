@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **167** - 28 positive, 95 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **24** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **167** - 29 positive, 94 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **24** - each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -78,7 +78,7 @@ Read this before quoting a number.
 | [V100-38](results/V100-38.md) | ACE-Step 4B and work alongside SDXL | **Mixed.** Test 25.11: music-studio service starts, stops imgd (no coexistence in fact, despite the description claiming "coexists with SDXL"), loads weights and crashes on loading 5Hz LM: the last line in the log is "loading 5Hz LM tokenizer",. |
 | [V100-39](results/V100-39.md) | TTFT and model loading with a warm page cache | **Positive.** A warm page cache changes the picture by an order of magnitude: 22.4 s cold against 3.2 s warm for llama.cpp, and 0.197 s for the repeated Ollama call with the whole prefix coming from cache. The old "14B loads in 16 s" figure is only true for the first run after a reboot — in a working loop the ... |
 | [V100-40](results/V100-40.md) | ik_llama.cpp vs upstream llama.cpp on V100 | **Negative.** The advertised 2.2x does not reproduce: prefill on the fork is about half of upstream (843–890 vs 1638–1779 tok/s) and decode is only 4% better with flash attention (73.53 vs 70.92). On DeepSeek-Coder-V2-Lite (arch deepseek2) the fork crashes with a core dump at startup, while upstream reaches 2250 ... |
-| [V100-41](results/V100-41.md) | GPT-OSS-20B MXFP4 on a 16 GB Volta card | **Mixed.** Usable only with flash attention on and 4 expert layers pushed to CPU: 24 tok/s decode. Both faster coding candidates (DeepSeek-Coder-V2-Lite at 183 tok/s, Qwen3-Coder-30B at 75 tok/s) beat it, so it stays out of the working stack. |
+| [V100-41](results/V100-41.md) | GPT-OSS-20B MXFP4 on a 16 GB Volta card | **Positive.** The model fits a 16 GB V100 whole and decodes at 159 tok/s; pushing expert layers to the CPU only loses speed. |
 | [V100-42](results/V100-42.md) | MoE experts in system RAM: -ncmoe on V100 16 GB | **Positive.** Yes: 8 expert layers on CPU is the entry threshold, and every extra layer costs both prefill and decode roughly linearly. At 8 layers a 17.3 GB model — 1.3 GB larger than the card — decodes at 75 tok/s, against 3 tok/s for a dense 32B on the same card. |
 | [V100-43](results/V100-43.md) | llama-server as the working server: prefix cache and batching | **Positive.** Prefix caching works and is the main reason to run llama-server for agent workloads: prompt processing drops from 845 ms to 89 ms (9.5x), round trip from 1.18 s to 0.39 s. |
 | [V100-44](results/V100-44.md) | NVFP4 on sm_70: 4-bit float in 16 GB | **Mixed.** Works on sm_70. vLLM 1.5.4 (--quantization modelopt_fp4) boosted Ornith-1.5-9B-NVFP4 on V100: 14 133 MiB VRAM, decode 86.7-86.8 tok/s (first request 83.0), code is correct. |
@@ -235,7 +235,7 @@ Until then the caveat stands, and a table row is not a substitute for a measurem
 | V100-65 | V100-10 | prefill at 8k and 16k, and record num_batch=4096 | 1 h |
 | V100-29b | V100-29 | re-measure and archive the raw output; the original run was not archived | 1 h |
 | V100-40b | V100-40 | re-measure and archive the raw output; the original run was not archived | 1 h |
-| V100-41b | V100-41 | re-measure and archive the raw output; the original run was not archived | 1 h |
+| V100-41b | V100-41 | 32k context fit and answer quality on the full-offload baseline | 2 h |
 | V100-42b | V100-42 | re-measure and archive the raw output; the original run was not archived | 1 h |
 | V100-43b | V100-43 | re-measure and archive the raw output; the original run was not archived | 1 h |
 | V100-45b | V100-45 | re-measure and archive the raw output; the original run was not archived | 1 h |
@@ -246,7 +246,7 @@ Until then the caveat stands, and a table row is not a substitute for a measurem
 | V100-51b | V100-51 | re-measure and archive the raw output; the original run was not archived | 1 h |
 | V100-52b | V100-52 | re-measure and archive the raw output; the original run was not archived | 1 h |
 
-Total queued: **24** re-runs, roughly 39.5 h of GPU time.
+Total queued: **24** re-runs, roughly 40.5 h of GPU time.
 
 ## How to read this
 

@@ -86,8 +86,8 @@
  {
   "id": "V100-41b",
   "parent": "V100-41",
-  "what": "re-measure and archive the raw output; the original run was not archived",
-  "estimate": "1 h"
+  "what": "32k context fit and answer quality on the full-offload baseline",
+  "estimate": "2 h"
  },
  {
   "id": "V100-42b",
