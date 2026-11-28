@@ -601,9 +601,9 @@
  },
  {
   "id": "V100-106",
-  "title": "Linters as acceptance: how much code passes on the first try",
+  "title": "Linters as an acceptance gate: how much generated code passes first time",
   "result_type": "mixed",
-  "verdict": "(25.11.2026) 40 tasks MBPP, Qwen2.5-Coder-7B-Instruct Q8_0."
+  "verdict": "Static checks are not the bottleneck: 39 of 40 files are lint-clean while the same code passes its tests only 24 of 40, so tests must be the acceptance gate and linters a hygiene filter."
  },
  {
   "id": "V100-107",

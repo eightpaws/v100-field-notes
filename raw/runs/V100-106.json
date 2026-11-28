@@ -1,0 +1,273 @@
+{
+ "card": "V100-106",
+ "title": "Linters as an acceptance gate: how much generated code passes first time",
+ "run_date_utc": "2026-11-25",
+ "engine": "llama.cpp 1.0.0-dev, build 12359, commit b1b770d90 (/home/hermes/llama-new/build129/bin/llama-server), CUDA 12.9",
+ "gpu": "Tesla V100-SXM2-16GB, cc 7.0, 16384 MiB, driver 580.178.04",
+ "model": "Qwen2.5-Coder-7B-Instruct-Q8_0",
+ "harness": "/root/lint106.py",
+ "server_command": "/home/hermes/llama-new/build129/bin/llama-server -m /srv/media/ai-cache/downloads/qwen7b-quants/qwen2.5-coder-7b-instruct-q8_0.gguf --port 18360 -ngl 99 -c 4096 --jinja --no-webui -t 8",
+ "runner": "/root/bin/v100-run.sh V100-106 -- python3 /root/lint106.py",
+ "linters": {
+  "ruff": "0.17.6, ruff check --select E,F --output-format json",
+  "mypy": "2.4.1, mypy --ignore-missing-imports --no-error-summary"
+ },
+ "task_source": "MBPP, 40 tasks; tests are the task's own test_list run with 20 s timeout at temperature 0",
+ "repeats": "single run per task, 40 tasks, temperature 0",
+ "summary": {
+  "model": "Qwen2.5-Coder-7B-Instruct-Q8_0",
+  "tasks": 40,
+  "tests_passed": 24,
+  "tests_pass_rate": 0.6,
+  "ruff_clean": 39,
+  "mypy_clean": 40,
+  "clean_both": 39,
+  "clean_both_and_tests": 24,
+  "ruff_issues": 1,
+  "mypy_issues": 0
+ },
+ "per_task": [
+  {
+   "task": 1,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 2,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 3,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 4,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 5,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 6,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 7,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 8,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 9,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 10,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 11,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 12,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 13,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 14,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 15,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 16,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 17,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 18,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 19,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 20,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 21,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 22,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 23,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 24,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 25,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 26,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 27,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 28,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 29,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 30,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 31,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 32,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 33,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 34,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 35,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 36,
+   "tests_ok": false,
+   "ruff": 1,
+   "mypy": 0
+  },
+  {
+   "task": 37,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 38,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 39,
+   "tests_ok": false,
+   "ruff": 0,
+   "mypy": 0
+  },
+  {
+   "task": 40,
+   "tests_ok": true,
+   "ruff": 0,
+   "mypy": 0
+  }
+ ],
+ "log_note": "the original per-task log lines name the counters in Russian; the machine-readable counters are reproduced in per_task, and the RESULT line verbatim",
+ "result_line": "RESULT {\"model\": \"Qwen2.5-Coder-7B-Instruct-Q8_0\", \"tasks\": 40, \"tests_passed\": 24, \"tests_pass_rate\": 0.6, \"ruff_clean\": 39, \"mypy_clean\": 40, \"clean_both\": 39, \"clean_both_and_tests\": 24, \"ruff_issues\": 1, \"mypy_issues\": 0}"
+}
