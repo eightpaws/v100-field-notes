@@ -273,7 +273,7 @@
   "id": "V100-49",
   "title": "Embeddings for code search with bge-m3 on V100",
   "result_type": "mixed",
-  "verdict": "Mixed: recall@5 of 0.767 (23/30) with 46x less context than ten whole files, but near-duplicate kernels are confused, so a reranker is the next step."
+  "verdict": "Mixed: recall@5 of 0.767 with 46x less context than reading ten whole files, but near-duplicate kernels are confused, so a reranker on top of the same index is the next step."
  },
  {
   "id": "V100-50",

@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **167** - 29 positive, 94 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **167** - 28 positive, 95 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **26** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -86,7 +86,7 @@ Read this before quoting a number.
 | [V100-46](results/V100-46.md) | Tool calling on a local V100 model | **Positive.** Tool calling works correctly with the Qwen3-Coder chat template: valid JSON arguments, no extra calls, correct final answer. At 75 tok/s decode a conversational turn costs 2–3 s. |
 | [V100-47](results/V100-47.md) | DeepSeek-Coder-V2-Lite 16B MoE: the fastest decode on V100 | **Positive.** Best decode measured on this card by a wide margin: 183.6 tok/s with 2250 tok/s prefill, working configuration -ngl 99 -fa 0. Flash attention must be off — it is 160x slower on this architecture. |
 | [V100-48](results/V100-48.md) | FIM autocomplete in the editor via llama-server /infill | **Mixed.** FIM works and is fast enough to type ahead of a human. Latency is unstable (126 ms to 1.5 s on the same prompt) — the old build's slot handling is the suspect; a single slot with --cache-reuse is the next thing to try. |
-| [V100-49](results/V100-49.md) | Embeddings for code search with bge-m3 on V100 | **Mixed.** Mixed: recall@5 of 0.767 (23/30) with 46x less context than ten whole files, but near-duplicate kernels are confused, so a reranker is the next step. |
+| [V100-49](results/V100-49.md) | Embeddings for code search with bge-m3 on V100 | **Mixed.** Mixed: recall@5 of 0.767 with 46x less context than reading ten whole files, but near-duplicate kernels are confused, so a reranker on top of the same index is the next step. |
 | [V100-50](results/V100-50.md) | Speculative decoding for code generation | **Negative.** Not reproducible. The first run on build 51831d4 showed +21% on a 7B target, but on master af5c583 with the same pair the gain is gone: base 105.5 / 111.9 / 113.0 tok/s versus 102.6 / 111.2 / 112.5 with the draft. A per-prompt check (one run each, seed 42) shows the draft is neutral on fresh code ... |
 | [V100-51](results/V100-51.md) | 32k context for a 30B MoE on 16 GB | **Mixed.** 32k is reachable only with compressed KV plus offloaded experts: -c 32768 -ctk q8_0 -ctv q8_0 -ncmoe 16 gives 25 tok/s. Without compression the same window needs 24+ CPU layers and drops to 16 tok/s. |
 | [V100-52](results/V100-52.md) | Local edit → test → fix loop | **Positive.** The loop closes locally in 15 seconds per iteration, which makes unattended refactoring and test-fixing practical. A dense 32B on the same card would run at 3 tok/s and be unusable for this. |
@@ -248,7 +248,7 @@ Until then the caveat stands, and a table row is not a substitute for a measurem
 | V100-51b | V100-51 | re-measure and archive the raw output; the original run was not archived | 1 h |
 | V100-52b | V100-52 | re-measure and archive the raw output; the original run was not archived | 1 h |
 
-Total queued: **26** re-runs, roughly 40.5 h of GPU time.
+Total queued: **26** re-runs, roughly 41.5 h of GPU time.
 
 ## How to read this
 

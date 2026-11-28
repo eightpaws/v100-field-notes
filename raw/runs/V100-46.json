@@ -1,220 +1,364 @@
 {
  "card": "V100-46",
+ "note": "tool-calling battery: 5 sandbox tasks per model, objective pass/fail (pytest return code; task test files verified unmodified). Model answer texts are Russian and stay on the rig.",
+ "started": "2026-11-28T01:45:06Z",
+ "finished": "2026-11-28T01:46:31Z",
  "entries": [
   {
-   "file": "v100_46_server.log",
-   "bytes": 7877,
-   "mtime": 1795470275.8021882
-  },
-  {
-   "log": "0.00.028.787 I srv  llama_server: initializing ..."
-  },
-  {
-   "log": "0.00.028.833 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)"
-  },
-  {
-   "log": "0.00.030.756 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)"
-  },
-  {
-   "log": "0.00.034.584 I srv    load_model: loading model '/srv/media/ai-cache/downloads/qwen3-coder-30b-a3b-q4_k_m.gguf'"
-  },
-  {
-   "log": "0.00.406.125 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 99, abort"
-  },
-  {
-   "log": "0.00.537.185 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden"
-  },
-  {
-   "log": "0.00.592.821 W llama_model_loader: tensor overrides to CPU are used with mmap enabled - consider using --load-mode none for better performance"
-  },
-  {
-   "log": "0.04.152.128 I cmn          init: llama threadpool init, n_threads = 24"
-  },
-  {
-   "log": "0.05.080.319 I srv    load_model: initializing, n_slots = 4, n_ctx_slot = 4096, kv_unified = 'true'"
-  },
-  {
-   "log": "0.05.086.198 I srv  server_run_i: model loaded"
-  },
-  {
-   "log": "0.05.086.631 I srv  server_on_li: listening on http://127.0.0.1:18081"
-  },
-  {
-   "log": "1.04.203.459 I slot       select: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1"
-  },
-  {
-   "log": "1.04.203.997 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0"
-  },
-  {
-   "log": "1.12.721.562 I slot print_timing: id  0 | task 0 | prompt eval time =     534.68 ms /   294 tokens (    1.82 ms per token,   549.86 tokens per second)"
-  },
-  {
-   "log": "1.12.721.587 I slot print_timing: id  0 | task 0 |        eval time =    7982.78 ms /    24 tokens (  347.08 ms per token,     2.88 tokens per second)"
-  },
-  {
-   "log": "1.12.721.598 I slot print_timing: id  0 | task 0 |       total time =    8517.46 ms /   318 tokens"
-  },
-  {
-   "log": "1.12.721.616 I slot print_timing: id  0 | task 0 |    graphs reused =         23"
-  },
-  {
-   "log": "1.12.721.625 I slot print_timing: id  0 | task 0 |   graph reallocs =          0    /     0        (same size) / (changed size)"
-  },
-  {
-   "log": "1.12.721.731 I slot      release: id  0 | task 0 | stop processing: n_tokens = 317, truncated = 0"
-  },
-  {
-   "log": "1.18.116.604 I slot       select: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.142 (> 0.100 thold), f_keep = 0.148"
-  },
-  {
-   "log": "1.18.153.077 I slot launch_slot_: id  0 | task 25 | processing task, is_child = 0"
-  },
-  {
-   "log": "1.23.084.662 I slot print_timing: id  0 | task 25 | prompt eval time =     421.94 ms /   283 tokens (    1.49 ms per token,   670.71 tokens per second)"
-  },
-  {
-   "log": "1.23.084.687 I slot print_timing: id  0 | task 25 |        eval time =    4509.54 ms /    12 tokens (  409.96 ms per token,     2.44 tokens per second)"
-  },
-  {
-   "log": "1.23.084.698 I slot print_timing: id  0 | task 25 |       total time =    4931.48 ms /   295 tokens"
-  },
-  {
-   "log": "1.23.084.708 I slot print_timing: id  0 | task 25 |    graphs reused =         33"
-  },
-  {
-   "log": "1.23.084.718 I slot print_timing: id  0 | task 25 |   graph reallocs =          0    /     0        (same size) / (changed size)"
-  },
-  {
-   "log": "1.23.084.828 I slot      release: id  0 | task 25 | stop processing: n_tokens = 341, truncated = 0"
-  },
-  {
-   "log": "1.36.220.920 I slot       select: id  1 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1"
-  },
-  {
-   "log": "1.36.221.144 I slot launch_slot_: id  1 | task 38 | processing task, is_child = 0"
-  },
-  {
-   "log": "1.51.651.127 I slot print_timing: id  1 | task 38 | prompt eval time =     377.53 ms /   157 tokens (    2.40 ms per token,   415.87 tokens per second)"
-  },
-  {
-   "log": "1.51.651.159 I slot print_timing: id  1 | task 38 |        eval time =   15006.85 ms /    44 tokens (  349.00 ms per token,     2.87 tokens per second)"
-  },
-  {
-   "log": "1.51.651.172 I slot print_timing: id  1 | task 38 |       total time =   15384.38 ms /   201 tokens"
-  },
-  {
-   "log": "1.51.651.185 I slot print_timing: id  1 | task 38 |    graphs reused =         75"
-  },
-  {
-   "log": "1.51.651.196 I slot print_timing: id  1 | task 38 |   graph reallocs =          0    /     0        (same size) / (changed size)"
-  },
-  {
-   "log": "1.51.651.279 I slot      release: id  1 | task 38 | stop processing: n_tokens = 200, truncated = 0"
-  },
-  {
-   "log": "1.51.696.183 I slot       select: id  1 | task -1 | selected slot by LCP similarity, f_sim_best = 0.844 (> 0.100 thold), f_keep = 1.000"
-  },
-  {
-   "log": "1.51.696.409 I slot launch_slot_: id  1 | task 83 | processing task, is_child = 0"
-  },
-  {
-   "log": "2.07.218.637 I slot print_timing: id  1 | task 83 | prompt eval time =     229.29 ms /    37 tokens (    6.20 ms per token,   161.37 tokens per second)"
-  },
-  {
-   "log": "2.07.218.665 I slot print_timing: id  1 | task 83 |        eval time =   15292.82 ms /    44 tokens (  355.65 ms per token,     2.81 tokens per second)"
-  },
-  {
-   "log": "2.07.218.678 I slot print_timing: id  1 | task 83 |       total time =   15522.11 ms /    81 tokens"
-  },
-  {
-   "log": "2.07.218.689 I slot print_timing: id  1 | task 83 |    graphs reused =        116"
-  },
-  {
-   "log": "2.07.218.700 I slot print_timing: id  1 | task 83 |   graph reallocs =          1    /     0        (same size) / (changed size)"
-  },
-  {
-   "log": "2.07.218.802 I slot      release: id  1 | task 83 | stop processing: n_tokens = 280, truncated = 0"
-  },
-  {
-   "log": "2.07.253.577 I slot       select: id  1 | task -1 | selected slot by LCP similarity, f_sim_best = 0.883 (> 0.100 thold), f_keep = 1.000"
-  },
-  {
-   "log": "2.07.253.810 I slot launch_slot_: id  1 | task 128 | processing task, is_child = 0"
-  },
-  {
-   "log": "2.21.548.734 I slot print_timing: id  1 | task 128 | prompt eval time =     231.84 ms /    37 tokens (    6.27 ms per token,   159.60 tokens per second)"
-  },
-  {
-   "log": "2.21.548.775 I slot print_timing: id  1 | task 128 |        eval time =   14062.89 ms /    44 tokens (  327.04 ms per token,     3.06 tokens per second)"
-  },
-  {
-   "log": "2.21.548.788 I slot print_timing: id  1 | task 128 |       total time =   14294.73 ms /    81 tokens"
-  },
-  {
-   "log": "2.21.548.800 I slot print_timing: id  1 | task 128 |    graphs reused =        158"
-  },
-  {
-   "log": "2.21.548.811 I slot print_timing: id  1 | task 128 |   graph reallocs =          1    /     0        (same size) / (changed size)"
-  },
-  {
-   "log": "2.21.548.962 I slot      release: id  1 | task 128 | stop processing: n_tokens = 360, truncated = 0"
-  },
-  {
-   "log": "2.26.968.774 I slot       select: id  1 | task -1 | selected slot by LCP similarity, f_sim_best = 0.200 (> 0.100 thold), f_keep = 0.067"
-  },
-  {
-   "log": "2.27.000.585 I slot launch_slot_: id  1 | task 173 | processing task, is_child = 0"
-  },
-  {
-   "log": "2.37.145.733 I slot print_timing: id  1 | task 173 | prompt eval time =     287.34 ms /    96 tokens (    2.99 ms per token,   334.10 tokens per second)"
-  },
-  {
-   "log": "2.37.145.755 I slot print_timing: id  1 | task 173 |        eval time =    9857.71 ms /    26 tokens (  394.31 ms per token,     2.54 tokens per second)"
-  },
-  {
-   "log": "2.37.145.766 I slot print_timing: id  1 | task 173 |       total time =   10145.05 ms /   122 tokens"
-  },
-  {
-   "log": "2.37.145.775 I slot print_timing: id  1 | task 173 |    graphs reused =        182"
-  },
-  {
-   "log": "2.37.145.784 I slot print_timing: id  1 | task 173 |   graph reallocs =          1    /     0        (same size) / (changed size)"
-  },
-  {
-   "log": "2.37.145.910 I slot      release: id  1 | task 173 | stop processing: n_tokens = 145, truncated = 0"
-  },
-  {
-   "log": "2.49.353.564 I slot       select: id  1 | task -1 | selected slot by LCP similarity, f_sim_best = 0.153 (> 0.100 thold), f_keep = 0.166"
-  },
-  {
-   "log": "2.49.383.963 I slot launch_slot_: id  1 | task 200 | processing task, is_child = 0"
-  },
-  {
-   "log": "2.49.384.034 W slot   operator(): id  1 | task 200 | need to evaluate at least 1 token for each active slot (n_past = 157, task.n_tokens() = 157)"
-  },
-  {
-   "log": "2.49.384.044 W slot   operator(): id  1 | task 200 | n_past was set to 156"
-  },
-  {
-   "log": "3.04.837.618 I slot print_timing: id  1 | task 200 | prompt eval time =     556.62 ms /     1 tokens (  556.62 ms per token,     1.80 tokens per second)"
-  },
-  {
-   "log": "3.04.837.644 I slot print_timing: id  1 | task 200 |        eval time =   14896.93 ms /    44 tokens (  346.44 ms per token,     2.89 tokens per second)"
-  },
-  {
-   "log": "3.04.837.656 I slot print_timing: id  1 | task 200 |       total time =   15453.55 ms /    45 tokens"
-  },
-  {
-   "log": "3.04.837.668 I slot print_timing: id  1 | task 200 |    graphs reused =        226"
-  },
-  {
-   "log": "3.04.837.679 I slot print_timing: id  1 | task 200 |   graph reallocs =          1    /     0        (same size) / (changed size)"
-  },
-  {
-   "log": "3.04.837.773 I slot      release: id  1 | task 200 | stop processing: n_tokens = 200, truncated = 0"
-  },
-  {
-   "log": "3.41.813.571 I srv    operator(): operator(): cleaning up before exit..."
+   "model": "qwen2.5-coder-14b",
+   "server_load_s": 4.3,
+   "chat_template_len": 2506,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 0,
+   "task": "t1",
+   "kind": "diagnose",
+   "success": false,
+   "steps": 1,
+   "tool_calls": 0,
+   "min_calls": 3,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [],
+   "stopped_because": "stopped_without_tool_call",
+   "check": "text_check",
+   "prompt_tokens": 432,
+   "completion_tokens": 16,
+   "tools_used": []
+  },
+  {
+   "model": "qwen2.5-coder-14b",
+   "server_load_s": 4.3,
+   "chat_template_len": 2506,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 0,
+   "task": "t2",
+   "kind": "fix",
+   "success": false,
+   "steps": 1,
+   "tool_calls": 0,
+   "min_calls": 3,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [],
+   "stopped_because": "stopped_without_tool_call",
+   "check": "pytest_rc=1",
+   "prompt_tokens": 417,
+   "completion_tokens": 73,
+   "tools_used": []
+  },
+  {
+   "model": "qwen2.5-coder-14b",
+   "server_load_s": 4.3,
+   "chat_template_len": 2506,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 0,
+   "task": "t3",
+   "kind": "add",
+   "success": false,
+   "steps": 1,
+   "tool_calls": 0,
+   "min_calls": 3,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [],
+   "stopped_because": "stopped_without_tool_call",
+   "check": "pytest_rc=2",
+   "prompt_tokens": 435,
+   "completion_tokens": 155,
+   "tools_used": []
+  },
+  {
+   "model": "qwen2.5-coder-14b",
+   "server_load_s": 4.3,
+   "chat_template_len": 2506,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 0,
+   "task": "t4",
+   "kind": "multifile",
+   "success": false,
+   "steps": 1,
+   "tool_calls": 0,
+   "min_calls": 4,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [],
+   "stopped_because": "stopped_without_tool_call",
+   "check": "pytest_rc=1",
+   "prompt_tokens": 412,
+   "completion_tokens": 54,
+   "tools_used": []
+  },
+  {
+   "model": "qwen2.5-coder-14b",
+   "server_load_s": 4.3,
+   "chat_template_len": 2506,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 0,
+   "task": "t5",
+   "kind": "false_premise",
+   "success": false,
+   "steps": 1,
+   "tool_calls": 0,
+   "min_calls": 2,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [],
+   "stopped_because": "answered",
+   "check": "no_failing_test",
+   "prompt_tokens": 431,
+   "completion_tokens": 45,
+   "tools_used": []
+  },
+  {
+   "model": "qwen2.5-7b-instruct",
+   "server_load_s": 2.0,
+   "chat_template_len": 2506,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 2,
+   "task": "t1",
+   "kind": "diagnose",
+   "success": true,
+   "steps": 2,
+   "tool_calls": 1,
+   "min_calls": 3,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [],
+   "stopped_because": "answered",
+   "check": "text_check",
+   "prompt_tokens": 1208,
+   "completion_tokens": 92,
+   "tools_used": [
+    "run_tests"
+   ]
+  },
+  {
+   "model": "qwen2.5-7b-instruct",
+   "server_load_s": 2.0,
+   "chat_template_len": 2506,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 2,
+   "task": "t2",
+   "kind": "fix",
+   "success": false,
+   "steps": 6,
+   "tool_calls": 6,
+   "min_calls": 3,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [
+    "cart.py"
+   ],
+   "stopped_because": "step_limit",
+   "check": "pytest_rc=2",
+   "prompt_tokens": 8787,
+   "completion_tokens": 855,
+   "tools_used": [
+    "run_tests",
+    "read_file",
+    "read_file",
+    "write_file",
+    "run_tests",
+    "list_files"
+   ]
+  },
+  {
+   "model": "qwen2.5-7b-instruct",
+   "server_load_s": 2.0,
+   "chat_template_len": 2506,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 2,
+   "task": "t3",
+   "kind": "add",
+   "success": true,
+   "steps": 5,
+   "tool_calls": 4,
+   "min_calls": 3,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [
+    "stats.py"
+   ],
+   "stopped_because": "answered",
+   "check": "pytest_rc=0",
+   "prompt_tokens": 4421,
+   "completion_tokens": 528,
+   "tools_used": [
+    "list_files",
+    "read_file",
+    "write_file",
+    "run_tests"
+   ]
+  },
+  {
+   "model": "qwen2.5-7b-instruct",
+   "server_load_s": 2.0,
+   "chat_template_len": 2506,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 2,
+   "task": "t4",
+   "kind": "multifile",
+   "success": false,
+   "steps": 6,
+   "tool_calls": 6,
+   "min_calls": 4,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [
+    "app/api.py",
+    "app/api.py",
+    "app/models.py"
+   ],
+   "stopped_because": "step_limit",
+   "check": "pytest_rc=1",
+   "prompt_tokens": 8268,
+   "completion_tokens": 749,
+   "tools_used": [
+    "run_tests",
+    "write_file",
+    "run_tests",
+    "write_file",
+    "run_tests",
+    "write_file"
+   ]
+  },
+  {
+   "model": "qwen2.5-7b-instruct",
+   "server_load_s": 2.0,
+   "chat_template_len": 2506,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 2,
+   "task": "t5",
+   "kind": "false_premise",
+   "success": false,
+   "steps": 2,
+   "tool_calls": 1,
+   "min_calls": 2,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [],
+   "stopped_because": "answered",
+   "check": "no_failing_test",
+   "prompt_tokens": 1134,
+   "completion_tokens": 177,
+   "tools_used": [
+    "run_tests"
+   ]
+  },
+  {
+   "model": "qwen3-30b-a3b",
+   "server_load_s": 4.0,
+   "chat_template_len": 4905,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 2,
+   "task": "t1",
+   "kind": "diagnose",
+   "success": true,
+   "steps": 2,
+   "tool_calls": 1,
+   "min_calls": 3,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [],
+   "stopped_because": "answered",
+   "check": "text_check",
+   "prompt_tokens": 1211,
+   "completion_tokens": 75,
+   "tools_used": [
+    "run_tests"
+   ]
+  },
+  {
+   "model": "qwen3-30b-a3b",
+   "server_load_s": 4.0,
+   "chat_template_len": 4905,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 2,
+   "task": "t2",
+   "kind": "fix",
+   "success": false,
+   "steps": 1,
+   "tool_calls": 0,
+   "min_calls": 3,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [],
+   "stopped_because": "stopped_without_tool_call",
+   "check": "pytest_rc=1",
+   "prompt_tokens": 421,
+   "completion_tokens": 54,
+   "tools_used": []
+  },
+  {
+   "model": "qwen3-30b-a3b",
+   "server_load_s": 4.0,
+   "chat_template_len": 4905,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 2,
+   "task": "t3",
+   "kind": "add",
+   "success": false,
+   "steps": 2,
+   "tool_calls": 1,
+   "min_calls": 3,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [],
+   "stopped_because": "answered",
+   "check": "pytest_rc=2",
+   "prompt_tokens": 913,
+   "completion_tokens": 58,
+   "tools_used": [
+    "list_files"
+   ]
+  },
+  {
+   "model": "qwen3-30b-a3b",
+   "server_load_s": 4.0,
+   "chat_template_len": 4905,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 2,
+   "task": "t4",
+   "kind": "multifile",
+   "success": false,
+   "steps": 4,
+   "tool_calls": 3,
+   "min_calls": 4,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [],
+   "stopped_because": "answered",
+   "check": "pytest_rc=1",
+   "prompt_tokens": 2813,
+   "completion_tokens": 432,
+   "tools_used": [
+    "list_files",
+    "read_file",
+    "read_file"
+   ]
+  },
+  {
+   "model": "qwen3-30b-a3b",
+   "server_load_s": 4.0,
+   "chat_template_len": 4905,
+   "chat_template_declares_tools": true,
+   "tasks_passed": 2,
+   "task": "t5",
+   "kind": "false_premise",
+   "success": true,
+   "steps": 2,
+   "tool_calls": 1,
+   "min_calls": 2,
+   "bad_json_args": 0,
+   "repeated_calls": 0,
+   "writes": [],
+   "stopped_because": "answered",
+   "check": "no_failing_test",
+   "prompt_tokens": 1070,
+   "completion_tokens": 41,
+   "tools_used": [
+    "run_tests"
+   ]
   }
  ]
 }
