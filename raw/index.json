@@ -307,9 +307,9 @@
  },
  {
   "id": "V100-55",
-  "title": "Llama-Bench refuses to load more than 20 layers.",
+  "title": "There is no 20-layer limit: the ceiling is one device buffer of weights",
   "result_type": "positive",
-  "verdict": "There is no limit of 20 layers. The matrix is based on Qwen3-Coder-30B (17.28 GiB), f16 KV, p128/n16: \\| ncmoe \\| prefill pp128 \\| decode tg16 \\| \\|---\\|---\\|---\\| \\| 24 \\| 179.2 \\| 39.2 \\| \\| 32 \\| 145.2 \\| 34.6 \\| Both configurations load and."
+  "verdict": "There is no 20-layer limit: 52 of 64 layers fit and run, and the refusal above that is a single failed allocation of the whole offloaded weight buffer — which is also why -ngl 99 cannot…"
  },
  {
   "id": "V100-56",
