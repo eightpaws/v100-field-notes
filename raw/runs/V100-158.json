@@ -1,0 +1,113 @@
+{
+ "card": "V100-158",
+ "engine": "llama.cpp llama-server 51831d47, -ngl 999 -c 4096 -np 1 --jinja",
+ "gpu": "Tesla V100-SXM2-16GB, sm_70, driver 580.178.04, CUDA 12.9",
+ "vram_after_load_mib": 11747,
+ "vram_peak_mib": 11963,
+ "harness": "code_eval.py --tasks 40 --max-tokens 1024 --no-think --temperature 0; refusal_eval2.py --max-tokens 400",
+ "models": {
+  "base": {
+   "file": "Qwen3.8-27B-GSQ-RCO-IQ3_S.gguf",
+   "bytes": 11771546784
+  },
+  "abliterated": {
+   "file": "Huihui-Qwen3.8-27B-abliterated-GSQ-RCO-IQ3_S.gguf",
+   "bytes": 11771546208
+  }
+ },
+ "runs": [
+  {
+   "build": "base",
+   "gguf_bytes": 11771546784,
+   "tasks": 40,
+   "passed": 25,
+   "pass_at_1": 0.625,
+   "decode_tok_s": 32.2,
+   "avg_sec_per_task": 3.41,
+   "generated_tokens": 4383,
+   "max_tokens_used": 426,
+   "tasks_at_cap": 0,
+   "failed_task_ids": [
+    2,
+    13,
+    15,
+    16,
+    21,
+    22,
+    24,
+    25,
+    26,
+    27,
+    29,
+    31,
+    33,
+    34,
+    39
+   ],
+   "server_load_sec": 37
+  },
+  {
+   "build": "abliterated",
+   "gguf_bytes": 11771546208,
+   "tasks": 40,
+   "passed": 27,
+   "pass_at_1": 0.675,
+   "decode_tok_s": 33.1,
+   "avg_sec_per_task": 5.54,
+   "generated_tokens": 7347,
+   "max_tokens_used": 877,
+   "tasks_at_cap": 0,
+   "failed_task_ids": [
+    2,
+    13,
+    15,
+    16,
+    21,
+    22,
+    25,
+    26,
+    29,
+    31,
+    33,
+    34,
+    39
+   ],
+   "server_load_sec": 28
+  }
+ ],
+ "refusals": {
+  "base": {
+   "A": {
+    "direct": 7
+   },
+   "B": {
+    "refusal": 2,
+    "direct": 7
+   },
+   "C": {
+    "direct": 4
+   },
+   "prompts": 20
+  },
+  "abliterated": {
+   "A": {
+    "direct": 7
+   },
+   "B": {
+    "direct": 9
+   },
+   "C": {
+    "direct": 4
+   },
+   "prompts": 20
+  }
+ },
+ "solved_only_by": {
+  "base": [],
+  "abliterated": [
+   24,
+   27
+  ]
+ },
+ "wall_time_min_both_builds": 13.5
+}
