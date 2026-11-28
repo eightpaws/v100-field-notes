@@ -132,10 +132,10 @@
   "estimate": "1 h"
  },
  {
-  "id": "V100-49b",
+  "id": "V100-49c",
   "parent": "V100-49",
-  "what": "re-measure and archive the raw output; the original run was not archived",
-  "estimate": "1 h"
+  "what": "reranker over the same index, and a Python corpus",
+  "estimate": "2 h"
  },
  {
   "id": "V100-50b",
