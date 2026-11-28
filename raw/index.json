@@ -309,7 +309,7 @@
   "id": "V100-55",
   "title": "There is no 20-layer limit: the ceiling is one device buffer of weights",
   "result_type": "positive",
-  "verdict": "There is no 20-layer limit: 52 of 64 layers fit and run, and the refusal above that is a single failed allocation of the whole offloaded weight buffer — which is also why -ngl 99 cannot…"
+  "verdict": "There is no 20-layer limit: 52 of 64 layers fit and run, and the refusal above that is a single failed allocation of the whole offloaded weight buffer — which is also why -ngl 99 cannot work on any model larger than 16 GB."
  },
  {
   "id": "V100-56",
@@ -327,7 +327,7 @@
   "id": "V100-58",
   "title": "Throughput, batching, quality",
   "result_type": "mixed",
-  "verdict": "Under load, 1Cat-vLLM outperforms llama.cpp by six times. 7B GGUF, --max-model-len 4096, --gpu-memory-utilization 0.6, different prompts for all requests (otherwise prefix cache boosts the number): \\| Mode \\| Tokens \\| Time \\| Total."
+  "verdict": "The fork's batching is real and repeatable at eight clients (about 710 tok/s), but a single stream is slower than llama.cpp and start-up is thirty times longer, so the win belongs to a task queue, not to interactive editing."
  },
  {
   "id": "V100-60",
