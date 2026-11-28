@@ -272,8 +272,8 @@
  {
   "id": "V100-49",
   "title": "Embeddings for code search with bge-m3 on V100",
-  "result_type": "positive",
-  "verdict": "Ranking is correct with a clear margin, and the 606 MB model handles a Russian query against English code without translation. Indexing a repository is a matter of minutes on this card."
+  "result_type": "mixed",
+  "verdict": "Mixed: recall@5 of 0.767 (23/30) with 46x less context than ten whole files, but near-duplicate kernels are confused, so a reranker is the next step."
  },
  {
   "id": "V100-50",
