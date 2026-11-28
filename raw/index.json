@@ -411,7 +411,7 @@
   "id": "V100-73",
   "title": "Goods cards per hour: image generation throughput",
   "result_type": "positive",
-  "verdict": ""
+  "verdict": "For commercial cards, 768 px is the working mode (35 cards per minute), while 1024 px and printing require either fixing cuDNN for Volta or upscaling from 768 (V100-06)."
  },
  {
   "id": "V100-74",

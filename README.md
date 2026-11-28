@@ -4,7 +4,7 @@ Field notes from one **Tesla V100-SXM2 16 GB** running inside a Proxmox VM (24 v
 Every number below was measured on the card, not copied from a project README. Negative results are
 published on purpose: they are the expensive part of anyone's time.
 
-Closed experiments: **167** - 29 positive, 94 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **24** - each card names the re-run that closes its caveat, and the results are published here as they land.
+Closed experiments: **167** - 29 positive, 94 mixed, 30 negative, 14 with a measured result but no pass/fail verdict. Follow-ups queued: **24** — each card names the re-run that closes its caveat, and the results are published here as they land.
 
 ## Test rig
 
@@ -109,7 +109,7 @@ Read this before quoting a number.
 | [V100-70](results/V100-70.md) | Re-rank surface search by code | **Mixed.** The reranker works and separates trash confidently. bge-reranker-v2-m3 (568M, fp16) took 6.9 s to launch on V100 and used 1092 MiB VRAM - fits alongside working LLM, no need to unload it. |
 | [V100-71](results/V100-71.md) | The cost of 1M tokens on your own hardware is | **Mixed.** Cost of 1M output tokens on own hardware. Power consumption measured via nvidia-smi power.draw: idle 20.7-46.6 W, under load (7B, 65% utilization) 159.0 W, peak rated 300 W. |
 | [V100-72](results/V100-72.md) | Agent with four tools and an error on the first call | **Mixed.** 1 of 3 scenarios. Three tasks, four tools, the first call get_time was intentionally broken (server responded with unknown argument 'location'; the only valid argument is 'city'. |
-| [V100-73](results/V100-73.md) | Goods cards per hour: image generation throughput | **Positive.** |
+| [V100-73](results/V100-73.md) | Goods cards per hour: image generation throughput | **Positive.** For commercial cards, 768 px is the working mode (35 cards per minute), while 1024 px and printing require either fixing cuDNN for Volta or upscaling from 768 (V100-06). |
 | [V100-74](results/V100-74.md) | Olala-v1.0-mini-7A1B: MoE with 1B active on 16 GB | **Mixed.** Blocked by engine (24.11). File downloaded and intact (5,990,551,040 bytes, exact size verified), but llama.cpp master from 24.11 (build 12.9, sm_70) responds with unknown model architecture: 'olala'. |
 | [V100-75](results/V100-75.md) | GLM-4.7-Flash-30B-A3B IQ4_XS: fresh 30B MoE |  |
 | [V100-76](results/V100-76.md) | Ternary-Bonsai-2-27B: a 27B model in 5.95 GB, engine decides | Positive, with a correction. This card was closed once on the xyz-llama abort and claimed ternary weights refuse to run on Volta - that was wrong, and the mistake was generalising from one fork to the architecture. The PrismML build runs the same file at 67 tok/s and 0.55 pass@1, which clears both ... |
