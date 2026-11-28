@@ -52,7 +52,7 @@ The card asked for 720p with tiling and frame checks. There are no frames, so fr
 
 **Repeats.** single run per configuration; no successful clip to repeat.
 
-**Verdict.** With cuDNN 9 video is blocked for a build reason, not a model limit: fp16 convolutions find no engine on sm_70, and without cuDNN the VAE asks 17.8 GiB. The fix is a cuDNN 8 environment, measured in V100-141, not a smaller clip.
+**Verdict.** With cuDNN 9 video is blocked by the build, not by the model: fp16 convolutions find no engine on sm_70, and without cuDNN the VAE asks 17.8 GiB. With cuDNN 8 it runs - see V100-146.
 
 **Result type.** Negative.
 
